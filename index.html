@@ -87,7 +87,7 @@
                 <div class="space-y-5">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">1. Video Prompt (Describe your scene)</label>
-                        <textarea id="video-prompt" rows="3" placeholder="e.g., A futuristic cyberpunk warrior standing on a skyscraper looking at neon city, cinematic 8k, slow motion..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 transition text-white resize-none"></textarea>
+                        <textarea id="video-prompt" rows="3" placeholder="e.g., A futuristic cyberpunk warrior standing on a skyscraper looking at neon city..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 transition text-white resize-none"></textarea>
                     </div>
 
                     <div>
@@ -133,16 +133,22 @@
 
                 <div id="player-active" class="hidden w-full h-full flex flex-col justify-between">
                     <div class="relative w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center aspect-video" id="video-wrapper">
-                        <video id="output-video" class="w-full h-full object-cover" loop muted playsinline>
-                            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-23064-large.mp4" type="video/mp4">
+                        <video id="output-video" class="w-full h-full object-cover" loop controls muted playsinline>
+                            <source src="" type="video/mp4">
                         </video>
                         <div id="badge-text" class="absolute top-3 left-3 bg-slate-950/80 px-2.5 py-1 rounded-md text-[10px] uppercase font-bold text-cyan-400 tracking-wider border border-cyan-500/30">
                             PRO AI GENERATED
                         </div>
                     </div>
-                    <div class="mt-3 flex justify-between items-center px-2">
-                        <div class="text-xs"><span class="text-gray-500">Prompt:</span> <span id="display-prompt" class="text-purple-300 font-medium italic"></span></div>
-                        <button onclick="resetVideoStudio()" class="text-xs text-gray-400 hover:text-white underline whitespace-nowrap ml-4">Create Another</button>
+                    
+                    <div class="mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 px-2 w-full">
+                        <div class="text-xs max-w-[60%]"><span class="text-gray-500">Prompt:</span> <span id="display-prompt" class="text-purple-300 font-medium italic"></span></div>
+                        <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                            <a id="download-video-btn" download="AJIT_AI_Video.mp4" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-xl text-xs transition flex items-center gap-1 cursor-pointer shadow-lg shadow-emerald-500/20">
+                                📥 Download Video
+                            </a>
+                            <button onclick="resetVideoStudio()" class="text-xs text-gray-400 hover:text-white underline whitespace-nowrap">Create Another</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,7 +219,6 @@
         let selectedRatio = '16:9';
         let isOwner = false;
 
-        // SECRET OWNER CHECK SYSTEM
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'owner') {
@@ -221,8 +226,8 @@
                 document.getElementById('owner-bar').classList.remove('hidden');
                 document.getElementById('hero-tag').textContent = "👑 OWNER MODE: ALL PREMIUM ACCESS UNLOCKED";
                 document.getElementById('hero-tag').className = "inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-wider text-amber-400 bg-amber-950/40 border border-amber-800 rounded-full";
-                document.getElementById('pricing').style.display = 'none'; // Hide pricing plan area
-                document.getElementById('nav-pricing').style.display = 'none'; // Hide pricing tab
+                document.getElementById('pricing').style.display = 'none';
+                document.getElementById('nav-pricing').style.display = 'none';
                 document.getElementById('badge-text').textContent = "OWNER ACCOUNT DEPLOYMENT";
                 document.getElementById('badge-text').className = "absolute top-3 left-3 bg-amber-500 text-slate-950 px-2.5 py-1 rounded-md text-[10px] uppercase font-black tracking-wider shadow";
             }
@@ -256,11 +261,11 @@
             const videoWrapper = document.getElementById('video-wrapper');
 
             if(styleSelected === 'cyber') {
-                videoPlayer.src = "https://assets.mixkit.co/videos/preview/mixkit-abstract-laser-lights-background-23064-large.mp4";
+                videoPlayer.src = "https://www.w3schools.com/html/mov_bbb.mp4";
             } else if(styleSelected === 'anime') {
-                videoPlayer.src = "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-and-numbers-31939-large.mp4";
+                videoPlayer.src = "https://www.w3schools.com/html/movie.mp4";
             } else {
-                videoPlayer.src = "https://assets.mixkit.co/videos/preview/mixkit-stars-in-space-background-1611-large.mp4";
+                videoPlayer.src = "https://media.w3.org/2010/05/sintel/trailer_hd.mp4";
             }
 
             if(selectedRatio === '9:16') {
@@ -270,8 +275,7 @@
             }
 
             let progress = 0;
-            // Owner triggers instant render mode speed
-            const speed = isOwner ? 40 : 150; 
+            const speed = isOwner ? 25 : 100; 
             
             const interval = setInterval(() => {
                 progress += 5;
@@ -286,6 +290,9 @@
                     loadingScreen.classList.add('hidden');
                     document.getElementById('player-active').classList.remove('hidden');
                     document.getElementById('display-prompt').textContent = `"${promptVal}"`;
+                    
+                    document.getElementById('download-video-btn').href = videoPlayer.src;
+                    
                     videoPlayer.load();
                     videoPlayer.play();
                 }
