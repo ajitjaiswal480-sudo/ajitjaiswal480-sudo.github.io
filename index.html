@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajit Jaiswal | AI Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1e1b4b, #020617 55%);
+    }
+    .glass {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+    .glow {
+      box-shadow: 0 0 35px rgba(34, 211, 238, 0.35);
+    }
+  </style>
+</head>
+
+<body class="text-white min-h-screen font-sans">
+
+  <!-- Navbar -->
+  <header class="px-6 py-5 flex justify-between items-center max-w-7xl mx-auto">
+    <h1 class="text-2xl font-bold text-cyan-400">AJIT.AI</h1>
+    <nav class="hidden md:flex gap-6 text-sm text-gray-300">
+      <a href="#home" class="hover:text-cyan-400">Home</a>
+      <a href="#chat" class="hover:text-cyan-400">AI Bot</a>
+      <a href="#tools" class="hover:text-cyan-400">Tools</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <p class="text-cyan-400 font-semibold mb-4">🚀 Future AI Creator & Developer</p>
+      <h2 class="text-5xl md:text-7xl font-extrabold leading-tight">
+        Building Smart <span class="text-cyan-400">AI Tools</span> For The Future
+      </h2>
+      <p class="text-gray-300 mt-6 text-lg">
+        Hi, I’m <b>Ajit Jaiswal</b>. I create futuristic AI tools, chatbot experiences,
+        automation dashboards and smart digital products.
+      </p>
+      <div class="mt-8 flex gap-4">
+        <a href="#tools" class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold hover:bg-cyan-300">
+          Explore Tools
+        </a>
+        <a href="#chat" class="border border-cyan-400 px-6 py-3 rounded-full hover:bg-cyan-400 hover:text-black">
+          Try AI Bot
+        </a>
+      </div>
+    </div>
+
+    <div class="glass glow rounded-3xl p-8">
+      <div class="text-center">
+        <div class="text-7xl mb-4">🤖</div>
+        <h3 class="text-3xl font-bold text-cyan-400">AI Dashboard</h3>
+        <p class="text-gray-300 mt-3">
+          Chatbots • Image AI • PDF Reader • Voice AI • Automation
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Bot -->
+  <section id="chat" class="max-w-4xl mx-auto px-6 py-16">
+    <h2 class="text-4xl font-bold text-center mb-8">
+      Interactive <span class="text-cyan-400">AI Chat Bot</span>
+    </h2>
+
+    <div class="glass rounded-3xl p-6 glow">
+      <div id="chatBox" class="h-80 overflow-y-auto space-y-4 mb-4 p-4 bg-black/30 rounded-2xl">
+        <div class="bg-cyan-400 text-black p-3 rounded-xl w-fit max-w-[80%]">
+          Hello! I am Ajit AI Bot. Ask me anything 🚀
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <input id="userInput" type="text" placeholder="Type your message..."
+          class="flex-1 px-4 py-3 rounded-xl bg-slate-900 border border-cyan-400 outline-none text-white" />
+        <button onclick="sendMessage()"
+          class="bg-cyan-400 text-black px-6 py-3 rounded-xl font-bold hover:bg-cyan-300">
+          Send
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tools Showcase -->
+  <section id="tools" class="max-w-7xl mx-auto px-6 py-20">
+    <h2 class="text-4xl font-bold text-center mb-12">
+      AI Tools <span class="text-cyan-400">Showcase</span>
+    </h2>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-cyan-400">AI Chat Assistant</h3>
+        <p class="text-gray-300 mt-3">Smart chatbot for instant answers and support.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-purple-400">Image Generator</h3>
+        <p class="text-gray-300 mt-3">Future tool for creating AI images from prompts.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-pink-400">PDF AI Reader</h3>
+        <p class="text-gray-300 mt-3">Upload PDFs and get smart summaries.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-green-400">Voice AI</h3>
+        <p class="text-gray-300 mt-3">Talk with AI using voice commands.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-yellow-400">Automation Bot</h3>
+        <p class="text-gray-300 mt-3">Automate daily tasks using AI workflows.</p>
+      </div>
+
+      <div class="glass rounded-2xl p-6 hover:scale-105 transition">
+        <h3 class="text-2xl font-bold text-red-400">Video AI Tool</h3>
+        <p class="text-gray-300 mt-3">Future AI tool for video generation and editing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 text-gray-400 border-t border-cyan-400/20">
+    © 2026 Ajit Jaiswal | Built with AI + Tailwind CSS
+  </footer>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const userInput = document.getElementById("userInput");
+
+    const replies = [
+      "Great question! Ajit is building futuristic AI tools 🚀",
+      "This dashboard will soon support Chat, Voice, Image and PDF AI.",
+      "AI can help you create websites, videos, scripts and automation.",
+      "Keep building daily. Small steps create big success!",
+      "This is a frontend demo bot. Real AI API can be added later."
+    ];
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = sender === "user"
+        ? "bg-slate-700 p-3 rounded-xl ml-auto w-fit max-w-[80%]"
+        : "bg-cyan-400 text-black p-3 rounded-xl w-fit max-w-[80%]";
+      msg.innerText = text;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");
+      userInput.value = "";
+
+      setTimeout(() => {
+        let reply = getSmartReply(text);
+        addMessage(reply, "bot");
+      }, 600);
+    }
+
+    function getSmartReply(input) {
+      input = input.toLowerCase();
+
+      if (input.includes("hello") || input.includes("hi")) {
+        return "Hello! Welcome to Ajit AI Dashboard 👋";
+      }
+      if (input.includes("tool")) {
+        return "You can showcase AI Chatbot, Image Generator, PDF Reader, Voice AI and more.";
+      }
+      if (input.includes("ajit")) {
+        return "Ajit Jaiswal is an AI Creator and Developer building smart digital tools.";
+      }
+      if (input.includes("github")) {
+        return "Upload this file as index.html in your GitHub Pages repository.";
+      }
+      if (input.includes("ai")) {
+        return "AI is the future. You can build chatbots, automation tools, image apps and video tools.";
+      }
+
+      return replies[Math.floor(Math.random() * replies.length)];
+    }
+
+    userInput.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") sendMessage();
+    });
+  </script>
+
+</body>
+</html>
