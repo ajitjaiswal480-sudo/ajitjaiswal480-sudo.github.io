@@ -1,348 +1,390 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ajit Jaiswal | Pro AI Video & Chat Dashboard</title>
+    <title>Ajit AI Pro Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: radial-gradient(circle at top, #0b1329, #020617 80%);
-        }
-        .glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(56, 189, 248, 0.15);
-        }
-        .glow-cyan {
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
-        }
-        .glow-purple {
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.35);
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="text-white min-h-screen font-sans antialiased">
+<body class="bg-slate-950 text-white font-sans selection:bg-cyan-500 selection:text-slate-900">
 
-    <div id="owner-bar" class="hidden bg-gradient-to-r from-purple-600 to-cyan-600 text-center py-2 text-xs font-black tracking-widest uppercase text-slate-950">
-        👑 Welcome Back Ajit! Master Owner Mode Activated. All Premium Features Lifetime Free.
-    </div>
-
-    <header class="px-6 py-5 flex justify-between items-center max-w-7xl mx-auto border-b border-slate-900">
-        <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500">AJIT.AI</h1>
-        <nav class="space-x-6 text-sm font-medium text-gray-400">
-            <a href="#" class="hover:text-cyan-400 transition">Home</a>
-            <a href="#video-studio" class="hover:text-purple-400 transition">AI Video Studio</a>
-            <a href="#chatbot" class="hover:text-cyan-400 transition">AI Bot</a>
-            <a id="nav-pricing" href="#pricing" class="hover:text-indigo-400 transition">Pricing</a>
-        </nav>
+    <!-- Header / Global Navbar -->
+    <header class="border-b border-slate-900 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+                    <i class="fa-solid fa-wand-magic-sparkles text-black font-black"></i>
+                </div>
+                <h1 class="text-xl font-black tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">AJIT AI <span class="text-cyan-400">PRO</span></h1>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-400">
+                <a href="#video-studio" class="hover:text-cyan-400 transition flex items-center gap-2"><i class="fa-solid fa-video text-xs"></i> Filmora Video Studio</a>
+                <a href="#canva-studio" class="hover:text-purple-400 transition flex items-center gap-2"><i class="fa-solid fa-palette text-xs"></i> Canva Image Creator</a>
+                <a href="#whatsapp-chat" class="hover:text-green-400 transition flex items-center gap-2"><i class="fa-brands fa-whatsapp text-xs"></i> Neural Chat</a>
+            </nav>
+            <a href="#pricing" class="bg-gradient-to-r from-cyan-500 to-purple-600 text-black font-bold px-5 py-2 rounded-xl text-sm transition transform hover:scale-105 shadow-md shadow-cyan-500/10">Go Pro</a>
+        </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 pt-16 pb-20 flex flex-col lg:flex-row items-center justify-between gap-12">
-        <div class="max-w-2xl space-y-6">
-            <div id="hero-tag" class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-wider text-purple-400 bg-purple-950/40 border border-purple-800 rounded-full">
-                ✨ Next-Gen AI Video & Automation Hub
-            </div>
-            <h2 class="text-5xl lg:text-7xl font-black tracking-tight leading-none">
-                Next-Level <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">AI Video Engine</span> for Creators
-            </h2>
-            <p class="text-lg text-gray-400 max-w-lg">
-                Hi, I'm Ajit Jaiswal. Experience top-class AI generation facilities like Hailuo AI & Filmora directly inside one workspace.
-            </p>
-            <div class="flex flex-wrap gap-4 pt-2">
-                <a href="#video-studio" class="glow-purple bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl transition transform hover:-translate-y-0.5 text-center">
-                    Launch Video Studio
-                </a>
-                <a href="#chatbot" class="border border-slate-800 hover:border-slate-600 bg-slate-900/40 font-medium px-8 py-3.5 rounded-xl transition text-center">
-                    Talk to Bot
-                </a>
-            </div>
-        </div>
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-12 space-y-24">
 
-        <div class="glass p-8 rounded-3xl w-full max-w-md shadow-2xl relative overflow-hidden">
-            <div class="absolute -right-10 -top-10 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl"></div>
-            <div class="flex items-center gap-4 mb-6">
-                <div class="p-3 bg-purple-950 rounded-2xl border border-purple-800 text-2xl">🎬</div>
+        <!-- 1. FILMORA LEVEL VIDEO STUDIO (With Timeline) -->
+        <section id="video-studio" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 md:p-8 backdrop-blur-md">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                <div class="p-2 bg-cyan-500/10 text-cyan-400 rounded-lg"><i class="fa-solid fa-film"></i></div>
                 <div>
-                    <h4 class="font-bold text-lg">Pro Render Engine</h4>
-                    <p class="text-xs text-purple-400">Hyper-Realistic Video Generation</p>
+                    <h3 class="text-xl font-bold">Filmora-Grade AI Video Engine</h3>
+                    <p class="text-xs text-gray-500">Multi-track rendering timeline visualization framework</p>
                 </div>
             </div>
-            <div class="space-y-4">
-                <div class="flex justify-between text-xs text-gray-400"><span>GPU Usage</span><span>89%</span></div>
-                <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden"><div class="bg-gradient-to-r from-purple-500 to-cyan-400 h-full w-[89%]"></div></div>
-                <div class="flex justify-between text-xs text-gray-400"><span>AI Model Status</span><span class="text-emerald-400 font-semibold">Active & Fast</span></div>
-            </div>
-        </div>
-    </main>
 
-    <section id="video-studio" class="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
-        <div class="text-center mb-12">
-            <h3 class="text-4xl font-extrabold mb-2 tracking-tight">🎬 AI Cinematic Video Studio</h3>
-            <p class="text-gray-400 text-sm">Turn complex text descriptions into stunning cinematic videos instantly.</p>
-        </div>
-
-        <div class="grid lg:grid-cols-12 gap-8">
-            <div class="glass p-6 rounded-3xl lg:col-span-5 space-y-6 flex flex-col justify-between">
-                <div class="space-y-5">
+            <div class="grid lg:grid-cols-3 gap-6">
+                <!-- Controls Panel -->
+                <div class="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-4">
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">1. Video Prompt (Describe your scene)</label>
-                        <textarea id="video-prompt" rows="3" placeholder="e.g., A futuristic cyberpunk warrior standing on a skyscraper looking at neon city..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 transition text-white resize-none"></textarea>
+                        <label class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">AI Video Prompt Script</label>
+                        <textarea id="videoPrompt" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-cyan-500 transition h-28 resize-none" placeholder="Describe motion, lighting, cinematic effects (e.g., 'Cyberpunk neon street, drone shot, 4k cinematic lighting')..."></textarea>
                     </div>
-
                     <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">2. Aspect Ratio</label>
-                        <div class="grid grid-cols-2 gap-3">
-                            <button onclick="setRatio('16:9', this)" class="ratio-btn p-3 rounded-xl border-2 border-purple-500 bg-purple-950/20 text-sm font-semibold flex items-center justify-center gap-2">📺 16:9 (YouTube)</button>
-                            <button onclick="setRatio('9:16', this)" class="ratio-btn p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-slate-600 text-sm font-semibold flex items-center justify-center gap-2">📱 9:16 (Reels/Shorts)</button>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">3. Rendering Style</label>
-                        <select id="video-style" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm focus:outline-none focus:border-purple-500 text-white">
-                            <option value="cyber">Cyberpunk Neon Glow Style</option>
-                            <option value="anime">Sci-Fi Anime Style (Makoto Shinkai)</option>
-                            <option value="real">Photorealistic 8K Cinematic</option>
+                        <label class="block text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Render Style Preset</label>
+                        <select class="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 text-sm text-gray-300 focus:outline-none focus:border-cyan-500">
+                            <option>Hyper-Realistic Cinematic</option>
+                            <option>3D Anime Animation</option>
+                            <option>Sci-Fi Unreal Engine 5</option>
                         </select>
                     </div>
+                    <button onclick="runFilmoraSim()" class="w-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-400/10">
+                        <i class="fa-solid fa-play"></i> Compile & Render Track
+                    </button>
                 </div>
 
-                <button id="gen-video-btn" onclick="generateAIVideo()" class="glow-purple w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-black py-4 rounded-xl transition text-sm uppercase tracking-wider">
-                    ⚡ Generate AI Video
-                </button>
+                <!-- Live Video Preview monitor -->
+                <div class="lg:col-span-2 flex flex-col justify-between bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden min-h-[320px] relative shadow-inner">
+                    <div id="videoMonitor" class="flex-1 flex flex-col items-center justify-center p-6 text-center bg-cover bg-center relative transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1574267431629-2c5751b5486a?auto=format&fit=crop&w=1200&q=80');">
+                        <div id="monitorOverlay" class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm flex flex-col items-center justify-center p-4">
+                            <i id="monitorIcon" class="fa-solid fa-circle-notch text-3xl text-cyan-400 mb-3"></i>
+                            <h4 id="monitorStatus" class="font-bold text-sm tracking-wide uppercase text-gray-300">Preview Monitor Standby</h4>
+                            <p id="monitorDesc" class="text-xs text-gray-500 max-w-xs mt-1">Configure your workspace controls and trigger rendering array to visualize dynamic content.</p>
+                            
+                            <div id="monitorProgressCont" class="w-full max-w-xs bg-slate-900 h-1.5 rounded-full mt-4 overflow-hidden hidden border border-slate-800">
+                                <div id="monitorBar" class="bg-cyan-400 h-full w-0 transition-all duration-100"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filmora Styled Timeline Tracks Panel -->
+                    <div class="bg-slate-900 p-4 border-t border-slate-800 font-mono text-[11px] space-y-2">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 text-gray-500">
+                            <span>Timeline Tracks</span>
+                            <span id="timelineTimer" class="text-cyan-400 font-bold">00:00:00</span>
+                        </div>
+                        <!-- Track 1: Video -->
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-400 shrink-0"><i class="fa-solid fa-video mr-1"></i> Video</span>
+                            <div class="flex-1 h-6 bg-slate-950 rounded border border-slate-800 relative overflow-hidden flex items-center px-2">
+                                <div id="timelineVideoBlock" class="h-full bg-cyan-500/20 border-r-2 border-cyan-400 w-0 transition-all duration-100"></div>
+                                <span class="absolute left-2 text-gray-400 text-[10px]">ai_render_v1.mp4</span>
+                            </div>
+                        </div>
+                        <!-- Track 2: Audio -->
+                        <div class="flex items-center gap-3">
+                            <span class="w-12 text-gray-400 shrink-0"><i class="fa-solid fa-music mr-1"></i> Audio</span>
+                            <div class="flex-1 h-6 bg-slate-950 rounded border border-slate-800 relative overflow-hidden flex items-center px-2">
+                                <div id="timelineAudioBlock" class="h-full bg-purple-500/20 border-r-2 border-purple-400 w-0 transition-all duration-100"></div>
+                                <span class="absolute left-2 text-gray-400 text-[10px]">cinematic_epic_bg.mp3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CANVA LEVEL IMAGE STUDIO -->
+        <section id="canva-studio" class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-6 md:p-8 backdrop-blur-md">
+            <div class="flex items-center gap-3 mb-6 border-b border-slate-800 pb-4">
+                <div class="p-2 bg-purple-500/10 text-purple-400 rounded-lg"><i class="fa-solid fa-palette"></i></div>
+                <div>
+                    <h3 class="text-xl font-bold">Canva-Inspired AI Design Studio</h3>
+                    <p class="text-xs text-gray-500">Vector layout mapping & semantic graphics builder pipeline</p>
+                </div>
             </div>
 
-            <div class="glass p-4 rounded-3xl lg:col-span-7 flex flex-col items-center justify-center min-h-[400px] relative bg-slate-950/40">
-                <div id="player-idle" class="text-center p-8 space-y-3">
-                    <div class="text-5xl animate-bounce">⚡</div>
-                    <h4 class="font-bold text-lg text-gray-300">AI Monitor Ready</h4>
-                    <p class="text-xs text-gray-500 max-w-sm mx-auto">Fill the prompt panel on the left and click generate to trigger the ultra high-speed rendering matrix.</p>
+            <div class="grid lg:grid-cols-4 gap-6">
+                <!-- Design Canvas Elements Menu -->
+                <div class="space-y-3 bg-slate-950/50 p-4 rounded-2xl border border-slate-800">
+                    <span class="text-[10px] uppercase font-bold tracking-widest text-purple-400 block mb-2">Preset Filters</span>
+                    <button onclick="applyCanvaFilter('cyber')" class="w-full text-left bg-slate-900 hover:bg-slate-800/80 border border-slate-800 hover:border-purple-500/40 p-2.5 rounded-xl transition flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-pink-500 to-purple-600"></div>
+                        <div class="text-xs font-semibold">Neon Cyberpunk</div>
+                    </button>
+                    <button onclick="applyCanvaFilter('oil')" class="w-full text-left bg-slate-900 hover:bg-slate-800/80 border border-slate-800 hover:border-purple-500/40 p-2.5 rounded-xl transition flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-yellow-500 to-orange-600"></div>
+                        <div class="text-xs font-semibold">Oil Painting Abstract</div>
+                    </button>
+                    <button onclick="applyCanvaFilter('vector')" class="w-full text-left bg-slate-900 hover:bg-slate-800/80 border border-slate-800 hover:border-purple-500/40 p-2.5 rounded-xl transition flex items-center gap-3">
+                        <div class="w-8 h-8 rounded bg-gradient-to-br from-cyan-400 to-blue-600"></div>
+                        <div class="text-xs font-semibold">Minimal Vector Tech</div>
+                    </button>
                 </div>
 
-                <div id="player-loading" class="hidden text-center p-8 space-y-4 w-full max-w-md">
-                    <div class="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-                    <div>
-                        <h4 id="loading-status" class="font-bold text-purple-400 text-sm tracking-wide uppercase animate-pulse">Initializing Neural Engine...</h4>
-                        <p class="text-xs text-gray-500 mt-1">Simulating advanced server computation grids</p>
-                    </div>
-                    <div class="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                        <div id="progress-bar" class="bg-gradient-to-r from-purple-500 to-cyan-400 h-full w-0 transition-all duration-300"></div>
-                    </div>
-                </div>
-
-                <div id="player-active" class="hidden w-full h-full flex flex-col justify-between">
-                    <div class="relative w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center aspect-video" id="video-wrapper">
-                        <video id="output-video" class="w-full h-full object-cover" loop controls muted playsinline>
-                            <source src="" type="video/mp4">
-                        </video>
-                        <div id="badge-text" class="absolute top-3 left-3 bg-slate-950/80 px-2.5 py-1 rounded-md text-[10px] uppercase font-bold text-cyan-400 tracking-wider border border-cyan-500/30">
-                            PRO AI GENERATED
-                        </div>
+                <!-- Graphic Workspace -->
+                <div class="lg:col-span-3 flex flex-col md:flex-row gap-6 items-center bg-slate-950 p-6 rounded-2xl border border-slate-800 shadow-2xl">
+                    <div id="canvaCanvas" class="w-full md:w-80 h-80 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center bg-cover bg-center transition-all duration-500 shadow-lg relative overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80');">
+                        <div id="canvaGlitch" class="absolute inset-0 bg-purple-500/10 mix-blend-color-dodge hidden"></div>
                     </div>
                     
-                    <div class="mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 px-2 w-full">
-                        <div class="text-xs max-w-[60%]"><span class="text-gray-500">Prompt:</span> <span id="display-prompt" class="text-purple-300 font-medium italic"></span></div>
-                        <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
-                            <a id="download-video-btn" download="AJIT_AI_Video.mp4" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2 rounded-xl text-xs transition flex items-center gap-1 cursor-pointer shadow-lg shadow-emerald-500/20">
-                                📥 Download Video
-                            </a>
-                            <button onclick="resetVideoStudio()" class="text-xs text-gray-400 hover:text-white underline whitespace-nowrap">Create Another</button>
+                    <div class="flex-1 space-y-4 w-full">
+                        <h4 class="font-bold text-base">Graphic Configuration Layout</h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">Modify spatial filter properties instantly using our web graphics simulation array. Real-time design canvas handles rapid component loading securely.</p>
+                        <div class="space-y-2">
+                            <label class="block text-[10px] uppercase font-mono tracking-widest text-gray-500">Composition Prompt Input</label>
+                            <input id="canvaPrompt" type="text" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-purple-500 transition" placeholder="Describe layout canvas modifications...">
                         </div>
+                        <button onclick="triggerCanvaGen()" class="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-lg shadow-purple-600/10">
+                            Apply Design Layer
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="chatbot" class="max-w-4xl mx-auto px-6 py-16 scroll-mt-6">
-        <div class="text-center mb-10">
-            <h3 class="text-3xl font-extrabold mb-2">Interactive AI Chat Bot</h3>
-            <p class="text-gray-400 text-sm">Type 'hello', 'tool', 'video', or 'ajit' to see smart replies</p>
-        </div>
-        
-        <div class="glass rounded-3xl overflow-hidden shadow-2xl flex flex-col h-[400px]">
-            <div id="chat-window" class="p-6 flex-1 overflow-y-auto space-y-4 flex flex-col">
-                <div class="bg-cyan-950/60 border border-cyan-900 text-cyan-200 text-sm px-4 py-3 rounded-2xl max-w-xs self-start shadow-sm">
-                    Hello! I am Ajit AI Bot. Ask me anything about our new Video Engine! 🚀
+        <!-- 3. WHATSAPP LEVEL SMART CHAT ENGINE -->
+        <section id="whatsapp-chat" class="grid lg:grid-cols-3 gap-12 items-center">
+            <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-950/50 rounded-full border border-green-900/50 text-green-400 text-xs font-mono font-bold">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span> Realtime Signal Node
+                </div>
+                <h3 class="text-3xl font-extrabold tracking-tight">WhatsApp Web-Level Chat Framework</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Test our low-latency automated intelligence dialogue module. Responses compute automatically to map multi-turn conversation context arrays effortlessly.
+                </p>
+                <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800/80 text-xs font-mono text-gray-400">
+                    <span class="text-green-400 font-bold">System Status:</span> Operational Handshake Verified
                 </div>
             </div>
-            
-            <div class="p-4 bg-slate-950/60 border-t border-slate-800/80 flex gap-3">
-                <input id="user-input" type="text" placeholder="Type 'video' or 'hello' here..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-cyan-500 transition text-white" />
-                <button id="send-btn" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition text-sm">Send</button>
-            </div>
-        </div>
-    </section>
 
-    <section id="pricing" class="max-w-5xl mx-auto px-6 py-20 scroll-mt-6">
-        <div class="text-center mb-12">
-            <h3 class="text-3xl font-extrabold mb-2">Choose Your AI Plan</h3>
-            <p class="text-gray-400 text-sm">Unlock the true power of automation and premium tools</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div class="glass p-8 rounded-3xl flex flex-col justify-between border border-slate-800">
-                <div>
-                    <h4 class="text-xl font-bold mb-2 text-gray-300">Starter Free</h4>
-                    <div class="text-4xl font-black mb-4">₹0 <span class="text-xs text-gray-500 font-normal">/ lifetime</span></div>
-                    <ul class="space-y-3 text-sm text-gray-400 mb-8">
-                        <li class="flex items-center gap-2">🟢 Basic AI Chatbot access</li>
-                        <li class="flex items-center gap-2">🟢 2 Free AI Videos per day (Low Res)</li>
-                        <li class="flex items-center gap-2">❌ Premium Cinematic Rendering Core</li>
-                    </ul>
+            <!-- Chat Interface Mock -->
+            <div class="lg:col-span-2 bg-slate-900/40 border border-slate-800 rounded-2xl h-[460px] flex flex-col overflow-hidden shadow-2xl backdrop-blur-md">
+                <!-- Header (WhatsApp Web-style) -->
+                <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-green-600 to-emerald-400 flex items-center justify-center font-bold text-xs text-black shadow-inner shadow-white/20">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs tracking-wide">AJIT CENTRAL NODE</h4>
+                            <span class="text-[10px] text-green-400 flex items-center gap-1 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-green-400 block animate-pulse"></span> online</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 text-gray-400 text-xs">
+                        <i class="fa-solid fa-phone cursor-not-allowed opacity-40"></i>
+                        <i class="fa-solid fa-video cursor-not-allowed opacity-40"></i>
+                        <div class="w-[1px] h-4 bg-slate-800"></div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
                 </div>
-                <button class="w-full bg-slate-800 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition text-sm">Current Plan</button>
-            </div>
 
-            <div class="glass p-8 rounded-3xl flex flex-col justify-between border-2 border-purple-500 relative overflow-hidden">
-                <div class="absolute top-3 right-3 bg-purple-500 text-white text-[10px] uppercase tracking-widest font-black px-2.5 py-1 rounded-full">Popular</div>
-                <div>
-                    <h4 class="text-xl font-bold mb-2 text-purple-400">Ajit AI Pro Studio</h4>
-                    <div class="text-4xl font-black mb-4">₹99 <span class="text-xs text-purple-500 font-normal">/ month</span></div>
-                    <ul class="space-y-3 text-sm text-gray-300 mb-8">
-                        <li class="flex items-center gap-2">🔵 Unlimited AI Chatbot & Video access</li>
-                        <li class="flex items-center gap-2">🔵 Hyper-Realistic 8K Resolution Video Output</li>
-                        <li class="flex items-center gap-2">🔵 Direct Export to Filmora formats</li>
-                    </ul>
+                <!-- Chat Messages Screen -->
+                <div id="chatBody" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-sans tracking-wide">
+                    <!-- Bot initial bubble -->
+                    <div class="flex items-start gap-2.5 max-w-[85%]">
+                        <div class="bg-slate-950 border border-slate-800 px-3.5 py-2.5 rounded-2xl text-gray-200 shadow-md">
+                            Welcome back. The automated neural dialogue system framework is initialized. Ask me any configuration query parameters.
+                        </div>
+                    </div>
                 </div>
-                <button onclick="alert('Payment link coming soon! Staying tuned with Ajit.AI')" class="glow-purple w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-slate-950 font-bold py-3 rounded-xl transition text-sm">Upgrade to Pro</button>
-            </div>
-        </div>
-    </section>
 
-    <footer class="border-t border-slate-900 py-8 text-center text-xs text-gray-600">
-        <p>© 2026 AJIT.AI. Made with ❤️ by Ajit Jaiswal.</p>
+                <!-- Footer Input Area -->
+                <div class="p-3 bg-slate-950 border-t border-slate-800 flex items-center gap-2">
+                    <input type="text" id="chatInput" onkeydown="if(event.key === 'Enter') processWhatsAppChat()" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-green-500 transition placeholder:text-gray-600" placeholder="Type system instruction protocol...">
+                    <button onclick="processWhatsAppChat()" class="bg-gradient-to-tr from-green-600 to-emerald-500 hover:opacity-90 text-black p-3 rounded-xl transition flex items-center justify-center font-bold shadow-md shadow-green-500/10">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. MONETIZATION / PRICING & OWNER PAYWALL OVERRIDE -->
+        <section id="pricing" class="border-t border-slate-900 pt-16 transition-all duration-500">
+            <div id="pricingHeader" class="max-w-2xl mx-auto text-center mb-12">
+                <h3 class="text-2xl font-extrabold tracking-tight">Infrastructure Core Subscriptions</h3>
+                <p class="text-xs text-gray-500 mt-1">Acquire dedicated cluster nodes to run advanced rendering routines seamlessly.</p>
+            </div>
+
+            <!-- Standard plans -->
+            <div id="pricingGrid" class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <div class="bg-slate-900/20 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-lg text-gray-300">Creator License</h4>
+                        <div class="my-4"><span class="text-3xl font-black text-white">$24</span><span class="text-gray-500 text-xs"> / mo</span></div>
+                        <ul class="space-y-2 text-xs text-gray-400 border-t border-slate-800/60 pt-4 font-mono">
+                            <li><i class="fa-solid fa-check text-cyan-400 mr-2"></i> 100 System Compute Runs / Daily</li>
+                            <li><i class="fa-solid fa-check text-cyan-400 mr-2"></i> Standard Queue Priority Token</li>
+                        </ul>
+                    </div>
+                    <button class="w-full bg-slate-800 hover:bg-slate-700 font-bold py-2.5 rounded-xl mt-6 transition text-xs">Initialize Node</button>
+                </div>
+
+                <div class="bg-gradient-to-b from-purple-950/40 to-slate-950 border-2 border-purple-500/50 rounded-2xl p-6 flex flex-col justify-between relative shadow-xl">
+                    <span class="absolute -top-2.5 left-1/2 transform -translate-x-1/2 bg-purple-500 text-black text-[9px] font-bold tracking-widest px-2.5 py-0.5 rounded-full uppercase">Enterprise</span>
+                    <div>
+                        <h4 class="font-bold text-lg text-purple-400">Quantum Array</h4>
+                        <div class="my-4"><span class="text-3xl font-black text-white">$129</span><span class="text-gray-400 text-xs"> / mo</span></div>
+                        <ul class="space-y-2 text-xs text-gray-300 border-t border-purple-900/40 pt-4 font-mono">
+                            <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Real-time Unlimited Processing Node</li>
+                            <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> 24/7 Dedicated Priority Cloud Access</li>
+                        </ul>
+                    </div>
+                    <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-black font-bold py-2.5 rounded-xl mt-6 transition text-xs shadow-lg shadow-purple-500/10">Unlock Infrastructure</button>
+                </div>
+            </div>
+
+            <!-- Secret Superuser Owner Mode Banner -->
+            <div id="ownerBanner" class="hidden max-w-3xl mx-auto bg-gradient-to-r from-cyan-950/40 via-purple-950/20 to-pink-950/40 border-2 border-cyan-400/80 rounded-2xl p-8 text-center relative overflow-hidden shadow-2xl transition-all duration-500">
+                <div class="w-12 h-12 rounded-full bg-cyan-950 border border-cyan-400 flex items-center justify-center mx-auto text-cyan-400 text-lg mb-4 shadow-lg shadow-cyan-400/20">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <h4 class="text-2xl font-black tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 uppercase">System Owner Credentials Active</h4>
+                <p class="text-xs text-gray-300 max-w-md mx-auto mt-2 leading-relaxed">
+                    Handshake complete. Greetings Architect <strong class="text-white tracking-wider">AJIT JAISWAL</strong>. Subscriptions and paywall structures are fully bypassed. Infinite server computing bandwidth allocated.
+                </p>
+                <div class="mt-4 flex justify-center gap-3 text-[10px] font-mono text-cyan-300">
+                    <span class="bg-cyan-950/80 border border-cyan-900/40 px-3 py-1 rounded-lg"><i class="fa-solid fa-bolt mr-1"></i> Root Access Enabled</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-900 py-8 bg-black/40 text-center text-[11px] text-gray-600 font-mono tracking-wider">
+        <p>&copy; 2026 AJIT AI PRO ECOSYSTEM. RIGHTS SECURED GLOBAL NETWORK CHANNELS.</p>
     </footer>
 
+    <!-- LOGIC INTEGRATION EXECUTION CORE SCRIPT -->
     <script>
-        let selectedRatio = '16:9';
-        let isOwner = false;
+        // Filmora Engine Simulation Logics
+        function runFilmoraSim() {
+            const pr = document.getElementById('videoPrompt').value.trim();
+            if(!pr) { alert("Please input text instruction strings before compiling."); return; }
 
+            const overlay = document.getElementById('monitorOverlay');
+            const icon = document.getElementById('monitorIcon');
+            const status = document.getElementById('monitorStatus');
+            const desc = document.getElementById('monitorDesc');
+            const progressCont = document.getElementById('monitorProgressCont');
+            const bar = document.getElementById('monitorBar');
+            
+            const trackVid = document.getElementById('timelineVideoBlock');
+            const trackAud = document.getElementById('timelineAudioBlock');
+            const timer = document.getElementById('timelineTimer');
+
+            progressCont.classList.remove('hidden');
+            icon.className = "fa-solid fa-spinner animate-spin text-3xl text-purple-400 mb-3";
+            status.innerText = "Compiling Multitrack Assets...";
+            desc.innerText = "Slicing visual timelines and blending ambient audio matrix layers...";
+
+            let pct = 0;
+            let sec = 0;
+
+            const clock = setInterval(() => {
+                sec++;
+                timer.innerText = `00:00:0${sec}`;
+            }, 1000);
+
+            const loop = setInterval(() => {
+                pct += 5;
+                bar.style.width = pct + "%";
+                trackVid.style.width = (pct - 10 > 0 ? pct - 10 : 0) + "%";
+                trackAud.style.width = pct + "%";
+
+                if(pct === 50) {
+                    status.innerText = "Rendering Filmora Simulation Visuals...";
+                    desc.innerText = "Mapping vector keyframes and computing complex spatial effects...";
+                }
+
+                if(pct >= 100) {
+                    clearInterval(loop);
+                    clearInterval(clock);
+                    progressCont.classList.add('hidden');
+                    overlay.classList.add('hidden');
+                    document.getElementById('videoMonitor').style.backgroundImage = "url('https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80')";
+                }
+            }, 200);
+        }
+
+        // Canva Engine Filter Simulations Logics
+        function applyCanvaFilter(type) {
+            const canvas = document.getElementById('canvaCanvas');
+            const glitch = document.getElementById('canvaGlitch');
+            glitch.classList.remove('hidden');
+            
+            setTimeout(() => {
+                glitch.classList.add('hidden');
+                if(type === 'cyber') canvas.style.backgroundImage = "url('https://images.unsplash.com/photo-1515621061946-eff1c2a352bd?auto=format&fit=crop&w=800&q=80')";
+                if(type === 'oil') canvas.style.backgroundImage = "url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80')";
+                if(type === 'vector') canvas.style.backgroundImage = "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80')";
+            }, 400);
+        }
+
+        function triggerCanvaGen() {
+            const pr = document.getElementById('canvaPrompt').value.trim();
+            if(!pr) { alert("Define canvas composition values first."); return; }
+            applyCanvaFilter('cyber');
+        }
+
+        // WhatsApp Low-latency Messaging Node Logic simulation
+        function processWhatsAppChat() {
+            const input = document.getElementById('chatInput');
+            const txt = input.value.trim();
+            if(!txt) return;
+
+            const body = document.getElementById('chatBody');
+            
+            // Add user bubble (WhatsApp standard aligns right)
+            const userMsg = `
+                <div class="flex justify-end w-full">
+                    <div class="bg-emerald-600 text-white px-3.5 py-2 rounded-xl max-w-[85%] shadow-sm text-right">
+                        ${txt}
+                    </div>
+                </div>
+            `;
+            body.insertAdjacentHTML('beforeend', userMsg);
+            input.value = "";
+            body.scrollTop = body.scrollHeight;
+
+            // Generate bot dynamic replies
+            setTimeout(() => {
+                let reply = "Operational pipeline parameters analyzed successfully. Standing by for specific instruction arrays.";
+                const query = txt.toLowerCase();
+
+                if(query.includes('owner') || query.includes('creator') || query.includes('banaya') || query.includes('create')) {
+                    reply = "Credential handshake verified. This multi-engine platform architecture was entirely designed, customized, and coded by Master Architect <strong>Ajit Jaiswal</strong>.";
+                } else if(query.includes('filmora') || query.includes('video')) {
+                    reply = "Filmora UI multi-track timeline array is running in standby automation mode. Click 'Compile & Render' to sequence frames.";
+                } else if(query.includes('canva') || query.includes('design')) {
+                    reply = "Canva design studio matrix registers operational. Filters can be applied via the left dashboard element interface panels.";
+                }
+
+                const botMsg = `
+                    <div class="flex justify-start w-full">
+                        <div class="bg-slate-950 border border-slate-800 px-3.5 py-2 text-gray-200 rounded-xl max-w-[85%] shadow-sm">
+                            ${reply}
+                        </div>
+                    </div>
+                `;
+                body.insertAdjacentHTML('beforeend', botMsg);
+                body.scrollTop = body.scrollHeight;
+            }, 500);
+        }
+
+        // Superuser credential check
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.get('mode') === 'owner') {
-                isOwner = true;
-                document.getElementById('owner-bar').classList.remove('hidden');
-                document.getElementById('hero-tag').textContent = "👑 OWNER MODE: ALL PREMIUM ACCESS UNLOCKED";
-                document.getElementById('hero-tag').className = "inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold tracking-wider text-amber-400 bg-amber-950/40 border border-amber-800 rounded-full";
-                document.getElementById('pricing').style.display = 'none';
-                document.getElementById('nav-pricing').style.display = 'none';
-                document.getElementById('badge-text').textContent = "OWNER ACCOUNT DEPLOYMENT";
-                document.getElementById('badge-text').className = "absolute top-3 left-3 bg-amber-500 text-slate-950 px-2.5 py-1 rounded-md text-[10px] uppercase font-black tracking-wider shadow";
+                document.getElementById('pricingHeader').classList.add('hidden');
+                document.getElementById('pricingGrid').classList.add('hidden');
+                document.getElementById('ownerBanner').classList.remove('hidden');
             }
-        });
-        
-        function setRatio(ratio, element) {
-            selectedRatio = ratio;
-            document.querySelectorAll('.ratio-btn').forEach(btn => {
-                btn.className = "ratio-btn p-3 rounded-xl border border-slate-800 bg-slate-950 hover:border-slate-600 text-sm font-semibold flex items-center justify-center gap-2";
-            });
-            element.className = "ratio-btn p-3 rounded-xl border-2 border-purple-500 bg-purple-950/20 text-sm font-semibold flex items-center justify-center gap-2";
-        }
-
-        function generateAIVideo() {
-            const promptVal = document.getElementById('video-prompt').value.trim();
-            if(!promptVal) {
-                alert("Please type a video prompt first!");
-                return;
-            }
-
-            document.getElementById('player-idle').classList.add('hidden');
-            document.getElementById('player-active').classList.add('hidden');
-            const loadingScreen = document.getElementById('player-loading');
-            loadingScreen.classList.remove('hidden');
-
-            const statusText = document.getElementById('loading-status');
-            const progressBar = document.getElementById('progress-bar');
-            
-            const styleSelected = document.getElementById('video-style').value;
-            const videoPlayer = document.getElementById('output-video');
-            const videoWrapper = document.getElementById('video-wrapper');
-
-            if(styleSelected === 'cyber') {
-                videoPlayer.src = "https://www.w3schools.com/html/mov_bbb.mp4";
-            } else if(styleSelected === 'anime') {
-                videoPlayer.src = "https://www.w3schools.com/html/movie.mp4";
-            } else {
-                videoPlayer.src = "https://media.w3.org/2010/05/sintel/trailer_hd.mp4";
-            }
-
-            if(selectedRatio === '9:16') {
-                videoWrapper.className = "relative w-full max-w-[240px] rounded-2xl overflow-hidden bg-black flex items-center justify-center aspect-[9/16]";
-            } else {
-                videoWrapper.className = "relative w-full rounded-2xl overflow-hidden bg-black flex items-center justify-center aspect-video";
-            }
-
-            let progress = 0;
-            const speed = isOwner ? 25 : 100; 
-            
-            const interval = setInterval(() => {
-                progress += 5;
-                progressBar.style.width = `${progress}%`;
-
-                if(progress === 25) statusText.textContent = "Connecting Cloud GPU Node...";
-                if(progress === 50) statusText.textContent = "Synthesizing AI Video Frames...";
-                if(progress === 75) statusText.textContent = "Injecting Cinematic Post-Effects...";
-                
-                if(progress >= 100) {
-                    clearInterval(interval);
-                    loadingScreen.classList.add('hidden');
-                    document.getElementById('player-active').classList.remove('hidden');
-                    document.getElementById('display-prompt').textContent = `"${promptVal}"`;
-                    
-                    document.getElementById('download-video-btn').href = videoPlayer.src;
-                    
-                    videoPlayer.load();
-                    videoPlayer.play();
-                }
-            }, speed);
-        }
-
-        function resetVideoStudio() {
-            document.getElementById('player-active').classList.add('hidden');
-            document.getElementById('player-idle').classList.remove('hidden');
-            document.getElementById('video-prompt').value = '';
-        }
-
-        const chatWindow = document.getElementById('chat-window');
-        const userInput = document.getElementById('user-input');
-        const sendBtn = document.getElementById('send-btn');
-
-        function sendMessage() {
-            const text = userInput.value.trim();
-            if (!text) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = "bg-slate-800 text-sm px-4 py-3 rounded-2xl max-w-xs self-end shadow-sm";
-            userDiv.textContent = text;
-            chatWindow.appendChild(userDiv);
-            userInput.value = '';
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-
-            setTimeout(() => {
-                const botDiv = document.createElement('div');
-                botDiv.className = "bg-cyan-950/60 border border-cyan-900 text-cyan-200 text-sm px-4 py-3 rounded-2xl max-w-xs self-start shadow-sm";
-                
-                const cleanText = text.toLowerCase();
-                if (cleanText.includes('hello') || cleanText.includes('hi')) {
-                    botDiv.textContent = isOwner ? "Greetings Master Ajit! System protocols operating at peak efficiency." : "Hello! Ready to build the future of AI videos? Ask me about the Video Studio module!";
-                } else if (cleanText.includes('tool') || cleanText.includes('video')) {
-                    botDiv.textContent = "Our Pro Studio features multi-style configuration (Cyberpunk, Realistic 8K, Anime) and multi-aspect ratio rendering engine built natively!";
-                } else if (cleanText.includes('ajit')) {
-                    botDiv.textContent = "Ajit Jaiswal is scaling this platform to match global standards of Filmora and Hailuo AI!";
-                } else {
-                    botDiv.textContent = "Interesting query! Our dashboard is updating features at lightning speed. Try using keywords like 'video' or 'hello'!";
-                }
-                
-                chatWindow.appendChild(botDiv);
-                chatWindow.scrollTop = chatWindow.scrollHeight;
-            }, 600);
-        }
-
-        sendBtn.addEventListener('click', sendMessage);
-        userInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') sendMessage();
         });
     </script>
 </body>
