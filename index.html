@@ -7,87 +7,134 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-slate-950 text-white">
+<body>
 
-<header class="nav">
-  <h1>⚡ AJIT <span>AI PRO</span></h1>
+<header class="topbar">
+  <div class="brand">⚡ AJIT <span>AI PRO</span></div>
   <nav>
-    <a href="#tools">Tools</a>
-    <a href="#dashboard">Dashboard</a>
+    <a href="#home">Home</a>
+    <a href="#studio">Studio</a>
+    <a href="#admin">Owner</a>
     <a href="#pricing">Pricing</a>
   </nav>
   <button onclick="openLogin()">Login</button>
 </header>
 
-<section class="hero">
-  <div>
-    <p class="tag">🚀 Next-Gen AI SaaS Platform</p>
-    <h2>Create Videos, Images, Scripts & Content with AI</h2>
-    <p class="desc">
-      Ajit AI Pro Studio एक futuristic AI dashboard है जहाँ video, image, chat,
-      PDF, voice और creator tools एक जगह मिलेंगे।
-    </p>
-    <a href="#tools" class="btn">Explore Tools</a>
+<section id="home" class="hero">
+  <div class="heroText">
+    <p class="tag">🚀 India’s Creator AI SaaS Dashboard</p>
+    <h1>One AI Platform for Video, Image, Script, Voice & Growth</h1>
+    <p>Ajit AI Pro Studio — YouTube Shorts creators, students और beginners के लिए all-in-one AI creator platform.</p>
+    <div class="actions">
+      <a href="#studio">Launch Studio</a>
+      <a class="ghost" href="?mode=owner">Owner Mode</a>
+    </div>
   </div>
 
-  <div class="card chat">
-    <h3>🤖 AI Chat Demo <span>Online</span></h3>
-    <div id="chatBox" class="chatbox">
-      <p class="bot">Hi Ajit! Main tumhara AI assistant hoon.</p>
+  <div class="aiPanel">
+    <h3>🤖 AI Command Center <span>Live Demo</span></h3>
+    <div id="chatBox" class="chatBox">
+      <p class="bot">Hi Ajit! Main tumhara AI Bhai assistant hoon. Kuch bhi पूछो.</p>
     </div>
-    <div class="row">
-      <input id="chatInput" placeholder="Ask video, image, pdf..." />
+    <div class="inputRow">
+      <input id="chatInput" placeholder="video, thumbnail, caption, script..." />
       <button onclick="sendChat()">Send</button>
     </div>
   </div>
 </section>
 
-<section id="tools" class="section">
-  <h2>AI Tools</h2>
-  <div class="grid">
-    <div class="card">🎬 <h3>Video Studio</h3><p>Script, prompt और video workflow.</p></div>
-    <div class="card">🖼️ <h3>Image Studio</h3><p>Thumbnail, poster और image prompt.</p></div>
-    <div class="card">🎤 <h3>Voice AI</h3><p>Voice input और text-to-speech ready.</p></div>
-    <div class="card">📄 <h3>PDF Reader</h3><p>PDF summarize feature ready.</p></div>
+<section class="stats">
+  <div><h2 id="planName">Free</h2><p>Current Plan</p></div>
+  <div><h2>5/5</h2><p>Free Daily Usage</p></div>
+  <div><h2 id="ownerStatus">Off</h2><p>Owner Access</p></div>
+  <div><h2>4.1</h2><p>SaaS Version</p></div>
+</section>
+
+<section id="studio" class="layout">
+  <aside class="sidebar">
+    <h3>AI Studios</h3>
+    <button onclick="openTool('script')">✍️ Script Writer</button>
+    <button onclick="openTool('video')">🎬 Video Prompt</button>
+    <button onclick="openTool('thumb')">🖼️ Thumbnail Text</button>
+    <button onclick="openTool('caption')">#️⃣ Caption + Hashtags</button>
+    <button onclick="openTool('pdf')">📄 PDF Summarizer</button>
+    <button onclick="openTool('voice')">🎤 Voice AI</button>
+  </aside>
+
+  <main class="workspace">
+    <div class="workspaceHead">
+      <h2 id="toolTitle">✍️ AI Script Writer</h2>
+      <p id="toolDesc">YouTube Shorts और reels के लिए viral script बनाओ.</p>
+    </div>
+
+    <textarea id="toolInput" placeholder="Example: Middle class online shopping comedy short..."></textarea>
+
+    <div class="toolActions">
+      <button onclick="generateTool()">Generate</button>
+      <button onclick="clearTool()" class="clear">Clear</button>
+    </div>
+
+    <div class="outputBox">
+      <h3>AI Output</h3>
+      <pre id="toolOutput">Output yahan dikhega...</pre>
+    </div>
+  </main>
+</section>
+
+<section class="projects">
+  <h2>📁 Recent Creator Projects</h2>
+  <div class="projectGrid">
+    <div>🎬 Comedy Shorts Pack</div>
+    <div>🖼️ Viral Thumbnail Ideas</div>
+    <div>📺 YouTube Growth Funnel</div>
+    <div>🤖 AI Tool Dashboard</div>
   </div>
 </section>
 
-<section id="dashboard" class="section">
-  <h2>Dashboard</h2>
-  <div class="grid dash">
-    <div class="card"><p>Today Usage</p><h3>5/5</h3></div>
-    <div class="card"><p>Plan</p><h3 id="planName">Free</h3></div>
-    <div class="card"><p>Owner Access</p><h3 id="ownerStatus">Off</h3></div>
+<section id="admin" class="admin">
+  <h2>👑 Owner Admin Control Center</h2>
+  <div id="adminLocked" class="locked">Owner panel unlock करने के लिए URL में <b>?mode=owner</b> लगाओ.</div>
+  <div id="adminUnlocked" class="adminGrid hidden">
+    <div>✅ Lifetime Access</div>
+    <div>✅ Pricing Control</div>
+    <div>✅ Usage Limit Control</div>
+    <div>✅ Future API Control</div>
   </div>
 </section>
 
-<section id="pricing" class="section">
+<section id="pricing" class="pricing">
   <div id="normalPricing">
-    <h2>Affordable Indian Pricing</h2>
-    <div class="grid price">
-      <div class="card">
-        <h3>Starter Pack</h3>
+    <h2>💳 Affordable Indian Pricing</h2>
+    <div class="priceGrid">
+      <div class="priceCard">
+        <h3>Starter</h3>
         <h4>₹99/month</h4>
-        <p>100 generations/day</p>
+        <p>100 AI generations/day</p>
         <button onclick="upgrade('Starter')">Activate</button>
       </div>
-      <div class="card pro">
-        <h3>Pro Pack</h3>
+      <div class="priceCard pro">
+        <h3>Pro</h3>
         <h4>₹349/month</h4>
-        <p>Unlimited demo access</p>
-        <button onclick="upgrade('Pro')">Upgrade</button>
+        <p>Unlimited creator tools demo</p>
+        <button onclick="upgrade('Pro')">Upgrade Pro</button>
       </div>
     </div>
   </div>
 
-  <div id="ownerPanel" class="card owner hidden">
-    <h2>👑 Owner Mode Active</h2>
-    <p>Welcome Ajit Jaiswal. Lifetime full access unlocked.</p>
+  <div id="ownerBanner" class="ownerBanner hidden">
+    👑 Owner Mode Active — Welcome Ajit Jaiswal. Full access unlocked.
   </div>
 </section>
 
+<div class="mobileNav">
+  <a href="#home">🏠<br>Home</a>
+  <a href="#studio">🧠<br>Studio</a>
+  <a href="#admin">👑<br>Owner</a>
+  <a href="#pricing">💳<br>Plan</a>
+</div>
+
 <div id="loginModal" class="modal hidden">
-  <div class="card login">
+  <div class="loginBox">
     <h2>Login Demo</h2>
     <input placeholder="Email" />
     <input placeholder="Password" type="password" />
@@ -96,7 +143,7 @@
   </div>
 </div>
 
-<footer>© 2026 Ajit AI Pro SaaS</footer>
+<footer>© 2026 Ajit AI Pro SaaS — Built by Ajit with AI Bhai</footer>
 
 <script src="app.js"></script>
 </body>
