@@ -1,0 +1,30 @@
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#020617;color:white;font-family:Arial,sans-serif}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:18px 7%;background:rgba(2,6,23,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}
+.brand{font-size:24px;font-weight:900}.brand span,.tag{color:#22d3ee}
+.topbar nav{display:flex;gap:24px}.topbar a{color:#cbd5e1;text-decoration:none}
+button,.actions a{border:0;border-radius:14px;background:#22d3ee;color:#020617;padding:12px 18px;font-weight:900;cursor:pointer;text-decoration:none}
+.hero{min-height:88vh;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:70px 7%;background:radial-gradient(circle at 70% 20%,#7e22ce,#020617 55%)}
+.hero h1{font-size:62px;line-height:1;font-weight:900;margin:10px 0}.hero p{color:#cbd5e1;font-size:18px}.actions{display:flex;gap:14px;margin-top:28px}.ghost{background:transparent!important;color:#22d3ee!important;border:1px solid #22d3ee}
+.aiPanel,.stats div,.sidebar,.workspace,.projects,.admin,.priceCard,.loginBox{background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.18);border-radius:28px;box-shadow:0 0 45px rgba(34,211,238,.12)}
+.aiPanel{padding:24px}.aiPanel h3{display:flex;justify-content:space-between}.aiPanel span{font-size:12px;color:#22c55e}
+.chatBox{height:300px;background:rgba(0,0,0,.35);border-radius:22px;padding:16px;overflow:auto}.bot,.user{padding:12px;border-radius:14px;max-width:85%;width:max-content}.bot{background:#22d3ee;color:#020617}.user{background:#a855f7;margin-left:auto}
+.inputRow{display:flex;gap:10px;margin-top:12px}input,textarea{width:100%;background:#020617;border:1px solid #334155;color:white;border-radius:14px;padding:14px;outline:none}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:35px 7%}.stats div{padding:22px}.stats h2{font-size:34px;color:#22d3ee;margin:0}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:24px;padding:60px 7%}.sidebar{padding:22px;height:max-content}.sidebar button{display:block;width:100%;margin:10px 0;text-align:left;background:#0f172a;color:white;border:1px solid #334155}
+.workspace{padding:28px}.workspaceHead h2{font-size:34px;margin:0}.workspaceHead p{color:#94a3b8}textarea{height:160px}
+.toolActions{display:flex;gap:12px;margin:15px 0}.clear{background:#334155;color:white}
+.outputBox{background:#020617;border:1px solid #334155;border-radius:22px;padding:18px}pre{white-space:pre-wrap;color:#dbeafe}
+.projects,.admin,.pricing{margin:40px 7%;padding:35px}.projects h2,.admin h2,.pricing h2{text-align:center;font-size:36px}
+.projectGrid,.adminGrid,.priceGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.projectGrid div,.adminGrid div{background:#020617;border:1px solid #334155;border-radius:18px;padding:20px}
+.priceGrid{grid-template-columns:repeat(2,1fr);max-width:850px;margin:auto}.priceCard{padding:30px}.priceCard h4{font-size:42px;color:#22d3ee}.pro{border-color:#a855f7}
+.ownerBanner{text-align:center;border:2px solid #22d3ee;border-radius:26px;padding:35px;font-size:26px;font-weight:900}
+.hidden{display:none!important}.locked{text-align:center;color:#cbd5e1}.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:50}.loginBox{width:360px;padding:28px}.loginBox input{margin:10px 0}.loginBox p{text-align:center;color:#94a3b8;cursor:pointer}
+.mobileNav{display:none}footer{text-align:center;background:#000;color:#64748b;padding:35px;margin-bottom:60px}
+
+@media(max-width:900px){
+  .topbar nav{display:none}.hero,.layout,.stats,.projectGrid,.adminGrid,.priceGrid{grid-template-columns:1fr}.hero h1{font-size:42px}.hero{padding:50px 5%}.layout{padding:40px 5%}.stats{padding:25px 5%}
+  .mobileNav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:rgba(2,6,23,.92);backdrop-filter:blur(18px);border-top:1px solid #334155;padding:8px 0;z-index:30}
+  .mobileNav a{color:white;text-decoration:none;text-align:center;font-size:12px}
+}
