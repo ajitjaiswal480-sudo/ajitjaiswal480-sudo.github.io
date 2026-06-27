@@ -1,0 +1,57 @@
+html{scroll-behavior:smooth}
+body{font-family:Arial, sans-serif}
+.nav{
+  position:sticky;top:0;z-index:50;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 7%;background:rgba(2,6,23,.8);
+  backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)
+}
+.nav h1{font-weight:900;font-size:22px}
+.nav span,.tag{color:#22d3ee}
+.nav nav{display:flex;gap:24px}
+.nav a{color:#cbd5e1;text-decoration:none}
+.nav button,.btn,.row button,.card button{
+  background:#22d3ee;color:#020617;border:0;border-radius:14px;
+  padding:12px 18px;font-weight:800;cursor:pointer;text-decoration:none
+}
+.hero{
+  min-height:90vh;padding:80px 7%;
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  background:radial-gradient(circle at top,#581c87,#020617 55%)
+}
+.hero h2{font-size:64px;line-height:1;font-weight:900}
+.desc{color:#cbd5e1;font-size:18px;margin:22px 0}
+.card{
+  background:rgba(15,23,42,.72);border:1px solid rgba(148,163,184,.18);
+  border-radius:28px;padding:28px;box-shadow:0 0 40px rgba(34,211,238,.12)
+}
+.chat h3{display:flex;justify-content:space-between}
+.chat span{color:#22c55e;font-size:12px}
+.chatbox{height:280px;background:rgba(0,0,0,.35);border-radius:22px;padding:16px;overflow:auto}
+.bot{background:#22d3ee;color:#020617;padding:12px;border-radius:14px;width:max-content;max-width:80%}
+.user{background:#a855f7;color:white;padding:12px;border-radius:14px;margin-left:auto;width:max-content;max-width:80%}
+.row{display:flex;gap:10px;margin-top:12px}
+.row input,.login input{
+  width:100%;padding:14px;border-radius:14px;border:1px solid #334155;
+  background:#020617;color:white;outline:none
+}
+.section{padding:70px 7%}
+.section h2{text-align:center;font-size:40px;font-weight:900;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.dash,.price{grid-template-columns:repeat(3,1fr)}
+.price{grid-template-columns:repeat(2,1fr);max-width:850px;margin:auto}
+.card h3{font-size:24px;font-weight:900}
+.card h4{font-size:42px;font-weight:900;color:#22d3ee;margin:18px 0}
+.pro{border-color:#a855f7}
+.owner{text-align:center;border-color:#22d3ee}
+.hidden{display:none!important}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:99}
+.login{width:360px}
+.login p{text-align:center;color:#94a3b8;cursor:pointer}
+footer{text-align:center;padding:35px;background:#000;color:#64748b}
+
+@media(max-width:850px){
+  .hero,.grid,.dash,.price{grid-template-columns:1fr}
+  .hero h2{font-size:42px}
+  .nav nav{display:none}
+}
