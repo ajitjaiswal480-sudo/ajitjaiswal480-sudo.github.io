@@ -1,1 +1,82 @@
-<h1>Login Page Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Ajit AI Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+
+  <div class="w-full max-w-md bg-slate-900 border border-cyan-400/50 rounded-3xl p-8 shadow-2xl shadow-cyan-500/20">
+    
+    <div class="text-center mb-8">
+      <div class="text-5xl mb-3">⚡</div>
+      <h1 class="text-4xl font-black text-cyan-400">Ajit AI Pro</h1>
+      <p class="text-gray-400 mt-2">Login karke apna AI dashboard access karo.</p>
+    </div>
+
+    <label class="text-sm text-gray-400">Email Address</label>
+    <input id="email" type="email" placeholder="your@email.com"
+      class="w-full mt-2 mb-4 p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400">
+
+    <label class="text-sm text-gray-400">Password</label>
+    <input id="password" type="password" placeholder="Enter password"
+      class="w-full mt-2 mb-4 p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400">
+
+    <div class="flex items-center justify-between text-sm mb-5">
+      <label class="text-gray-400">
+        <input type="checkbox" class="mr-2"> Remember me
+      </label>
+      <button onclick="forgotPassword()" class="text-cyan-400">Forgot?</button>
+    </div>
+
+    <button onclick="loginUser()" class="w-full bg-cyan-400 text-black py-4 rounded-xl font-black mb-3">
+      Login Demo
+    </button>
+
+    <button onclick="googleLogin()" class="w-full bg-white text-black py-4 rounded-xl font-black mb-4">
+      Continue with Google
+    </button>
+
+    <p class="text-center text-gray-400">
+      New user?
+      <button onclick="signupUser()" class="text-purple-400 font-bold">Create account</button>
+    </p>
+
+    <div class="mt-6 flex gap-3">
+      <a href="dashboard.html" class="flex-1 text-center bg-slate-700 py-3 rounded-xl font-bold">Dashboard</a>
+      <a href="../index.html" class="flex-1 text-center bg-slate-700 py-3 rounded-xl font-bold">Home</a>
+    </div>
+  </div>
+
+  <script>
+    function loginUser() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Email aur password dono bharna padega bhai.");
+        return;
+      }
+
+      localStorage.setItem("ajitUserEmail", email);
+      alert("✅ Demo Login Successful");
+      window.location.href = "dashboard.html";
+    }
+
+    function googleLogin() {
+      alert("Google login demo hai. Real Firebase Google Login next phase mein connect hoga.");
+    }
+
+    function signupUser() {
+      alert("Signup demo hai. Real account system Firebase se connect hoga.");
+    }
+
+    function forgotPassword() {
+      alert("Forgot password demo hai. Real reset email Firebase phase mein aayega.");
+    }
+  </script>
+
+</body>
+</html>
