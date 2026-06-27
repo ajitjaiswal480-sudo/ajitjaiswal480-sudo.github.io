@@ -1,1 +1,138 @@
-<h1>Pricing Page Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing - Ajit AI Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen p-6">
+
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-6xl font-black text-cyan-400">💳 Ajit AI Pro Pricing</h1>
+      <p class="text-gray-400 mt-3">Feature jaisa value, waise fair Indian pricing.</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6">
+
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6">
+        <h2 class="text-2xl font-black">Free</h2>
+        <p class="text-gray-400 mt-2">Beginners ke liye</p>
+        <h3 class="text-4xl font-black my-6">₹0</h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li>✅ 5 generations/day</li>
+          <li>✅ Script Writer</li>
+          <li>✅ Caption Generator</li>
+          <li>✅ Thumbnail Text</li>
+          <li>❌ Image AI</li>
+          <li>❌ Video AI</li>
+        </ul>
+        <button onclick="openCheckout('Free','₹0')" class="w-full mt-6 bg-slate-700 py-3 rounded-xl font-bold">Start Free</button>
+      </div>
+
+      <div class="bg-slate-900 border border-cyan-400 rounded-3xl p-6">
+        <h2 class="text-2xl font-black text-cyan-400">Creator</h2>
+        <p class="text-gray-400 mt-2">YouTubers aur students</p>
+        <h3 class="text-4xl font-black my-6">₹299<span class="text-sm text-gray-400">/mo</span></h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li>✅ 500 generations/month</li>
+          <li>✅ AI Script Writer</li>
+          <li>✅ AI Caption + Hashtags</li>
+          <li>✅ Thumbnail Ideas</li>
+          <li>✅ AI Chat Demo</li>
+          <li>✅ Project History</li>
+        </ul>
+        <button onclick="openCheckout('Creator','₹299')" class="w-full mt-6 bg-cyan-400 text-black py-3 rounded-xl font-black">Upgrade Creator</button>
+      </div>
+
+      <div class="bg-gradient-to-b from-purple-950 to-slate-900 border-2 border-purple-400 rounded-3xl p-6 relative">
+        <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-purple-500 text-black px-4 py-1 rounded-full text-xs font-black">MOST POPULAR</span>
+        <h2 class="text-2xl font-black text-purple-300">Pro</h2>
+        <p class="text-gray-300 mt-2">Professional creators</p>
+        <h3 class="text-4xl font-black my-6">₹699<span class="text-sm text-gray-400">/mo</span></h3>
+        <ul class="space-y-3 text-sm text-gray-200">
+          <li>✅ Unlimited Text AI</li>
+          <li>✅ AI Image Studio</li>
+          <li>✅ PDF AI</li>
+          <li>✅ Voice AI Demo</li>
+          <li>✅ Premium Templates</li>
+          <li>✅ Priority Speed</li>
+        </ul>
+        <button onclick="openCheckout('Pro','₹699')" class="w-full mt-6 bg-purple-500 text-black py-3 rounded-xl font-black">Upgrade Pro</button>
+      </div>
+
+      <div class="bg-slate-900 border border-pink-400 rounded-3xl p-6">
+        <h2 class="text-2xl font-black text-pink-400">Premium</h2>
+        <p class="text-gray-400 mt-2">Agency aur advanced users</p>
+        <h3 class="text-4xl font-black my-6">₹1499<span class="text-sm text-gray-400">/mo</span></h3>
+        <ul class="space-y-3 text-sm text-gray-300">
+          <li>✅ Everything in Pro</li>
+          <li>✅ Text-to-Video Ready</li>
+          <li>✅ Image-to-Video Ready</li>
+          <li>✅ API Access Future</li>
+          <li>✅ Team Workspace</li>
+          <li>✅ Highest Priority</li>
+        </ul>
+        <button onclick="openCheckout('Premium','₹1499')" class="w-full mt-6 bg-pink-500 text-black py-3 rounded-xl font-black">Go Premium</button>
+      </div>
+
+    </div>
+
+    <div class="mt-12 bg-slate-900 border border-slate-800 rounded-3xl p-6 overflow-x-auto">
+      <h2 class="text-3xl font-black text-cyan-400 mb-6">📊 Feature Comparison</h2>
+      <table class="w-full text-left text-sm">
+        <thead class="text-cyan-400">
+          <tr>
+            <th class="p-3">Feature</th>
+            <th class="p-3">Free</th>
+            <th class="p-3">Creator</th>
+            <th class="p-3">Pro</th>
+            <th class="p-3">Premium</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-300">
+          <tr class="border-t border-slate-800"><td class="p-3">AI Script</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+          <tr class="border-t border-slate-800"><td class="p-3">AI Image</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+          <tr class="border-t border-slate-800"><td class="p-3">Voice AI</td><td>❌</td><td>❌</td><td>✅</td><td>✅</td></tr>
+          <tr class="border-t border-slate-800"><td class="p-3">Text-to-Video</td><td>❌</td><td>❌</td><td>Demo</td><td>Ready</td></tr>
+          <tr class="border-t border-slate-800"><td class="p-3">Team Workspace</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 flex gap-4 flex-wrap">
+      <a href="dashboard.html" class="bg-slate-700 px-5 py-3 rounded-xl font-bold">Back Dashboard</a>
+      <a href="../index.html" class="bg-slate-700 px-5 py-3 rounded-xl font-bold">Home</a>
+    </div>
+  </div>
+
+  <div id="checkoutModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center p-6 z-50">
+    <div class="bg-slate-900 border border-cyan-400 rounded-3xl p-8 max-w-md w-full text-center">
+      <h2 class="text-3xl font-black text-cyan-400">💳 Demo Checkout</h2>
+      <p id="checkoutPlan" class="text-gray-300 mt-4"></p>
+      <h3 id="checkoutPrice" class="text-5xl font-black my-6"></h3>
+      <p class="text-gray-400 text-sm">Real Razorpay payment baad mein connect hoga.</p>
+      <button onclick="confirmCheckout()" class="w-full mt-6 bg-cyan-400 text-black py-3 rounded-xl font-black">Pay Securely Demo</button>
+      <button onclick="closeCheckout()" class="w-full mt-3 bg-slate-700 py-3 rounded-xl font-bold">Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    function openCheckout(plan, price) {
+      document.getElementById("checkoutModal").classList.remove("hidden");
+      document.getElementById("checkoutPlan").innerText = plan + " Plan";
+      document.getElementById("checkoutPrice").innerText = price;
+    }
+
+    function closeCheckout() {
+      document.getElementById("checkoutModal").classList.add("hidden");
+    }
+
+    function confirmCheckout() {
+      alert("✅ Demo payment successful. Real payment Razorpay account ready hone ke baad connect hoga.");
+      closeCheckout();
+    }
+  </script>
+</body>
+</html>
