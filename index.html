@@ -3,176 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ajit AI Pro Studio</title>
+  <title>Ajit AI Pro SaaS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-    .glass { background: rgba(15,23,42,.68); backdrop-filter: blur(18px); border: 1px solid rgba(148,163,184,.18); }
-    .glow { box-shadow: 0 0 40px rgba(34,211,238,.18); }
-    .hide { display: none !important; }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-slate-950 text-white font-sans">
+<body class="bg-slate-950 text-white">
 
-<header class="sticky top-0 z-50 glass">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 class="font-black text-xl">⚡ AJIT <span class="text-cyan-400">AI PRO</span></h1>
-    <nav class="hidden md:flex gap-6 text-sm text-gray-300">
-      <a href="#tools">Tools</a>
-      <a href="#dashboard">Dashboard</a>
-      <a href="#pricing">Pricing</a>
-    </nav>
-    <button onclick="openLogin()" class="bg-cyan-400 text-black px-4 py-2 rounded-xl font-bold">Login</button>
-  </div>
+<header class="nav">
+  <h1>⚡ AJIT <span>AI PRO</span></h1>
+  <nav>
+    <a href="#tools">Tools</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <button onclick="openLogin()">Login</button>
 </header>
 
-<section class="min-h-screen px-4 py-16 bg-gradient-to-br from-slate-950 via-purple-950 to-black">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-    <div>
-      <p class="text-cyan-400 font-bold mb-3">🚀 Next Generation AI SaaS Platform</p>
-      <h2 class="text-5xl md:text-7xl font-black leading-tight">
-        Create Videos, Images, Scripts & Content with AI
-      </h2>
-      <p class="text-gray-300 mt-6 text-lg">
-        Ajit AI Pro Studio — एक futuristic AI tools dashboard जहाँ chat, video, image, PDF, voice और creator tools एक जगह मिलेंगे.
-      </p>
-      <div class="mt-8 flex gap-4 flex-wrap">
-        <a href="#tools" class="bg-cyan-400 text-black px-6 py-3 rounded-xl font-bold">Explore Tools</a>
-        <a href="#pricing" class="border border-cyan-400 px-6 py-3 rounded-xl text-cyan-400">View Plans</a>
-      </div>
-    </div>
+<section class="hero">
+  <div>
+    <p class="tag">🚀 Next-Gen AI SaaS Platform</p>
+    <h2>Create Videos, Images, Scripts & Content with AI</h2>
+    <p class="desc">
+      Ajit AI Pro Studio एक futuristic AI dashboard है जहाँ video, image, chat,
+      PDF, voice और creator tools एक जगह मिलेंगे।
+    </p>
+    <a href="#tools" class="btn">Explore Tools</a>
+  </div>
 
-    <div class="glass rounded-3xl p-5 glow">
-      <div class="flex justify-between mb-4">
-        <h3 class="font-bold">🤖 AI Chat Demo</h3>
-        <span class="text-xs text-green-400">Online</span>
-      </div>
-      <div id="chatBox" class="h-80 overflow-y-auto bg-black/40 rounded-2xl p-4 space-y-3">
-        <p class="bg-cyan-400 text-black p-3 rounded-xl w-fit">Hi Ajit! Main tumhara AI assistant hoon.</p>
-      </div>
-      <div class="flex gap-2 mt-4">
-        <input id="chatInput" class="flex-1 bg-slate-900 border border-slate-700 rounded-xl p-3 outline-none" placeholder="Ask about video, image, script..." />
-        <button onclick="sendChat()" class="bg-cyan-400 text-black px-5 rounded-xl font-bold">Send</button>
-      </div>
+  <div class="card chat">
+    <h3>🤖 AI Chat Demo <span>Online</span></h3>
+    <div id="chatBox" class="chatbox">
+      <p class="bot">Hi Ajit! Main tumhara AI assistant hoon.</p>
+    </div>
+    <div class="row">
+      <input id="chatInput" placeholder="Ask video, image, pdf..." />
+      <button onclick="sendChat()">Send</button>
     </div>
   </div>
 </section>
 
-<section id="tools" class="max-w-7xl mx-auto px-4 py-16">
-  <h2 class="text-4xl font-black text-center mb-10">AI Tools Dashboard</h2>
-  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-    <div class="glass p-6 rounded-3xl"><h3 class="text-2xl mb-2">🎬 Video Studio</h3><p class="text-gray-400">Text-to-video prompts, scene builder, YouTube scripts.</p></div>
-    <div class="glass p-6 rounded-3xl"><h3 class="text-2xl mb-2">🖼️ Image Studio</h3><p class="text-gray-400">Thumbnail, poster, AI image prompt generator.</p></div>
-    <div class="glass p-6 rounded-3xl"><h3 class="text-2xl mb-2">🎤 Voice AI</h3><p class="text-gray-400">Voice input और text-to-speech layout ready.</p></div>
-    <div class="glass p-6 rounded-3xl"><h3 class="text-2xl mb-2">📄 PDF Reader</h3><p class="text-gray-400">PDF summarize और document explain feature ready.</p></div>
+<section id="tools" class="section">
+  <h2>AI Tools</h2>
+  <div class="grid">
+    <div class="card">🎬 <h3>Video Studio</h3><p>Script, prompt और video workflow.</p></div>
+    <div class="card">🖼️ <h3>Image Studio</h3><p>Thumbnail, poster और image prompt.</p></div>
+    <div class="card">🎤 <h3>Voice AI</h3><p>Voice input और text-to-speech ready.</p></div>
+    <div class="card">📄 <h3>PDF Reader</h3><p>PDF summarize feature ready.</p></div>
   </div>
 </section>
 
-<section id="dashboard" class="max-w-7xl mx-auto px-4 py-16">
-  <div class="glass rounded-3xl p-6">
-    <h2 class="text-3xl font-black mb-6">📱 Mobile App Style Dashboard</h2>
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="bg-slate-900 rounded-2xl p-5"><p class="text-gray-400">Today Usage</p><h3 class="text-4xl font-black text-cyan-400">5/5</h3></div>
-      <div class="bg-slate-900 rounded-2xl p-5"><p class="text-gray-400">Plan</p><h3 id="planName" class="text-4xl font-black text-purple-400">Free</h3></div>
-      <div class="bg-slate-900 rounded-2xl p-5"><p class="text-gray-400">Owner Access</p><h3 id="ownerStatus" class="text-4xl font-black text-pink-400">Off</h3></div>
-    </div>
+<section id="dashboard" class="section">
+  <h2>Dashboard</h2>
+  <div class="grid dash">
+    <div class="card"><p>Today Usage</p><h3>5/5</h3></div>
+    <div class="card"><p>Plan</p><h3 id="planName">Free</h3></div>
+    <div class="card"><p>Owner Access</p><h3 id="ownerStatus">Off</h3></div>
   </div>
 </section>
 
-<section id="pricing" class="max-w-5xl mx-auto px-4 py-16">
-  <div id="pricingNormal">
-    <h2 class="text-4xl font-black text-center mb-10">Affordable Indian Pricing</h2>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="glass rounded-3xl p-8">
-        <h3 class="text-2xl font-bold">Starter Pack</h3>
-        <p class="text-5xl font-black my-5">₹99<span class="text-sm text-gray-400">/month</span></p>
-        <p class="text-gray-300">100 generations/day, basic AI tools, creator dashboard.</p>
-        <button onclick="upgrade('Starter')" class="mt-6 w-full bg-slate-800 py-3 rounded-xl font-bold">Activate Starter</button>
+<section id="pricing" class="section">
+  <div id="normalPricing">
+    <h2>Affordable Indian Pricing</h2>
+    <div class="grid price">
+      <div class="card">
+        <h3>Starter Pack</h3>
+        <h4>₹99/month</h4>
+        <p>100 generations/day</p>
+        <button onclick="upgrade('Starter')">Activate</button>
       </div>
-      <div class="glass rounded-3xl p-8 border-purple-500">
-        <h3 class="text-2xl font-bold text-purple-400">Pro Pack</h3>
-        <p class="text-5xl font-black my-5">₹349<span class="text-sm text-gray-400">/month</span></p>
-        <p class="text-gray-300">Unlimited demo access, pro tools, priority creator features.</p>
-        <button onclick="upgrade('Pro')" class="mt-6 w-full bg-purple-500 text-black py-3 rounded-xl font-bold">Upgrade Pro</button>
+      <div class="card pro">
+        <h3>Pro Pack</h3>
+        <h4>₹349/month</h4>
+        <p>Unlimited demo access</p>
+        <button onclick="upgrade('Pro')">Upgrade</button>
       </div>
     </div>
   </div>
 
-  <div id="ownerPanel" class="hide glass rounded-3xl p-10 text-center border-cyan-400">
-    <h2 class="text-4xl font-black text-cyan-400">👑 Owner Mode Active</h2>
-    <p class="text-gray-300 mt-4">Welcome Ajit Jaiswal. Lifetime full access unlocked. Pricing hidden for owner.</p>
+  <div id="ownerPanel" class="card owner hidden">
+    <h2>👑 Owner Mode Active</h2>
+    <p>Welcome Ajit Jaiswal. Lifetime full access unlocked.</p>
   </div>
 </section>
 
-<div class="fixed bottom-0 left-0 right-0 md:hidden glass flex justify-around py-3 text-xs">
-  <a href="#tools">🧰<br>Tools</a>
-  <a href="#dashboard">📊<br>Dash</a>
-  <a href="#pricing">💳<br>Plan</a>
-</div>
-
-<div id="loginModal" class="hide fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
-  <div class="glass rounded-3xl p-8 max-w-sm w-full">
-    <h2 class="text-2xl font-black mb-4">Login Demo</h2>
-    <input class="w-full bg-slate-900 p-3 rounded-xl mb-3" placeholder="Email" />
-    <input class="w-full bg-slate-900 p-3 rounded-xl mb-4" placeholder="Password" type="password" />
-    <button onclick="closeLogin()" class="w-full bg-cyan-400 text-black py-3 rounded-xl font-bold">Login</button>
-    <button onclick="closeLogin()" class="w-full mt-3 text-gray-400">Close</button>
+<div id="loginModal" class="modal hidden">
+  <div class="card login">
+    <h2>Login Demo</h2>
+    <input placeholder="Email" />
+    <input placeholder="Password" type="password" />
+    <button onclick="closeLogin()">Login</button>
+    <p onclick="closeLogin()">Close</p>
   </div>
 </div>
 
-<footer class="text-center text-gray-500 py-10 bg-black">
-  © 2026 Ajit AI Pro Studio. GitHub Pages Ready.
-</footer>
+<footer>© 2026 Ajit AI Pro SaaS</footer>
 
-<script>
-  function sendChat() {
-    const input = document.getElementById("chatInput");
-    const box = document.getElementById("chatBox");
-    const text = input.value.trim();
-    if (!text) return;
-
-    box.innerHTML += `<p class="bg-purple-500 p-3 rounded-xl ml-auto w-fit max-w-xs">${text}</p>`;
-
-    let reply = "Great! यह feature future backend/API से real बनाया जाएगा.";
-    const q = text.toLowerCase();
-
-    if (q.includes("video")) reply = "🎬 Video Studio में script, scene prompt और text-to-video API later connect करेंगे.";
-    if (q.includes("image")) reply = "🖼️ Image Studio में thumbnail और AI image generator API जोड़ेंगे.";
-    if (q.includes("pdf")) reply = "📄 PDF Reader में upload + summarize system future में backend से बनेगा.";
-    if (q.includes("voice")) reply = "🎤 Voice AI browser speech recognition और TTS से connect हो सकता है.";
-    if (q.includes("owner")) reply = "👑 Owner mode खोलने के लिए URL में ?mode=owner लगाओ.";
-
-    setTimeout(() => {
-      box.innerHTML += `<p class="bg-cyan-400 text-black p-3 rounded-xl w-fit max-w-xs">${reply}</p>`;
-      box.scrollTop = box.scrollHeight;
-    }, 400);
-
-    input.value = "";
-  }
-
-  function upgrade(plan) {
-    document.getElementById("planName").innerText = plan;
-    alert(plan + " demo activated!");
-  }
-
-  function openLogin() {
-    document.getElementById("loginModal").classList.remove("hide");
-  }
-
-  function closeLogin() {
-    document.getElementById("loginModal").classList.add("hide");
-  }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("mode") === "owner") {
-      document.getElementById("pricingNormal").classList.add("hide");
-      document.getElementById("ownerPanel").classList.remove("hide");
-      document.getElementById("ownerStatus").innerText = "On";
-      document.getElementById("planName").innerText = "Owner";
-    }
-  });
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
