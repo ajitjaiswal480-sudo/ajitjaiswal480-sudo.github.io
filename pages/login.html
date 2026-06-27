@@ -1,82 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login - Ajit AI Pro</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Ajit AI Pro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6">
+<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-6 selection:bg-cyan-500 selection:text-black">
 
-  <div class="w-full max-w-md bg-slate-900 border border-cyan-400/50 rounded-3xl p-8 shadow-2xl shadow-cyan-500/20">
-    
-    <div class="text-center mb-8">
-      <div class="text-5xl mb-3">⚡</div>
-      <h1 class="text-4xl font-black text-cyan-400">Ajit AI Pro</h1>
-      <p class="text-gray-400 mt-2">Login karke apna AI dashboard access karo.</p>
+    <!-- Main Card Container -->
+    <div class="w-full max-w-md bg-slate-900 border border-cyan-400/30 rounded-3xl p-8 shadow-2xl shadow-cyan-500/10 backdrop-blur-sm">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            <div class="text-5xl mb-3 animate-pulse">⚡</div>
+            <h1 class="text-4xl font-black text-cyan-400 tracking-tight">Ajit AI Pro</h1>
+            <p class="text-gray-400 mt-2 text-sm">Login karke apna AI dashboard access karo.</p>
+        </div>
+
+        <!-- 10x Upgrade: Form wrapper added to automatically support "Enter Key" submission -->
+        <form onsubmit="event.preventDefault(); loginUser();" class="space-y-4">
+            
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="text-sm font-medium text-gray-400 block mb-2">Email Address</label>
+                <input id="email" type="email" placeholder="your@email.com" 
+                       class="w-full p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-200 text-white placeholder-gray-600" />
+            </div>
+
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="text-sm font-medium text-gray-400 block mb-2">Password</label>
+                <input id="password" type="password" placeholder="Enter password" 
+                       class="w-full p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all duration-200 text-white placeholder-gray-600" />
+            </div>
+
+            <!-- Remember Me & Forgot Password row -->
+            <div class="flex items-center justify-between text-sm pt-1">
+                <label class="flex items-center text-gray-400 cursor-pointer select-none">
+                    <input type="checkbox" class="mr-2 accent-cyan-400 rounded cursor-pointer" /> 
+                    Remember me
+                </label>
+                <button type="button" onclick="forgotPassword()" class="text-cyan-400 hover:underline transition-all">Forgot?</button>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="pt-4 space-y-3">
+                <!-- Main Login Button (type="submit") -->
+                <button type="submit" class="w-full bg-cyan-400 text-black py-4 rounded-xl font-black hover:bg-cyan-300 active:scale-[0.99] transition-all duration-150 shadow-lg shadow-cyan-400/20">
+                    Login Demo
+                </button>
+
+                <!-- Google Button (type="button") -->
+                <button type="button" onclick="googleLogin()" class="w-full bg-white text-black py-4 rounded-xl font-black hover:bg-gray-100 active:scale-[0.99] transition-all duration-150">
+                    Continue with Google
+                </button>
+            </div>
+        </form>
+
+        <!-- New User Redirection -->
+        <p class="text-center text-gray-400 text-sm mt-6">
+            New user? 
+            <button type="button" onclick="signupUser()" class="text-purple-400 font-bold hover:underline ml-1">Create account</button>
+        </p>
+
+        <!-- Footer Navigation Links -->
+        <div class="mt-6 flex gap-3 border-t border-slate-800 pt-6">
+            <a href="dashboard.html" class="flex-1 text-center bg-slate-800 hover:bg-slate-700 active:scale-[0.98] py-3 rounded-xl font-bold text-sm transition-all text-gray-200">Dashboard</a>
+            <a href="../index.html" class="flex-1 text-center bg-slate-800 hover:bg-slate-700 active:scale-[0.98] py-3 rounded-xl font-bold text-sm transition-all text-gray-200">Home</a>
+        </div>
+
     </div>
 
-    <label class="text-sm text-gray-400">Email Address</label>
-    <input id="email" type="email" placeholder="your@email.com"
-      class="w-full mt-2 mb-4 p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400">
+    <!-- JavaScript Logic Section -->
+    <script>
+        function loginUser() {
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
 
-    <label class="text-sm text-gray-400">Password</label>
-    <input id="password" type="password" placeholder="Enter password"
-      class="w-full mt-2 mb-4 p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none focus:border-cyan-400">
+            if (!email || !password) {
+                alert("Email aur password dono bharna padega bhai.");
+                return;
+            }
 
-    <div class="flex items-center justify-between text-sm mb-5">
-      <label class="text-gray-400">
-        <input type="checkbox" class="mr-2"> Remember me
-      </label>
-      <button onclick="forgotPassword()" class="text-cyan-400">Forgot?</button>
-    </div>
+            localStorage.setItem("ajitUserEmail", email);
+            alert("✅ Demo Login Successful");
+            window.location.href = "dashboard.html";
+        }
 
-    <button onclick="loginUser()" class="w-full bg-cyan-400 text-black py-4 rounded-xl font-black mb-3">
-      Login Demo
-    </button>
+        function googleLogin() {
+            alert("Google login demo hai. Real Firebase Google Login next phase mein connect hoga.");
+        }
 
-    <button onclick="googleLogin()" class="w-full bg-white text-black py-4 rounded-xl font-black mb-4">
-      Continue with Google
-    </button>
+        function signupUser() {
+            alert("Signup demo hai. Real account system Firebase se connect hoga.");
+        }
 
-    <p class="text-center text-gray-400">
-      New user?
-      <button onclick="signupUser()" class="text-purple-400 font-bold">Create account</button>
-    </p>
-
-    <div class="mt-6 flex gap-3">
-      <a href="dashboard.html" class="flex-1 text-center bg-slate-700 py-3 rounded-xl font-bold">Dashboard</a>
-      <a href="../index.html" class="flex-1 text-center bg-slate-700 py-3 rounded-xl font-bold">Home</a>
-    </div>
-  </div>
-
-  <script>
-    function loginUser() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      if (!email || !password) {
-        alert("Email aur password dono bharna padega bhai.");
-        return;
-      }
-
-      localStorage.setItem("ajitUserEmail", email);
-      alert("✅ Demo Login Successful");
-      window.location.href = "dashboard.html";
-    }
-
-    function googleLogin() {
-      alert("Google login demo hai. Real Firebase Google Login next phase mein connect hoga.");
-    }
-
-    function signupUser() {
-      alert("Signup demo hai. Real account system Firebase se connect hoga.");
-    }
-
-    function forgotPassword() {
-      alert("Forgot password demo hai. Real reset email Firebase phase mein aayega.");
-    }
-  </script>
-
+        function forgotPassword() {
+            alert("Forgot password demo hai. Real reset email Firebase phase mein aayega.");
+        }
+    </script>
 </body>
 </html>
