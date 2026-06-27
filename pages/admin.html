@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Admin - Ajit AI Pro</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+
+  <section id="lockScreen" class="min-h-screen flex items-center justify-center p-6">
+    <div class="bg-slate-900 border border-cyan-400 rounded-3xl p-8 max-w-md w-full text-center">
+      <h1 class="text-3xl font-black text-cyan-400 mb-4">👑 Owner Login</h1>
+      <p class="text-gray-400 mb-6">Only Ajit Owner can open this admin panel.</p>
+
+      <input id="ownerKey" type="password" placeholder="Enter owner key"
+        class="w-full p-4 rounded-xl bg-slate-950 border border-slate-700 outline-none mb-4">
+
+      <button onclick="unlockOwner()"
+        class="w-full bg-cyan-400 text-black font-black py-3 rounded-xl">
+        Unlock Admin
+      </button>
+
+      <a href="../index.html" class="block mt-5 text-gray-400">← Back to website</a>
+    </div>
+  </section>
+
+  <section id="adminPanel" class="hidden p-6">
+    <h1 class="text-4xl font-black text-cyan-400 mb-8">👑 Ajit Owner Admin Panel</h1>
+
+    <div class="grid md:grid-cols-4 gap-5 mb-8">
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <p class="text-gray-400">Total Users</p>
+        <h2 class="text-4xl font-black">128</h2>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <p class="text-gray-400">Revenue</p>
+        <h2 class="text-4xl font-black">₹0</h2>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <p class="text-gray-400">AI Requests</p>
+        <h2 class="text-4xl font-black">562</h2>
+      </div>
+      <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+        <p class="text-gray-400">Server</p>
+        <h2 class="text-4xl font-black text-green-400">Online</h2>
+      </div>
+    </div>
+
+    <div class="bg-slate-900 p-6 rounded-3xl border border-slate-800">
+      <h2 class="text-2xl font-black mb-4">⚙️ Owner Controls</h2>
+      <button class="bg-cyan-400 text-black px-5 py-3 rounded-xl font-bold mr-3">Enable Pro Demo</button>
+      <button class="bg-purple-500 text-black px-5 py-3 rounded-xl font-bold mr-3">Reset Usage</button>
+      <button class="bg-pink-500 text-black px-5 py-3 rounded-xl font-bold">Broadcast Message</button>
+    </div>
+  </section>
+
+  <script src="../js/owner.js"></script>
+</body>
+</html>
