@@ -3,148 +3,203 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ajit AI Pro SaaS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css" />
+  <title>Ajit Enterprise V1</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+    body{
+      min-height:100vh;
+      background:radial-gradient(circle at top left,#1b0b45,#050713 45%,#02030a);
+      color:#fff;
+      overflow-x:hidden;
+    }
+    .bg-glow{
+      position:fixed;inset:0;z-index:-1;
+      background:
+      radial-gradient(circle at 20% 20%,rgba(0,255,255,.18),transparent 30%),
+      radial-gradient(circle at 80% 10%,rgba(255,0,255,.15),transparent 30%),
+      radial-gradient(circle at 70% 80%,rgba(0,255,140,.12),transparent 35%);
+      filter:blur(10px);
+    }
+    .app{display:flex;min-height:100vh}
+    .sidebar{
+      width:260px;padding:24px;
+      background:rgba(255,255,255,.06);
+      backdrop-filter:blur(18px);
+      border-right:1px solid rgba(255,255,255,.12);
+      position:fixed;top:0;bottom:0;left:0;
+    }
+    .logo{
+      font-size:22px;font-weight:900;letter-spacing:1px;
+      background:linear-gradient(90deg,#00f5ff,#ff35d1);
+      -webkit-background-clip:text;color:transparent;
+      margin-bottom:35px;
+    }
+    .nav a{
+      display:block;text-decoration:none;color:#dbeafe;
+      padding:14px 16px;border-radius:16px;margin:8px 0;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      transition:.25s;
+    }
+    .nav a:hover,.nav a.active{
+      background:linear-gradient(90deg,rgba(0,245,255,.2),rgba(255,53,209,.18));
+      box-shadow:0 0 22px rgba(0,245,255,.25);
+      transform:translateX(5px);
+    }
+    .main{margin-left:260px;width:calc(100% - 260px);padding:28px}
+    .topbar{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 22px;border-radius:24px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(16px);
+      margin-bottom:28px;
+    }
+    .badge{
+      padding:9px 14px;border-radius:999px;
+      background:rgba(0,255,140,.13);
+      border:1px solid rgba(0,255,140,.35);
+      color:#7cffc7;font-weight:700;font-size:13px;
+    }
+    .hero{
+      padding:45px;border-radius:34px;
+      background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+      position:relative;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;right:-80px;top:-80px;
+      width:260px;height:260px;border-radius:50%;
+      background:rgba(0,245,255,.22);filter:blur(40px);
+    }
+    .hero h1{font-size:54px;line-height:1.05;margin-bottom:18px}
+    .hero h1 span{
+      background:linear-gradient(90deg,#00f5ff,#ff35d1,#7cffc7);
+      -webkit-background-clip:text;color:transparent;
+    }
+    .hero p{max-width:680px;color:#cbd5e1;font-size:18px;line-height:1.7}
+    .btn{
+      display:inline-block;margin-top:26px;padding:15px 22px;border-radius:16px;
+      background:linear-gradient(90deg,#00f5ff,#ff35d1);
+      color:#050713;text-decoration:none;font-weight:900;
+      box-shadow:0 0 30px rgba(0,245,255,.35);
+    }
+    .grid{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:18px;margin-top:24px;
+    }
+    .card{
+      padding:22px;border-radius:24px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      transition:.25s;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 0 30px rgba(0,245,255,.15)}
+    .card h3{font-size:14px;color:#94a3b8;margin-bottom:10px}
+    .card .num{font-size:28px;font-weight:900}
+    .section-title{margin-top:32px;margin-bottom:16px;font-size:24px}
+    .tools{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    }
+    .tool{
+      padding:24px;border-radius:26px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+    }
+    .tool h3{margin-bottom:10px}
+    .tool p{color:#cbd5e1;line-height:1.6}
+    .progress{
+      height:12px;background:rgba(255,255,255,.1);
+      border-radius:999px;overflow:hidden;margin-top:12px;
+    }
+    .progress span{
+      display:block;height:100%;width:100%;
+      background:linear-gradient(90deg,#00f5ff,#7cffc7);
+      box-shadow:0 0 18px #00f5ff;
+    }
+    @media(max-width:900px){
+      .sidebar{position:relative;width:100%;height:auto}
+      .app{display:block}
+      .main{margin-left:0;width:100%;padding:18px}
+      .grid,.tools{grid-template-columns:1fr}
+      .hero h1{font-size:36px}
+      .topbar{display:block}
+      .badge{display:inline-block;margin-top:12px}
+    }
+  </style>
 </head>
 <body>
+  <div class="bg-glow"></div>
 
-<header class="topbar">
-  <div class="brand">⚡ AJIT <span>AI PRO</span></div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#studio">Studio</a>
-    <a href="#admin">Owner</a>
-    <a href="#pricing">Pricing</a>
-  </nav>
-  <button onclick="openLogin()">Login</button>
-</header>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="logo">AJIT ENTERPRISE</div>
+      <nav class="nav">
+        <a class="active" href="#">🏠 Dashboard</a>
+        <a href="#">🎬 AI Script Generator</a>
+        <a href="#">🎞 Filmora Timeline</a>
+        <a href="#">🎙 Voice Lab Demo</a>
+        <a href="#">🎨 Thumbnail Studio</a>
+        <a href="#">⚙ Settings</a>
+      </nav>
+    </aside>
 
-<section id="home" class="hero">
-  <div class="heroText">
-    <p class="tag">🚀 India’s Creator AI SaaS Dashboard</p>
-    <h1>One AI Platform for Video, Image, Script, Voice & Growth</h1>
-    <p>Ajit AI Pro Studio — YouTube Shorts creators, students और beginners के लिए all-in-one AI creator platform.</p>
-    <div class="actions">
-      <a href="#studio">Launch Studio</a>
-      <a class="ghost" href="?mode=owner">Owner Mode</a>
-    </div>
-  </div>
-
-  <div class="aiPanel">
-    <h3>🤖 AI Command Center <span>Live Demo</span></h3>
-    <div id="chatBox" class="chatBox">
-      <p class="bot">Hi Ajit! Main tumhara AI Bhai assistant hoon. Kuch bhi पूछो.</p>
-    </div>
-    <div class="inputRow">
-      <input id="chatInput" placeholder="video, thumbnail, caption, script..." />
-      <button onclick="sendChat()">Send</button>
-    </div>
-  </div>
-</section>
-
-<section class="stats">
-  <div><h2 id="planName">Free</h2><p>Current Plan</p></div>
-  <div><h2>5/5</h2><p>Free Daily Usage</p></div>
-  <div><h2 id="ownerStatus">Off</h2><p>Owner Access</p></div>
-  <div><h2>4.1</h2><p>SaaS Version</p></div>
-</section>
-
-<section id="studio" class="layout">
-  <aside class="sidebar">
-    <h3>AI Studios</h3>
-    <button onclick="openTool('script')">✍️ Script Writer</button>
-    <button onclick="openTool('video')">🎬 Video Prompt</button>
-    <button onclick="openTool('thumb')">🖼️ Thumbnail Text</button>
-    <button onclick="openTool('caption')">#️⃣ Caption + Hashtags</button>
-    <button onclick="openTool('pdf')">📄 PDF Summarizer</button>
-    <button onclick="openTool('voice')">🎤 Voice AI</button>
-  </aside>
-
-  <main class="workspace">
-    <div class="workspaceHead">
-      <h2 id="toolTitle">✍️ AI Script Writer</h2>
-      <p id="toolDesc">YouTube Shorts और reels के लिए viral script बनाओ.</p>
-    </div>
-
-    <textarea id="toolInput" placeholder="Example: Middle class online shopping comedy short..."></textarea>
-
-    <div class="toolActions">
-      <button onclick="generateTool()">Generate</button>
-      <button onclick="clearTool()" class="clear">Clear</button>
-    </div>
-
-    <div class="outputBox">
-      <h3>AI Output</h3>
-      <pre id="toolOutput">Output yahan dikhega...</pre>
-    </div>
-  </main>
-</section>
-
-<section class="projects">
-  <h2>📁 Recent Creator Projects</h2>
-  <div class="projectGrid">
-    <div>🎬 Comedy Shorts Pack</div>
-    <div>🖼️ Viral Thumbnail Ideas</div>
-    <div>📺 YouTube Growth Funnel</div>
-    <div>🤖 AI Tool Dashboard</div>
-  </div>
-</section>
-
-<section id="admin" class="admin">
-  <h2>👑 Owner Admin Control Center</h2>
-  <div id="adminLocked" class="locked">Owner panel unlock करने के लिए URL में <b>?mode=owner</b> लगाओ.</div>
-  <div id="adminUnlocked" class="adminGrid hidden">
-    <div>✅ Lifetime Access</div>
-    <div>✅ Pricing Control</div>
-    <div>✅ Usage Limit Control</div>
-    <div>✅ Future API Control</div>
-  </div>
-</section>
-
-<section id="pricing" class="pricing">
-  <div id="normalPricing">
-    <h2>💳 Affordable Indian Pricing</h2>
-    <div class="priceGrid">
-      <div class="priceCard">
-        <h3>Starter</h3>
-        <h4>₹99/month</h4>
-        <p>100 AI generations/day</p>
-        <button onclick="upgrade('Starter')">Activate</button>
+    <main class="main">
+      <div class="topbar">
+        <div>
+          <h2>Welcome Ajit 👋</h2>
+          <p style="color:#94a3b8;margin-top:5px;">AI Creator Dashboard • Personal V1</p>
+        </div>
+        <div class="badge">AI READY • ONLINE</div>
       </div>
-      <div class="priceCard pro">
-        <h3>Pro</h3>
-        <h4>₹349/month</h4>
-        <p>Unlimited creator tools demo</p>
-        <button onclick="upgrade('Pro')">Upgrade Pro</button>
-      </div>
-    </div>
+
+      <section class="hero">
+        <h1><span>Ultimate AI</span><br>Creator Dashboard</h1>
+        <p>
+          Generate professional scripts, Filmora timelines, captions, metadata,
+          thumbnails and creator ideas from one futuristic personal dashboard.
+        </p>
+        <a class="btn" href="#">⚡ Start Creating</a>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h3>System Status</h3>
+          <div class="num">100%</div>
+          <div class="progress"><span></span></div>
+        </div>
+        <div class="card">
+          <h3>Projects</h3>
+          <div class="num">12</div>
+        </div>
+        <div class="card">
+          <h3>AI Mode</h3>
+          <div class="num">ONLINE</div>
+        </div>
+        <div class="card">
+          <h3>Version</h3>
+          <div class="num">V1.0</div>
+        </div>
+      </section>
+
+      <h2 class="section-title">Creator Tools</h2>
+      <section class="tools">
+        <div class="tool">
+          <h3>🎬 AI Script Generator</h3>
+          <p>Topic डालो और hook, script, caption, hashtags aur thumbnail text ready karo.</p>
+        </div>
+        <div class="tool">
+          <h3>🎞 Filmora Timeline</h3>
+          <p>0–3 sec hook, 3–8 sec zoom, 8–15 sec dialogue, ending workflow demo.</p>
+        </div>
+        <div class="tool">
+          <h3>🎨 Thumbnail Studio</h3>
+          <p>Powerful thumbnail text ideas aur YouTube Shorts packaging system.</p>
+        </div>
+      </section>
+    </main>
   </div>
-
-  <div id="ownerBanner" class="ownerBanner hidden">
-    👑 Owner Mode Active — Welcome Ajit Jaiswal. Full access unlocked.
-  </div>
-</section>
-
-<div class="mobileNav">
-  <a href="#home">🏠<br>Home</a>
-  <a href="#studio">🧠<br>Studio</a>
-  <a href="#admin">👑<br>Owner</a>
-  <a href="#pricing">💳<br>Plan</a>
-</div>
-
-<div id="loginModal" class="modal hidden">
-  <div class="loginBox">
-    <h2>Login Demo</h2>
-    <input placeholder="Email" />
-    <input placeholder="Password" type="password" />
-    <button onclick="closeLogin()">Login</button>
-    <p onclick="closeLogin()">Close</p>
-  </div>
-</div>
-
-<footer>© 2026 Ajit AI Pro SaaS — Built by Ajit with AI Bhai</footer>
-
-<script src="app.js"></script>
 </body>
 </html>
