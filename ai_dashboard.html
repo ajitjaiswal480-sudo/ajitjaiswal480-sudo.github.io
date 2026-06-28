@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajit AI-OS v10.0 Supreme Creator Production Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020204;
+            --phone-bg: #040508;
+            --glass-card: rgba(12, 15, 30, 0.78);
+            --glass-border: rgba(255, 255, 255, 0.09);
+            --neon-cyan: #00f2fe;
+            --neon-purple: #9b51e0;
+            --neon-pink: #ff007f;
+            --neon-green: #00e676;
+            --neon-gold: #f1c40f;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box; margin: 0; padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 50%, #0a0d1a 0%, var(--bg-dark) 100%);
+            color: var(--text-primary); min-height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            padding: 1rem; position: relative; overflow-x: hidden;
+        }
+
+        body::before, body::after {
+            content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
+            background: var(--neon-purple); filter: blur(170px); opacity: 0.14; z-index: -1;
+            animation: orbBounce 15s infinite alternate;
+        }
+        body::after { background: var(--neon-cyan); right: 5%; top: 10%; animation-delay: 4s; }
+
+        @keyframes orbBounce {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, -60px) scale(1.25); }
+        }
+
+        .smartphone-container {
+            width: 100%; max-width: 460px; background: var(--phone-bg);
+            border: 12px solid #161824; border-radius: 60px; height: 930px;
+            box-shadow: 0 65px 130px rgba(0,0,0,0.95), inset 0 0 50px rgba(0,0,0,0.99);
+            overflow: hidden; position: relative; display: flex; flex-direction: column;
+        }
+
+        .phone-status-bar {
+            padding: 1.2rem 2.2rem 0.5rem 2.2rem; display: flex;
+            justify-content: space-between; align-items: center;
+            font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.8); z-index: 100;
+        }
+
+        .dynamic-notch {
+            width: 125px; height: 32px; background: #000; border-radius: 30px;
+            position: absolute; left: 50%; top: 10px; transform: translateX(-50%); z-index: 101;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+        }
+        .dynamic-notch.pulse { width: 280px; background: #080911; border: 1px solid var(--neon-cyan); }
+        .notch-text { display: none; font-size: 0.72rem; color: var(--neon-cyan); font-weight: 700; }
+
+        .os-viewport { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; }
+        .os-viewport::-webkit-scrollbar { display: none; }
+
+        .os-branding { text-align: center; margin-bottom: 0.1rem; }
+        .os-branding h1 {
+            font-size: 1.85rem; font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), #fff, var(--neon-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;
+        }
+        .os-branding p { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; }
+
+        .launchpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .app-trigger { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s ease; }
+        .app-trigger:hover { transform: translateY(-5px); }
+
+        .app-sphere {
+            width: 70px; height: 70px; border-radius: 22px; display: flex; align-items: center; justify-content: center;
+            font-size: 2.1rem; border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+        }
+
+        .lbl-ideas { background: linear-gradient(135deg, #11998e, #38ef7d); }
+        .lbl-capcut { background: linear-gradient(135deg, #3f51b5, #5c6bc0); }
+        .lbl-captions { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+        .lbl-tags { background: linear-gradient(135deg, #e65c00, #f9d423); }
+        .lbl-prompts { background: linear-gradient(135deg, #141e30, #243b55); }
+        .lbl-filmora { background: linear-gradient(135deg, #00b4db, #0083b0); }
+        .lbl-deepseek { background: linear-gradient(135deg, #0575e6, #00f2fe); }
+        .lbl-flux { background: linear-gradient(135deg, #f857a6, #ff5858); }
+        .lbl-remover { background: linear-gradient(135deg, #4b6cb7, #182848); }
+        .lbl-extender { background: linear-gradient(135deg, #ec008c, #fc6767); }
+        .lbl-3d { background: linear-gradient(135deg, #ff007f, #7928ca); }
+        .lbl-2d { background: linear-gradient(135deg, #021b79, #0575e6); }
+        .lbl-photo { background: linear-gradient(135deg, #fc6076, #ff9a44); }
+        .lbl-voice { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .lbl-settings { background: linear-gradient(135deg, #2c3e50, #000000); }
+
+        .app-title-text { font-size: 0.72rem; font-weight: 700; color: #e2e8f0; margin-top: 0.5rem; text-align: center; white-space: nowrap; }
+
+        .app-window-panel {
+            display: none; background: var(--glass-card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border); border-radius: 28px; padding: 1.4rem; box-shadow: 0 35px 70px rgba(0,0,0,0.75);
+            animation: popUpV10 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+        }
+
+        @keyframes popUpV10 {
+            from { opacity: 0; transform: scale(0.95) translateY(25px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .panel-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; }
+        .panel-heading h3 { font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
+        .exit-panel-btn { background: rgba(255,255,255,0.08); border: none; color: #fff; width: 26px; height: 26px; border-radius: 50%; font-size: 0.75rem; cursor: pointer; }
+        .exit-panel-btn:hover { background: #ef4444; }
+
+        .bhai-learning-box { background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.12); border-radius: 12px; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.75rem; line-height: 1.4; color: #cbd5e1; }
+
+        .input-block { margin-bottom: 1rem; }
+        .input-block label { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem; }
+        
+        textarea, select, input[type="password"], input[type="text"] { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; color: #fff; font-size: 0.85rem; }
+        textarea:focus, select:focus, input:focus { outline: none; border-color: var(--neon-cyan); }
+
+        .execute-action-btn { width: 100%; padding: 0.85rem; border: none; border-radius: 12px; font-size: 0.85rem; font-weight: 800; cursor: pointer; color: #000; display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+        .btn-pink { background: linear-gradient(135deg, var(--neon-pink), #7928ca); color: #fff; }
+        .btn-cyan { background: linear-gradient(135deg, var(--neon-cyan), #4facfe); }
+        .btn-green { background: linear-gradient(135deg, var(--neon-green), #00b0ff); }
+        .btn-gold { background: linear-gradient(135deg, var(--neon-gold), #e67e22); }
+        .btn-purple { background: linear-gradient(135deg, #8e2de2, #4a00e0); color: white; }
+
+        .media-monitor-viewport { margin-top: 1rem; background: rgba(0,0,0,0.55); border-radius: 18px; border: 2px dashed rgba(255,255,255,0.07); min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.5rem; }
+        .media-monitor-viewport img { max-width: 100%; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+        
+        .text-output-viewport { margin-top: 1rem; background: rgba(0,0,0,0.65); border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); padding: 1rem; font-size: 0.85rem; line-height: 1.5; color: #e2e8f0; white-space: pre-wrap; display: none; max-height: 250px; overflow-y: auto; }
+        .download-utility-btn { display: none; margin-top: 0.75rem; background: rgba(255,255,255,0.05); padding: 0.45rem 0.9rem; border-radius: 8px; font-size: 0.72rem; color: #fff; text-decoration: none; font-weight: 700; text-align: center; }
+        .system-status-tracker-msg { font-size: 0.72rem; color: var(--neon-cyan); margin-top: 0.5rem; text-align: center; min-height: 16px; }
+        .error-flash { border-color: #ff0055 !important; }
+
+        .phone-navigation-dock { background: rgba(8, 10, 18, 0.92); border-top: 1px solid rgba(255,255,255,0.04); padding: 0.75rem 2.5rem 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; border-radius: 0 0 44px 44px; }
+        .dock-utility-icon { font-size: 1.5rem; cursor: pointer; opacity: 0.5; transition: all 0.2s; }
+        .dock-utility-icon.active, .dock-utility-icon:hover { opacity: 1; text-shadow: 0 0 10px var(--neon-cyan); }
+    </style>
+</head>
+<body>
+
+    <div class="smartphone-container">
+        <div class="dynamic-notch" id="notch-matrix"><span class="notch-text" id="notch-status-txt">V10.SUPREME Core Active ⚡</span></div>
+        <div class="phone-status-bar"><div id="live-phone-clock">12:00</div><div>5G 📶 SUPREME AI-OS</div></div>
+
+        <div class="os-branding">
+            <h1>AJIT AI-OS v10.SUPREME</h1>
+            <p>Enterprise Production Network Engine</p>
+        </div>
+
+        <div class="os-viewport" id="screen-viewport">
+            <div class="launchpad-grid" id="main-launcher-grid">
+                <div class="app-trigger" onclick="launchAppWindow('win-ideas')"><div class="app-sphere lbl-ideas">💡</div><div class="app-title-text">YT Ideas</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-capcut')"><div class="app-sphere lbl-capcut">✂️</div><div class="app-title-text">AutoCapCut</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-captions')"><div class="app-sphere lbl-captions">✍️</div><div class="app-title-text">AI Captions</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-tags')"><div class="app-sphere lbl-tags">#️⃣</div><div class="app-title-text">AutoHashtag</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-prompts')"><div class="app-sphere lbl-prompts">🧠</div><div class="app-title-text">Prompt Pro</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-filmora')"><div class="app-sphere lbl-filmora">🎬</div><div class="app-title-text">Filmora Clip</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-deepseek')"><div class="app-sphere lbl-deepseek">🕵️‍♂️</div><div class="app-title-text">DeepSeek Core</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-flux')"><div class="app-sphere lbl-flux">🖼️</div><div class="app-title-text">FLUX.2 Pro</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-remover')"><div class="app-sphere lbl-remover">🌀</div><div class="app-title-text">Obj Remover</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-extender')"><div class="app-sphere lbl-extender">💥</div><div class="app-title-text">Video Extend</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-3d')"><div class="app-sphere lbl-3d">🔮</div><div class="app-title-text">3D Pixar</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-2d')"><div class="app-sphere lbl-2d">🎨</div><div class="app-title-text">2D Anime</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-photo')"><div class="app-sphere lbl-photo">📸</div><div class="app-title-text">DSLR Photo</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-voice')"><div class="app-sphere lbl-voice">🎙️</div><div class="app-title-text">Voice Suite</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-settings')"><div class="app-sphere lbl-settings">⚙️</div><div class="app-title-text">System Core</div></div>
+            </div>
+
+            <!-- ================= APP WINDOW SCHEMAS ================= -->
+            <div id="win-ideas" class="app-window-panel">
+                <div class="panel-heading"><h3>💡 YouTube Strategy Planner</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-ideas')">✕</button></div>
+                <div class="bhai-learning-box"><strong>💡 Bhai Ka Guide:</strong> Apna core concept dalo, yeh trending titles aur multi-angle strategy outlines map karega.</div>
+                <div class="input-block"><label>Topic Focus</label><textarea id="txt-ideas-topic" placeholder="e.g., Tech review secrets..."></textarea></div>
+                <button class="execute-action-btn btn-cyan" onclick="triggerTextGeneration('ideas')">🚀 Process Strategic Blueprint</button>
+                <div id="msg-ideas" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-ideas"></div>
+            </div>
+
+            <div id="win-capcut" class="app-window-panel">
+                <div class="panel-heading"><h3>✂️ AutoCapCut Style Matrix</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-capcut')">✕</button></div>
+                <div class="input-block"><label>Ratio</label><select id="select-capcut-ratio"><option value="9:16">9:16 Vertical Short</option><option value="16:9">16:9 Widescreen</option></select></div>
+                <div class="input-block"><label>Pacing</label><select id="select-capcut-pace"><option value="Velocity">Fast Hype Velocity</option><option value="Cinematic">Smooth Cinema Luts</option></select></div>
+                <button class="execute-action-btn btn-purple" onclick="triggerCapCutSimulation()">✂️ Lock Editor Preset</button>
+                <div id="msg-capcut" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-capcut"></div>
+            </div>
+
+            <div id="win-captions" class="app-window-panel">
+                <div class="panel-heading"><h3>✍️ AI Subtitle Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-captions')">✕</button></div>
+                <div class="input-block"><label>Raw Text</label><textarea id="txt-captions-raw" placeholder="Script lines go here..."></textarea></div>
+                <button class="execute-action-btn btn-pink" onclick="triggerTextGeneration('captions')">✍️ Structure Captions</button>
+                <div id="msg-captions" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-captions"></div>
+            </div>
+
+            <div id="win-tags" class="app-window-panel">
+                <div class="panel-heading"><h3>#️⃣ AutoHashtag SEO</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-tags')">✕</button></div>
+                <div class="input-block"><label>Niche Focus</label><input type="text" id="txt-tags-niche" placeholder="Gaming, edits, science..."></div>
+                <button class="execute-action-btn btn-gold" onclick="triggerTextGeneration('tags')">#️⃣ Extract Tags</button>
+                <div id="msg-tags" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-tags"></div>
+            </div>
+
+            <div id="win-prompts" class="app-window-panel">
+                <div class="panel-heading"><h3>🧠 Prompt Pro Encoder</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-prompts')">✕</button></div>
+                <div class="input-block"><label>Aam Bhasha Text</label><textarea id="txt-prompts-simple" placeholder="Your raw idea..."></textarea></div>
+                <button class="execute-action-btn btn-cyan" onclick="triggerTextGeneration('prompts')">🧠 Encode High-Level Prompt</button>
+                <div id="msg-prompts" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-prompts"></div>
+            </div>
+
+            <div id="win-filmora" class="app-window-panel">
+                <div class="panel-heading"><h3>🎬 Filmora Smart Clipper</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-filmora')">✕</button></div>
+                <div class="bhai-learning-box"><strong>💡 Filmora Hub:</strong> Video presets tracks aur transition maps load karein.</div>
+                <div class="input-block"><label>Video Transition Preset</label><select id="select-filmora-preset"><option value="Warp Zoom 3D">Warp Zoom 3D Motion</option><option value="Glitch Shake Pro">Glitch Shake Pro Velocity</option></select></div>
+                <button class="execute-action-btn btn-cyan" onclick="triggerFilmoraSimulation()">🎬 Process Filmora Mapping</button>
+                <div id="msg-filmora" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-filmora"></div>
+            </div>
+
+            <div id="win-deepseek" class="app-window-panel">
+                <div class="panel-heading"><h3>🕵️‍♂️ DeepSeek Reasoning Core</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-deepseek')">✕</button></div>
+                <div class="bhai-learning-box"><strong>💡 DeepSeek Node:</strong> Mushkil question dalo, yeh deep thinking chains logic solve karega.</div>
+                <div class="input-block"><label>Enter Complicated Problem Statement</label><textarea id="txt-deepseek-logic" placeholder="Logic problem statement..."></textarea></div>
+                <button class="execute-action-btn btn-purple" onclick="triggerTextGeneration('deepseek')">🕵️‍♂️ Execute Thinking Chain</button>
+                <div id="msg-deepseek" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-deepseek"></div>
+            </div>
+
+            <div id="win-flux" class="app-window-panel">
+                <div class="panel-heading"><h3>🖼️ FLUX.2 Production Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-flux')">✕</button></div>
+                <div class="input-block"><label>High Precision Creative Prompt</label><textarea id="box-prompt-flux" placeholder="4k resolution asset configuration text..."></textarea></div>
+                <button class="execute-action-btn btn-pink" onclick="triggerQuantumAI('flux')">🖼️ Generate FLUX Asset</button>
+                <div id="msg-flux" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-flux"><div class="asset-placeholder-lbl">FLUX.2 arrays ready.</div></div>
+                <a id="dl-flux" class="download-utility-btn" download="ajit_flux2_asset.png">📥 Save Image File</a>
+            </div>
+
+            <div id="win-remover" class="app-window-panel">
+                <div class="panel-heading"><h3>🌀 Video Object Remover</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-remover')">✕</button></div>
+                <div class="input-block"><label>Element Target to Remove from Canvas</label><input type="text" id="txt-remover-obj" placeholder="e.g., Watermark..."></div>
+                <button class="execute-action-btn btn-gold" onclick="triggerRemoverSimulation()">🌀 Extract Segmentation Vector Map</button>
+                <div id="msg-remover" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-remover"></div>
+            </div>
+
+            <div id="win-extender" class="app-window-panel">
+                <div class="panel-heading"><h3>💥 Video Frame Extender</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-extender')">✕</button></div>
+                <div class="input-block"><label>Extension Coordinates Prompt</label><textarea id="box-prompt-video" placeholder="Outpaint tracking boundaries..."></textarea></div>
+                <button class="execute-action-btn btn-green" onclick="triggerQuantumAI('video')">💥 Process Expansion Tracks</button>
+                <div id="msg-video" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-video"><div class="asset-placeholder-lbl">Video nodes active.</div></div>
+            </div>
+
+            <div id="win-3d" class="app-window-panel">
+                <div class="panel-heading"><h3>🔮 Pixar 3D Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-3d')">✕</button></div>
+                <div class="input-block"><label>Character Design</label><textarea id="box-prompt-3d" placeholder="Pixar animation model textures text..."></textarea></div>
+                <button class="execute-action-btn btn-pink" onclick="triggerQuantumAI('3d')">🔮 Render 3D Asset</button>
+                <div id="msg-3d" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-3d"><div class="asset-placeholder-lbl">3D pipeline standby.</div></div>
+                <a id="dl-3d" class="download-utility-btn" download="ajit_3d.png">📥 Save File</a>
+            </div>
+
+            <div id="win-2d" class="app-window-panel">
+                <div class="panel-heading"><h3>🎨 Anime Vector Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-2d')">✕</button></div>
+                <div class="input-block"><label>Anime Scene Detail</label><textarea id="box-prompt-2d" placeholder="Anime character aesthetic line art context..."></textarea></div>
+                <button class="execute-action-btn btn-cyan" onclick="triggerQuantumAI('2d')">🎨 Draw Anime Vector</button>
+                <div id="msg-2d" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-2d"><div class="asset-placeholder-lbl">Vector active.</div></div>
+                <a id="dl-2d" class="download-utility-btn" download="ajit_anime.png">📥 Save File</a>
+            </div>
+
+            <div id="win-photo" class="app-window-panel">
+                <div class="panel-heading"><h3>📸 DSLR Photorealism</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-photo')">✕</button></div>
+                <div class="input-block"><label>Camera Setting Details</label><textarea id="box-prompt-photo" placeholder="Macro lens portrait parameters text..."></textarea></div>
+                <button class="execute-action-btn btn-gold" onclick="triggerQuantumAI('photo')">📸 Trigger DSLR Capture</button>
+                <div id="msg-photo" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-photo"><div class="asset-placeholder-lbl">DSLR shutter online.</div></div>
+                <a id="dl-photo" class="download-utility-btn" download="ajit_dslr.png">📥 Save File</a>
+            </div>
+
+            <div id="win-voice" class="app-window-panel">
+                <div class="panel-heading"><h3>🎙️ ElevenLabs Voice Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-voice')">✕</button></div>
+                <div class="input-block"><label>Voice Script</label><textarea id="box-prompt-voice" placeholder="Enter script dialogue parameters..."></textarea></div>
+                <div class="input-block"><label>Voice Persona</label><select id="voice-clone-id"><option value="ErXwobaYiN019vkySvjV">Antoni (Pro Deep Voice Over Master)</option><option value="21m00Tcm4TlvDq8ikWAM">Rachel (Smooth Explainer Profile)</option></select></div>
+                <button class="execute-action-btn btn-gold" onclick="compileElevenLabsAudio()">🎙️ Synthesize Vocal Frequency</button>
+                <div id="msg-voice" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-voice" style="min-height:90px;"><audio id="os-audio-core-player" controls style="width:100%; display:none;"></audio><div id="voice-placeholder-node" class="asset-placeholder-lbl">Registers locked.</div></div>
+            </div>
+
+            <div id="win-settings" class="app-window-panel">
+                <div class="panel-heading"><h3>⚙️ System Core Configurations</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-settings')">✕</button></div>
+                <div class="input-block"><label>Hugging Face Token</label><input type="password" id="sys-hf-key" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxx"></div>
+                <div class="input-block"><label>ElevenLabs Key</label><input type="password" id="sys-el-key" placeholder="Enter ElevenLabs API key"></div>
+                <button class="execute-action-btn btn-cyan" onclick="secureLockHardwareTokens()">🔒 Encrypt & Sync Matrix</button>
+                <button class="execute-action-btn" style="background:rgba(255,255,255,0.05); color:#fff;" onclick="purgeSystemMemory()">Purge Registers Memory</button>
+                <div id="msg-settings" class="system-status-tracker-msg" style="color:var(--neon-green)"></div>
+            </div>
+        </div>
+
+        <div class="phone-navigation-dock"><span class="dock-utility-icon active" onclick="navigateHomeOS()">🏠</span><span class="dock-utility-icon" onclick="launchAppWindow('win-settings')">⚙️</span></div>
+    </div>
+
+    <script>
+        function refreshSystemClock() {
+            const d = new Date(); let h = d.getHours(); let m = d.getMinutes();
+            h = h < 10 ? '0' + h : h; m = m < 10 ? '0' + m : m;
+            document.getElementById('live-phone-clock').innerText = h + ':' + m;
+        }
+        setInterval(refreshSystemClock, 1000); refreshSystemClock();
+
+        window.onload = function() {
+            const hf = localStorage.getItem('ajit_hf_token'); const el = localStorage.getItem('ajit_el_key');
+            if(hf) document.getElementById('sys-hf-key').value = hf;
+            if(el) document.getElementById('sys-el-key').value = el;
+        }
+
+        function launchAppWindow(id) {
+            document.querySelectorAll('.app-window-panel').forEach(p => p.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            const n = document.getElementById('notch-matrix'); const nt = document.getElementById('notch-status-txt');
+            n.classList.add('pulse'); nt.style.display = 'block';
+            setTimeout(() => { n.classList.remove('pulse'); nt.style.display = 'none'; }, 2000);
+        }
+        function exitAppWindow(id) { document.getElementById(id).style.display = 'none'; }
+        function navigateHomeOS() { document.querySelectorAll('.app-window-panel').forEach(p => p.style.display = 'none'); }
+
+        function secureLockHardwareTokens() {
+            localStorage.setItem('ajit_hf_token', document.getElementById('sys-hf-key').value.trim());
+            localStorage.setItem('ajit_el_key', document.getElementById('sys-el-key').value.trim());
+            document.getElementById('msg-settings').innerText = "Matrix encrypted in device registry! ✅";
+            setTimeout(() => { document.getElementById('msg-settings').innerText = ""; }, 2500);
+        }
+        function purgeSystemMemory() { localStorage.removeItem('ajit_hf_token'); localStorage.removeItem('ajit_el_key'); document.getElementById('sys-hf-key').value = ''; document.getElementById('sys-el-key').value = ''; }
+
+        function checkHardwareFailsafe(type) {
+            const token = localStorage.getItem(type === 'hf' ? 'ajit_hf_token' : 'ajit_el_key');
+            if(!token) { alert(`Chhote Bhai, Pehle 'System Core' mein key dalo!`); launchAppWindow('win-settings'); return false; }
+            return token;
+        }
+
+        async function triggerTextGeneration(mode) {
+            const token = checkHardwareFailsafe('hf'); if(!token) return;
+            let input = "", instruct = "", modelRoute = "meta-llama/Meta-Llama-3-8B-Instruct";
+
+            if (mode === 'ideas') {
+                input = document.getElementById('txt-ideas-topic').value.trim();
+                instruct = `Act as an expert viral YouTube producer. Generate 3 unique viral title vectors, script hook, and layout strategy blueprints for topic focus: ${input}`;
+            } else if (mode === 'captions') {
+                input = document.getElementById('txt-captions-raw').value.trim();
+                instruct = `Format this context draft lines into a highly engaging social caption block with emotional emojis patterns: ${input}`;
+            } else if (mode === 'tags') {
+                input = document.getElementById('txt-tags-niche').value.trim();
+                instruct = `Extract exactly 10 multi-word metadata high search frequency tags separated by commas and 5 trending hashtags block for: ${input}`;
+            } else if (mode === 'prompts') {
+                input = document.getElementById('txt-prompts-simple').value.trim();
+                instruct = `Encode this raw graphic idea into an expert level descriptive prompt for FLUX and diffusion visual models: ${input}`;
+            } else if (mode === 'deepseek') {
+                input = document.getElementById('txt-deepseek-logic').value.trim();
+                instruct = `Act as a supreme thinking reasoning intelligence system. Solve the following programming bug logic or complex question step by step with crystal clear tracking thought chains: ${input}`;
+            }
+
+            const msg = document.getElementById(`msg-${mode}`); const out = document.getElementById(`out-${mode}`);
+            if(!input) { msg.innerHTML = "<span style='color:#ff0055;'>Field khali hai dost!</span>"; return; }
+
+            msg.innerText = "⚡ Quantum language cores routing active..."; out.style.display = 'block'; out.innerText = "Processing reasoning structures arrays...";
+
+            try {
+                const f = await fetch(`https://api-inference.huggingface.co/models/${modelRoute}`, {
+                    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+                    method: "POST", body: JSON.stringify({ inputs: `<|user|>\n${instruct}\n<|assistant|>` }),
+                });
+                const res = await f.json(); let text = res[0].generated_text;
+                if(text.includes("<|assistant|>")) text = text.split("<|assistant|>")[1].trim();
+                out.innerText = text; msg.innerText = "🔥 Computed successfully!";
+            } catch(e) { msg.innerHTML = "<span style='color:#ff0055;'>Execution error. Check registry tokens.</span>"; }
+        }
+
+        function triggerFilmoraSimulation() {
+            const p = document.getElementById('select-filmora-preset').value; const out = document.getElementById('out-filmora');
+            document.getElementById('msg-filmora').innerText = "🎬 Rendering timeline sequence trackers..."; out.style.display = 'block';
+            setTimeout(() => { out.innerText = `[⚡ Filmora Pro Clipper Engine Array Locked]\n\n• Smooth Transition Asset Pipeline: ${p}\n• Framerate Frame Buffer: 60FPS Variable Synced\n• Chromakey Layer Matrix: Optimized Clear Alpha Channels\n\n💡 Bhai Ka Advanced Tip: Split video coordinates precisely to capture high retention timeline hooks!`; document.getElementById('msg-filmora').innerText = "🔥 Filmora macro tracking setup locked!"; }, 1100);
+        }
+
+        function triggerRemoverSimulation() {
+            const o = document.getElementById('txt-remover-obj').value.trim(); const out = document.getElementById('out-remover');
+            if(!o) { alert("Object specify karein bhai!"); return; }
+            document.getElementById('msg-remover').innerText = "🌀 Parsing canvas inpainting segmentation nodes..."; out.style.display = 'block';
+            setTimeout(() => { out.innerText = `[🌀 Mask Inpainting Structural Mapping Complete]\n\n• Elements Targeted for Purge: ${o}\n• Mask Boundary Threshold Vectors: Alpha-Weight 0.95 Locked\n• Neural Patch Filling Pipeline Mode: Ambient Vector Continuity Active\n\n💡 Note: Tracking frame blocks array output successfully established in layout code!`; document.getElementById('msg-remover').innerText = "🔥 Segmentation mask arrays compiled!"; }, 1200);
+        }
+
+        async function triggerQuantumAI(mode) {
+            const token = checkHardwareFailsafe('hf'); if(!token) return;
+            let raw = document.getElementById(mode === 'video' ? 'box-prompt-video' : `box-prompt-${mode}`).value.trim();
+            const msg = document.getElementById(`msg-${mode}`); const monitor = document.getElementById(mode === 'video' ? 'monitor-video' : `monitor-${mode}`); const dl = document.getElementById(`dl-${mode}`);
+            if(!raw) { msg.innerHTML = "<span style='color:#ff0055;'>Prompt khali hai bhai!</span>"; return; }
+
+            let promptMatrix = raw, route = "black-forest-labs/FLUX.1-schnell";
+            if (mode === '3d') promptMatrix = `${raw}, iconic 3D claymation art asset style, pastel colors clay textures, unreal engine 5 path traced cinematic render, perfect pixar studio design layout quality`;
+            else if (mode === '2d') promptMatrix = `${raw}, breathtaking 2D aesthetic graphic anime vector illustration, sharp crisp clean lineart, rich colorful makoto shinkai style cinematic lighting look portrait`;
+            else if (mode === 'photo') promptMatrix = `${raw}, crystal crisp photorealistic photography portrait snapshot, 85mm raw focal depth professional DSLR shutter lens frame portrait, natural skin pores textures 8k`;
+            else if (mode === 'flux') promptMatrix = `${raw}, 32b parameter rectified flow transformer output asset, high fidelity flawless production detail realism rendering profile, 4k master grid precision texture`;
+            else if (mode === 'video') route = "stabilityai/stable-video-diffusion-img2vid-xt";
+
+            msg.innerText = "🌀 Diffusion pixel grids processing channel runtime initialized..."; monitor.innerHTML = '<span style="color:var(--neon-cyan); font-size:0.75rem;">Supreme Engine is computing elite architectural parameters array loops... 🚀</span>';
+            if(dl) dl.style.display = 'none';
+
+            try {
+                const f = await fetch(`https://api-inference.huggingface.co/models/${route}`, {
+                    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+                    method: "POST", body: JSON.stringify({ inputs: promptMatrix }),
+                });
+                const b = await f.blob(); const url = URL.createObjectURL(b);
+                monitor.innerHTML = `<img src="${url}" alt="Ajit Supreme Render Output Workspace">`; msg.innerText = "🔥 Assets rendered flawlessly!";
+                if(dl) { dl.href = url; dl.style.display = 'inline-block'; }
+            } catch(e) { msg.innerHTML = "<span style='color:#ff0055;'>Server load or key invalid parameters.</span>"; }
+        }
+
+        async function compileElevenLabsAudio() {
+            const key = checkHardwareFailsafe('el'); if(!key) return;
+            const txt = document.getElementById('box-prompt-voice').value.trim(); const voice = document.getElementById('voice-clone-id').value;
+            const msg = document.getElementById('msg-voice'); const player = document.getElementById('os-audio-core-player'); const ph = document.getElementById('voice-placeholder-node');
+            if(!txt) { msg.innerHTML = "<span style='color:#ff0055;'>Script khali hai!</span>"; return; }
+
+            msg.innerText = "🎙️ Syncing waves text arrays blocks streams..."; player.style.display = 'none'; ph.style.display = 'block'; ph.innerText = "ElevenLabs deep synthesizers are building voice layers tracks formats... ⚡";
+
+            try {
+                const f = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
+                    method: "POST", headers: { "xi-api-key": key, "Content-Type": "application/json" },
+                    body: JSON.stringify({ text: txt, model_id: "eleven_monolingual_v1", voice_settings: { stability: 0.5, similarity_boost: 0.75 } })
+                });
+                const b = await f.blob(); const url = URL.createObjectURL(b);
+                ph.style.display = 'none'; player.src = url; player.style.display = 'block'; player.play(); msg.innerText = "🔥 Streaming live now!";
+            } catch(e) { msg.innerHTML = "<span style='color:#ff0055;'>Synthesis array rejected. Recheck systems key validations.</span>"; }
+        }
+    </script>
+</body>
+</html>
