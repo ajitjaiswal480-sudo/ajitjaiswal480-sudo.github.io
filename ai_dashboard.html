@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJIT PRODUCTION HOUSE v5000.0 - 100x Overdrive</title>
+    <title>AJIT OMNI MATRIX v9000.0 - Full Video Engine</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --galaxy-bg: #030408;
-            --cosmic-sidebar: #090b16;
-            --nebula-card: #0f1225;
+            --galaxy-bg: #010205;
+            --cosmic-sidebar: #070914;
+            --nebula-card: #0e1124;
             --star-cyan: #00f2fe;
             --star-pink: #ff007f;
             --star-purple: #7f00ff;
@@ -22,36 +22,36 @@
         body { background-color: var(--galaxy-bg); color: var(--text-glowing); min-height: 100vh; display: flex; overflow: hidden; }
 
         /* SIDEBAR STYLE */
-        .sidebar { width: 330px; background-color: var(--cosmic-sidebar); border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 1.5rem; position: relative; }
-        .sidebar::after { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 100%; background: linear-gradient(180deg, var(--star-cyan), var(--star-pink)); }
+        .sidebar { width: 330px; background-color: var(--cosmic-sidebar); border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 1.5rem; position: relative; }
+        .sidebar::after { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 100%; background: linear-gradient(180deg, var(--star-cyan), var(--star-pink), var(--star-purple)); }
         
         .brand-area { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2.5rem; }
-        .core-logo { width: 46px; height: 46px; background: linear-gradient(135deg, var(--star-cyan), var(--star-purple)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.5rem; box-shadow: 0 0 25px rgba(0,242,254,0.4); }
+        .core-logo { width: 48px; height: 48px; background: linear-gradient(135deg, var(--star-cyan), var(--star-purple)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.6rem; box-shadow: 0 0 30px rgba(0,242,254,0.4); }
         
         .menu-list { display: flex; flex-direction: column; gap: 0.5rem; }
-        .menu-btn { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.3rem; border-radius: 14px; color: var(--text-faded); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.25s; }
-        .menu-btn:hover, .menu-btn.active { color: #fff; background-color: rgba(255,255,255,0.04); }
-        .menu-btn.active { border-left: 4px solid var(--star-cyan); background: linear-gradient(90deg, rgba(0,242,254,0.1), transparent); }
+        .menu-btn { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.3rem; border-radius: 16px; color: var(--text-faded); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.25s; }
+        .menu-btn:hover, .menu-btn.active { color: #fff; background-color: rgba(255,255,255,0.03); }
+        .menu-btn.active { border-left: 5px solid var(--star-cyan); background: linear-gradient(90deg, rgba(0,242,254,0.1), transparent); }
 
         /* MAIN LAYOUT WORKSPACE */
         .studio-workspace { flex: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; height: 100vh; overflow: hidden; }
-        .left-control-panel { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.06); overflow-y: auto; background: linear-gradient(180deg, rgba(15,18,37,0.15), transparent); }
-        .right-monitor-panel { padding: 2.5rem; background-color: #020306; display: flex; flex-direction: column; overflow: hidden; }
+        .left-control-panel { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.06); overflow-y: auto; background: radial-gradient(circle at top left, rgba(0,242,254,0.03), transparent); }
+        .right-monitor-panel { padding: 2.5rem; background-color: #020305; display: flex; flex-direction: column; overflow: hidden; }
 
         .pane-view { display: none; }
         .pane-view.active { display: block; }
 
         .header-block { margin-bottom: 2rem; }
-        .header-block h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 0.4rem; background: linear-gradient(135deg, #fff, var(--text-faded)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header-block h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 0.4rem; background: linear-gradient(135deg, #fff, var(--star-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .header-block p { color: var(--text-faded); font-size: 0.95rem; }
 
-        .interactive-box { background: rgba(10,13,28,0.4); border: 1px solid rgba(255,255,255,0.04); border-radius: 24px; padding: 1.75rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); }
+        .interactive-box { background: rgba(14,17,36,0.4); border: 1px solid rgba(255,255,255,0.04); border-radius: 24px; padding: 1.75rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); }
         .interactive-box h4 { font-size: 0.88rem; text-transform: uppercase; color: var(--star-pink); margin-bottom: 1.2rem; letter-spacing: 1px; font-weight: 800; }
 
         .input-group { margin-bottom: 1.5rem; }
         .input-group label { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-faded); margin-bottom: 0.65rem; letter-spacing: 0.5px; }
         
-        input[type="text"], select, textarea { width: 100%; background-color: #04050a; border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem; color: #fff; font-size: 0.95rem; }
+        input[type="text"], select, textarea { width: 100%; background-color: #030408; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.1rem; color: #fff; font-size: 0.95rem; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--star-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.25); }
 
         .compile-btn { width: 100%; padding: 1.25rem; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--star-cyan), var(--star-pink), var(--star-purple)); color: white; font-weight: 800; font-size: 1.02rem; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); letter-spacing: 0.5px; }
@@ -70,9 +70,12 @@
         @keyframes blink { from { opacity: 0.4; } to { opacity: 1; } }
 
         .display-canvas { font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; padding-right: 0.5rem; }
+        .display-canvas::-webkit-scrollbar { width: 6px; }
+        .display-canvas::-webkit-scrollbar-thumb { background: rgba(0,242,254,0.1); border-radius: 10px; }
+        
         .copy-btn-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: #fff; padding: 0.55rem 1.2rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
         .copy-btn-pill:hover { background: var(--star-cyan); color: black; }
-        .badge-inc { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--star-cyan); background: rgba(0,242,254,0.07); padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.6rem; }
+        .badge-inc { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--star-cyan); background: rgba(0,242,254,0.07); padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.6rem; border: 1px solid rgba(0,242,254,0.15); }
     </style>
 </head>
 <body>
@@ -81,19 +84,18 @@
     <div class="sidebar">
         <div>
             <div class="brand-area">
-                <div class="core-logo">🔥</div>
+                <div class="core-logo">🌌</div>
                 <div>
-                    <h1 style="font-size:1.2rem; font-weight:800;">AJIT ENTERPRISE</h1>
-                    <span style="font-size:0.72rem; color:var(--star-cyan); font-weight:800; letter-spacing:1.5px;">SUPREME ENGINE v5000.0</span>
+                    <h1 style="font-size:1.2rem; font-weight:800;">AJIT METAVERSE</h1>
+                    <span style="font-size:0.72rem; color:var(--star-cyan); font-weight:800; letter-spacing:1.5px;">OMNI ENGINE v9000.0</span>
                 </div>
             </div>
             <div class="menu-list">
-                <div class="menu-btn active" onclick="switchSuiteTab(this, 'pane-script')">📝 Automated Script Factory</div>
-                <div class="menu-btn" onclick="switchSuiteTab(this, 'pane-video')">🖼️ 3D Cinematic Prompt Studio</div>
-                <div class="menu-btn" onclick="switchSuiteTab(this, 'pane-workflow')">⚙️ Multi-AI Production Router</div>
+                <div class="menu-btn active" onclick="switchOmniTab(this, 'pane-omni-factory')">🛰️ Omni Production Factory</div>
+                <div class="menu-btn" onclick="switchOmniTab(this, 'pane-routers')">⚙️ Cloud Core Routers</div>
             </div>
         </div>
-        <div style="font-size: 0.8rem; color: var(--text-faded); text-align: center; font-weight: 700;">100x Galaxy Mode Active 🌌</div>
+        <div style="font-size: 0.8rem; color: var(--text-faded); text-align: center; font-weight: 700;">Supreme Platform Operational ⚡</div>
     </div>
 
     <!-- MAIN INTERACTIVE STUDIO WORKSPACE -->
@@ -102,64 +104,52 @@
         <!-- LEFT CONTROL PANEL -->
         <div class="left-control-panel">
             
-            <!-- TAB 1: SCRIPT WRITER -->
-            <div id="pane-script" class="pane-view active">
+            <!-- TAB 1: OMNI MULTI-GENERATOR FACTORY -->
+            <div id="pane-omni-factory" class="pane-view active">
                 <div class="header-block">
-                    <h2>📝 Real-Time On-The-Spot Script Factory</h2>
-                    <p>Yahan tum jo bhi keywords daaloge, system static template nahi balki completely custom dynamic video script generate karega.</p>
+                    <h2>🛰️ 1-Click Complete Video Omni-Factory</h2>
+                    <p>Apna main topic daalein. System automatic script, HD cartoon render elements, timeline sheets aur dynamic backgrounds ek sath design karega.</p>
                 </div>
                 <div class="interactive-box">
-                    <span class="badge-inc">AI Core Engine</span>
+                    <span class="badge-inc">Quantum Processing Unit</span>
+                    
                     <div class="input-group">
-                        <label>Enter Main Video Topic / Concept</label>
-                        <input type="text" id="ai-script-topic" value="Digital Fasting aur Social Media Addiction ka Trap">
+                        <label>Main Video Concept / Script Topic</label>
+                        <input type="text" id="omni-topic-input" value="Digital Fasting: Phone Addiction vs Self Control">
                     </div>
+
                     <div class="input-group">
-                        <label>Target Length & Hook Speed</label>
-                        <select id="ai-script-pace">
-                            <option value="shorts">30-Second High Retention Short Film</option>
-                            <option value="long">60-Second Deep Explainer Workflow</option>
+                        <label>HD Cartoon Character Style</label>
+                        <select id="omni-character-style">
+                            <option value="pixar-3d">Pixar 3D Cinematic Animation Style</option>
+                            <option value="anime-hd">Hyper-Detailed Modern Anime Style</option>
                         </select>
                     </div>
-                    <button class="compile-btn" onclick="generate100xScript()">Compile Custom Script Stack</button>
+
+                    <div class="input-group">
+                        <label>Auto AI Background Theme Generator Mode</label>
+                        <select id="omni-bg-mode">
+                            <option value="cyber-dark">Cyberpunk Dark Glow Environment (Neon Shading)</option>
+                            <option value="cozy-warm">Cozy Cinematic Room (Volumetric Light Rays)</option>
+                        </select>
+                    </div>
+
+                    <button class="compile-btn" onclick="generateOmniVideoStack()">Compile 4-In-1 Production Matrix</button>
                 </div>
             </div>
 
-            <!-- TAB 2: PROMPT STUDIO -->
-            <div id="pane-video" class="pane-view">
+            <!-- TAB 2: ROUTERS -->
+            <div id="pane-routers" class="pane-view">
                 <div class="header-block">
-                    <h2>🖼️ 3D Pixar & Octane Prompt Transformer</h2>
-                    <p>Convert raw concept text into fully descriptive rendering parameters for Runway Gen-3 and Pika 1.5 models.</p>
+                    <h2>⚙️ Multi-AI Cloud Render Routers</h2>
+                    <p>Material compile karne ke baad links ko open karke assets direct render kar lo:</p>
                 </div>
                 <div class="interactive-box">
-                    <span class="badge-inc">Cinematic Parameters</span>
-                    <div class="input-group">
-                        <label>Describe Your Character / Motion Elements</label>
-                        <textarea id="ai-prompt-raw" rows="3">A man in a white polo shirt and a child in a yellow t-shirt looking surprised at an exploding glowing smartphone layout</textarea>
-                    </div>
-                    <div class="input-group">
-                        <label>Select Master Render Environment Style</label>
-                        <select id="ai-prompt-render">
-                            <option value="pixar">Pixar Animation Studio Style (Subsurface Scattering)</option>
-                            <option value="superhero">Superhero Action Style (Velocity Ramping + Backflip physics)</option>
-                        </select>
-                    </div>
-                    <button class="compile-btn" onclick="generate100xPrompt()">Compile Cinema Prompt</button>
-                </div>
-            </div>
-
-            <!-- TAB 3: MULTI AI ROUTER -->
-            <div id="pane-workflow" class="pane-view">
-                <div class="header-block">
-                    <h2>⚙️ Interstellar Multi-AI Production Router</h2>
-                    <p>Material tayar hone ke baad direct in cloud servers par dispatch karke apni ultimate video render kar lo.</p>
-                </div>
-                <div class="interactive-box">
-                    <span class="badge-inc">1-Click External Routers</span>
+                    <span class="badge-inc">External Dispatch</span>
                     <div class="router-btn-stack">
-                        <a href="https://www.capcut.com/" target="_blank" class="router-card">🎬 Open CapCut AI Web (Auto Captions Timelines) <span>→</span></a>
-                        <a href="https://runwayml.com/" target="_blank" class="router-card">🖼️ Open Runway Gen-3 Platform <span>→</span></a>
-                        <a href="https://elevenlabs.io/" target="_blank" class="router-card">🎙️ Open ElevenLabs Audio SoundStage <span>→</span></a>
+                        <a href="https://www.capcut.com/" target="_blank" class="router-card">🎬 Open CapCut AI Web (Auto Captions & Audio Sync) <span>→</span></a>
+                        <a href="https://runwayml.com/" target="_blank" class="router-card">🖼 shrink Open Runway Gen-3 (Image-To-Video Rendering) <span>→</span></a>
+                        <a href="https://elevenlabs.io/" target="_blank" class="router-card">🎙️ Open ElevenLabs (High-Fidelity AI Voice) <span>→</span></a>
                     </div>
                 </div>
             </div>
@@ -170,10 +160,10 @@
         <div class="right-monitor-panel">
             <div class="monitor-frame">
                 <div class="monitor-nav">
-                    <div class="monitor-lbl"><div class="pulse-dot"></div> <span id="monitor-pane-title">Live Production Monitor Node</span></div>
-                    <button class="copy-btn-pill" onclick="copyStudioTextData()">Copy Core Stack</button>
+                    <div class="monitor-lbl"><div class="pulse-dot"></div> <span id="monitor-title">Omni-Channel Broadcast Screen</span></div>
+                    <button class="copy-btn-pill" onclick="copyOmniCanvasData()">Copy Core Stack</button>
                 </div>
-                <pre class="display-canvas" id="monitor-screen-view">Left controls panel par details fill up karke 'Compile' button par click karo, aur instant high-fidelity tracking pipeline data nikalte hue dekho...</pre>
+                <pre class="display-canvas" id="monitor-screen">Parameters set karke 'Compile' button par click karein. Aapki script, HD Cartoon prompts, Timeline sheets aur Automatic Background maps ek single screen par live generate ho jayenge...</pre>
             </div>
         </div>
 
@@ -181,39 +171,41 @@
 
     <!-- CODE INTERACTION CORE ENGINE -->
     <script>
-        function switchSuiteTab(btn, id) {
+        function switchOmniTab(btn, id) {
             document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
             document.querySelectorAll('.pane-view').forEach(p => p.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById(id).classList.add('active');
         }
 
-        function generate100xScript() {
-            const topic = document.getElementById('ai-script-topic').value;
-            const pace = document.getElementById('ai-script-pace').value;
-            const canvas = document.getElementById('monitor-screen-view');
-            document.getElementById('monitor-pane-title').innerText = "MONITOR: DYNAMIC SCRIPT DISPATCH";
+        function generateOmniVideoStack() {
+            const topic = document.getElementById('omni-topic-input').value;
+            const style = document.getElementById('omni-character-style').value;
+            const bgMode = document.getElementById('omni-bg-mode').value;
+            const canvas = document.getElementById('monitor-screen');
+            document.getElementById('monitor-title').innerText = "MONITOR: UNIFIED BROADCAST DATA STACK";
 
-            canvas.innerText = `💎 DYNAMIC METAVERSE AUTO-GENERATED SCRIPT 💎\n=======================================================\n\n[PROJECT TARGET]: ${topic}\n[TIMELINE CADENCE]: ${pace === 'shorts' ? '30-Sec Fast-Paced' : '60-Sec Cinematic explainer'}\n\n🎬 [SCENE TIMELINE & VISUAL DIRECTIVES]:\n\n⏱️ 0:00 - 0:05 Sec | THE HIGH-CTR RETENTION HOOK:\n- Visual: Start with an extreme wide-angle action cut showing a phone screen glowing in a pitch black room.\n- Dialogue Audio: "Kya aapko pata hai? Har baar jab aap ek notification check karte ho, aapka self-control zero ho jata hai!"\n\n⏱️ 0:05 - 0:18 Sec | THE VELOCITY DROP ANALYSIS:\n- Visual: Apply smooth 0.25x fluid slow-motion ramping on a face staring blankly at passing reels layout.\n- Dialogue Audio: "Digital Fasting ka sochna aasan hai, par jab haath apne aap icon par click kare... tab asli addiction pata chalti hai."\n\n⏱️ 0:18 - 0:30 Sec | TERMINAL CALL-TO-ACTION RECOVERY:\n- Visual: Rapid split perspective transitions showing the phone being locked in a drawer.\n- Dialogue Audio: "Kya tum agle 24 ghante tak notification loops bypass kar sakte ho? Share karke dosto ko challenge karo aur script ke liye SAVE kar lo!"\n\n[📈 AUTOMATION KEYWORDS & METADATA SEO]:\n#Shorts #DigitalDetox #SelfControlMatrix #CapCutVelocity #ViralShorts2026`;
-        }
-
-        function generate100xPrompt() {
-            const raw = document.getElementById('ai-prompt-raw').value;
-            const style = document.getElementById('ai-prompt-render').value;
-            const canvas = document.getElementById('monitor-screen-view');
-            document.getElementById('monitor-pane-title').innerText = "MONITOR: CINEMATIC PROMPT CODE STACK";
-
-            if(style === 'pixar') {
-                canvas.innerText = `🚀 UNIVERSAL 3D ANIMATION PROMPT (RUNWAY GEN-3 / PIKA 1.5 READY) 🚀\n========================================================================\n\n[ENGINE COMPATIBILITY]: Pixar Animation Studio & DreamWorks 3D Emulation\n\n[COPY-PASTE MATRIX PROMPT]:\n"3D animated movie style scene of ${raw}, flawless character designs, intricate facial expressions of shock and awe, premium subsurface skin scattering, warm volumetric cinematic lighting, smooth bokeh depth of field rendering, octane render simulation, vibrant color grading palette, realistic physics velocity tracking --motion 6"`;
+            let characterPrompt = "";
+            if(style === 'pixar-3d') {
+                characterPrompt = `Pixar 3D animation style, hyper-expressive facial features, clean mesh topology, flawless subsurface skin scattering, cinematic volumetric lighting, soft render finish, rich emotional profile.`;
             } else {
-                canvas.innerText = `🚀 HIGH ACTION CINEMATIC VELOCITY PROMPT STACK 🚀\n=========================================================\n\n[ENGINE COMPATIBILITY]: Unreal Engine 5.5 / Octane Super Renders\n\n[COPY-PASTE MATRIX PROMPT]:\n"Hyper-realistic movie style sequence showing ${raw}, superhero physics engine active, high-velocity dynamic camera tracking focus, flawless backflip momentum cuts, immersive lens flares, dramatic dark cyberpunk neon highlight styling, ultra-detailed 4k asset textures --motion 9"`;
+                characterPrompt = `Hyper-detailed modern anime vector line-art style, highly vibrant aesthetic shorings, sharp focal points, premium dramatic lighting overlay shading.`;
             }
+
+            let backgroundPrompt = "";
+            if(bgMode === 'cyber-dark') {
+                backgroundPrompt = `Cyberpunk dark workspace environment, glowing matrix screens, floating digital hologram layers, deep neon purple and cyan illumination offsets, octane render depth, extreme contrast, sharp bokeh highlights.`;
+            } else {
+                backgroundPrompt = `Cozy aesthetic bedroom ambient environment, warm sunbeam rays passing through glass window frame panels, soft dust particle simulation, ultra photorealistic lens blur grading.`;
+            }
+
+            canvas.innerText = `👑 OMNI-MATRIX AUTOMATION HOUSE: COMPREHENSIVE PRODUCTION PROTOCOL 👑\n========================================================================\n\n[🎥 PRODUCTION TOPIC CORE]: ${topic}\n\n[📝 PHASE 1: DYNAMIC HIGH-RETENTION VIDEO SCRIPT]\n------------------------------------------------------------\n⏱️ 0:00 - 0:05 Sec | THE AUDIO HOOK:\n  - Visual: Close-up zoom shift tracking high action focus.\n  - Voiceover: "POV: Jab tum decide karte ho ki aaj se social media band... aur theek 2 minute baad tumhara haath apne aap icon par click kar deta hai!"\n\n⏱️ 0:05 - 0:18 Sec | THE VELOCITY DROP ANALYSIS:\n  - Visual: Apply fluid 0.25x velocity slow-motion curve ramping on character expressions.\n  - Voiceover: "Self-control ek myth lagne lagta hai jab dimaag notifications ke loops mein phasa ho."\n\n⏱️ 0:18 - 0:30 Sec | RETENTION END LOOP MATRIX:\n  - Visual: Multi-angle split cuts sequence flashing center captions.\n  - Voiceover: "Agar tum bhi isi trap mein fase ho, toh comment mein batao aur video ko SAVE kar lo!"\n\n\n[🖼️ PHASE 2: HD CARTOON CHARACTER RENDERING ARCHITECT]\n------------------------------------------------------------\n- Engine Compatibility: Runway Gen-3 / Midjourney v6\n- Master Copy-Paste Prompt Token:\n  "HD 3D character render model showing a man in a white polo shirt looking surprised and shell-shocked at a device screen, ${characterPrompt}"\n\n\n[🎨 PHASE 3: AUTO AI BACKGROUND GENERATOR NODE]\n------------------------------------------------------------\n- Context Integration: (System automatically matched ambient layers based on script script details)\n- Master Copy-Paste Prompt Token:\n  "An cinematic empty background layout composition matching the screen-addiction narrative theme, ${backgroundPrompt} --ar 9:16 --v 6.0"\n\n\n[🎬 PHASE 4: AUTO-EDITING TIMELINE CONFIGURATION SHEET]\n------------------------------------------------------------\n- Track 1 (ElevenLabs): Import Phase 1 vocal script file at 1.08x playback speed factor.\n- Track 2 (Filmora/CapCut): Deploy HD character render on top overlay layer. Apply 0.25x velocity drop at exactly 0:05. Match with sub-bass ambient audio drops.\n- Track 3 (Captions): Bouncing uppercase word-by-word bold texts aligned strictly on screen center coordinate vector nodes.`;
         }
 
-        function copyStudioTextData() {
-            const txt = document.getElementById('monitor-screen-view').innerText;
+        function copyOmniCanvasData() {
+            const txt = document.getElementById('monitor-screen').innerText;
             navigator.clipboard.writeText(txt);
-            alert('Supreme SaaS Production Data copied to clipboard successfully!');
+            alert('Omni-Channel Complete Video data stack copied to clipboard successfully!');
         }
     </script>
 </body>
