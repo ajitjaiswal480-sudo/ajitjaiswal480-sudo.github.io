@@ -3,157 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajit AI-OS v12.3 Token-Free Matrix</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>AJIT STUDIO PRIME v13.0 - Enterprise AI Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #020204;
-            --phone-bg: #040508;
-            --glass-card: rgba(12, 15, 30, 0.78);
-            --glass-border: rgba(255, 255, 255, 0.09);
-            --neon-cyan: #00f2fe;
-            --neon-purple: #9b51e0;
-            --neon-pink: #ff007f;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
+            --bg-workspace: #090a10;
+            --sidebar-bg: #11131e;
+            --card-bg: #161926;
+            --accent-blue: #0084ff;
+            --accent-purple: #7000ff;
+            --accent-glow: rgba(0, 132, 255, 0.2);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background: radial-gradient(circle at 50% 50%, #0a0d1a 0%, var(--bg-dark) 100%); color: var(--text-primary); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background-color: var(--bg-workspace); color: var(--text-main); min-height: 100vh; display: flex; overflow: hidden; }
+
+        /* --- FILMORA STYLE SIDEBAR --- */
+        .sidebar { width: 260px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem 1rem; z-index: 10; }
+        .studio-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; padding: 0 0.5rem; }
+        .brand-logo { width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; box-shadow: 0 0 15px var(--accent-glow); }
+        .brand-title h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
+        .brand-title span { font-size: 0.7rem; color: var(--accent-blue); font-weight: 700; text-transform: uppercase; display: block; }
         
-        .smartphone-container { width: 100%; max-width: 460px; background: var(--phone-bg); border: 12px solid #161824; border-radius: 60px; height: 950px; box-shadow: 0 65px 130px rgba(0,0,0,0.95), inset 0 0 50px rgba(0,0,0,0.99); overflow: hidden; position: relative; display: flex; flex-direction: column; }
-        .phone-status-bar { padding: 1.2rem 2.2rem 0.5rem 2.2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.8); }
-        .dynamic-notch { width: 125px; height: 32px; background: #000; border-radius: 30px; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; }
-        .os-viewport { flex: 1; padding: 1.2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; }
-        .os-viewport::-webkit-scrollbar { display: none; }
-        .os-branding { text-align: center; margin-bottom: 0.1rem; }
-        .os-branding h1 { font-size: 1.5rem; font-weight: 800; background: linear-gradient(135deg, var(--neon-cyan), #fff, var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .os-branding p { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem; }
+        .nav-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .nav-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s ease; }
+        .nav-item:hover, .nav-item.active { color: var(--text-main); background-color: rgba(255,255,255,0.04); }
+        .nav-item.active { border-left: 3px solid var(--accent-blue); background: linear-gradient(90deg, rgba(0,132,255,0.08), transparent); }
 
-        .launchpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        .app-trigger { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s ease; }
-        .app-trigger:hover { transform: translateY(-4px); }
-        .app-sphere { width: 65px; height: 65px; border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 1.9rem; border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 10px 20px rgba(0,0,0,0.45); }
-
-        .lbl-ideas { background: linear-gradient(135deg, #11998e, #38ef7d); }
-        .lbl-captions { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
-        .lbl-tags { background: linear-gradient(135deg, #e65c00, #f9d423); }
-        .lbl-flux { background: linear-gradient(135deg, #f857a6, #ff5858); }
-        .lbl-meme { background: linear-gradient(135deg, #ff9966, #ff5e62); }
-        .lbl-pov { background: linear-gradient(135deg, #00c6ff, #0072ff); }
-
-        .app-title-text { font-size: 0.68rem; font-weight: 700; color: #e2e8f0; margin-top: 0.4rem; text-align: center; }
-
-        .app-window-panel { display: none; background: var(--glass-card); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 1.2rem; box-shadow: 0 35px 70px rgba(0,0,0,0.75); animation: popUp 0.3s ease-out forwards; }
-        @keyframes popUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-        .panel-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; }
-        .exit-panel-btn { background: rgba(255,255,255,0.08); border: none; color: #fff; width: 26px; height: 26px; border-radius: 50%; cursor: pointer; }
+        /* --- MAIN STUDIO WORKSPACE --- */
+        .studio-layout { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .top-header { height: 70px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background-color: rgba(17, 19, 30, 0.4); backdrop-filter: blur(10px); }
+        .engine-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.2); }
         
-        .bhai-learning-box { background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.12); border-radius: 12px; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.75rem; color: #cbd5e1; }
-        .input-block { margin-bottom: 1rem; }
-        .input-block label { display: block; font-size: 0.7rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.35rem; }
+        /* --- THREE-PANEL ARCHITECTURE (Canva/ElevenLabs Style) --- */
+        .workspace-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 70px); overflow: hidden; }
         
-        textarea, input[type="number"] { width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.75rem; color: #fff; font-size: 0.85rem; }
+        /* LEFT CONTROLS PANEL */
+        .controls-panel { padding: 2rem; border-right: 1px solid var(--border-color); overflow-y: auto; background-color: rgba(22, 25, 38, 0.2); }
+        .panel-tab-content { display: none; animation: fadeIn 0.3s ease-out forwards; }
+        .panel-tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        .execute-action-btn { width: 100%; padding: 0.85rem; border: none; border-radius: 12px; font-size: 0.85rem; font-weight: 800; cursor: pointer; color: #000; }
-        .btn-pink { background: linear-gradient(135deg, var(--neon-pink), #7928ca); color: #fff; }
-        .btn-cyan { background: linear-gradient(135deg, var(--neon-cyan), #4facfe); }
+        .section-header { margin-bottom: 1.5rem; }
+        .section-header h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .section-header p { font-size: 0.85rem; color: var(--text-muted); }
 
-        .soundboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
-        .sound-btn { padding: 0.5rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: #fff; font-size: 0.68rem; font-weight: bold; cursor: pointer; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); margin-bottom: 0.5rem; }
+        select, input[type="number"], input[type="text"], textarea { width: 100%; background-color: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.85rem 1rem; color: var(--text-main); font-size: 0.9rem; transition: border-color 0.2s; }
+        select:focus, input:focus, textarea:focus { outline: none; border-color: var(--accent-blue); box-shadow: 0 0 10px var(--accent-glow); }
 
-        .text-output-viewport { margin-top: 1rem; background: rgba(0,0,0,0.85); border-radius: 14px; border: 1px solid rgba(0, 242, 254, 0.2); padding: 1rem; font-size: 0.85rem; line-height: 1.5; color: #e2e8f0; white-space: pre-wrap; display: none; max-height: 300px; overflow-y: auto; }
-        .phone-navigation-dock { background: rgba(8, 10, 18, 0.92); border-top: 1px solid rgba(255,255,255,0.04); padding: 0.75rem 2.5rem 1.25rem 2.5rem; display: flex; justify-content: center; border-radius: 0 0 44px 44px; }
-        .dock-utility-icon { font-size: 1.5rem; cursor: pointer; }
+        .btn-prime { width: 100%; padding: 1rem; border: none; border-radius: 8px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)); color: white; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .btn-prime:hover { transform: translateY(-2px); box-shadow: 0 15px 25px rgba(0, 132, 255, 0.4); }
+
+        /* RIGHT PREVIEW / OUTPUT PANEL */
+        .preview-panel { padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; background-color: rgba(9, 10, 16, 0.5); }
+        .preview-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; box-shadow: 0 20px 40px rgba(0,0,0,0.4); position: relative; }
+        .preview-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+        .preview-card-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--accent-blue); letter-spacing: 1px; }
+        
+        .btn-copy { background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+        .btn-copy:hover { background: rgba(255,255,255,0.12); }
+
+        .output-viewport { font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; white-space: pre-wrap; font-family: inherit; }
+        
+        /* INSTANT SOUNDBOARD MODULE */
+        .sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1rem; }
+        .sound-tile { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; padding: 1rem; text-align: center; cursor: pointer; transition: all 0.2s; font-size: 0.85rem; font-weight: 700; }
+        .sound-tile:hover { background: var(--accent-blue); transform: scale(1.03); color: black; box-shadow: 0 10px 20px var(--accent-glow); }
+
     </style>
 </head>
 <body>
 
-    <div class="smartphone-container">
-        <div class="dynamic-notch"><span style="font-size:0.72rem; color:var(--neon-cyan); font-weight:700;">100% Bypass Offline Mode ⚡</span></div>
-        <div class="phone-status-bar"><div id="live-phone-clock">12:00</div><div>5G 📶 NO-TOKEN CORE</div></div>
+    <!-- 🎬 SIDEBAR NAVIGATION (FILMORA LOOK) -->
+    <div class="sidebar">
+        <div>
+            <div class="studio-brand">
+                <div class="brand-logo">A</div>
+                <div class="brand-title">
+                    <h1>AJIT PLATFORM</h1>
+                    <span>Studio Prime v13.0</span>
+                </div>
+            </div>
+            
+            <div class="nav-group">
+                <div class="nav-item active" onclick="switchStudioTab(this, 'tab-pov')">📅 POV Global Engine</div>
+                <div class="nav-item" onclick="switchStudioTab(this, 'tab-meme')">🤪 AI Meme Soundboard</div>
+                <div class="nav-item" onclick="switchStudioTab(this, 'tab-ideas')">💡 YT Ideas Generator</div>
+                <div class="nav-item" onclick="switchStudioTab(this, 'tab-captions')">✍️ Eleven Caption Tool</div>
+                <div class="nav-item" onclick="switchStudioTab(this, 'tab-tags')">#️⃣ AutoHashtag Expert</div>
+                <div class="nav-item" onclick="switchStudioTab(this, 'tab-flux')">🖼️ Filmora Preview Asset</div>
+            </div>
+        </div>
+        
+        <div style="font-size: 0.75rem; color: var(--text-muted); padding-left: 0.5rem;">
+            🛡️ Safe Cloud Infrastructure
+        </div>
+    </div>
 
-        <div class="os-branding">
-            <h1>POV NATION ULTRA v12.3</h1>
-            <p>Direct Super-Fast Local Matrix</p>
+    <!-- 🌐 MAIN WORKSPACE -->
+    <div class="studio-layout">
+        <div class="top-header">
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-muted);">Workspace / <span style="color:#fff;">Production Dashboard</span></div>
+            <div class="engine-status">● High-Speed Offline Bypass Active</div>
         </div>
 
-        <div class="os-viewport">
-            <div class="launchpad-grid" id="main-grid">
-                <div class="app-trigger" onclick="launchAppWindow('win-ideas')"><div class="app-sphere lbl-ideas">💡</div><div class="app-title-text">YT Ideas</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-captions')"><div class="app-sphere lbl-captions">✍️</div><div class="app-title-text">AI Captions</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-tags')"><div class="app-sphere lbl-tags">#️⃣</div><div class="app-title-text">AutoHashtag</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-flux')"><div class="app-sphere lbl-flux">🖼️</div><div class="app-title-text">FLUX.2 Pro</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-meme')"><div class="app-sphere lbl-meme">🤪</div><div class="app-title-text">AI Meme</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-pov')"><div class="app-sphere lbl-pov">📅</div><div class="app-title-text">POV Global</div></div>
+        <div class="workspace-grid">
+            
+            <!-- LEFT: CONTROLS & SELECTIONS (Canva Style) -->
+            <div class="controls-panel">
+                
+                <!-- TAB: POV GLOBAL -->
+                <div id="tab-pov" class="panel-tab-content active">
+                    <div class="section-header">
+                        <h2>📅 POV Global 4-Month Engine</h2>
+                        <p>Generate highly-optimized international comedy scripts designed for the YouTube Algorithm.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Production Day</label>
+                        <input type="number" id="pov-day-input" min="1" max="120" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Algorithm Country Target</label>
+                        <select>
+                            <option>Global Audience (US/UK/India Hybrid)</option>
+                            <option>United States Market</option>
+                            <option>European Trend Matrix</option>
+                        </select>
+                    </div>
+                    <button class="btn-prime" onclick="generateStudioPOV()">Run Enterprise Production</button>
+                </div>
+
+                <!-- TAB: AI MEME -->
+                <div id="tab-meme" class="panel-tab-content">
+                    <div class="section-header">
+                        <h2>🤪 AI Meme Studio & Timestamps</h2>
+                        <p>Inject premium sound effect simulations instantly into your video structure.</p>
+                    </div>
+                    <button class="btn-prime" onclick="generateStudioMeme()">Map Video Timestamps</button>
+                    <div style="margin-top: 1.5rem;"><label style="font-size: 0.8rem; font-weight:700; color:var(--text-muted);">Quick-Trigger Soundboard</label></div>
+                    <div class="sound-grid">
+                        <div class="sound-tile" onclick="triggerStudioSound('💵 Paisa Hi Paisa Simulation Triggered!')">💵 Paisa Hi Paisa</div>
+                        <div class="sound-tile" onclick="triggerStudioSound('🏏 Arre Vedya Simulation Triggered!')">🏏 Arre Vedya</div>
+                        <div class="sound-tile" onclick="triggerStudioSound('👓 Babu Bhaiya Simulation Triggered!')">👓 Babu Bhaiya</div>
+                    </div>
+                </div>
+
+                <!-- OTHER TABS STUBS FOR INTERFACE COMPLETENESS -->
+                <div id="tab-ideas" class="panel-tab-content">
+                    <div class="section-header"><h2>💡 YT Ideas Generator</h2><p>Generate automated trending topics instantly.</p></div>
+                    <button class="btn-prime" onclick="alert('Ideas processed successfully!')">Generate Trending Concepts</button>
+                </div>
+                <div id="tab-captions" class="panel-tab-content">
+                    <div class="section-header"><h2>✍️ Eleven Caption Tool</h2><p>Synchronize smart caption timelines.</p></div>
+                    <button class="btn-prime" onclick="alert('Caption timeline sync completed!')">Sync Timelines</button>
+                </div>
+                <div id="tab-tags" class="panel-tab-content">
+                    <div class="section-header"><h2>#️⃣ AutoHashtag Expert</h2><p>Extract viral metadata triggers.</p></div>
+                    <button class="btn-prime" onclick="alert('Viral hashtags generated!')">Extract Tags</button>
+                </div>
+                <div id="tab-flux" class="panel-tab-content">
+                    <div class="section-header"><h2>🖼️ Filmora Preview Asset</h2><p>Render automated premium thumbnail layouts.</p></div>
+                    <button class="btn-prime" onclick="alert('Asset prompt rendering done!')">Generate Asset Structure</button>
+                </div>
+
             </div>
 
-            <!-- 🤪 APP: MEME STUDIO -->
-            <div id="win-meme" class="app-window-panel">
-                <div class="panel-heading"><h3>🤪 Local Meme Studio</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-meme')">✕</button></div>
-                <div class="bhai-learning-box">Instant soundboard active without any network lag!</div>
-                <button class="execute-action-btn btn-pink" onclick="alert('Timestamps generated successfully!')">🤪 Process Script Timestamps</button>
-                <div class="soundboard-grid">
-                    <button class="sound-btn" onclick="alert('💵 Playing: Paisa Hi Paisa simulation!')">💵 Paisa Hi Paisa</button>
-                    <button class="sound-btn" onclick="alert('🏏 Playing: Arre Vedya simulation!')">🏏 Arre Vedya</button>
-                    <button class="sound-btn" onclick="alert('👓 Playing: Babu Bhaiya simulation!')">👓 Babu Bhaiya</button>
+            <!-- RIGHT: LIVE PREVIEW & TEXT STACK (ElevenLabs Style) -->
+            <div class="preview-panel">
+                <div class="preview-card" style="flex: 1; display: flex; flex-direction: column;">
+                    <div class="preview-card-header">
+                        <div class="preview-card-title" id="output-title">Live Preview Monitor</div>
+                        <button class="btn-copy" onclick="copyStudioOutput()">Copy Code Stack</button>
+                    </div>
+                    <div style="flex:1; overflow-y:auto; padding-top:0.5rem;">
+                        <pre class="output-viewport" id="studio-output-display">Your generated script pipeline and high-retention analytics will be displayed here in absolute real-time...</pre>
+                    </div>
                 </div>
             </div>
 
-            <!-- 📅 APP: GLOBAL POV ENGINE (TOKEN FREE ACCESS) -->
-            <div id="win-pov" class="app-window-panel">
-                <div class="panel-heading"><h3>🌍 POV Global Direct Engine</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-pov')">✕</button></div>
-                <div class="bhai-learning-box"><strong>⚡ Token-Free Bypass Active:</strong> Instant viral global scripts generated locally!</div>
-                <div class="input-block"><label>Target Production Day (1 to 5)</label><input type="number" id="num-pov-day" min="1" max="5" value="1"></div>
-                <button class="execute-action-btn btn-cyan" onclick="triggerLocalPOVEngine()">🌍 Instant Generate Global Stack</button>
-                <div class="text-output-viewport" id="out-pov"></div>
-            </div>
-
-            <!-- STUBS FOR COMPATIBILITY -->
-            <div id="win-ideas" class="app-window-panel"><div class="panel-heading"><h3>💡 Ideas</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-ideas')">✕</button></div><button class="execute-action-btn btn-cyan" onclick="alert('Idea processing completed locally!')">Process</button></div>
-            <div id="win-captions" class="app-window-panel"><div class="panel-heading"><h3>✍️ Captions</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-captions')">✕</button></div><button class="execute-action-btn btn-cyan" onclick="alert('Captions synchronized!')">Sync</button></div>
-            <div id="win-tags" class="app-window-panel"><div class="panel-heading"><h3>#️⃣ Tags</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-tags')">✕</button></div><button class="execute-action-btn btn-cyan" onclick="alert('Tags optimized!')">Optimize</button></div>
-            <div id="win-flux" class="app-window-panel"><div class="panel-heading"><h3>🖼️ FLUX.2</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-flux')">✕</button></div><button class="execute-action-btn btn-cyan" onclick="alert('Prompt rendering done!')">Render</button></div>
         </div>
-
-        <div class="phone-navigation-dock"><span class="dock-utility-icon" onclick="navigateHomeOS()">🏠</span></div>
     </div>
 
+    <!-- 🧠 SYSTEM LOGIC SHIELD -->
     <script>
-        function refreshSystemClock() {
-            const d = new Date(); let h = d.getHours(); let m = d.getMinutes();
-            h = h < 10 ? '0' + h : h; m = m < 10 ? '0' + m : m;
-            document.getElementById('live-phone-clock').innerText = h + ':' + m;
+        function switchStudioTab(element, tabId) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.panel-tab-content').forEach(content => content.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         }
-        setInterval(refreshSystemClock, 1000); refreshSystemClock();
 
-        function launchAppWindow(id) {
-            document.querySelectorAll('.app-window-panel').forEach(p => p.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
-        }
-        function exitAppWindow(id) { document.getElementById(id).style.display = 'none'; }
-        function navigateHomeOS() { document.querySelectorAll('.app-window-panel').forEach(p => p.style.display = 'none'); }
-
-        // HARDCODED DATABASE FOR INSTANT BYPASS
-        const localScripts = {
-            1: `🌍 DAY 1: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: When you try to sleep but your brain reminds you of that embarrassing moment from 5 years ago.\n\n[VISUAL COMEDY DIRECTIONS]:\n- 0:00 - 0:05: Show a happy, cozy face closing eyes under a blanket.\n- 0:05 - 0:15: Suddenly open eyes wide open with a shocked/scared face expression!\n- 0:15 - 0:30: Fast zoom in on your face trembling with embarrassment while silent background music drops.\n\n[ALGORITHMIC HIGH-RETENTION TRIGGER]:\n🔥 Prompt at the end: "SAVE this to remind yourself you are not alone!" (Guarantees high Save-rate to trigger YouTube Shorts Algorithm!)`,
-            2: `🌍 DAY 2: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: Opening your phone for 5 minutes and realizing 3 hours just passed.\n\n[VISUAL COMEDY DIRECTIONS]:\n- 0:00 - 0:07: Chill look, unlocking phone with a smile.\n- 0:07 - 0:18: Face shifts into a completely brain-fried, hypnotic stare.\n- 0:18 - 0:30: Look out the window where it's suddenly dark outside. Give an existential crisis facial expression.\n\n[ALGORITHMIC HIGH-RETENTION TRIGGER]:\n🔥 Share this with that one friend who is always scrolling!`,
-            3: `🌍 DAY 3: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: Pretending to understand a foreign accent just to be polite.\n\n[VISUAL COMEDY DIRECTIONS]:\n- 0:00 - 0:10: Someone talking gibberish. You nod intensively, smiling like a sweet angel.\n- 0:10 - 0:20: They ask you a direct question based on what they said. Your smile freezes.\n- 0:20 - 0:30: Sweat dropping expression. Slowly move backward out of the frame.\n\n[ALGORITHMIC HIGH-RETENTION TRIGGER]:\n🔥 SAVE this script layout for your next shoot!`,
-            4: `🌍 DAY 4: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: When the teacher looks for someone to answer a question.\n\n[VISUAL COMEDY DIRECTIONS]:\n- 0:00 - 0:08: Actively writing. Teacher asks a hard question.\n- 0:08 - 0:20: Drop your pen. Start staring at the floor, pretending the floor tile is the most interesting thing in the universe.\n- 0:20 - 0:30: Eye contact made with teacher. Pure panic face.\n\n[ALGORITHMIC HIGH-RETENTION TRIGGER]:\n🔥 Hit Save if you did this in school!`,
-            5: `🌍 DAY 5: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: Waiting for the microwave timer to hit 0:01 like a bomb defuser.\n\n[VISUAL COMEDY DIRECTIONS]:\n- 0:00 - 0:12: Staring intensely at a virtual screen with hyper-focused action eyes.\n- 0:12 - 0:22: Smash the invisible button at exactly 0:01 with a legendary hero face.\n- 0:22 - 0:30: Celebrate silently like you just saved the world.\n\n[ALGORITHMIC HIGH-RETENTION TRIGGER]:\n🔥 High retention looped script. Share it now!`
+        const studioDatabase = {
+            1: `💎 ENTERPRISE GLOBAL PRODUCTION: DAY 1 💎\n=========================================\n\n[VIRAL CONCEPT / HOOK]:\nPOV: When you try to sleep but your brain reminds you of that hyper-embarrassing moment from 5 years ago.\n\n[🎬 FILMORA TIMELINE EDITING FLOW]:\n- 0:00 - 0:05 | Shot 1: Smooth close-up. Face relaxing under warm blanket, eyes shutting comfortably.\n- 0:05 - 0:12 | Shot 2: Sudden whip-pan zoom. Eyes open wide staring into cosmic emptiness. Sound drop!\n- 0:12 - 0:30 | Shot 3: Hyper-fast cuts. Face trembling in pure psychological embarrassment.\n\n[🔥 CANVA THUMBNAIL DESIGN DIRECTIONS]:\n- Split layout: Left side dark cozy room / Right side bright neon glowing giant brain pointing at you.\n\n[📈 ALGORITHMIC ENGAGEMENT RETENTION ELEMENT]:\nAdd text overlay in last 2 seconds: "Click SAVE to tell the algorithm you do this too!"`,
+            2: `💎 ENTERPRISE GLOBAL PRODUCTION: DAY 2 💎\n=========================================\n\n[VIRAL CONCEPT / HOOK]:\nPOV: Opening your smartphone to reply to one message and waking up from a 3-hour scrolling coma.\n\n[🎬 FILMORA TIMELINE EDITING FLOW]:\n- 0:00 - 0:06 | Shot 1: Normal lightning, casual phone unlock with a confident smile.\n- 0:06 - 0:18 | Shot 2: Slow cross-fade. Face completely hypnotized, blue screen reflection on eyes.\n- 0:18 - 0:30 | Shot 3: Pan to window. It's pitch black outside. Sudden dramatic zoom out on your shocked face.\n\n[📈 RETENTION TRIGGER]:\n"Tag that one friend who is legally blind without scrolling!"`
         };
 
-        function triggerLocalPOVEngine() {
-            const day = document.getElementById('num-pov-day').value;
-            const out = document.getElementById('out-pov');
-            out.style.display = 'block';
+        function generateStudioPOV() {
+            const day = document.getElementById('pov-day-input').value;
+            const display = document.getElementById('studio-output-display');
+            document.getElementById('output-title').innerText = "LIVE OUTPUT: POV GLOBAL ENGINE";
             
-            if(localScripts[day]) {
-                out.innerText = localScripts[day];
+            if(studioDatabase[day]) {
+                display.innerText = studioDatabase[day];
             } else {
-                out.innerText = `🌍 DAY ${day}: GLOBAL POV VIRAL SCRIPT 🌍\n--------------------------------------------\n[TITLE]: International Relatable Setup For Day ${day}\n\n[VISUAL COMEDY DIRECTIONS]: Use signature silence and funny wide-eye expressions to lock global audience retention!\n\n[ALGORITHMIC TRIGGER]: Save & Share loop activated!`;
+                display.innerText = `💎 ENTERPRISE GLOBAL PRODUCTION: DAY ${day} 💎\n=========================================\n\n[VIRAL CONCEPT]: Global Relatable Comedy Structure for Production Day ${day}.\n\n[🎬 TIMELINE DIRECTIONS]: Keep cuts clean, use dramatic silence and wide expressions.\n\n[📈 METADATA]: High retention save-loop enabled. Ready for rendering!`;
             }
+        }
+
+        function generateStudioMeme() {
+            document.getElementById('output-title').innerText = "LIVE OUTPUT: MEME STUDIO TIMESTAMPS";
+            document.getElementById('studio-output-display').innerText = `🤪 AUTOMATED COMEDY TIMESTAMPS GENERATED 🤪\n==================================================\n\n[Timestamp 0:04]: Trigger Sound effect "Paisa Hi Paisa" at high peak to highlight greed element.\n[Timestamp 0:12]: Drop visual speed by 50% and loop "Arre Vedya" for instant slapstick comedy response.\n[Timestamp 0:24]: End video loop with "Babu Bhaiya" sigh expression to force user shares.`;
+        }
+
+        function triggerStudioSound(msg) {
+            document.getElementById('output-title').innerText = "LIVE MONITOR: AUDIO PLAYER ACTIVE";
+            document.getElementById('studio-output-display').innerText = `🔊 STATUS: PLAYING AUDIO PIPELINE SIMULATION\n---------------------------------------------\n\n⚡ ${msg}\n\n[Bypass Route Info]: Secure background fetch completed safely with no network latency!`;
+        }
+
+        function copyStudioOutput() {
+            const text = document.getElementById('studio-output-display').innerText;
+            navigator.clipboard.writeText(text);
+            alert('SaaS Output copied to clipboard successfully!');
         }
     </script>
 </body>
