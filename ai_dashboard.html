@@ -3,243 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJIT ULTRA GALAXY v900,000,000,000x - Universal Orchestrator</title>
+    <title>AJIT PRODUCTION STUDIO v2000.0 - Interactive Engine</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --galaxy-bg: #010204;
-            --cosmic-sidebar: #060812;
-            --nebula-card: #0a0d1d;
+            --galaxy-bg: #020306;
+            --cosmic-sidebar: #0a0c16;
+            --nebula-card: #111428;
             --star-cyan: #00f2fe;
             --star-pink: #ff007f;
             --star-purple: #7f00ff;
-            --star-gold: #ffd700;
             --text-glowing: #f8fafc;
             --text-faded: #475569;
-            --galaxy-glow: rgba(0, 242, 254, 0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
         body { background-color: var(--galaxy-bg); color: var(--text-glowing); min-height: 100vh; display: flex; overflow: hidden; }
 
-        /* --- 🌌 GALAXY INTERSTELLAR SIDEBAR --- */
-        .sidebar { width: 330px; background-color: var(--cosmic-sidebar); border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 1.5rem; position: relative; }
-        .sidebar::after { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 100%; background: linear-gradient(180deg, var(--star-cyan), var(--star-pink), var(--star-purple)); }
+        /* SIDEBAR STYLE */
+        .sidebar { width: 320px; background-color: var(--cosmic-sidebar); border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 1.5rem; }
+        .brand-area { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2.5rem; }
+        .core-logo { width: 44px; height: 44px; background: linear-gradient(135deg, var(--star-cyan), var(--star-pink)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; box-shadow: 0 0 25px rgba(0,242,254,0.3); }
         
-        .galaxy-brand { display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem; }
-        .galaxy-core-sphere { width: 50px; height: 50px; background: radial-gradient(circle, var(--star-cyan), var(--star-purple), var(--galaxy-bg)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 0 35px var(--star-cyan); animation: orbitPulse 3s ease-in-out infinite; }
-        @keyframes orbitPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 25px var(--star-cyan); } 50% { transform: scale(1.06); box-shadow: 0 0 45px var(--star-pink); } }
-        .brand-text h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.5px; background: linear-gradient(135deg, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .brand-text span { font-size: 0.72rem; color: var(--star-cyan); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
+        .menu-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .menu-btn { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.3rem; border-radius: 14px; color: var(--text-faded); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.25s; }
+        .menu-btn:hover, .menu-btn.active { color: #fff; background-color: rgba(255,255,255,0.04); }
+        .menu-btn.active { border-left: 4px solid var(--star-cyan); background: linear-gradient(90deg, rgba(0,242,254,0.1), transparent); }
 
-        .galaxy-menu { display: flex; flex-direction: column; gap: 0.6rem; }
-        .galaxy-item { display: flex; align-items: center; gap: 1.1rem; padding: 1.1rem 1.3rem; border-radius: 16px; color: var(--text-faded); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid transparent; }
-        .galaxy-item:hover, .galaxy-item.active { color: #fff; background-color: rgba(255,255,255,0.03); }
-        .galaxy-item.active { border-color: rgba(0, 242, 254, 0.2); border-left: 5px solid var(--star-cyan); background: linear-gradient(90deg, rgba(0,242,254,0.1), transparent); }
+        /* MAIN LAYOUT WORKSPACE */
+        .studio-workspace { flex: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; height: 100vh; overflow: hidden; }
+        .left-control-panel { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.06); overflow-y: auto; }
+        .right-monitor-panel { padding: 2.5rem; background-color: #040509; display: flex; flex-direction: column; overflow: hidden; }
 
-        /* --- 🚀 UNIVERSAL STUDIO ENGINE RUNTIME --- */
-        .universal-runtime { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        .cosmic-top-nav { height: 85px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; background-color: rgba(6, 8, 18, 0.6); backdrop-filter: blur(25px); }
-        .galaxy-badge { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 800; color: #000; background: linear-gradient(135deg, var(--star-cyan), var(--star-gold)); padding: 0.6rem 1.2rem; border-radius: 40px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 0 25px rgba(0,242,254,0.3); }
+        .pane-view { display: none; }
+        .pane-view.active { display: block; }
 
-        .quantum-grid { flex: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; height: calc(100vh - 85px); overflow: hidden; }
+        .header-block { margin-bottom: 2rem; }
+        .header-block h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem; }
+        .header-block p { color: var(--text-faded); font-size: 0.92rem; }
+
+        .interactive-box { background: rgba(16,20,40,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; padding: 1.75rem; margin-bottom: 1.75rem; }
+        .interactive-box h4 { font-size: 0.85rem; text-transform: uppercase; color: var(--star-cyan); margin-bottom: 1.2rem; letter-spacing: 0.5px; }
+
+        .input-group { margin-bottom: 1.25rem; }
+        .input-group label { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-faded); margin-bottom: 0.6rem; }
         
-        /* LEFT SIDE CONSTALLATION GENERATOR CONTROLS */
-        .constellation-dock { padding: 3rem; border-right: 1px solid rgba(255,255,255,0.05); overflow-y: auto; background: radial-gradient(circle at top left, rgba(0,242,254,0.03), transparent); }
-        .galaxy-pane { display: none; animation: warpIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        .galaxy-pane.active { display: block; }
-        @keyframes warpIn { from { opacity: 0; transform: scale(0.98) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        input[type="text"], select, textarea { width: 100%; background-color: #070911; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; color: #fff; font-size: 0.95rem; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--star-cyan); box-shadow: 0 0 15px rgba(0,242,254,0.2); }
 
-        .pane-meta-header { margin-bottom: 2rem; }
-        .pane-meta-header h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.75px; margin-bottom: 0.5rem; background: linear-gradient(135deg, #fff, var(--star-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .pane-meta-header p { font-size: 0.95rem; color: var(--text-faded); line-height: 1.5; }
+        .compile-btn { width: 100%; padding: 1.2rem; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--star-cyan), var(--star-pink)); color: black; font-weight: 800; font-size: 1rem; cursor: pointer; text-transform: uppercase; transition: all 0.25s; }
+        .compile-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,242,254,0.35); color: white; }
 
-        .nebula-container { background: rgba(10,13,29,0.4); border: 1px solid rgba(255,255,255,0.04); border-radius: 24px; padding: 2rem; margin-bottom: 2rem; backdrop-filter: blur(5px); }
-        .nebula-container h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--star-pink); margin-bottom: 1.25rem; letter-spacing: 1px; font-weight: 800; }
+        .router-btn-stack { display: grid; grid-template-columns: 1fr; gap: 0.85rem; margin-top: 1.25rem; }
+        .router-card { width: 100%; padding: 1.1rem; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); border-radius: 12px; color: #fff; text-decoration: none; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.92rem; }
+        .router-card:hover { background: linear-gradient(90deg, var(--star-purple), var(--star-pink)); color: white; transform: translateX(5px); }
 
-        .quantum-field { margin-bottom: 1.5rem; }
-        .quantum-field label { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-faded); margin-bottom: 0.7rem; letter-spacing: 0.5px; }
-        select, textarea, input[type="number"] { width: 100%; background-color: #030408; border: 1px solid rgba(255,255,255,0.06); border-radius: 14px; padding: 1.15rem; color: #fff; font-size: 0.95rem; transition: all 0.3s; }
-        select:focus, textarea:focus, input:focus { outline: none; border-color: var(--star-cyan); box-shadow: 0 0 25px rgba(0, 242, 254, 0.25); }
-
-        .galaxy-compile-btn { width: 100%; padding: 1.3rem; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--star-cyan), var(--star-pink), var(--star-purple)); color: white; font-weight: 800; font-size: 1.05rem; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 15px 40px rgba(0,0,0,0.7); text-transform: uppercase; letter-spacing: 1px; }
-        .galaxy-compile-btn:hover { transform: translateY(-3px); box-shadow: 0 20px 45px rgba(0, 242, 254, 0.4); text-shadow: 0 0 10px #fff; }
-
-        .interstellar-router-stack { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.5rem; }
-        .router-galaxy-card { width: 100%; padding: 1.3rem; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01); border-radius: 14px; color: #fff; text-decoration: none; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.98rem; transition: all 0.3s ease; }
-        .router-galaxy-card:hover { background: linear-gradient(90deg, var(--star-purple), var(--star-pink)); color: white; border-color: transparent; transform: translateX(8px); box-shadow: 0 15px 30px rgba(255,0,127,0.25); }
-        .router-galaxy-card span { font-size: 1.3rem; color: var(--star-cyan); }
-
-        /* RIGHT HIGH-DEFINITION INTEGRATION PREVIEW DISPLAY */
-        .display-dock { padding: 3rem; overflow-y: auto; display: flex; flex-direction: column; background-color: #020305; }
-        .display-shield { background-color: var(--nebula-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 28px; padding: 2.2rem; box-shadow: 0 40px 80px rgba(0,0,0,0.8); flex: 1; display: flex; flex-direction: column; position: relative; }
-        .display-shield-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1.2rem; }
-        .display-shield-title { font-size: 0.95rem; font-weight: 800; text-transform: uppercase; color: var(--star-gold); letter-spacing: 2px; display: flex; align-items: center; gap: 0.6rem; text-shadow: 0 0 15px rgba(255,215,0,0.3); }
+        /* LIVE DISPLAY */
+        .monitor-frame { background-color: var(--nebula-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+        .monitor-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1rem; }
+        .monitor-lbl { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--star-pink); letter-spacing: 1px; }
         
-        .supernova-dot { width: 10px; height: 10px; background-color: var(--star-gold); border-radius: 50%; animation: starBlink 1s infinite alternate; }
-        @keyframes starBlink { 0% { opacity: 0.3; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.3); box-shadow: 0 0 15px var(--star-gold); } }
-
-        .galaxy-copy-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: #fff; padding: 0.55rem 1.3rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
-        .galaxy-copy-btn:hover { background: var(--star-cyan); color: black; }
-
-        .galaxy-viewport-canvas { font-size: 1.05rem; line-height: 1.75; color: #e2e8f0; white-space: pre-wrap; flex: 1; overflow-y: auto; padding-right: 0.5rem; }
-        .galaxy-viewport-canvas::-webkit-scrollbar { width: 6px; }
-        .galaxy-viewport-canvas::-webkit-scrollbar-thumb { background: rgba(0,242,254,0.1); border-radius: 10px; }
-
-        .cosmic-badge-indicator { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--star-cyan); background: rgba(0,242,254,0.08); padding: 0.35rem 0.75rem; border-radius: 8px; display: inline-block; margin-bottom: 0.75rem; border: 1px solid rgba(0,242,254,0.15); }
-        
-        /* ACOUSTIC STAGE TILES */
-        .galaxy-sound-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-top: 1rem; }
-        .sound-galaxy-tile { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); border-radius: 12px; padding: 1.2rem; text-align: center; cursor: pointer; transition: all 0.25s; font-size: 0.88rem; font-weight: 800; }
-        .sound-galaxy-tile:hover { background: linear-gradient(135deg, var(--star-cyan), var(--star-purple)); color: black; transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,242,254,0.3); border-color: transparent; }
+        .display-canvas { font-size: 1.02rem; line-height: 1.7; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; }
+        .copy-btn-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 0.5rem 1.1rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+        .copy-btn-pill:hover { background: var(--star-cyan); color: black; }
     </style>
 </head>
 <body>
 
-    <!-- 🌌 GALAXY INTERSTELLAR SIDEBAR -->
+    <!-- SIDEBAR LEFT -->
     <div class="sidebar">
         <div>
-            <div class="galaxy-brand">
-                <div class="galaxy-core-sphere">🌌</div>
-                <div class="brand-text">
-                    <h1>AJIT GALAXY</h1>
-                    <span>Universal Engine v900T</span>
+            <div class="brand-area">
+                <div class="core-logo">⚡</div>
+                <div>
+                    <h1 style="font-size:1.15rem; font-weight:800;">AJIT INTERACTIVE</h1>
+                    <span style="font-size:0.7rem; color:var(--star-cyan); font-weight:700; letter-spacing:1px;">GENERATOR SUITE v2000.0</span>
                 </div>
             </div>
-            
-            <div class="galaxy-menu">
-                <div class="galaxy-item active" onclick="switchGalaxyTab(this, 'pane-universal-factory')">🛰️ Universal Video Hub</div>
-                <div class="galaxy-item" onclick="switchGalaxyTab(this, 'pane-eleven-labs')">🎙️ ElevenLabs Acoustic Node</div>
-                <div class="galaxy-item" onclick="switchGalaxyTab(this, 'pane-canva-layers')">🎨 Canva Layout Compositor</div>
+            <div class="menu-list">
+                <div class="menu-btn active" onclick="switchTab(this, 'pane-script')">📝 Script Generator</div>
+                <div class="menu-btn" onclick="switchTab(this, 'pane-video')">🖼️ Image/Video Prompt Studio</div>
+                <div class="menu-btn" onclick="switchTab(this, 'pane-workflow')">⚙️ Editing Workflow</div>
             </div>
         </div>
-        <div style="font-size: 0.8rem; color: var(--text-faded); font-weight: 700; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
-            🌌 QUANTUM MATRIX CONNECTION SECURE
-        </div>
+        <div style="font-size: 0.78rem; color: var(--text-faded); text-align: center;">Production Dashboard Connected 🌐</div>
     </div>
 
-    <!-- 🌐 UNIVERSAL INTERFACE RUNTIME -->
-    <div class="universal-runtime">
-        <div class="cosmic-top-nav">
-            <div style="font-size: 1rem; font-weight: 700; color: var(--text-faded);">Galaxy Node / <span style="color:#fff;">Interstellar Production Mainframe</span></div>
-            <div class="galaxy-badge">🌌 GALAXY OVERDRIVE STATUS: SUPREME</div>
-        </div>
-
-        <div class="quantum-grid">
+    <!-- MAIN INTERACTIVE STUDIO WORKSPACE -->
+    <div class="studio-workspace">
+        
+        <!-- LEFT INPUT BOXES AND FORMS -->
+        <div class="left-control-panel">
             
-            <!-- LEFT INPUT GENERATORS -->
-            <div class="constellation-dock">
-                
-                <!-- TERMINAL 1: UNIVERSAL MULTI-AI FACTORY -->
-                <div id="pane-universal-factory" class="galaxy-pane active">
-                    <div class="pane-meta-header">
-                        <h2>🛰️ 1-Click Universal Video Factory</h2>
-                        <p>Generate highly comprehensive text scripts, metadata assets, and velocity blueprints synchronized across global servers.</p>
-                    </div>
-                    
-                    <div class="nebula-container">
-                        <div class="cosmic-badge-indicator">Core Automation Processing Node</div>
-                        <div class="quantum-field">
-                            <label>Target Production Day Tracker (1 to 120)</label>
-                            <input type="number" id="galaxy-day-input" min="1" max="120" value="1">
-                        </div>
-                        <div class="quantum-field">
-                            <label>Timeline Edit Vector</label>
-                            <select id="galaxy-velocity-profile">
-                                <option value="velocity-slow">Fluid Velocity Ramping (0.25x Cinematic Slow-Mo)</option>
-                                <option value="interactive-chart">Step-By-Step SaaS Product Interactive Guide</option>
-                            </select>
-                        </div>
-                        <button class="galaxy-compile-btn" onclick="compileGalaxyFactory()">Compile Universal Production Blueprint</button>
-                    </div>
-
-                    <div class="nebula-container">
-                        <div class="cosmic-badge-indicator">External High-Definition Automation Routers</div>
-                        <p style="font-size:0.88rem; color:var(--text-faded); margin-bottom:1.25rem;">Deploy your generated data stack straight into elite production channels for prompt rendering:</p>
-                        <div class="interstellar-router-stack">
-                            <a href="https://www.capcut.com/" target="_blank" class="router-galaxy-card">✨ Route Material to CapCut (Automated Captions & Sound Sync) <span>→</span></a>
-                            <a href="https://runwayml.com/" target="_blank" class="router-galaxy-card">🖼️ Route Material to RunwayML (AI Image-To-Video Rendering) <span>→</span></a>
-                        </div>
-                    </div>
+            <!-- TABS 1: TEXT TO SCRIPT ENGINE -->
+            <div id="pane-script" class="pane-view active">
+                <div class="header-block">
+                    <h2>📝 Live Text-to-Script Generator</h2>
+                    <p>Apna video topic ya ideas niche box mein daal kar instantly full dynamic YouTube script generate karein.</p>
                 </div>
-
-                <!-- TERMINAL 2: ELEVENLABS SOUNDSTAGE -->
-                <div id="pane-eleven-labs" class="galaxy-pane">
-                    <div class="pane-meta-header"><h2>🎙️ ElevenLabs Acoustic Node</h2><p>Process speech modulation layers and speed matrices.</p></div>
-                    <button class="galaxy-compile-btn" onclick="compileGalaxyAacoustic()">Compile Acoustic Directive</button>
-                    <div class="galaxy-sound-grid">
-                        <div class="sound-galaxy-tile" onclick="playCosmicSound('💵 Galaxy Stream: Paisa Hi Paisa Sound Triggered!')">💵 Paisa Hi Paisa</div>
-                        <div class="sound-galaxy-tile" onclick="playCosmicSound('🏏 Galaxy Stream: Arre Vedya Sound Triggered!')">🏏 Arre Vedya</div>
-                        <div class="sound-galaxy-tile" onclick="playCosmicSound('👓 Galaxy Stream: Babu Bhaiya Sound Triggered!')">👓 Babu Bhaiya</div>
+                <div class="interactive-box">
+                    <h4>Script Writer Input</h4>
+                    <div class="input-group">
+                        <label>Enter Video Topic / Concept</label>
+                        <input type="text" id="script-topic-input" placeholder="e.g., Digital Fasting ka struggle ya tech addiction...">
                     </div>
+                    <div class="input-group">
+                        <label>Select Script Tone Style</label>
+                        <select id="script-tone-select">
+                            <option value="comedy">Relatable High-Retention Comedy / POV</option>
+                            <option value="dramatic">Deep Cinematic Social Commentary</option>
+                            <option value="fast">Fast-Paced Transition Shock Style</option>
+                        </select>
+                    </div>
+                    <button class="compile-btn" onclick="generateInteractiveScript()">Generate Custom Script</button>
                 </div>
-
-                <!-- TERMINAL 3: CANVA MATRIX -->
-                <div id="pane-canva-layers" class="galaxy-pane">
-                    <div class="pane-meta-header"><h2>🎨 Canva Composite Design Matrix</h2><p>Track typography levels, graphic strokes, and high-CTR layout coordinates.</p></div>
-                    <button class="galaxy-compile-btn" onclick="compileGalaxyCanva()">Compile Canva Asset Sheet</button>
-                </div>
-
             </div>
 
-            <!-- RIGHT MONITOR DISPLAY HOUSING UNIFIED BLUEPRINT PREVIEWS -->
-            <div class="display-dock">
-                <div class="display-shield">
-                    <div class="display-shield-header">
-                        <div class="display-shield-title"><div class="supernova-dot"></div> <span id="galaxy-monitor-label">Galaxy Terminal Output Monitor</span></div>
-                        <button class="galaxy-copy-btn" onclick="copyGalaxyOutputStack()">Copy Core Directives</button>
+            <!-- TABS 2: IMAGE TO VIDEO PROMPT STUDIO -->
+            <div id="view-video" class="pane-view">
+                <div class="header-block">
+                    <h2>🖼️ Image-to-Video Prompt Architecture</h2>
+                    <p>Apne characters ya design scenes ka description likhein, system unhe highly-advanced AI video promts mein transform kar dega.</p>
+                </div>
+                <div class="interactive-box">
+                    <h4>Prompt Transformer Engine</h4>
+                    <div class="input-group">
+                        <label>Describe Your Scene / Characters</label>
+                        <textarea id="prompt-scene-input" rows="3" placeholder="e.g., A man in a white polo shirt with a child in a yellow t-shirt looking at a screen in Pixar style..."></textarea>
                     </div>
-                    <pre class="galaxy-viewport-canvas" id="galaxy-canvas-screen">Galaxy matrix operational. Select your active panel configuration parameters on the left controls deck and click 'Compile' to instantly generate high-retention production assets...</pre>
+                    <div class="input-group">
+                        <label>Select Video Motion Profile</label>
+                        <select id="prompt-motion-select">
+                            <option value="pixar">Pixar/DreamWorks 3D Animation Style (Smooth Motion)</option>
+                            <option value="hyper">Hyper-Realistic Cyberpunk Film Style (Octane Render)</option>
+                            <option value="slow">High Velocity Ultra Slow-Motion Effect</option>
+                        </select>
+                    </div>
+                    <button class="compile-btn" onclick="generateInteractivePrompt()">Compile AI Video Prompt</button>
+                </div>
+                <div class="interactive-box">
+                    <h4>Direct AI Router Links</h4>
+                    <div class="router-btn-stack">
+                        <a href="https://runwayml.com/" target="_blank" class="router-card">🚀 Open RunwayML Gen-3 Platform <span>→</span></a>
+                        <a href="https://pika.art/" target="_blank" class="router-card">✨ Open Pika AI Video Canvas <span>→</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TABS 3: WORKFLOW TRACKER -->
+            <div id="view-workflow" class="pane-view">
+                <div class="header-block">
+                    <h2>⚙️ Editing Timeline Workflow</h2>
+                    <p>Apne edits ka workflow step-by-step track aur map karein.</p>
+                </div>
+                <button class="compile-btn" onclick="generateInteractiveWorkflow()">Compile Timeline Chart</button>
+                <div class="router-btn-stack">
+                    <a href="https://www.capcut.com/" target="_blank" class="router-card">🎬 Open CapCut Web (Auto-Captions) <span>→</span></a>
                 </div>
             </div>
 
         </div>
+
+        <!-- RIGHT OUTPUT RUNTIME MONITOR DISPLAY -->
+        <div class="right-monitor-panel">
+            <div class="monitor-frame">
+                <div class="monitor-nav">
+                    <div class="monitor-lbl" id="monitor-title-lbl">Studio Real-Time Monitor</div>
+                    <button class="copy-btn-pill" onclick="copyStudioCanvasText()">Copy Text Data</button>
+                </div>
+                <pre class="display-canvas" id="monitor-canvas-screen">Input fields par apna custom video topic ya characters likho aur 'Generate/Compile' button daba kar live results dekho...</pre>
+            </div>
+        </div>
+
     </div>
 
-    <!-- 🌌 QUANTUM COMPILE LOGIC INNER HUB -->
+    <!-- CODE SCRIPT RUNTIME INTERFACE -->
     <script>
-        function switchGalaxyTab(element, tabId) {
-            document.querySelectorAll('.galaxy-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.galaxy-pane').forEach(pane => pane.classList.remove('active'));
-            element.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+        function switchTab(btn, paneId) {
+            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.pane-view').forEach(p => p.style.removeProperty('display'));
+            
+            // Fixed programmatic selector bridging for structural layout map consistency
+            let targetPane = paneId;
+            if(paneId === 'pane-video') targetPane = 'view-video';
+            if(paneId === 'pane-workflow') targetPane = 'view-workflow';
+
+            btn.classList.add('active');
+            
+            document.querySelectorAll('.pane-view').forEach(p => p.classList.remove('active'));
+            document.getElementById(targetPane).classList.add('active');
         }
 
-        function compileGalaxyFactory() {
-            const day = document.getElementById('galaxy-day-input').value;
-            const profile = document.getElementById('galaxy-velocity-profile').value;
-            const canvas = document.getElementById('galaxy-canvas-screen');
-            document.getElementById('galaxy-monitor-label').innerText = "MONITOR: UNIFIED COSMIC WORKFLOW MATERIAL";
+        function generateInteractiveScript() {
+            const topic = document.getElementById('script-topic-input').value || "Digital Detox Struggle";
+            const tone = document.getElementById('script-tone-select').value;
+            const canvas = document.getElementById('monitor-canvas-screen');
+            document.getElementById('monitor-title-lbl').innerText = "MONITOR: LIVE CUSTOM SCRIPT OUTPUT";
 
-            let velocityDetails = "";
-            if(profile === "velocity-slow") {
-                velocityDetails = `[🎬 ADVANCED FILMORA / CAPCUT HIGH-FPS SPEED TIMELINE MATRICES]:\n----------------------------------------------------------------------\n- ⏱️ 0:00 - 0:04 Sec | PHASE 1: INTRO TRIGGER HOOK (Speed: 1.0x Regular Frame Flow)\n  -> Visual Action: Subject initiates swift motion setup. High-contrast foreground grading.\n  -> Sound Deck Sync: Sudden transition whoosh effect clip + sharp audio baseline rise.\n\n- ⏱️ 0:04 - 0:14 Sec | PHASE 2: VELOCITY CURVE DROP (Speed: 0.25x Fluid Smooth Slow-Mo)\n  -> Visual Action: Apply severe speed ramping drop precisely on the key motion focus frame.\n  -> Video Filter Layer: Deploy high-exposure atmospheric lens lighting elements + custom cinematic saturation adjustments.\n  -> Sound Deck Sync: Attenuate main track melody by -10dB. Inject immersive bass rumble simulation.\n\n- ⏱️ 0:14 - 0:30 Sec | PHASE 3: METRIC RESOLUTION RECOVERY (Speed: 1.2x Fast Actions)\n  -> Visual Action: Slice 3 consecutive split-perspective transition clips to lock audience sight tracking.\n  -> Caption Overlay: Word-by-word bold jumping font style matching audio velocity peaks exactly.`;
+            if (tone === "comedy") {
+                canvas.innerText = `🎬 CUSTOM VIRAL POV SCRIPT 🎬\n--------------------------------------------\n[TOPIC]: ${topic}\n\n[0:00 - 0:05 Sec | THE HOOK]:\n(Visual: Close up expression wide eyes checking phone layout)\nVoiceover: "POV: Jab tum decide karte ho ki aaj se 'Digital Fasting' shuru... aur theek 2 minute baad tumhaara haath apne aap Instagram icon par click kar deta hai!"\n\n[0:05 - 0:15 Sec | THE SLOW-MO REACTION]:\n(Visual: Apply 0.25x speed velocity drop curve showing complete lack of self-control while scrolling reels)\nVoiceover: "Dimaag bol raha hai band kar, par ungliyaan rukne ka naam hi nahi le rahi hain!"\n\n[0:15 - 0:30 Sec | ALGORITHMIC RETENTION CALL-TO-ACTION]:\n(Visual: Quick split cuts showing battery percentage dropping to 1%)\nVoiceover: "Agar tum bhi isi trap mein fase ho, toh comment mein mujhe batao aur is video ko SAVE kar lo!"\n\n#ViralShorts #DigitalFasting #POVComedy`;
+            } else if(tone === "dramatic") {
+                canvas.innerText = `🎬 CINEMATIC SOCIAL COMMENTARY SCRIPT 🎬\n--------------------------------------------------\n[TOPIC]: ${topic}\n\n[0:00 - 0:10 Sec | THE CRITIQUE]:\n(Visual: Dark exposure moody color grading layout tracking screen glow reflection on your face)\nVoiceover: "Hum social media use nahi kar rahe... social media humein use kar raha hai. Ek aisi notifications ki addiction jiska koi ilaaj nahi."\n\n[0:10 - 0:25 Sec | STEPS & CORE MESSAGE]:\n(Visual: Split screen matrix showing thousands of reels passing in seconds)\nVoiceover: "Self-control ek temporary cheez ban chuki hai. Jab bhi hum digital detox ka sochte hain, hamari scrolling speed aur double ho jaati hai."\n\n[0:25 - 0:30 Sec | RETENTION END BLOCK]:\nVoiceover: "Kya tum agle 24 ghante ke liye apna phone lock kar sakte ho? Share karke apne dosto ko challenge karo."`;
             } else {
-                velocityDetails = `[⚙️ INTERACTIVE INTERSTELLAR PRODUCT WORKFLOW GRAPH MATRIX]:\n--------------------------------------------------------------------\n- ⏱️ 0:00 - 0:05 Sec | PHASE 1: PROBLEM PRESENTATION STACK\n  -> Visual Action: High-speed clear text blocks popping up sequentially on center frame vectors.\n- ⏱️ 0:05 - 0:22 Sec | PHASE 2: DETAILED NODE GRAPH STEP BREAKDOWN\n  -> Visual Action: Dual split-screen recording layout mapping precise system operations.\n  -> Asset Addition: Overlay custom neon target circles tracking exact mouse cursor clicks seamlessly.\n- ⏱️ 0:22 - 0:30 Sec | PHASE 3: RETENTION STABILIZATION BADGE\n  -> Caption Call-To-Action: "Save this clear operational flowchart template straight to your workspace database so you never lose it!"`;
+                canvas.innerText = `🎬 HYPER TRANSITION SHORT SCRIPT 🎬\n--------------------------------------------\n[TOPIC]: ${topic}\n\nStrict 1.5 second video cuts layout matching the high beat sync tracking drop! Focus on massive graphical subtitle overlay elements to capture 100% scrolling user attention instantly.`;
             }
-
-            canvas.innerText = `🌌 UNIVERSAL PRODUCTION DATA STACK: DEPLOYMENT RECON Day ${day} 🌌\n=========================================================================\n\n[1. AUDIO SPEECH SCRIPT DIRECTIVE (ELEVENLABS VOICEOVER COMPILER)]:\n"POV: Tumne pure saal padhai nahi ki, aur exam ki aakhri raat ko tumhara dimaag tumhe bolta hai - Chalo aaj hi poori physics khatam karke topper bante hain!"\n\n${velocityDetails}\n\n[3. CANVA COMPOSITING LAYER GRAPHIC SCHEMATICS]:\n- Layer Node 1 (Base Layer): Dark cosmic particle texture (#010204 base layout layer link).\n- Layer Node 2 (Typography Structure): Extra bold custom vector font styles with subtle neon drop shadow highlights.\n- Layer Node 3 (Subject Accentuation): Focal portrait canvas item bound with a 15px cyan star perimeter filter aura.\n\n[4. HIGHCTR HIGHINDEXING SEARCH METADATA STRINGS]:\n#Shorts #UniversalProductionStudio #CapCutAutomation #VelocitySpeedRamp #ContentCreatorIndia #SaaSMatrix`;
         }
 
-        function compileGalaxyAacoustic() {
-            document.getElementById('galaxy-monitor-label').innerText = "MONITOR: ELEVENLABS SPEECH PIPELINE";
-            document.getElementById('galaxy-canvas-screen').innerText = `🎙️ ELEVENLABS AI ACOUSTIC MODULATION DATASTAGE NODES 🎙️\n===========================================================\n\n[Vocal Audio Parameter Blueprints Generated]:\n- ⏱️ 0:00 - 0:06 Sec: Adjust speech flow delivery rate to 1.15x. Tone profile: Energetic, clear diction hook.\n- ⏱️ 0:06 - 0:14 Sec: Execute deceleration ramp drop down to 0.80x speed to match velocity video tracks flawlessly. Tone profile: Intimate, resonant cosmic narrative weight.\n- ⏱️ 0:14 - 0:30 Sec: Recalibrate output speed back to 1.05x normal cadence to anchor audience retention metrics cleanly.`;
+        function generateInteractivePrompt() {
+            const scene = document.getElementById('prompt-scene-input').value || "A man and a child looking at a digital screen";
+            const profile = document.getElementById('prompt-motion-select').value;
+            const canvas = document.getElementById('monitor-canvas-screen');
+            document.getElementById('monitor-title-lbl').innerText = "MONITOR: COMPILED AI VIDEO ENGINE PROMPT";
+
+            if(profile === "pixar") {
+                canvas.innerText = `🚀 ADVANCED 3D ANIMATION PROMPT (READY FOR RUNWAY GEN-3 / PIKA 1.5) 🚀\n========================================================================\n\n[PRESET TYPE]: Pixar and DreamWorks Style Cinema Render Engine\n\n[COPY-PASTE PROMPT DATA]:\n"3D animation style of ${scene}, highly detailed character expressions, warm subsurface skin scattering, cinematic volumetric lighting, soft bokeh background, masterpiece, octane rendering engine emulation, vibrant color palette, smooth camera motion track --motion 5"`;
+            } else if(profile === "hyper") {
+                canvas.innerText = `🚀 HYPER-REALISTIC CINEMATIC PROMPT (READY FOR RENDER ENGINE) 🚀\n====================================================================\n\n[PRESET TYPE]: Cyberpunk Film Quality / Octane Emulation\n\n[COPY-PASTE PROMPT DATA]:\n"Hyper-realistic cinematic film footage of ${scene}, shot on 85mm lens, intense depth of field, realistic skin pores and texture, sharp focus, dramatic lighting setup, global illumination, trending on artstation, 4k resolution output, static profile grid execution"`;
+            } else {
+                canvas.innerText = `🚀 ULTRA SLOW-MOTION VELOCITY PROMPT 🚀\n============================================\n\n[COPY-PASTE PROMPT DATA]:\n"High-velocity extreme slow-motion 240fps capture of ${scene}, dynamic action movement, crisp rendering quality, fluid motion physics, step-by-step layout integration --motion 10"`;
+            }
         }
 
-        function playCosmicSound(msg) {
-            document.getElementById('galaxy-monitor-label').innerText = "MONITOR: GALAXY AUDIO SIMULATION PIPE";
-            document.getElementById('galaxy-canvas-screen').innerText = `🔊 COSMIC SOUNDBOARD HARDWARE CORE SIMULATOR ACTIVE\n----------------------------------------------------------\n\n⚡ RUNTIME STATUS: ${msg}\n\n[Technical Note]: Execution pipe ran inside completely isolated browser environment using maximum low-latency hardware acceleration. Zero external connection risk detected!`;
+        function generateInteractiveWorkflow() {
+            document.getElementById('monitor-title-lbl').innerText = "MONITOR: EDITING PIPELINE CHART";
+            document.getElementById('monitor-canvas-screen').innerText = `⚙️ PRODUCTION HOUSE WORKFLOW TIMELINE CHART ⚙️\n=====================================================\n\n- Step 1: Input your custom text layout above and compile your primary voice-over script framework.\n- Step 2: Use the translated script data stack directly into ElevenLabs to output highly structured audio cues.\n- Step 3: Pick up your compiled rendering prompts from the Prompt Studio tab, launch Runway Gen-3/Pika via links, and generate your 3D animation video assets safely.\n- Step 4: Drop the visual clips into CapCut Web to deploy instant automated captions and sync the velocity slow-mo timeline beats seamlessly!`;
         }
 
-        function compileGalaxyCanva() {
-            document.getElementById('galaxy-monitor-label').innerText = "MONITOR: CANVA COMPOSITOR SPECS";
-            document.getElementById('galaxy-canvas-screen').innerText = `🎨 CANVA MASTER LEVEL COMPOSITING GRAPHIC LAYOUT SCHEMATIC 🎨\n================================================================\n\n[Layout Layers Matrix Mapping Data]:\n- 🟦 Layer Vector 1 (Base Background): Radial dark hue element (#010204 matching space gradients) for strong structural focus.\n- 🟨 Layer Vector 2 (CTR Text Elements): Bouncing uppercase sans-serif text bounding box blocks backed with deep blur shadow accents.\n- 🟩 Layer Vector 3 (Focal Subject Asset): Main actor item masked with a striking 12px outer neon cyan perimeter light filter.\n- 🟥 Layer Vector 4 (Engagement Badges): Scaled info-stickers adjusted precisely at a -5 degree skew position.`;
-        }
-
-        function copyGalaxyOutputStack() {
-            const text = document.getElementById('galaxy-canvas-screen').innerText;
+        function copyStudioCanvasText() {
+            const text = document.getElementById('monitor-canvas-screen').innerText;
             navigator.clipboard.writeText(text);
-            alert('Universal Galaxy production material data stack copied successfully!');
+            alert('SaaS Content data stack copied to clipboard!');
         }
     </script>
 </body>
