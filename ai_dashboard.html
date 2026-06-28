@@ -3,210 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJIT CINEMATIC STUDIO v14.0 - Master Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>AJIT METAVERSE v100.0 - Ultimate Production House Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-workspace: #06070d;
-            --sidebar-bg: #0d0f1a;
-            --card-bg: #121526;
-            --accent-neon: #00f2fe;
-            --accent-purple: #7f00ff;
-            --border-color: rgba(255, 255, 255, 0.07);
-            --text-main: #f8fafc;
-            --text-muted: #64748b;
+            --bg-master: #030408;
+            --sidebar-bg: #0b0d19;
+            --panel-bg: #101326;
+            --neon-blue: #00d2ff;
+            --neon-pink: #ff007f;
+            --neon-purple: #7a00ff;
+            --border-glow: rgba(0, 210, 255, 0.15);
+            --text-light: #f8fafc;
+            --text-dark: #64748b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body { background-color: var(--bg-workspace); color: var(--text-main); min-height: 100vh; display: flex; overflow: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-master); color: var(--text-light); min-height: 100vh; display: flex; overflow: hidden; }
 
-        /* --- STUDIO SIDEBAR --- */
-        .sidebar { width: 280px; background-color: var(--sidebar-bg); border-right: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; padding: 1.5rem 1rem; }
-        .studio-brand { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; padding: 0 0.5rem; }
-        .brand-logo { width: 36px; height: 36px; background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.2rem; box-shadow: 0 0 20px rgba(0, 242, 254, 0.3); }
-        .brand-title h1 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.5px; }
-        .brand-title span { font-size: 0.7rem; color: var(--accent-neon); font-weight: 700; text-transform: uppercase; display: block; }
+        /* --- v100.0 ENTERPRISE SIDEBAR --- */
+        .sidebar { width: 300px; background-color: var(--sidebar-bg); border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; padding: 2rem 1.2rem; }
+        .studio-logo-area { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2.5rem; }
+        .logo-diamond { width: 42px; height: 42px; background: linear-gradient(135deg, var(--neon-blue), var(--neon-pink)); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; box-shadow: 0 0 25px rgba(0, 210, 255, 0.4); animation: pulseGlow 2s infinite; }
+        @keyframes pulseGlow { 0% { transform: scale(1); } 50% { transform: scale(1.04); box-shadow: 0 0 35px rgba(255, 0, 127, 0.5); } 100% { transform: scale(1); } }
+        .logo-text h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; }
+        .logo-text span { font-size: 0.72rem; color: var(--neon-blue); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+
+        .menu-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .menu-btn { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.2rem; border-radius: 12px; color: var(--text-dark); font-size: 0.92rem; font-weight: 700; cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+        .menu-btn:hover, .menu-btn.active { color: #fff; background-color: rgba(255,255,255,0.04); }
+        .menu-btn.active { border-left: 4px solid var(--neon-blue); background: linear-gradient(90deg, rgba(0,210,255,0.1), transparent); box-shadow: inset 5px 0 15px rgba(0,210,255,0.05); }
+
+        /* --- WORKSPACE CORE AREA --- */
+        .workspace-root { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+        .studio-top-nav { height: 75px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; background-color: rgba(11, 13, 25, 0.4); backdrop-filter: blur(15px); }
+        .saas-badge { display: flex; align-items: center; gap: 0.6rem; font-size: 0.82rem; font-weight: 800; color: #fff; background: linear-gradient(135deg, #ff0055, #7a00ff); padding: 0.5rem 1rem; border-radius: 30px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        .studio-grid { flex: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; height: calc(100vh - 75px); overflow: hidden; }
         
-        .nav-group { display: flex; flex-direction: column; gap: 0.4rem; }
-        .nav-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.9rem 1rem; border-radius: 10px; color: var(--text-muted); font-size: 0.9rem; font-weight: 600; text-decoration: none; cursor: pointer; transition: all 0.2s ease; }
-        .nav-item:hover, .nav-item.active { color: var(--text-main); background-color: rgba(255,255,255,0.03); }
-        .nav-item.active { border-left: 4px solid var(--accent-neon); background: linear-gradient(90deg, rgba(0,242,254,0.08), transparent); }
+        /* LEFT OPERATIONAL COMPILER */
+        .config-deck { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.06); overflow-y: auto; background-gradient: linear-gradient(180deg, rgba(16,19,38,0.2), transparent); }
+        .deck-view { display: none; animation: slideUp 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+        .deck-view.active { display: block; }
+        @slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- WORKSPACE LAYOUT --- */
-        .studio-layout { flex: 1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-        .top-header { height: 70px; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background-color: rgba(13, 15, 26, 0.5); backdrop-filter: blur(10px); }
-        .engine-status { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600; color: #00f2fe; background: rgba(0, 242, 254, 0.08); padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid rgba(0, 242, 254, 0.2); }
+        .deck-header { margin-bottom: 2rem; }
+        .deck-header h2 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.4rem; color: #fff; }
+        .deck-header p { font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; }
+
+        .studio-box { background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .studio-box h4 { font-size: 0.85rem; text-transform: uppercase; color: var(--neon-blue); margin-bottom: 1rem; letter-spacing: 0.5px; }
+
+        .field-row { margin-bottom: 1.25rem; }
+        .field-row label { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-dark); margin-bottom: 0.6rem; letter-spacing: 0.5px; }
+        select, textarea, input { width: 100%; background-color: #06070c; border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; color: #fff; font-size: 0.92rem; }
+        select:focus, textarea:focus { outline: none; border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 210, 255, 0.15); }
+
+        .master-btn { width: 100%; padding: 1.1rem; border: none; border-radius: 10px; background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); color: black; font-weight: 800; font-size: 1rem; cursor: pointer; transition: all 0.25s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 0.5px; }
+        .master-btn:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 15px 35px rgba(0, 210, 255, 0.35); }
+
+        /* RIGHT HIGH-DEFINITION LIVE WORKSPACE MONITOR */
+        .monitor-deck { padding: 2.5rem; overflow-y: auto; display: flex; flex-direction: column; background-color: #04050a; }
+        .monitor-frame { background-color: var(--panel-bg); border: 1px solid rgba(255,255,255,0.05); border-radius: 18px; padding: 2rem; box-shadow: 0 30px 60px rgba(0,0,0,0.6); flex: 1; display: flex; flex-direction: column; position: relative; }
+        .monitor-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; }
+        .monitor-title { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--neon-pink); letter-spacing: 1.5px; display: flex; align-items: center; gap: 0.5rem; }
         
-        .workspace-grid { flex: 1; display: grid; grid-template-columns: 1fr 1fr; height: calc(100vh - 70px); overflow: hidden; }
-        
-        /* LEFT OPERATIONAL PANEL */
-        .controls-panel { padding: 2rem; border-right: 1px solid var(--border-color); overflow-y: auto; background-color: rgba(18, 21, 38, 0.15); }
-        .panel-tab-content { display: none; animation: fadeIn 0.3s ease-out forwards; }
-        .panel-tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .live-dot { width: 8px; height: 8px; background-color: var(--neon-pink); border-radius: 50%; animation: blinker 1s infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
 
-        .section-header { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; }
-        .section-header h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.35rem; color: #fff; }
-        .section-header p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .copy-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); color: #fff; padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .copy-pill:hover { background: var(--neon-blue); color: black; }
 
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-neon); margin-bottom: 0.6rem; }
-        select, input[type="text"], textarea { width: 100%; background-color: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-color); border-radius: 8px; padding: 0.9rem 1rem; color: var(--text-main); font-size: 0.9rem; }
-        select:focus, textarea:focus { outline: none; border-color: var(--accent-neon); box-shadow: 0 0 12px rgba(0, 242, 254, 0.2); }
+        .code-canvas { font-size: 0.98rem; line-height: 1.65; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; padding-right: 0.5rem; }
+        .code-canvas::-webkit-scrollbar { width: 6px; }
+        .code-canvas::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
 
-        .btn-prime { width: 100%; padding: 1rem; border: none; border-radius: 8px; background: linear-gradient(135deg, var(--accent-neon), var(--accent-purple)); color: black; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
-        .btn-prime:hover { transform: translateY(-2px); color: white; box-shadow: 0 12px 25px rgba(0, 242, 254, 0.3); }
+        /* AUDIO TIMELINE GRID */
+        .soundboard-matrix { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-top: 1rem; }
+        .sound-trigger-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 10px; padding: 1.2rem; text-align: center; cursor: pointer; transition: all 0.2s ease; font-size: 0.85rem; font-weight: 800; letter-spacing: 0.5px; }
+        .sound-trigger-card:hover { background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)); color: white; transform: translateY(-3px); box-shadow: 0 12px 25px rgba(255,0,127,0.25); border-color: transparent; }
 
-        /* RIGHT SCREEN PREVIEW MONITOR */
-        .preview-panel { padding: 2rem; overflow-y: auto; display: flex; flex-direction: column; background-color: rgba(6, 7, 13, 0.6); }
-        .preview-card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.75rem; box-shadow: 0 25px 50px rgba(0,0,0,0.5); flex: 1; display: flex; flex-direction: column; }
-        .preview-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.75rem; }
-        .preview-card-title { font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: var(--accent-neon); letter-spacing: 1px; }
-        
-        .btn-copy { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
-        .btn-copy:hover { background: var(--accent-neon); color: black; }
-
-        .output-viewport { font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; white-space: pre-wrap; flex: 1; overflow-y: auto; }
-        .highlight-box { background: rgba(127, 0, 255, 0.1); border: 1px dashed var(--accent-purple); padding: 1rem; border-radius: 8px; margin-top: 1rem; font-size: 0.85rem; }
+        /* CANVA VISUAL PLACEHOLDER SYSTEM */
+        .canva-mockup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+        .canva-frame-box { background: #080a14; border: 2px dashed rgba(0,210,255,0.2); border-radius: 12px; height: 130px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--text-dark); transition: all 0.3s; }
+        .canva-frame-box.active { border-color: var(--neon-blue); color: #fff; background: rgba(0,210,255,0.03); }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR -->
+    <!-- SIDEBAR PANELS (FILMORA PREMIUM LEVEL) -->
     <div class="sidebar">
         <div>
-            <div class="studio-brand">
-                <div class="brand-logo">🎬</div>
-                <div class="brand-title">
-                    <h1>AJIT PRODUCTION</h1>
-                    <span>Cinematic Director v14.0</span>
+            <div class="studio-logo-area">
+                <div class="logo-diamond">⚡</div>
+                <div class="logo-text">
+                    <h1>AJIT ENTERPRISE</h1>
+                    <span>SaaS Matrix Hub v100.0</span>
                 </div>
             </div>
             
-            <div class="nav-group">
-                <div class="nav-item active" onclick="switchStudioTab(this, 'tab-cinematic')">✨ Cinematic Workflow</div>
-                <div class="nav-item" onclick="switchStudioTab(this, 'tab-pov')">📅 POV Script Engine</div>
-                <div class="nav-item" onclick="switchStudioTab(this, 'tab-meme')">🤪 Soundboard & Memes</div>
-                <div class="nav-item" onclick="switchStudioTab(this, 'tab-meta')">#️⃣ Metadata & Hashtags</div>
+            <div class="menu-list">
+                <div class="menu-btn active" onclick="toggleSuiteTab(this, 'view-filmora')">🎬 Filmora Video Engine</div>
+                <div class="menu-btn" onclick="toggleSuiteTab(this, 'view-eleven')">🎙️ ElevenLabs Voice Lab</div>
+                <div class="menu-btn" onclick="toggleSuiteTab(this, 'view-canva')">🎨 Canva Layout Studio</div>
+                <div class="menu-btn" onclick="toggleSuiteTab(this, 'view-pov')">📅 Global POV Registry</div>
+                <div class="menu-btn" onclick="toggleSuiteTab(this, 'view-seo')">#️⃣ Automated Metadata</div>
             </div>
         </div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">🎬 Professional Video Matrix Engine</div>
+        <div style="font-size: 0.78rem; color: var(--text-dark); font-weight: 600; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem;">
+            🏢 Production House Server Mainframe Connected
+        </div>
     </div>
 
-    <!-- MAIN ENGINE WORKSPACE -->
-    <div class="studio-layout">
-        <div class="top-header">
-            <div style="font-size: 0.95rem; font-weight: 700;">Active Editing Suite / <span style="color:var(--accent-neon);">Timeline Coordinator</span></div>
-            <div class="engine-status">● Advanced Video Preset Matrix Online</div>
+    <!-- MAIN ROOT INTERFACE -->
+    <div class="workspace-root">
+        <div class="studio-top-nav">
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-dark);">Active Node / <span style="color:#fff;">Production Terminal Master</span></div>
+            <div class="saas-badge">⚡ Ultimate Enterprise Edition V100.0</div>
         </div>
 
-        <div class="workspace-grid">
+        <div class="studio-grid">
             
-            <!-- LEFT INPUT CONFIGURATIONS -->
-            <div class="controls-panel">
+            <!-- LEFT INPUT LOGICS PANEL -->
+            <div class="config-deck">
                 
-                <!-- NEW TAB: CINEMATIC WORKFLOW CONTROLLER -->
-                <div id="tab-cinematic" class="panel-tab-content active">
-                    <div class="section-header">
-                        <h2>✨ Advanced Video Workflow Configurator</h2>
-                        <p>Configure advanced flow charts, step-by-step editing notes, and cinematic slow-motion maps instantly.</p>
+                <!-- 🎬 TAB: FILMORA VELOCITY ENGINE -->
+                <div id="view-filmora" class="deck-view active">
+                    <div class="deck-header">
+                        <h2>🎬 Filmora Velocity & Workflow Timeline</h2>
+                        <p>Generate highly comprehensive step-by-step video templates, timeline speed maps, and rendering blueprints.</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Select Video Category Style</label>
-                        <select id="video-style-select">
-                            <option value="slowmo">Cinematic Slow-Motion (Velocity Style Edit)</option>
-                            <option value="workflow">Step-By-Step Interactive Workflow Video</option>
-                            <option value="transition">Fast-Paced High Retention Transition Reel</option>
-                        </select>
+                    <div class="studio-box">
+                        <h4>Timeline Configuration</h4>
+                        <div class="field-row">
+                            <label>Velocity Editing Method</label>
+                            <select id="filmora-speed-curve">
+                                <option value="cinematic-slow">Cinematic Slow-Motion (Velocity Speed Ramping 0.25x)</option>
+                                <option value="interactive-workflow">Interactive SaaS System Workflow Guide</option>
+                                <option value="hyper-transition">Hyper-Fast Whip Transition Blueprint</option>
+                            </select>
+                        </div>
+                        <div class="field-row">
+                            <label>Video Concept Objective</label>
+                            <textarea id="filmora-topic" rows="3" placeholder="e.g., A developer fixing a server at 4 AM with a neon cyberpunk background..."></textarea>
+                        </div>
                     </div>
+                    <button class="master-btn" onclick="compileFilmoraPipeline()">Compile Filmora Master Timeline</button>
+                </div>
 
-                    <div class="form-group">
-                        <label>Production Subject / Theme</label>
-                        <textarea id="video-topic-text" rows="3" placeholder="e.g., A programmer debugging code at 3 AM or a chef flipping a burger..."></textarea>
+                <!-- 🎙️ TAB: ELEVENLABS SOUND LABORATORY -->
+                <div id="view-eleven" class="deck-view">
+                    <div class="deck-header">
+                        <h2>🎙️ ElevenLabs AI Voice Lab</h2>
+                        <p>Map voiceover emotion tracks, speed adjustments, and simulation timelines instantly.</p>
                     </div>
-
-                    <button class="btn-prime" onclick="buildCinematicWorkflow()">Compile Master Video Architecture</button>
+                    <div class="studio-box">
+                        <h4>Acoustic Parameters</h4>
+                        <div class="field-row">
+                            <label>Voiceover Emotion Modulation</label>
+                            <select id="eleven-voice-tone">
+                                <option>High-Energy Relatable Viral Voice (Fast-paced)</option>
+                                <option>Deep Dramatic Cinematic Narrative (Slow & Heavy)</option>
+                                <option>Funny Slapstick Indian Comedy Tone</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="master-btn" onclick="compileElevenLabsPipeline()">Compile Voice Cues & Soundboard</button>
+                    <div class="soundboard-matrix">
+                        <div class="sound-trigger-card" onclick="playMockSound('💵 Simulation Node: Paisa Hi Paisa Sound Triggered!')">💵 Paisa Hi Paisa</div>
+                        <div class="sound-trigger-card" onclick="playMockSound('🏏 Simulation Node: Arre Vedya Sound Triggered!')">🏏 Arre Vedya</div>
+                        <div class="sound-trigger-card" onclick="playMockSound('👓 Simulation Node: Babu Bhaiya Sound Triggered!')">👓 Babu Bhaiya</div>
+                    </div>
                 </div>
 
-                <!-- OLD TABS ENHANCED INSIDE THE ARCHITECTURE -->
-                <div id="tab-pov" class="panel-tab-content">
-                    <div class="section-header"><h2>📅 Global POV Script Engine</h2><p>Fetch direct day scripts seamlessly.</p></div>
-                    <div class="form-group"><label>Target Production Day</label><input type="number" id="pov-day-input" value="1" style="width:100%; padding:0.9rem; background:#000; border:1px solid var(--border-color); border-radius:8px; color:#fff;"></div>
-                    <button class="btn-prime" onclick="runPovEngine()">Fetch Structured Script</button>
+                <!-- 🎨 TAB: CANVA MOCKUP LAYOUT DESIGNER -->
+                <div id="view-canva" class="deck-view">
+                    <div class="deck-header">
+                        <h2>🎨 Canva Asset Layout Mockup Builder</h2>
+                        <p>Simulate layout layers, placement coordination, and thumbnail compositions.</p>
+                    </div>
+                    <button class="master-btn" onclick="compileCanvaMockup()">Generate Canva Layout Map</button>
+                    <div class="canva-mockup-grid">
+                        <div class="canva-frame-box" id="c-box1">Layer 1: Background Base</div>
+                        <div class="canva-frame-box" id="c-box2">Layer 2: Neon Text Glow</div>
+                        <div class="canva-frame-box" id="c-box3">Layer 3: Character Avatar</div>
+                        <div class="canva-frame-box" id="c-box4">Layer 4: High-CTR Sticker</div>
+                    </div>
                 </div>
 
-                <div id="tab-meme" class="panel-tab-content">
-                    <div class="section-header"><h2>🤪 Soundboard Simulation Triggers</h2><p>Map structural audio cues.</p></div>
-                    <button class="btn-prime" onclick="runMemeMap()">Compile Audio Cue Timestamps</button>
+                <!-- 📅 TAB: REGULAR POV ARCHIVE -->
+                <div id="view-pov" class="deck-view">
+                    <div class="deck-header"><h2>📅 Global POV Day Registry</h2><p>Pull master algorithmic production plans.</p></div>
+                    <div class="field-row"><label>Enter Day Target (1-120)</label><input type="number" id="pov-day-target" value="1"></div>
+                    <button class="master-btn" onclick="compilePovDatabase()">Fetch Day Protocol</button>
                 </div>
 
-                <div id="tab-meta" class="panel-tab-content">
-                    <div class="section-header"><h2>#️⃣ Metadata & Hashtags Hub</h2><p>Generate search optimized tags.</p></div>
-                    <button class="btn-prime" onclick="runMetadataGenerator()">Extract Viral SEO Tags</button>
+                <!-- #️⃣ TAB: AUTOMATED SEO METADATA -->
+                <div id="view-seo" class="deck-view">
+                    <div class="deck-header"><h2>#️⃣ Advanced Metadata & Tag Extractor</h2><p>Fetch direct tags to secure index loops.</p></div>
+                    <button class="master-btn" onclick="compileSeoRegistry()">Extract High CTR Tags</button>
                 </div>
 
             </div>
 
-            <!-- RIGHT MONITOR DISPLAY (ELEVENLABS / CANVA OUTPUT SYNC) -->
-            <div class="preview-panel">
-                <div class="preview-card">
-                    <div class="preview-card-header">
-                        <div class="preview-card-title" id="monitor-header">Production Output Workspace</div>
-                        <button class="btn-copy" onclick="copyMonitorContent()">Copy Output Stack</button>
+            <!-- RIGHT HIGH DEFINITION PROCESS OUTPUT MONITOR -->
+            <div class="monitor-deck">
+                <div class="monitor-frame">
+                    <div class="monitor-header">
+                        <div class="monitor-title"><div class="live-dot"></div> <span id="monitor-label">Studio Master Pipeline Screen</span></div>
+                        <button class="copy-pill" onclick="copyMasterOutput()">Copy Core Directive</button>
                     </div>
-                    <pre class="output-viewport" id="monitor-screen">Choose your layout on the left panel and click 'Compile' to generate the comprehensive, step-by-step video creation structure...</pre>
-                    <div class="highlight-box" id="monitor-footer">💡 Tip: Use these directives straight into Filmora or CapCut timelines for immediate high retention.</div>
+                    <pre class="code-canvas" id="monitor-text-canvas">Welcome to v100.0 Ultimate Enterprise Suite. Select an operation on the left navigation panel and trigger 'Compile' to map absolute cinematic blueprints instantly...</pre>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- BRAIN SHIELD MATRIX -->
+    <!-- 🔮 ENGINE RUNTIME SHIELD -->
     <script>
-        function switchStudioTab(element, tabId) {
-            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-            document.querySelectorAll('.panel-tab-content').forEach(content => content.classList.remove('active'));
-            element.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+        function toggleSuiteTab(btnElement, targetId) {
+            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.deck-view').forEach(v => v.classList.remove('active'));
+            btnElement.classList.add('active');
+            document.getElementById(targetId).classList.add('active');
         }
 
-        function buildCinematicWorkflow() {
-            const style = document.getElementById('video-style-select').value;
-            const topic = document.getElementById('video-topic-text').value || "Default Viral Theme";
-            const monitor = document.getElementById('monitor-screen');
-            document.getElementById('monitor-header').innerText = "MONITOR: LIVE VIDEO TIMELINE FLOW";
+        function compileFilmoraPipeline() {
+            const curve = document.getElementById('filmora-speed-curve').value;
+            const topic = document.getElementById('filmora-topic').value || "Cyberpunk Analytics Automation";
+            const canvas = document.getElementById('monitor-text-canvas');
+            document.getElementById('monitor-label').innerText = "MONITOR: FILMORA TIMELINE DATASTREAM";
 
-            if (style === "slowmo") {
-                monitor.innerText = `🎬 CINEMATIC SLOW-MOTION EDITING WORKFLOW 🎬\n--------------------------------------------------\n[THEME]: ${topic}\n\n[TIMELINE TRANSITION MATRIX (FILMORA/CAPCUT)]:\n\n⏱️ 0:00 - 0:04 | THE HOOK (100% Speed)\n- Visual: Start with an extreme wide angle action setting up the theme.\n- Sound: Loud whoosh sound transition effect.\n\n⏱️ 0:04 - 0:12 | THE VELOCITY DROP (Slow-Mo 0.25x Speed)\n- Visual: Zoom in tightly on the most intense part of the action. Perfect focus.\n- Sound: Drop background track volume by 40% and overlay a deep cinematic ambient sub-bass rise.\n- Effect: Add a gentle camera shake blur to mimic premium high-FPS camera renders.\n\n⏱️ 0:12 - 0:30 | THE STABILIZATION RECOVERY (Normal Speed 1.0x)\n- Visual: Fast cuts from 3 different perspective angles showing the conclusion of the video clip.\n- Subtitles: Clean, center-aligned capitalized bold white text bouncing on each word beat!`;
-            } else if (style === "workflow") {
-                monitor.innerText = `💡 INTERACTIVE STEP-BY-STEP WORKFLOW STRUCTURE 💡\n-----------------------------------------------------\n[THEME]: ${topic}\n\n[EXPLAINER ARCHITECTURE FOR MAX ENGAGEMENT]:\n\n📌 PHASE 1: IDENTIFY THE PROBLEM (0:00 - 0:06)\n- Visual: Fast-paced B-roll with a clear bold title text showing exactly what problem you are solving.\n- Audio: Sharp sound effects like keyboard typing or metallic hits.\n\n📌 PHASE 2: BREAKDOWN STEPS (0:06 - 0:22)\n- Step 1: Clear screen recording layout or direct hand actions.\n- Step 2: Overlay a neon pointer circle graphic in Filmora to guide the eye precisely where the action happens.\n- Audio: Crisp narrative overlay synced with subtle lo-fi background music.\n\n📌 PHASE 3: THE MIND-BLOWING RESULT (0:22 - 0:30)\n- Visual: Final working reveal. Brighten the video grading exposure by 10% for a positive release feel.\n- Call To Action: "Save this workflow layout so you don't lose it next time you edit!"`;
+            if(curve === "cinematic-slow") {
+                canvas.innerText = `🎬 MASTER PRODUCTION SUITE: HIGH-VELOCITY SLOW-MOTION BLUEPRINT 🎬\n========================================================================\n[PRODUCTION SUBJECT]: ${topic}\n\n[🎥 FILMORA SPEED RAMPING TIMELINE DATA]:\n\n⏱️ [TRACK PHASE 1] | 0:00 - 0:04 Sec --> INTRO HOOK (Speed: 1.00x Regular)\n- Visual Directive: Subject enters frame with quick horizontal motion. Camera locks focus.\n- Sound Stage Sync: Whoosh audio transition + heavy snare clip hit.\n\n⏱️ [TRACK PHASE 2] | 0:04 - 0:15 Sec --> THE CINEMATIC DROP (Speed: 0.25x Fluid Slow-Mo)\n- Visual Directive: Apply severe speed ramp velocity drop precisely on the key motion clip framework.\n- Video Filter Matrix: Inject subtle cinematic desaturation grading + 5% vignette boost.\n- Timeline Action: Split frame, extend slow motion timeline track to perfectly stretch video details.\n- Sound Stage Sync: Drop melody volume down by -12dB. Overlay heavy industrial sub-bass boom rumble.\n\n⏱️ [TRACK PHASE 3] | 0:15 - 0:30 Sec --> RESOLUTION SPEED UP (Speed: 1.25x Fast Action)\n- Visual Directive: 3 consecutive split-second perspective cuts to maximize retention metrics.\n- Subtitle Overlay: Word-by-word bouncing uppercase font anchored precisely at the bottom center zone.`;
+            } else if(curve === "interactive-workflow") {
+                canvas.innerText = `💡 MASTER PRODUCTION SUITE: INTERACTIVE STEP-BY-STEP WORKFLOW 💡\n=======================================================================\n[PRODUCTION SUBJECT]: ${topic}\n\n[⚙️ STEP-BY-STEP VIDEO WORKFLOW ARCHITECTURE]:\n\n📌 TRACK STEP 1: CONTEXTUAL STATEMENT (0:00 - 0:05 Sec)\n- Direct visual layout overlay explicitly tracking what automated SaaS or digital workflow loop is running.\n\n📌 TRACK STEP 2: LOGICAL STEP EXTRACTION (0:05 - 0:22 Sec)\n- Split screen matrix mapping mouse clicks, screen recording, or precise flow directions.\n- Interactive Asset: Add animated neon circling cursor elements in post-production timeline layout.\n\n📌 TRACK STEP 3: HIGH CTR CONCLUSION (0:22 - 0:30 Sec)\n- Direct end-frame call-to-action tracking setup: "Save this interactive flowchart layout now so you can execute it perfectly on your next workspace editing session!"`;
             } else {
-                monitor.innerText = `🔥 FAST-PACED HIGH RETENTION TRANSITION MATRIX 🔥\n------------------------------------------------------\n[THEME]: ${topic}\n\n[EDITING CONFIGURATION]:\n- Cut every 1.5 seconds strictly matching the heavy drum beats of the trending background audio.\n- Use modern whip-pan and masking transitions to stitch locations smoothly.\n- Engagement Overlay: Progress bar active at the very top of the frame to keep users hooked till 100%.`;
+                canvas.innerText = `🔥 MASTER PRODUCTION SUITE: HYPER-FAST TRANSITION REEL 🔥\n===============================================================\n[PRODUCTION SUBJECT]: ${topic}\n\n[🚀 TRANSITION REEL SPEED GRID]:\n- Strictly slice every video clip at 1.2 seconds to seamlessly pair with rhythmic audio drops.\n- Utilize directional motion blur masking to simulate absolute endless camera loop perspectives.`;
             }
         }
 
-        function runPovEngine() {
-            const day = document.getElementById('pov-day-input').value;
-            document.getElementById('monitor-header').innerText = "MONITOR: SCRIPT GENERATOR ACTIVE";
-            document.getElementById('monitor-screen').innerText = `📅 SCRIPT PIPELINE FOR DAY ${day}\n==================================\n\n[Concept]: Automated viral concept targeted for high audience retention on Day ${day}.\n\n[Timeline Instructions]: Apply smooth audio levels and matching expressions on every transition cut block.`;
+        function compileElevenLabsPipeline() {
+            const tone = document.getElementById('eleven-voice-tone').value;
+            document.getElementById('monitor-label').innerText = "MONITOR: ELEVENLABS ACOUSTIC SCHEMATIC";
+            document.getElementById('monitor-text-canvas').innerText = `🎙️ ELEVENLABS AI VOICESTAGE TIMELINE ANALYSIS 🎙️\n======================================================\n[SELECTED TARGET METRIC]: ${tone}\n\n[🔊 TRACK-SYNCED EMOTION & SPEED TIMELINE DIRECTIVES]:\n\n- ⏱️ 0:00 - 0:06 Sec: Start voice track at 1.1x speed. Tone profile: Intrigued, hyper-clear, crisp diction.\n- ⏱️ 0:06 - 0:15 Sec: Drop voice modulation speed down to 0.85x strictly matching the cinematic slow-motion drop on video. Tone profile: Deep, whispered, impactful narrative weight.\n- ⏱️ 0:15 - 0:30 Sec: Return vocal profile track back to 1.05x normal velocity. Accentuate terminal keywords to force immediate screen interaction loop metrics.\n\n[⚡ AUDIO ENGINE COMPATIBILITY]: Audio timelines pre-rendered for instant combination inside master layout.`;
         }
 
-        function runMemeMap() {
-            document.getElementById('monitor-header').innerText = "MONITOR: AUDIO STIMULATION TIMELINE";
-            document.getElementById('monitor-screen').innerText = `🤪 MEME AUDIO TIMESTAMPS SYNC DATA\n========================================\n\n- [0:05 Sec]: Insert "Paisa Hi Paisa" volume peak 0db.\n- [0:14 Sec]: Velocity edit drops - snap loop "Arre Vedya" cue.\n- [0:25 Sec]: Close segment with clean "Babu Bhaiya" sigh voice effect.`;
+        function playMockSound(msg) {
+            document.getElementById('monitor-label').innerText = "MONITOR: SIMULATED AUDIO SOUNDSTAGE";
+            document.getElementById('monitor-text-canvas').innerText = `🔊 AUDIO REVERB PIPE HARDWARE SIMULATION ACTIVE\n-------------------------------------------------------\n\n⚡ STATUS: ${msg}\n\n[Architecture Note]: Secure offline playback system executed with zero server dependencies and absolute low-latency tracking pipeline sync!`;
         }
 
-        function runMetadataGenerator() {
-            document.getElementById('monitor-header').innerText = "MONITOR: LIVE SEO TAG MATRIX";
-            document.getElementById('monitor-screen').innerText = `#️⃣ VIRAL METADATA EXTRACTION HUB\n====================================\n\n[Primary Tags]: #VideoEditing #CinematicShorts #FilmoraWorkflow #SlowMotionMagic #ContentCreator \n\n[Description Optimization Block]: Optimized with high indexing keywords to rank in search loops safely.`;
+        function compileCanvaMockup() {
+            document.getElementById('monitor-label').innerText = "MONITOR: CANVA LAYOUT SHEET";
+            document.getElementById('monitor-text-canvas').innerText = `🎨 CANVA MASTER COMPOSITING GRAPHIC LAYOUT SHEET 🎨\n=======================================================\n\n[📐 GRAPHIC DESIGN PLACEMENT COORDINATION ARCHITECTURE]:\n\n- 🟦 LAYER 1 (Base Background): Dark deep gradient hue tint (#030408 to #0d0f19) to create massive contrast for scrolling eyes.\n- 🟨 LAYER 2 (Core Text Structure): Ultra bold sans-serif font layout. Apply deep drop shadows to push individual characters forward.\n- 🟩 LAYER 3 (Main Visual Subject): Centered focal element with a high-exposure 15px glowing outer neon stroke perimeter filter.\n- 🟥 LAYER 4 (Viral Anchor Badge): High-CTR visual sticker element angled at -5 degrees in top right sector to lock viewer curiosity instantly.`;
+            
+            document.getElementById('c-box1').classList.add('active');
+            document.getElementById('c-box2').classList.add('active');
+            document.getElementById('c-box3').classList.add('active');
+            document.getElementById('c-box4').classList.add('active');
+            setTimeout(() => {
+                document.querySelectorAll('.canva-frame-box').forEach(b => b.classList.remove('active'));
+            }, 4000);
         }
 
-        function copyMonitorContent() {
-            const text = document.getElementById('monitor-screen').innerText;
+        function compilePovDatabase() {
+            const day = document.getElementById('pov-day-target').value;
+            document.getElementById('monitor-label').innerText = "MONITOR: GLOBAL POV REGISTRY ENTRY";
+            document.getElementById('monitor-text-canvas').innerText = `📅 MASTER ALGORITHMIC POV PRODUCTION SCHEDULER: DAY ${day}\n====================================================================\n\n[Algorithmic Trend Registry Target]: Day ${day} content stack ready for script execution.\n\n[Timeline Setup Directive]: Cross-reference Filmora Velocity Matrix configuration parameters to seamlessly deploy matching video clips.`;
+        }
+
+        function compileSeoRegistry() {
+            document.getElementById('monitor-label').innerText = "MONITOR: METADATA EXTRACTION MATRIX";
+            document.getElementById('monitor-text-canvas').innerText = `#️⃣ ADVANCED HIGH CTR SEARCH-OPTIMIZED METADATA MATRIX #️⃣\n===============================================================\n\n[SEO Primary Tags]: #ProductionHouse #SaaSStudio #FilmoraVelocity #ElevenLabsVoiceSTAGE #CanvaLayout #ContentAutomation\n\n[Algorithmic Indexing Loop Block]: High indexing metadata strings compiled successfully. Paste directly into video details to anchor search metrics instantly.`;
+        }
+
+        function copyMasterOutput() {
+            const text = document.getElementById('monitor-text-canvas').innerText;
             navigator.clipboard.writeText(text);
-            alert('Production directives copied to clip-board!');
+            alert('Enterprise Production House directive copied to clipboard successfully!');
         }
     </script>
 </body>
