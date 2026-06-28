@@ -3,209 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJIT OMNI MATRIX v9000.0 - Full Video Engine</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>AJIT MULTI-APP PRODUCTION HOUSE v11000.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --galaxy-bg: #010205;
-            --cosmic-sidebar: #070914;
-            --nebula-card: #0e1124;
-            --star-cyan: #00f2fe;
-            --star-pink: #ff007f;
-            --star-purple: #7f00ff;
-            --star-gold: #ffd700;
-            --text-glowing: #f8fafc;
-            --text-faded: #475569;
+            --bg-master: #04050a;
+            --panel-bg: #0d0f1d;
+            --card-inner: #141830;
+            --canva-color: #00c4cc;
+            --filmora-color: #3ae374;
+            --eleven-color: #ff3838;
+            --pexels-color: #0052cc;
+            --sora-color: #ff9f1a;
+            --text-light: #f8fafc;
+            --text-dark: #64748b;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--galaxy-bg); color: var(--text-glowing); min-height: 100vh; display: flex; overflow: hidden; }
+        body { background-color: var(--bg-master); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
 
-        /* SIDEBAR STYLE */
-        .sidebar { width: 330px; background-color: var(--cosmic-sidebar); border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; justify-content: space-between; padding: 2.5rem 1.5rem; position: relative; }
-        .sidebar::after { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 100%; background: linear-gradient(180deg, var(--star-cyan), var(--star-pink), var(--star-purple)); }
+        /* HEADER DESIGN */
+        .master-header { height: 80px; background-color: var(--panel-bg); border-bottom: 2px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
+        .master-header h1 { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #fff, var(--canva-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .live-status { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; padding: 0.5rem 1rem; background: rgba(0, 196, 204, 0.1); border: 1px solid var(--canva-color); border-radius: 20px; color: var(--canva-color); }
+
+        /* MAIN APPS LAYOUT CONTAINER */
+        .apps-container { padding: 2rem; display: flex; flex-direction: column; gap: 3rem; max-width: 1400px; margin: 0 auto; width: 100%; }
         
-        .brand-area { display: flex; align-items: center; gap: 0.85rem; margin-bottom: 2.5rem; }
-        .core-logo { width: 48px; height: 48px; background: linear-gradient(135deg, var(--star-cyan), var(--star-purple)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.6rem; box-shadow: 0 0 30px rgba(0,242,254,0.4); }
+        /* STANDALONE APP BLOCK STYLE */
+        .independent-app-card { background-color: var(--panel-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 28px; padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.5); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; position: relative; }
+        .independent-app-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; border-radius: 28px 0 0 28px; }
         
-        .menu-list { display: flex; flex-direction: column; gap: 0.5rem; }
-        .menu-btn { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.3rem; border-radius: 16px; color: var(--text-faded); font-size: 0.95rem; font-weight: 700; cursor: pointer; transition: all 0.25s; }
-        .menu-btn:hover, .menu-btn.active { color: #fff; background-color: rgba(255,255,255,0.03); }
-        .menu-btn.active { border-left: 5px solid var(--star-cyan); background: linear-gradient(90deg, rgba(0,242,254,0.1), transparent); }
+        /* INDIVIDUAL APP ACCENTS */
+        .app-canva::before { background-color: var(--canva-color); }
+        .app-filmora::before { background-color: var(--filmora-color); }
+        .app-eleven::before { background-color: var(--eleven-color); }
+        .app-pexels::before { background-color: var(--pexels-color); }
+        .app-sora::before { background-color: var(--sora-color); }
 
-        /* MAIN LAYOUT WORKSPACE */
-        .studio-workspace { flex: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; height: 100vh; overflow: hidden; }
-        .left-control-panel { padding: 2.5rem; border-right: 1px solid rgba(255,255,255,0.06); overflow-y: auto; background: radial-gradient(circle at top left, rgba(0,242,254,0.03), transparent); }
-        .right-monitor-panel { padding: 2.5rem; background-color: #020305; display: flex; flex-direction: column; overflow: hidden; }
+        .app-info h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .app-info p { color: var(--text-dark); font-size: 0.92rem; margin-bottom: 1.5rem; }
 
-        .pane-view { display: none; }
-        .pane-view.active { display: block; }
-
-        .header-block { margin-bottom: 2rem; }
-        .header-block h2 { font-size: 1.9rem; font-weight: 800; margin-bottom: 0.4rem; background: linear-gradient(135deg, #fff, var(--star-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .header-block p { color: var(--text-faded); font-size: 0.95rem; }
-
-        .interactive-box { background: rgba(14,17,36,0.4); border: 1px solid rgba(255,255,255,0.04); border-radius: 24px; padding: 1.75rem; margin-bottom: 1.75rem; backdrop-filter: blur(5px); }
-        .interactive-box h4 { font-size: 0.88rem; text-transform: uppercase; color: var(--star-pink); margin-bottom: 1.2rem; letter-spacing: 1px; font-weight: 800; }
-
-        .input-group { margin-bottom: 1.5rem; }
-        .input-group label { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--text-faded); margin-bottom: 0.65rem; letter-spacing: 0.5px; }
+        .input-block { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; }
+        label { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: var(--text-dark); margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+        input[type="text"], select, textarea { width: 100%; background-color: #06070c; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.9rem; color: #fff; font-size: 0.92rem; }
         
-        input[type="text"], select, textarea { width: 100%; background-color: #030408; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 1.1rem; color: #fff; font-size: 0.95rem; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--star-cyan); box-shadow: 0 0 20px rgba(0,242,254,0.25); }
+        .studio-btn { width: 100%; padding: 1rem; border: none; border-radius: 10px; color: white; font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; transition: transform 0.2s; }
+        .studio-btn:hover { transform: translateY(-2px); }
 
-        .compile-btn { width: 100%; padding: 1.25rem; border: none; border-radius: 12px; background: linear-gradient(135deg, var(--star-cyan), var(--star-pink), var(--star-purple)); color: white; font-weight: 800; font-size: 1.02rem; cursor: pointer; text-transform: uppercase; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); letter-spacing: 0.5px; }
-        .compile-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,242,254,0.4); text-shadow: 0 0 5px #fff; }
-
-        .router-btn-stack { display: grid; grid-template-columns: 1fr; gap: 0.85rem; margin-top: 1.25rem; }
-        .router-card { width: 100%; padding: 1.15rem; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.01); border-radius: 12px; color: #fff; text-decoration: none; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.95rem; transition: all 0.25s; }
-        .router-card:hover { background: linear-gradient(90deg, var(--star-purple), var(--star-pink)); color: white; transform: translateX(6px); }
-
-        /* LIVE DISPLAY */
-        .monitor-frame { background-color: var(--nebula-card); border: 1px solid rgba(255,255,255,0.05); border-radius: 26px; padding: 2.2rem; flex: 1; display: flex; flex-direction: column; box-shadow: 0 35px 70px rgba(0,0,0,0.7); }
-        .monitor-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 1.1rem; }
-        .monitor-lbl { font-size: 0.95rem; font-weight: 800; text-transform: uppercase; color: var(--star-gold); letter-spacing: 1.5px; display: flex; align-items: center; gap: 0.5rem; }
+        /* OUTPUT MONITOR TILES */
+        .app-monitor { background-color: var(--card-inner); border: 1px solid rgba(255,255,255,0.04); border-radius: 20px; padding: 1.5rem; display: flex; flex-direction: column; }
+        .monitor-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.82rem; font-weight: 800; text-transform: uppercase; }
+        .canvas-screen { font-size: 0.95rem; line-height: 1.6; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; max-height: 250px; }
         
-        .pulse-dot { width: 10px; height: 10px; background-color: var(--star-gold); border-radius: 50%; animation: blink 1s infinite alternate; }
-        @keyframes blink { from { opacity: 0.4; } to { opacity: 1; } }
-
-        .display-canvas { font-size: 1.05rem; line-height: 1.7; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; padding-right: 0.5rem; }
-        .display-canvas::-webkit-scrollbar { width: 6px; }
-        .display-canvas::-webkit-scrollbar-thumb { background: rgba(0,242,254,0.1); border-radius: 10px; }
-        
-        .copy-btn-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: #fff; padding: 0.55rem 1.2rem; border-radius: 10px; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
-        .copy-btn-pill:hover { background: var(--star-cyan); color: black; }
-        .badge-inc { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--star-cyan); background: rgba(0,242,254,0.07); padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.6rem; border: 1px solid rgba(0,242,254,0.15); }
+        .copy-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); color: #fff; padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer; }
+        .copy-pill:hover { background: #fff; color: black; }
+        .external-link { display: inline-block; text-align: center; margin-top: 1rem; padding: 0.85rem; border: 1px dashed rgba(255,255,255,0.1); border-radius: 10px; color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 700; width: 100%; transition: background 0.2s; }
+        .external-link:hover { background: rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR LEFT -->
-    <div class="sidebar">
-        <div>
-            <div class="brand-area">
-                <div class="core-logo">🌌</div>
-                <div>
-                    <h1 style="font-size:1.2rem; font-weight:800;">AJIT METAVERSE</h1>
-                    <span style="font-size:0.72rem; color:var(--star-cyan); font-weight:800; letter-spacing:1.5px;">OMNI ENGINE v9000.0</span>
-                </div>
-            </div>
-            <div class="menu-list">
-                <div class="menu-btn active" onclick="switchOmniTab(this, 'pane-omni-factory')">🛰️ Omni Production Factory</div>
-                <div class="menu-btn" onclick="switchOmniTab(this, 'pane-routers')">⚙️ Cloud Core Routers</div>
-            </div>
-        </div>
-        <div style="font-size: 0.8rem; color: var(--text-faded); text-align: center; font-weight: 700;">Supreme Platform Operational ⚡</div>
+    <!-- CONTROL SUITE HEADER -->
+    <div class="master-header">
+        <h1>AJIT PRODUCTION NATION MASTER</h1>
+        <div class="live-status">● Standalone Multi-App Mesh Active</div>
     </div>
 
-    <!-- MAIN INTERACTIVE STUDIO WORKSPACE -->
-    <div class="studio-workspace">
-        
-        <!-- LEFT CONTROL PANEL -->
-        <div class="left-control-panel">
-            
-            <!-- TAB 1: OMNI MULTI-GENERATOR FACTORY -->
-            <div id="pane-omni-factory" class="pane-view active">
-                <div class="header-block">
-                    <h2>🛰️ 1-Click Complete Video Omni-Factory</h2>
-                    <p>Apna main topic daalein. System automatic script, HD cartoon render elements, timeline sheets aur dynamic backgrounds ek sath design karega.</p>
+    <!-- SAARE APPS ALAG ALAG LINE SE -->
+    <div class="apps-container">
+
+        <!-- APP 1: CANVA LAYOUT STUDIO -->
+        <div class="independent-app-card app-canva" id="canva-app">
+            <div class="app-info">
+                <h2>🎨 Canva AI Thumbnail Editor</h2>
+                <p>Apne short films ke liye high-CTR custom graphic compositions aur layout structure frameworks generate karein.</p>
+                <div class="input-block">
+                    <label>Thumbnail Core Concept Text</label>
+                    <input type="text" id="canva-input" value="EXAM HORROR: 0% Self Control">
                 </div>
-                <div class="interactive-box">
-                    <span class="badge-inc">Quantum Processing Unit</span>
-                    
-                    <div class="input-group">
-                        <label>Main Video Concept / Script Topic</label>
-                        <input type="text" id="omni-topic-input" value="Digital Fasting: Phone Addiction vs Self Control">
-                    </div>
-
-                    <div class="input-group">
-                        <label>HD Cartoon Character Style</label>
-                        <select id="omni-character-style">
-                            <option value="pixar-3d">Pixar 3D Cinematic Animation Style</option>
-                            <option value="anime-hd">Hyper-Detailed Modern Anime Style</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group">
-                        <label>Auto AI Background Theme Generator Mode</label>
-                        <select id="omni-bg-mode">
-                            <option value="cyber-dark">Cyberpunk Dark Glow Environment (Neon Shading)</option>
-                            <option value="cozy-warm">Cozy Cinematic Room (Volumetric Light Rays)</option>
-                        </select>
-                    </div>
-
-                    <button class="compile-btn" onclick="generateOmniVideoStack()">Compile 4-In-1 Production Matrix</button>
-                </div>
+                <button class="studio-btn" style="background-color: var(--canva-color);" onclick="runCanvaApp()">Generate Canva Layer Map</button>
+                <a href="https://canva.com/" target="_blank" class="external-link">Open Canva Web Application ↗</a>
             </div>
-
-            <!-- TAB 2: ROUTERS -->
-            <div id="pane-routers" class="pane-view">
-                <div class="header-block">
-                    <h2>⚙️ Multi-AI Cloud Render Routers</h2>
-                    <p>Material compile karne ke baad links ko open karke assets direct render kar lo:</p>
-                </div>
-                <div class="interactive-box">
-                    <span class="badge-inc">External Dispatch</span>
-                    <div class="router-btn-stack">
-                        <a href="https://www.capcut.com/" target="_blank" class="router-card">🎬 Open CapCut AI Web (Auto Captions & Audio Sync) <span>→</span></a>
-                        <a href="https://runwayml.com/" target="_blank" class="router-card">🖼 shrink Open Runway Gen-3 (Image-To-Video Rendering) <span>→</span></a>
-                        <a href="https://elevenlabs.io/" target="_blank" class="router-card">🎙️ Open ElevenLabs (High-Fidelity AI Voice) <span>→</span></a>
-                    </div>
-                </div>
+            <div class="app-monitor">
+                <div class="monitor-head"><span style="color: var(--canva-color);">Canva Display Output</span> <button class="copy-pill" onclick="copyText('canva-screen')">Copy</button></div>
+                <pre class="canvas-screen" id="canva-screen">Generate button par click karke Canva layout sheet render karein...</pre>
             </div>
-
         </div>
 
-        <!-- RIGHT OUTPUT RUNTIME MONITOR DISPLAY -->
-        <div class="right-monitor-panel">
-            <div class="monitor-frame">
-                <div class="monitor-nav">
-                    <div class="monitor-lbl"><div class="pulse-dot"></div> <span id="monitor-title">Omni-Channel Broadcast Screen</span></div>
-                    <button class="copy-btn-pill" onclick="copyOmniCanvasData()">Copy Core Stack</button>
+        <!-- APP 2: FILMORA SPEED RUNNER -->
+        <div class="independent-app-card app-filmora" id="filmora-app">
+            <div class="app-info">
+                <h2>🎬 Filmora Velocity Timeline Coordinator</h2>
+                <p>Cinematic editing clips ke liye step-by-step custom timeline, video transitions, aur speed ramps design karein.</p>
+                <div class="input-block">
+                    <label>Select Editing Curve Style</label>
+                    <select id="filmora-select">
+                        <option value="slowmo">Cinematic Speed-Ramp (0.25x Fluid Slow-Mo Drop)</option>
+                        <option value="workflow">Interactive System Step Explainer Workflow</option>
+                    </select>
                 </div>
-                <pre class="display-canvas" id="monitor-screen">Parameters set karke 'Compile' button par click karein. Aapki script, HD Cartoon prompts, Timeline sheets aur Automatic Background maps ek single screen par live generate ho jayenge...</pre>
+                <button class="studio-btn" style="background-color: var(--filmora-color);" onclick="runFilmoraApp()">Compile Filmora Timeline</button>
+                <a href="https://www.capcut.com/" target="_blank" class="external-link">Open CapCut / Filmora Web Panel ↗</a>
+            </div>
+            <div class="app-monitor">
+                <div class="monitor-head"><span style="color: var(--filmora-color);">Filmora Timeline Stream</span> <button class="copy-pill" onclick="copyText('filmora-screen')">Copy</button></div>
+                <pre class="canvas-screen" id="filmora-screen">Compile button par click karke execution tracks analyze karein...</pre>
+            </div>
+        </div>
+
+        <!-- APP 3: ELEVENLABS AUDIO LAB -->
+        <div class="independent-app-card app-eleven" id="eleven-app">
+            <div class="app-info">
+                <h2>🎙️ ElevenLabs AI Voice Stage</h2>
+                <p>On-the-spot custom script generation ke sath acoustic modulation timelines jodna.</p>
+                <div class="input-block">
+                    <label>Enter Main Script Script Topic / Idea</label>
+                    <input type="text" id="eleven-input" value="Digital Fasting Trap: Phone Addiction">
+                </div>
+                <button class="studio-btn" style="background-color: var(--eleven-color);" onclick="runElevenApp()">Generate High Retention Script</button>
+                <a href="https://elevenlabs.io/" target="_blank" class="external-link">Open ElevenLabs Speech Interface ↗</a>
+            </div>
+            <div class="app-monitor">
+                <div class="monitor-head"><span style="color: var(--eleven-color);">ElevenLabs Script Studio</span> <button class="copy-pill" onclick="copyText('eleven-screen')">Copy</button></div>
+                <pre class="canvas-screen" id="eleven-screen">Button daba kar dynamic automated content script fetch karein...</pre>
+            </div>
+        </div>
+
+        <!-- APP 4: PEXELS BACKGROUND GENERATOR -->
+        <div class="independent-app-card app-pexels" id="pexels-app">
+            <div class="app-info">
+                <h2>🌌 Pexels Auto AI Background Engine</h2>
+                <p>Video short films ke piche use karne ke liye perfect visual backgrounds aur atmosphere lighting structures setup karein.</p>
+                <div class="input-block">
+                    <label>Select Atmosphere Theme</label>
+                    <select id="pexels-select">
+                        <option value="cyber">Cyberpunk Dark Workspace Shading</option>
+                        <option value="cozy">Cozy Warm Ambient Bedroom Rays</option>
+                    </select>
+                </div>
+                <button class="studio-btn" style="background-color: var(--pexels-color);" onclick="runPexelsApp()">Generate Background Tokens</button>
+            </div>
+            <div class="app-monitor">
+                <div class="monitor-head"><span style="color: var(--pexels-color);">Pexels Background Shaders</span> <button class="copy-pill" onclick="copyText('pexels-screen')">Copy</button></div>
+                <pre class="canvas-screen" id="pexels-screen">Generate par click karke prompt composition assets read karein...</pre>
+            </div>
+        </div>
+
+        <!-- APP 5: SORA IMAGE-TO-VIDEO PROMPT GENERATOR -->
+        <div class="independent-app-card app-sora" id="sora-app">
+            <div class="app-info">
+                <h2>🚀 Sora / Runway Image-To-Video Studio</h2>
+                <p>Convert raw concept ideas into advanced tokens for direct high-level AI video generation engines.</p>
+                <div class="input-block">
+                    <label>Describe Characters & Action</label>
+                    <textarea id="sora-input" rows="2">A man in a white polo shirt and a child in a yellow t-shirt looking surprised</textarea>
+                </div>
+                <button class="studio-btn" style="background-color: var(--sora-color);" onclick="runSoraApp()">Compile Rendering Prompt</button>
+                <a href="https://runwayml.com/" target="_blank" class="external-link">Open Runway Gen-3 AI Workspace ↗</a>
+            </div>
+            <div class="app-monitor">
+                <div class="monitor-head"><span style="color: var(--sora-color);">Sora Prompt Monitor</span> <button class="copy-pill" onclick="copyText('sora-screen')">Copy</button></div>
+                <pre class="canvas-screen" id="sora-screen">Compile dabakar premium cinema parameters pipeline extract karein...</pre>
             </div>
         </div>
 
     </div>
 
-    <!-- CODE INTERACTION CORE ENGINE -->
+    <!-- OPERATIONS SYSTEM ENGINE -->
     <script>
-        function switchOmniTab(btn, id) {
-            document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.pane-view').forEach(p => p.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById(id).classList.add('active');
+        function runCanvaApp() {
+            const txt = document.getElementById('canva-input').value;
+            document.getElementById('canva-screen').innerText = `🎨 CANVA COMPOSITING GRAPHIC SHEET LAYOUT:\n==================================================\n- Layer Node 1 (Base): High contrast dark hue gradient base link.\n- Layer Node 2 (Text): Ultra bold typography layout displaying "${txt}" with extreme drop shadows.\n- Layer Node 3 (Effects): Inject 15px glowing neon stroke outlines to capture scrolling eyes instantly.`;
         }
 
-        function generateOmniVideoStack() {
-            const topic = document.getElementById('omni-topic-input').value;
-            const style = document.getElementById('omni-character-style').value;
-            const bgMode = document.getElementById('omni-bg-mode').value;
-            const canvas = document.getElementById('monitor-screen');
-            document.getElementById('monitor-title').innerText = "MONITOR: UNIFIED BROADCAST DATA STACK";
-
-            let characterPrompt = "";
-            if(style === 'pixar-3d') {
-                characterPrompt = `Pixar 3D animation style, hyper-expressive facial features, clean mesh topology, flawless subsurface skin scattering, cinematic volumetric lighting, soft render finish, rich emotional profile.`;
+        function runFilmoraApp() {
+            const val = document.getElementById('filmora-select').value;
+            if(val === 'slowmo') {
+                document.getElementById('filmora-screen').innerText = `🎬 FILMORA SPEED-RAMPING VELOCITY TIMELINE:\n==================================================\n- ⏱️ 0:00 - 0:04 Sec: Intro Shock Hook (Speed 1.0x Normal Flow)\n- ⏱️ 0:04 - 0:14 Sec: THE CINEMATIC DROP (Speed 0.25x Velocity Slow-Mo)\n  -> Action: Zoom tightly on character expressions. Attenuate ambient track audio by -12dB.\n- ⏱️ 0:14 - 0:30 Sec: Fast perspective split cuts to maximize retention scores.`;
             } else {
-                characterPrompt = `Hyper-detailed modern anime vector line-art style, highly vibrant aesthetic shorings, sharp focal points, premium dramatic lighting overlay shading.`;
+                document.getElementById('filmora-screen').innerText = `⚙️ STEP-BY-STEP INTERACTIVE WORKFLOW CHART:\n==================================================\n- ⏱️ 0:00 - 0:05 Sec: Core statement center bouncing text animation tracking loop.\n- ⏱️ 0:05 - 0:22 Sec: Split screen layout capturing dual recording actions with animated neon circle pointers.\n- ⏱️ 0:22 - 0:30 Sec: "Save this interactive flowchart map right now so you can design it flawlessly!"`;
             }
-
-            let backgroundPrompt = "";
-            if(bgMode === 'cyber-dark') {
-                backgroundPrompt = `Cyberpunk dark workspace environment, glowing matrix screens, floating digital hologram layers, deep neon purple and cyan illumination offsets, octane render depth, extreme contrast, sharp bokeh highlights.`;
-            } else {
-                backgroundPrompt = `Cozy aesthetic bedroom ambient environment, warm sunbeam rays passing through glass window frame panels, soft dust particle simulation, ultra photorealistic lens blur grading.`;
-            }
-
-            canvas.innerText = `👑 OMNI-MATRIX AUTOMATION HOUSE: COMPREHENSIVE PRODUCTION PROTOCOL 👑\n========================================================================\n\n[🎥 PRODUCTION TOPIC CORE]: ${topic}\n\n[📝 PHASE 1: DYNAMIC HIGH-RETENTION VIDEO SCRIPT]\n------------------------------------------------------------\n⏱️ 0:00 - 0:05 Sec | THE AUDIO HOOK:\n  - Visual: Close-up zoom shift tracking high action focus.\n  - Voiceover: "POV: Jab tum decide karte ho ki aaj se social media band... aur theek 2 minute baad tumhara haath apne aap icon par click kar deta hai!"\n\n⏱️ 0:05 - 0:18 Sec | THE VELOCITY DROP ANALYSIS:\n  - Visual: Apply fluid 0.25x velocity slow-motion curve ramping on character expressions.\n  - Voiceover: "Self-control ek myth lagne lagta hai jab dimaag notifications ke loops mein phasa ho."\n\n⏱️ 0:18 - 0:30 Sec | RETENTION END LOOP MATRIX:\n  - Visual: Multi-angle split cuts sequence flashing center captions.\n  - Voiceover: "Agar tum bhi isi trap mein fase ho, toh comment mein batao aur video ko SAVE kar lo!"\n\n\n[🖼️ PHASE 2: HD CARTOON CHARACTER RENDERING ARCHITECT]\n------------------------------------------------------------\n- Engine Compatibility: Runway Gen-3 / Midjourney v6\n- Master Copy-Paste Prompt Token:\n  "HD 3D character render model showing a man in a white polo shirt looking surprised and shell-shocked at a device screen, ${characterPrompt}"\n\n\n[🎨 PHASE 3: AUTO AI BACKGROUND GENERATOR NODE]\n------------------------------------------------------------\n- Context Integration: (System automatically matched ambient layers based on script script details)\n- Master Copy-Paste Prompt Token:\n  "An cinematic empty background layout composition matching the screen-addiction narrative theme, ${backgroundPrompt} --ar 9:16 --v 6.0"\n\n\n[🎬 PHASE 4: AUTO-EDITING TIMELINE CONFIGURATION SHEET]\n------------------------------------------------------------\n- Track 1 (ElevenLabs): Import Phase 1 vocal script file at 1.08x playback speed factor.\n- Track 2 (Filmora/CapCut): Deploy HD character render on top overlay layer. Apply 0.25x velocity drop at exactly 0:05. Match with sub-bass ambient audio drops.\n- Track 3 (Captions): Bouncing uppercase word-by-word bold texts aligned strictly on screen center coordinate vector nodes.`;
         }
 
-        function copyOmniCanvasData() {
-            const txt = document.getElementById('monitor-screen').innerText;
-            navigator.clipboard.writeText(txt);
-            alert('Omni-Channel Complete Video data stack copied to clipboard successfully!');
+        function runElevenApp() {
+            const topic = document.getElementById('eleven-input').value;
+            document.getElementById('eleven-screen').innerText = `📝 DYNAMIC RESTRUCTURING HIGH-RETENTION CONTENT SCRIPT:\n==================================================\n[CONCEPT]: ${topic}\n\n- ⏱️ 0:00 - 0:06 Sec | HOOK: "POV: Jab tum decide karte ho ki aaj se 'Digital Fasting' strictly shuru... aur theek 2 minute baad tumhara haath apne aap notifications track karne bhagta hai!"\n- ⏱️ 0:06 - 0:20 Sec | MIDDLE: "Self-control ka loop toot jata hai jab scrolling ki addiction haavi ho jaye."\n- ⏱️ 0:20 - 0:30 Sec | CTA: "Agar tum bhi isi trap mein phase ho, toh comments mein batao aur video ko SAVE kar lo!"`;
+        }
+
+        function runPexelsApp() {
+            const theme = document.getElementById('pexels-select').value;
+            if(theme === 'cyber') {
+                document.getElementById('pexels-screen').innerText = `🌌 AUTO AI PEXELS SHADING CONFIGURATION:\n==================================================\n- Theme: Cyberpunk dark workspace ambient base layers.\n- Shading Data: Deep purple and cyan matrix glow illumination, rows of floating display code charts --ar 9:16`;
+            } else {
+                document.getElementById('pexels-screen').innerText = `🌌 AUTO AI PEXELS SHADING CONFIGURATION:\n==================================================\n- Theme: Cozy warm bedroom aesthetic environment map.\n- Shading Data: Volumetric sunbeam light rays coming through window frames, realistic deep focus lens blur adjustments --ar 9:16`;
+            }
+        }
+
+        function runSoraApp() {
+            const scene = document.getElementById('sora-input').value;
+            document.getElementById('sora-screen').innerText = `🚀 ADVANCED SORA / RUNWAY VIDEO COMPILER PROMPT:\n==================================================\n"3D animation movie quality render of ${scene}, highly expressive emotional portraits, warm subsurface skin scattering tokens, vibrant color grading palette, realistic action physics velocity ramping, global illumination render --motion 7"`;
+        }
+
+        function copyText(id) {
+            navigator.clipboard.writeText(document.getElementById(id).innerText);
+            alert('App workspace code data copied safely!');
         }
     </script>
 </body>
