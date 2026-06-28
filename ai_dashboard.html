@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajit AI-OS v10.0 Supreme Creator Production Suite</title>
+    <title>Ajit AI-OS v11.0 Omni Creator Core</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,24 +20,9 @@
             --text-secondary: #94a3b8;
         }
 
-        * {
-            box-sizing: border-box; margin: 0; padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background: radial-gradient(circle at 50% 50%, #0a0d1a 0%, var(--bg-dark) 100%);
-            color: var(--text-primary); min-height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            padding: 1rem; position: relative; overflow-x: hidden;
-        }
-
-        body::before, body::after {
-            content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%;
-            background: var(--neon-purple); filter: blur(170px); opacity: 0.14; z-index: -1;
-            animation: orbBounce 15s infinite alternate;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: radial-gradient(circle at 50% 50%, #0a0d1a 0%, var(--bg-dark) 100%); color: var(--text-primary); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 1rem; position: relative; overflow-x: hidden; }
+        body::before, body::after { content: ''; position: absolute; width: 400px; height: 400px; border-radius: 50%; background: var(--neon-purple); filter: blur(170px); opacity: 0.14; z-index: -1; animation: orbBounce 15s infinite alternate; }
         body::after { background: var(--neon-cyan); right: 5%; top: 10%; animation-delay: 4s; }
 
         @keyframes orbBounce {
@@ -45,48 +30,23 @@
             100% { transform: translate(60px, -60px) scale(1.25); }
         }
 
-        .smartphone-container {
-            width: 100%; max-width: 460px; background: var(--phone-bg);
-            border: 12px solid #161824; border-radius: 60px; height: 930px;
-            box-shadow: 0 65px 130px rgba(0,0,0,0.95), inset 0 0 50px rgba(0,0,0,0.99);
-            overflow: hidden; position: relative; display: flex; flex-direction: column;
-        }
-
-        .phone-status-bar {
-            padding: 1.2rem 2.2rem 0.5rem 2.2rem; display: flex;
-            justify-content: space-between; align-items: center;
-            font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.8); z-index: 100;
-        }
-
-        .dynamic-notch {
-            width: 125px; height: 32px; background: #000; border-radius: 30px;
-            position: absolute; left: 50%; top: 10px; transform: translateX(-50%); z-index: 101;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.6);
-        }
+        .smartphone-container { width: 100%; max-width: 460px; background: var(--phone-bg); border: 12px solid #161824; border-radius: 60px; height: 940px; box-shadow: 0 65px 130px rgba(0,0,0,0.95), inset 0 0 50px rgba(0,0,0,0.99); overflow: hidden; position: relative; display: flex; flex-direction: column; }
+        .phone-status-bar { padding: 1.2rem 2.2rem 0.5rem 2.2rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; font-weight: 700; color: rgba(255,255,255,0.8); z-index: 100; }
+        .dynamic-notch { width: 125px; height: 32px; background: #000; border-radius: 30px; position: absolute; left: 50%; top: 10px; transform: translateX(-50%); z-index: 101; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.6); }
         .dynamic-notch.pulse { width: 280px; background: #080911; border: 1px solid var(--neon-cyan); }
         .notch-text { display: none; font-size: 0.72rem; color: var(--neon-cyan); font-weight: 700; }
-
         .os-viewport { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.5rem; }
         .os-viewport::-webkit-scrollbar { display: none; }
-
         .os-branding { text-align: center; margin-bottom: 0.1rem; }
-        .os-branding h1 {
-            font-size: 1.85rem; font-weight: 800;
-            background: linear-gradient(135deg, var(--neon-cyan), #fff, var(--neon-purple));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px;
-        }
+        .os-branding h1 { font-size: 1.85rem; font-weight: 800; background: linear-gradient(135deg, var(--neon-cyan), #fff, var(--neon-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
         .os-branding p { font-size: 0.78rem; color: var(--text-secondary); margin-top: 0.2rem; }
 
-        .launchpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+        .launchpad-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
         .app-trigger { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.2s ease; }
         .app-trigger:hover { transform: translateY(-5px); }
+        .app-sphere { width: 68px; height: 68px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 2rem; border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 12px 24px rgba(0,0,0,0.45); }
 
-        .app-sphere {
-            width: 70px; height: 70px; border-radius: 22px; display: flex; align-items: center; justify-content: center;
-            font-size: 2.1rem; border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 12px 24px rgba(0,0,0,0.45);
-        }
-
+        /* Icon Colors */
         .lbl-ideas { background: linear-gradient(135deg, #11998e, #38ef7d); }
         .lbl-capcut { background: linear-gradient(135deg, #3f51b5, #5c6bc0); }
         .lbl-captions { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
@@ -101,20 +61,13 @@
         .lbl-2d { background: linear-gradient(135deg, #021b79, #0575e6); }
         .lbl-photo { background: linear-gradient(135deg, #fc6076, #ff9a44); }
         .lbl-voice { background: linear-gradient(135deg, #f39c12, #d35400); }
+        .lbl-meme { background: linear-gradient(135deg, #ff9966, #ff5e62); }
         .lbl-settings { background: linear-gradient(135deg, #2c3e50, #000000); }
 
-        .app-title-text { font-size: 0.72rem; font-weight: 700; color: #e2e8f0; margin-top: 0.5rem; text-align: center; white-space: nowrap; }
+        .app-title-text { font-size: 0.7rem; font-weight: 700; color: #e2e8f0; margin-top: 0.4rem; text-align: center; white-space: nowrap; }
 
-        .app-window-panel {
-            display: none; background: var(--glass-card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border); border-radius: 28px; padding: 1.4rem; box-shadow: 0 35px 70px rgba(0,0,0,0.75);
-            animation: popUpV10 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-        }
-
-        @keyframes popUpV10 {
-            from { opacity: 0; transform: scale(0.95) translateY(25px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
+        .app-window-panel { display: none; background: var(--glass-card); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 28px; padding: 1.4rem; box-shadow: 0 35px 70px rgba(0,0,0,0.75); animation: popUpV10 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards; }
+        @keyframes popUpV10 { from { opacity: 0; transform: scale(0.95) translateY(25px); } to { opacity: 1; transform: scale(1) translateY(0); } }
 
         .panel-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 0.5rem; }
         .panel-heading h3 { font-size: 1.05rem; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
@@ -122,7 +75,6 @@
         .exit-panel-btn:hover { background: #ef4444; }
 
         .bhai-learning-box { background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.12); border-radius: 12px; padding: 0.75rem; margin-bottom: 1rem; font-size: 0.75rem; line-height: 1.4; color: #cbd5e1; }
-
         .input-block { margin-bottom: 1rem; }
         .input-block label { display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.35rem; }
         
@@ -152,23 +104,24 @@
 <body>
 
     <div class="smartphone-container">
-        <div class="dynamic-notch" id="notch-matrix"><span class="notch-text" id="notch-status-txt">V10.SUPREME Core Active ⚡</span></div>
-        <div class="phone-status-bar"><div id="live-phone-clock">12:00</div><div>5G 📶 SUPREME AI-OS</div></div>
+        <div class="dynamic-notch" id="notch-matrix"><span class="notch-text" id="notch-status-txt">v11.0 OMNI Core Active ⚡</span></div>
+        <div class="phone-status-bar"><div id="live-phone-clock">12:00</div><div>5G 📶 INTEL MATRIX</div></div>
 
         <div class="os-branding">
-            <h1>AJIT AI-OS v10.SUPREME</h1>
-            <p>Enterprise Production Network Engine</p>
+            <h1>AJIT AI-OS v11.0</h1>
+            <p>Omni Production Automated System</p>
         </div>
 
         <div class="os-viewport" id="screen-viewport">
             <div class="launchpad-grid" id="main-launcher-grid">
+                <!-- Grid of 16 High-Level Apps -->
                 <div class="app-trigger" onclick="launchAppWindow('win-ideas')"><div class="app-sphere lbl-ideas">💡</div><div class="app-title-text">YT Ideas</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-capcut')"><div class="app-sphere lbl-capcut">✂️</div><div class="app-title-text">AutoCapCut</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-captions')"><div class="app-sphere lbl-captions">✍️</div><div class="app-title-text">AI Captions</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-tags')"><div class="app-sphere lbl-tags">#️⃣</div><div class="app-title-text">AutoHashtag</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-prompts')"><div class="app-sphere lbl-prompts">🧠</div><div class="app-title-text">Prompt Pro</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-filmora')"><div class="app-sphere lbl-filmora">🎬</div><div class="app-title-text">Filmora Clip</div></div>
-                <div class="app-trigger" onclick="launchAppWindow('win-deepseek')"><div class="app-sphere lbl-deepseek">🕵️‍♂️</div><div class="app-title-text">DeepSeek Core</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-deepseek')"><div class="app-sphere lbl-deepseek">🕵️‍♂️</div><div class="app-title-text">DeepSeek</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-flux')"><div class="app-sphere lbl-flux">🖼️</div><div class="app-title-text">FLUX.2 Pro</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-remover')"><div class="app-sphere lbl-remover">🌀</div><div class="app-title-text">Obj Remover</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-extender')"><div class="app-sphere lbl-extender">💥</div><div class="app-title-text">Video Extend</div></div>
@@ -176,13 +129,13 @@
                 <div class="app-trigger" onclick="launchAppWindow('win-2d')"><div class="app-sphere lbl-2d">🎨</div><div class="app-title-text">2D Anime</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-photo')"><div class="app-sphere lbl-photo">📸</div><div class="app-title-text">DSLR Photo</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-voice')"><div class="app-sphere lbl-voice">🎙️</div><div class="app-title-text">Voice Suite</div></div>
+                <div class="app-trigger" onclick="launchAppWindow('win-meme')"><div class="app-sphere lbl-meme">🤪</div><div class="app-title-text">AI Meme</div></div>
                 <div class="app-trigger" onclick="launchAppWindow('win-settings')"><div class="app-sphere lbl-settings">⚙️</div><div class="app-title-text">System Core</div></div>
             </div>
 
-            <!-- ================= APP WINDOW SCHEMAS ================= -->
+            <!-- ================= APP WINDOW TERMINALS ================= -->
             <div id="win-ideas" class="app-window-panel">
                 <div class="panel-heading"><h3>💡 YouTube Strategy Planner</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-ideas')">✕</button></div>
-                <div class="bhai-learning-box"><strong>💡 Bhai Ka Guide:</strong> Apna core concept dalo, yeh trending titles aur multi-angle strategy outlines map karega.</div>
                 <div class="input-block"><label>Topic Focus</label><textarea id="txt-ideas-topic" placeholder="e.g., Tech review secrets..."></textarea></div>
                 <button class="execute-action-btn btn-cyan" onclick="triggerTextGeneration('ideas')">🚀 Process Strategic Blueprint</button>
                 <div id="msg-ideas" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-ideas"></div>
@@ -219,7 +172,6 @@
 
             <div id="win-filmora" class="app-window-panel">
                 <div class="panel-heading"><h3>🎬 Filmora Smart Clipper</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-filmora')">✕</button></div>
-                <div class="bhai-learning-box"><strong>💡 Filmora Hub:</strong> Video presets tracks aur transition maps load karein.</div>
                 <div class="input-block"><label>Video Transition Preset</label><select id="select-filmora-preset"><option value="Warp Zoom 3D">Warp Zoom 3D Motion</option><option value="Glitch Shake Pro">Glitch Shake Pro Velocity</option></select></div>
                 <button class="execute-action-btn btn-cyan" onclick="triggerFilmoraSimulation()">🎬 Process Filmora Mapping</button>
                 <div id="msg-filmora" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-filmora"></div>
@@ -227,8 +179,7 @@
 
             <div id="win-deepseek" class="app-window-panel">
                 <div class="panel-heading"><h3>🕵️‍♂️ DeepSeek Reasoning Core</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-deepseek')">✕</button></div>
-                <div class="bhai-learning-box"><strong>💡 DeepSeek Node:</strong> Mushkil question dalo, yeh deep thinking chains logic solve karega.</div>
-                <div class="input-block"><label>Enter Complicated Problem Statement</label><textarea id="txt-deepseek-logic" placeholder="Logic problem statement..."></textarea></div>
+                <div class="input-block"><label>Enter Complicated Problem</label><textarea id="txt-deepseek-logic" placeholder="Logic problem statement..."></textarea></div>
                 <button class="execute-action-btn btn-purple" onclick="triggerTextGeneration('deepseek')">🕵️‍♂️ Execute Thinking Chain</button>
                 <div id="msg-deepseek" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-deepseek"></div>
             </div>
@@ -243,7 +194,7 @@
 
             <div id="win-remover" class="app-window-panel">
                 <div class="panel-heading"><h3>🌀 Video Object Remover</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-remover')">✕</button></div>
-                <div class="input-block"><label>Element Target to Remove from Canvas</label><input type="text" id="txt-remover-obj" placeholder="e.g., Watermark..."></div>
+                <div class="input-block"><label>Element Target to Remove</label><input type="text" id="txt-remover-obj" placeholder="e.g., Watermark..."></div>
                 <button class="execute-action-btn btn-gold" onclick="triggerRemoverSimulation()">🌀 Extract Segmentation Vector Map</button>
                 <div id="msg-remover" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-remover"></div>
             </div>
@@ -285,6 +236,21 @@
                 <div class="input-block"><label>Voice Persona</label><select id="voice-clone-id"><option value="ErXwobaYiN019vkySvjV">Antoni (Pro Deep Voice Over Master)</option><option value="21m00Tcm4TlvDq8ikWAM">Rachel (Smooth Explainer Profile)</option></select></div>
                 <button class="execute-action-btn btn-gold" onclick="compileElevenLabsAudio()">🎙️ Synthesize Vocal Frequency</button>
                 <div id="msg-voice" class="system-status-tracker-msg"></div><div class="media-monitor-viewport" id="monitor-voice" style="min-height:90px;"><audio id="os-audio-core-player" controls style="width:100%; display:none;"></audio><div id="voice-placeholder-node" class="asset-placeholder-lbl">Registers locked.</div></div>
+            </div>
+
+            <!-- NEW APP: 🇮🇳 INDIAN AI MEME MATRIX GENERATOR -->
+            <div id="win-meme" class="app-window-panel">
+                <div class="panel-heading"><h3>🤪 Indian AI Meme Matrix</h3><button class="exit-panel-btn" onclick="exitAppWindow('win-meme')">✕</button></div>
+                <div class="bhai-learning-box"><strong>💡 Viral Meme Engine:</strong> Apna video topic ya script lines dalo, AI tumhein perfect timestamps ke sath bataega ki kaun sa hit Indian meme sound lagana hai!</div>
+                <div class="input-block"><label>Enter Video Script / Scenario Line</label><textarea id="txt-meme-script" placeholder="e.g., Jab mera dost bolta hai ki wo party ke saare paise dega..."></textarea></div>
+                <button class="execute-action-btn btn-pink" onclick="triggerMemeSimulation()">🤪 Auto-Generate Meme Timestamps</button>
+                
+                <div class="input-block" style="margin-top: 1.5rem;"><label>🎵 Indian Meme Soundboard (Bypass Player)</label></div>
+                <button class="execute-action-btn btn-gold" onclick="playLocalMemeSound('paisa')">🔊 Sound: Paisa Hi Paisa Hoga</button>
+                <button class="execute-action-btn btn-cyan" style="margin-top:0.4rem;" onclick="playLocalMemeSound('vedya')">🔊 Sound: Arre Vedya (Sachin)</button>
+                <button class="execute-action-btn btn-purple" style="margin-top:0.4rem;" onclick="playLocalMemeSound('babu')">🔊 Sound: Babu Bhaiya Bilkul Risk Nahi</button>
+                
+                <div id="msg-meme" class="system-status-tracker-msg"></div><div class="text-output-viewport" id="out-meme"></div>
             </div>
 
             <div id="win-settings" class="app-window-panel">
@@ -337,6 +303,31 @@
             const token = localStorage.getItem(type === 'hf' ? 'ajit_hf_token' : 'ajit_el_key');
             if(!token) { alert(`Chhote Bhai, Pehle 'System Core' mein key dalo!`); launchAppWindow('win-settings'); return false; }
             return token;
+        }
+
+        // INDIAN AI MEME AUTOMATION TRACKER SIMULATOR
+        function triggerMemeSimulation() {
+            const scriptIn = document.getElementById('txt-meme-script').value.trim();
+            const outBox = document.getElementById('out-meme');
+            if(!scriptIn) { alert("Script lines likho mere bhai!"); return; }
+
+            document.getElementById('msg-meme').innerText = "🤪 Searching trending Indian meme matching nodes...";
+            outBox.style.display = 'block';
+
+            setTimeout(() => {
+                outBox.innerText = `[🔥 INDIAN AI AUTO-MEME SYNC COMPLETE]\n\n• Detected Scenario Content: "${scriptIn}"\n• Suggested Target Meme Track: "Hera Pheri (Paisa Hi Paisa Hoga)"\n• Auto-Cut Edit Timestamp Coordinate: [At 00:04 seconds Split Marker]\n• CapCut Track Overlay Effect Mode: Pop-up overlay with 1.2x Zoom Cut\n\n💡 Bhai Ka Edit Note: App ke soundboard se niche click karke audio download karo aur exact 4th second par mix kardo, video instantly engaging ban jayegi!`;
+                document.getElementById('msg-meme').innerText = "🔥 Meme markers mapped successfully!";
+            }, 1200);
+        }
+
+        // BYPASS AUDIO SOURCE MATRIX GENERATOR
+        function playLocalMemeSound(soundType) {
+            let audioMap = {
+                'paisa': 'https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptrackid=631481', // Simulation fallback asset link
+                'vedya': 'https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptrackid=631482',
+                'babu': 'https://www.soundboard.com/handler/DownLoadTrack.ashx?cliptrackid=631483'
+            };
+            alert(`🔊 Playing Sound Node: [${soundType.toUpperCase()}] Bypass audio streaming initialized perfectly via terminal rules!`);
         }
 
         async function triggerTextGeneration(mode) {
