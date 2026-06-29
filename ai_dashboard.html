@@ -79,19 +79,36 @@
 </head>
 <body>
 
-    <!-- 🔒 LIVE LOCK FRAME (Ghar Ka Tala) -->
-    <div id="studio-gatekeeper-lock">
-        <div class="lock-container">
-            <div class="lock-icon">🔒</div>
-            <h2 style="font-weight: 800; margin-bottom: 0.5rem; color: #fff;">AJIT PRIVATE MAINBOARD</h2>
-            <p style="color: var(--text-dark); font-size: 0.85rem; margin-bottom: 2rem;">Authorized Personnel Only. Enterprise validation shield tracking active.</p>
-            <div class="input-box-wrapper" style="text-align: left;">
-                <label>Enter Master Unlock Token</label>
-                <input type="password" id="gatekeeper-pass-field" placeholder="••••••••" style="text-align: center; letter-spacing: 4px;">
-            </div>
-            <button class="action-btn-trigger" style="background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));" onclick="verifyStudioPass()">Unlock Dashboard Engine</button>
-            <p id="lock-error-msg" style="color: var(--neon-pink); font-size: 0.82rem; font-weight: 700; margin-top: 1rem; display: none;">❌ ACCESS DENIED: Invalid Token Sequence.</p>
-        </div>
+    <!-- 🔒 LIVE LOCK FRAME (Ghar Ka Tala) v5.0 Master Password Active -->
+<div id="studio-gatekeeper-lock" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #090d16; z-index: 999999; display: flex; justify-content: center; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif;">
+    <div style="background: #111827; padding: 40px; border-radius: 20px; border: 2px solid #ff007f; box-shadow: 0 0 50px rgba(255, 0, 127, 0.3); text-align: center; max-width: 400px; width: 90%;">
+        <div style="font-size: 50px; margin-bottom: 20px;">🔒</div>
+        <h2 style="color: #fff; margin: 0 0 10px 0; font-size: 1.5rem; font-weight: 800;">AJIT PRIVATE MAINBOARD</h2>
+        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px;">Enter your new Master Token to unlock the v5.0 Studio Engine.</p>
+        
+        <input type="password" id="gatekeeper-pass-field" placeholder="••••••••" style="width: 100%; background: #04060a; padding: 14px; border-radius: 8px; border: 1px solid #334155; color: #fff; text-align: center; font-size: 1.1rem; letter-spacing: 4px; margin-bottom: 20px; box-sizing: border-box;">
+        
+        <button onclick="verifyStudioPassword()" style="width: 100%; background: linear-gradient(135deg, #ff007f 0%, #7f00ff 100%); border: none; color: #fff; padding: 14px; border-radius: 8px; font-weight: 900; cursor: pointer; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);">UNLOCK DASHBOARD ENGINE</button>
+        <p id="lock-error-msg" style="color: #ef4444; font-size: 0.85rem; margin-top: 15px; display: none; font-weight: bold;">❌ INVALID TOKEN! ACCESS DENIED.</p>
+    </div>
+</div>
+
+<script>
+function verifyStudioPassword() {
+    const inputPass = document.getElementById('gatekeeper-pass-field').value;
+    const errorMsg = document.getElementById('lock-error-msg');
+    
+    // Naya Easy Password set kar diya hai: AJIT2026
+    if (inputPass === 'AJIT2026') {
+        document.getElementById('studio-gatekeeper-lock').style.display = 'none';
+        alert('🔓 ACCESS GRANTED! Welcome Back Ajit Bhai.');
+    } else {
+        errorMsg.style.display = 'block';
+        setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+    }
+}
+</script>
+<!-- 🔒 LIVE LOCK FRAME End -->
     </div>
 
     <!-- MAIN DASHBOARD SCREEN (WILL UNLOCK POST PASSWORD) -->
