@@ -1,445 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJIT PRODUCTION KING v80000.0 - Secure Stream Grid</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-master: #020306;
-            --panel-bg: #0b0d19;
-            --card-inner: #12152a;
-            --neon-blue: #00f2fe;
-            --neon-pink: #ff007f;
-            --neon-purple: #7f00ff;
-            --neon-gold: #ffd700;
-            --neon-green: #3ae374;
-            --text-light: #f8fafc;
-            --text-dark: #64748b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--bg-master); color: var(--text-light); min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
-
-        /* 🔒 SECURE LOCK SCREEN GATEKEEPER OVERLAY */
-        #studio-gatekeeper-lock {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at center, #0b0d19, #020306);
-            z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
-        .lock-container {
-            background: rgba(14, 17, 36, 0.7); border: 2px solid var(--neon-pink);
-            padding: 3rem; border-radius: 28px; width: 90%; max-width: 450px;
-            text-align: center; backdrop-filter: blur(20px); box-shadow: 0 0 50px rgba(255, 0, 127, 0.2);
-        }
-        .lock-icon { font-size: 3.5rem; margin-bottom: 1rem; animation: pulse 1.5s infinite alternate; }
-        @keyframes pulse { from { transform: scale(1); opacity: 0.8; } to { transform: scale(1.08); opacity: 1; } }
-        
-        /* HEADER */
-        .master-header { height: 80px; background-color: var(--panel-bg); border-bottom: 2px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
-        .master-header h1 { font-size: 1.4rem; font-weight: 800; background: linear-gradient(135deg, #fff, var(--neon-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .live-status { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; padding: 0.5rem 1rem; background: rgba(0, 242, 254, 0.1); border: 1px solid var(--neon-blue); border-radius: 20px; color: var(--neon-blue); }
-
-        /* MAIN APPS LIST CONTAINER */
-        .apps-grid-container { padding: 2rem; display: flex; flex-direction: column; gap: 3rem; max-width: 1400px; margin: 0 auto; width: 100%; }
-        
-        /* STANDALONE CARD STYLE */
-        .independent-file-card { background-color: var(--panel-bg); border: 1px solid rgba(255,255,255,0.06); border-radius: 28px; padding: 2.2rem; box-shadow: 0 25px 60px rgba(0,0,0,0.6); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; position: relative; }
-        .independent-file-card::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; border-radius: 28px 0 0 28px; }
-        
-        /* COLOR CODING */
-        .f-hf::before, .f-1::before, .f-6::before, .f-11::before, .f-16::before { background-color: var(--neon-blue); }
-        .f-hf2::before, .f-2::before, .f-7::before, .f-12::before, .f-17::before { background-color: var(--neon-pink); }
-        .f-3::before, .f-8::before, .f-13::before { background-color: var(--neon-purple); }
-        .f-4::before, .f-9::before, .f-14::before { background-color: var(--neon-gold); }
-        .f-5::before, .f-10::before, .f-15::before { background-color: var(--neon-green); }
-
-        .app-title-block h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
-        .app-title-block p { color: #64748b; font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-        .input-box-wrapper { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.03); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.25rem; }
-        label { display: block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.6rem; letter-spacing: 0.5px; }
-        input[type="text"], select, textarea, input[type="number"], input[type="file"], input[type="password"] { width: 100%; background-color: #040509; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1rem; color: #fff; font-size: 0.95rem; }
-        
-        .action-btn-trigger { width: 100%; padding: 1.1rem; border: none; border-radius: 12px; color: white; font-weight: 800; font-size: 0.95rem; cursor: pointer; text-transform: uppercase; transition: all 0.2s; background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple)); }
-        .action-btn-trigger:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,242,254,0.3); }
-
-        /* OUTPUT PANELS */
-        .app-monitor-panel { background-color: var(--card-inner); border: 1px solid rgba(255,255,255,0.04); border-radius: 22px; padding: 1.75rem; display: flex; flex-direction: column; }
-        .monitor-panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.85rem; font-weight: 800; text-transform: uppercase; }
-        .display-screen-canvas { font-size: 0.98rem; line-height: 1.65; color: #cbd5e1; white-space: pre-wrap; flex: 1; overflow-y: auto; max-height: 280px; }
-        
-        .copy-btn-pill { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); color: #fff; padding: 0.4rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; }
-        .copy-btn-pill:hover { background: #fff; color: black; }
-        .router-link-tag { display: inline-block; text-align: center; margin-top: 12.25rem; padding: 1rem; border: 1px dashed rgba(255,255,255,0.08); border-radius: 12px; color: #fff; text-decoration: none; font-size: 0.92rem; font-weight: 700; width: 100%; }
-        .router-link-tag:hover { background: rgba(255,255,255,0.04); border-color: #fff; }
-        .hf-badge { font-size: 0.72rem; font-weight: 800; background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; padding: 0.25rem 0.6rem; border-radius: 6px; text-transform: uppercase; display: inline-block; margin-bottom: 0.5rem; }
-    </style>
-</head>
-<body>
-
-    <!-- 🔒 LIVE LOCK FRAME (Ghar Ka Tala) -->
-    <div id="studio-gatekeeper-lock">
-        <div class="lock-container">
-            <div class="lock-icon">🔒</div>
-            <h2 style="font-weight: 800; margin-bottom: 0.5rem; color: #fff;">AJIT PRIVATE MAINBOARD</h2>
-            <p style="color: var(--text-dark); font-size: 0.85rem; margin-bottom: 2rem;">Authorized Personnel Only. Enterprise validation shield tracking active.</p>
-            <div class="input-box-wrapper" style="text-align: left;">
-                <label>Enter Master Unlock Token</label>
-                <input type="password" id="gatekeeper-pass-field" placeholder="••••••••" style="text-align: center; letter-spacing: 4px;">
+<div class="matrix-card" style="margin-top: 25px; padding: 20px; background: rgba(16, 22, 36, 0.7); border: 1px solid rgba(0, 198, 255, 0.2); border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); backdrop-filter: blur(4px); transition: 0.3s; color: #fff; font-family: 'Segoe UI', Roboto, sans-serif;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 15px;">
+        <h3 style="margin: 0; font-size: 1.1rem; color: #e2e8f0; display: flex; align-items: center; gap: 8px;">
+            🤖 [File 06] AI Video Agent Copilot Studio
+        </h3>
+        <span style="font-size: 0.75rem; background: rgba(0, 198, 255, 0.1); color: #00c6ff; padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0, 198, 255, 0.2);">
+            Agent 2.0 Engine Active
+        </span>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div>
+            <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: #94a3b8; margin-bottom: 8px;">
+                Enter Multi-Stage Core Direction
+            </label>
+            <textarea id="agentInput" style="width: 100%; height: 100px; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; color: #fff; padding: 10px; font-size: 0.9rem; resize: none; box-sizing: border-box; margin-bottom: 15px;" placeholder="Describe character look, scene progression, and final transition vectors..."></textarea>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #94a3b8; margin-bottom: 6px;">Select Copilot Mode</label>
+                <select id="agentMode" style="width: 100%; background: #1e293b; border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 8px; border-radius: 6px; font-size: 0.85rem;">
+                    <option value="pixar">Cinematic Pixar/DreamWorks Style</option>
+                    <option value="hyper">Hyper-Realistic Cyberpunk VFX</option>
+                    <option value="anime">Studio Ghibli 2D Anime Render</option>
+                </select>
             </div>
-            <button class="action-btn-trigger" style="background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));" onclick="verifyStudioPass()">Unlock Dashboard Engine</button>
-            <p id="lock-error-msg" style="color: var(--neon-pink); font-size: 0.82rem; font-weight: 700; margin-top: 1rem; display: none;">❌ ACCESS DENIED: Invalid Token Sequence.</p>
+
+            <button onclick="compileAgentSequencing()" style="width: 100%; background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); border: none; color: white; padding: 12px; border-radius: 6px; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.9rem; letter-spacing: 0.05em;">
+                COMPILE AGENT REACTION LAYERS
+            </button>
+        </div>
+
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span style="font-size: 0.75rem; font-weight: bold; color: #ff007f; letter-spacing: 0.05em; text-transform: uppercase;">
+                        File 06 Terminal
+                    </span>
+                    <button onclick="copyAgentTerminal()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; cursor: pointer; transition: 0.2s;">
+                        Copy
+                    </button>
+                </div>
+                <div id="agentTerminal" style="font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; color: #38bdf8; line-height: 1.5; white-space: pre-wrap; max-height: 160px; overflow-y: auto; padding-right: 5px;">Awaiting agent computation directives...</div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.75rem; color: #64748b;">Copilot Guidance: Step 1 of 3</span>
+                <span style="font-size: 0.75rem; color: #4ade80; display: flex; align-items: center; gap: 4px;">● Ready</span>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- MAIN DASHBOARD SCREEN (WILL UNLOCK POST PASSWORD) -->
-    <div class="master-header">
-        <h1>AJIT COMPLETE INFINITY MATRIX - SECURE MODE</h1>
-        <div class="live-status">● Protected Platform Operational Shield</div>
-    </div>
+<script>
+function compileAgentSequencing() {
+    const input = document.getElementById('agentInput').value || "Surprised character look";
+    const mode = document.getElementById('agentMode').value;
+    const terminal = document.getElementById('agentTerminal');
+    
+    terminal.innerHTML = "⚡ Initializing Agent 2.0 Matrix Execution...\n";
+    
+    setTimeout(() => {
+        let output = `🤖 AGENT 2.0 COMPILER SEQUENCE DIRECTIVES:\n==========================================\n`;
+        output += `1. CHARACTER REF: Highly detailed ${mode === 'pixar' ? '3D Pixar style cinematic character' : mode === 'hyper' ? 'Hyper-realistic cinematic asset' : '2D animated anime focus'}.\n`;
+        output += `2. MULTI-STAGE STEP: Lock initial composition still frame -> Inject fluid motion timeline vector.\n`;
+        output += `3. ANIMATION PARAMS: Shifting expression instantly from neutral to wide-eyed astonishment based on source context: "${input}" --motion 7 --cfg 12`;
+        
+        terminal.innerHTML = output;
+        terminal.style.color = "#4ade80";
+    }, 800);
+}
 
-    <div class="apps-grid-container">
-
-        <!-- 🤗 HUGGING FACE FEATURE 1 -->
-        <div class="independent-file-card f-hf">
-            <div class="app-title-block">
-                <div class="hf-badge">Hugging Face Core</div>
-                <h2>🖼️ AI Screenshot Descriptor Engine</h2>
-                <p>Upload a screenshot. System auto-generates character scene prompts using BLIP-Vision parameters.</p>
-                <div class="input-box-wrapper">
-                    <label>Select Image File</label>
-                    <input type="file" id="hf-img-input" accept="image/*" onchange="previewImg()">
-                </div>
-                <button class="action-btn-trigger" onclick="runHfVision()">Analyze Screenshot Tokens</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-blue);">Vision Node Display</span> <button class="copy-btn-pill" onclick="copyCanvas('hf-vision-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="hf-vision-canvas">Awaiting image upload trigger...</pre>
-            </div>
-        </div>
-
-        <!-- 🤗 HUGGING FACE FEATURE 2 -->
-        <div class="independent-file-card f-hf2">
-            <div class="app-title-block">
-                <div class="hf-badge">Inference Node</div>
-                <h2>⚡ Open-Source AI Inference Live Node</h2>
-                <p>Test raw analytical streaming questions with open-source server responses simulator.</p>
-                <div class="input-box-wrapper">
-                    <label>Enter Topic Request for Model Pipeline</label>
-                    <input type="text" id="hf-api-field" value="Explain why self-control breaks on short video scrolling loops">
-                </div>
-                <button class="action-btn-trigger" onclick="runHfInference()">Trigger Inference API</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-pink);">Inference API Monitor</span> <button class="copy-btn-pill" onclick="copyCanvas('hf-api-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="hf-api-canvas">Awaiting request dispatch...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 1 -->
-        <div class="independent-file-card f-1">
-            <div class="app-title-block">
-                <h2>📅 [File 01] POV Global Script Engine</h2>
-                <p>Fetch global multi-regional short film retention plans directly.</p>
-                <div class="input-box-wrapper">
-                    <label>Target Production Day (1 to 120)</label>
-                    <input type="number" id="f1-input" value="1">
-                </div>
-                <button class="action-btn-trigger" onclick="runEngine1()">Process Day Registry</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-blue);">File 01 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f1-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f1-canvas">Click run to fetch metric data...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 2 -->
-        <div class="independent-file-card f-2">
-            <div class="app-title-block">
-                <h2>📝 [File 02] Text To Script Automation Generator</h2>
-                <p>Input text topic ideas and receive specialized high-retention screen scripts on the spot.</p>
-                <div class="input-box-wrapper">
-                    <label>Enter Short Video Topic</label>
-                    <input type="text" id="f2-input" value="Digital Fasting Trap">
-                </div>
-                <button class="action-btn-trigger" onclick="runEngine2()">Compile Video Script</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-pink);">File 02 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f2-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f2-canvas">Click compiler to run operations...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 3 -->
-        <div class="independent-file-card f-3">
-            <div class="app-title-block">
-                <h2>🖼️ [File 03] HD Cartoon & Pixar Prompt Studio</h2>
-                <p>Converts character models specs into highly descriptive cinema prompts codes with subsurface scattering tokens.</p>
-                <div class="input-box-wrapper">
-                    <label>Describe Characters Setup</label>
-                    <textarea id="f3-input" rows="2">A man in a white polo shirt and a child in a yellow t-shirt looking surprised</textarea>
-                </div>
-                <button class="action-btn-trigger" onclick="runEngine3()">Compile Pixar Tokens</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-purple);">File 03 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f3-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f3-canvas">Awaiting data computation parameters...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 4 -->
-        <div class="independent-file-card f-4">
-            <div class="app-title-block">
-                <h2>🌌 [File 04] Auto AI Background Shader Creator</h2>
-                <p>Generates ambient background configurations aligned with the target theme script.</p>
-                <div class="input-box-wrapper">
-                    <label>Atmosphere Tone Alignment</label>
-                    <select id="f4-input"><option value="neon">Cyberpunk Neon Dark Glow Workspace</option><option value="warm">Cozy Light Explainer Bed Setup</option></select>
-                </div>
-                <button class="action-btn-trigger" onclick="runEngine4()">Compile Environment Prompt</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-gold);">File 04 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f4-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f4-canvas">Awaiting shader parameters injection...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 5 -->
-        <div class="independent-file-card f-5">
-            <div class="app-title-block">
-                <h2>🎙️ [File 05] ElevenLabs AI Voice Stage</h2>
-                <p>Process speech modulation layers and target velocity speed metrics tracks.</p>
-                <button class="action-btn-trigger" onclick="runEngine5()">Compile Acoustic Path</button>
-                <a href="https://elevenlabs.io/" target="_blank" class="router-link-tag">Launch ElevenLabs Workspace ↗</a>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-green);">File 05 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f5-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f5-canvas">Awaiting acoustic data flow tracks...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 6 -->
-        <div class="independent-file-card f-6">
-            <div class="app-title-block">
-                <h2>🎬 [File 06] Auto-CapCut / Filmora Timeline Coordinator</h2>
-                <p>Design center bold bouncing subtitles timelines and fluid **0.25x speed ramp slow-mo** charts.</p>
-                <button class="action-btn-trigger" onclick="runEngine6()">Compile Timeline Layout</button>
-                <a href="https://www.capcut.com/" target="_blank" class="router-link-tag">Launch CapCut Web Engine ↗</a>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-blue);">File 06 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f6-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f6-canvas">Awaiting timeline tracking matrix maps...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 7 -->
-        <div class="independent-file-card f-7">
-            <div class="app-title-block">
-                <h2>🤪 [File 07] AI Meme Soundboard & Cue Catcher</h2>
-                <p>Map audio timestamps or trigger internal audio cue simulation logs directly.</p>
-                <button class="action-btn-trigger" onclick="runEngine7()" style="margin-bottom:0.5rem;">Map Meme Audio Timestamps</button>
-                <button class="action-btn-trigger" style="background:#000; border:1px solid rgba(255,255,255,0.05); margin-bottom:0.5rem;" onclick="alert('💵 Playing Sync: Paisa Hi Paisa Log!')">💵 Trigger Paisa Hi Paisa Sound</button>
-                <button class="action-btn-trigger" style="background:#000; border:1px solid rgba(255,255,255,0.05);" onclick="alert('🏏 Playing Sync: Arre Vedya Log!')">🏏 Trigger Arre Vedya Sound</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-pink);">File 07 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f7-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f7-canvas">Awaiting audio mapping execution logs...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 8 -->
-        <div class="independent-file-card f-8">
-            <div class="app-title-block">
-                <h2>🎨 [File 08] Canva Thumbnail Layer Compositor</h2>
-                <p>Generate layer by layer graphic placements maps to design ultra high-CTR graphics layouts.</p>
-                <button class="action-btn-trigger" onclick="runEngine8()">Compile Canva Sheet</button>
-                <a href="https://canva.com/" target="_blank" class="router-link-tag">Launch Canva Design Studio ↗</a>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-purple);">File 08 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f8-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f8-canvas">Awaiting visual design layer parameters...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 9 -->
-        <div class="independent-file-card f-9">
-            <div class="app-title-block">
-                <h2>💡 [File 09] YT Ideas Algorithmic Trend Radar</h2>
-                <p>Extract trending viral short concepts for immediate video structure integration.</p>
-                <button class="action-btn-trigger" onclick="runEngine9()">Extract Trending Topics</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-gold);">File 09 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f9-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f9-canvas">Awaiting high retention topics generation...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 10 -->
-        <div class="independent-file-card f-10">
-            <div class="app-title-block">
-                <h2>#️⃣ [File 10] AutoHashtag Metadata Optimization Expert</h2>
-                <p>Generate highly indexed primary tags strings to secure ranking loops safely.</p>
-                <button class="action-btn-trigger" onclick="runEngine10()">Extract High CTR Tags</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-green);">File 10 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f10-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f10-canvas">Awaiting SEO tag data extraction query...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 11 -->
-        <div class="independent-file-card f-11">
-            <div class="app-title-block">
-                <h2>🔍 [File 11] DeepSeek Analytical Query Search Node</h2>
-                <p>Deep analytical algorithmic query tracking simulations bypass mechanism logs.</p>
-                <button class="action-btn-trigger" onclick="alert('DeepSeek analytic simulation active!')">Trigger Deep Analysis Search</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-blue);">File 11 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f11-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f11-canvas">System database synced successfully with Zero Latency.</pre>
-            </div>
-        </div>
-
-        <!-- FILE 12 -->
-        <div class="independent-file-card f-12">
-            <div class="app-title-block">
-                <h2>🖼️ [File 12] FLUX.2 Pro Image Prompts Generator</h2>
-                <p>Generate high exposure visual image prompts configurations tokens maps.</p>
-                <button class="action-btn-trigger" onclick="runEngine12()">Compile Image Prompts Asset</button>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-pink);">File 12 Terminal</span> <button class="copy-btn-pill" onclick="copyCanvas('f12-canvas')">Copy</button></div>
-                <pre class="display-screen-canvas" id="f12-canvas">Awaiting image render layer matrix parameters mapping...</pre>
-            </div>
-        </div>
-
-        <!-- FILE 13 -->
-        <div class="independent-file-card f-13">
-            <div class="app-title-block">
-                <h2>🚀 [File 13] RunwayML & Pika High Tier Dispatch Router</h2>
-                <p>Direct system launch bridges leading straight to video synthesis pipelines controllers.</p>
-                <a href="https://runwayml.com/" target="_blank" class="router-link-tag">Launch Runway Gen-3 Platform ↗</a>
-                <a href="https://pika.art/" target="_blank" class="router-link-tag">Launch Pika AI Workspace ↗</a>
-            </div>
-            <div class="app-monitor-panel">
-                <div class="monitor-panel-head"><span style="color:var(--neon-purple);">File 13 Terminal</span></div>
-                <pre class="display-screen-canvas" style="max-height:100px;">External deployment portals linked up flawlessly with local studio framework sheets.</pre>
-            </div>
-        </div>
-
-        <!-- FILES 14 TO 17 SYSTEMS OPERATIONAL STOCKS -->
-        <div class="independent-file-card f-14">
-            <div class="app-title-block"><h2>⚙️ [File 14] System Core Processing Router Configuration</h2><p>Sync core node frameworks details.</p><button class="action-btn-trigger" onclick="alert('Core data pipeline synced!')">Sync Core Server</button></div>
-            <div class="app-monitor-panel"><pre class="display-screen-canvas" style="max-height:100px;">Server Node: Operational\nStatus: Secure Mainframe Loop Verified.</pre></div>
-        </div>
-
-        <div class="independent-file-card f-15">
-            <div class="app-title-block"><h2>🔑 [File 15] Token Controller Infrastructure Bypass Loop</h2><p>Execute zero restriction offline code tracks bypass routines.</p><button class="action-btn-trigger" onclick="alert('Bypass route secured!')">Activate Absolute Bypass Node</button></div>
-            <div class="app-monitor-panel"><pre class="display-screen-canvas" style="max-height:100px;">Bypass Route Status: Active (No Server API Key Restrictions Applied)</pre></div>
-        </div>
-
-        <div class="independent-file-card f-16">
-            <div class="app-title-block"><h2>🧠 [File 16] Bhai AI Memory Learning Module System</h2><p>Update semantic response database tables maps metrics details.</p><button class="action-btn-trigger" onclick="alert('Learning model synchronized!')">Refresh Local Memory</button></div>
-            <div class="app-monitor-panel"><pre class="display-screen-canvas" style="max-height:100px;">Memory Architecture State: Fully Synced and Aligned with User Directives.</pre></div>
-        </div>
-
-        <div class="independent-file-card f-17">
-            <div class="app-title-block"><h2>🛡️ [File 17] Algorithmic Guard Security Terminal Panel</h2><p>Protects running web frameworks scripts against layout breaking errors.</p><button class="action-btn-trigger" onclick="alert('Security wall scanner running!')">Run System Diagnostics</button></div>
-            <div class="app-monitor-panel"><pre class="display-screen-canvas" style="max-height:100px;">Diagnostics Report: 100% Security Wall Operating safely.</pre></div>
-        </div>
-
-    </div>
-
-    <!-- OPERATIONS CONTROLLERS RUNTIME CODE -->
-    <script>
-        // LOCK VERIFICATION SHIELD
-        function verifyStudioPass() {
-            const userInput = document.getElementById('gatekeeper-pass-field').value;
-            const errorLabel = document.getElementById('lock-error-msg');
-            const targetPass = "AJIT70000"; // MASTER PASSWORD KEYWORD
-
-            if (userInput === targetPass) {
-                // Sahi password hone par lock screen uda do
-                document.getElementById('studio-gatekeeper-lock').style.display = 'none';
-                errorLabel.style.display = 'none';
-            } else {
-                // Galat password par error dikhao
-                errorLabel.style.display = 'block';
-                document.getElementById('gatekeeper-pass-field').value = "";
-            }
-        }
-
-        function previewImg() {
-            document.getElementById('hf-vision-canvas').innerText = "📸 IMAGE CAPTURED: File loaded into local DOM pipeline. Click 'Analyze Screenshot Tokens' to trigger descriptive parameter generation maps.";
-        }
-
-        function runHfVision() {
-            document.getElementById('hf-vision-canvas').innerText = `🤗 HUGGING FACE VISION: SCREENSHOT MATRIX INTERACTION\n=======================================================\n- Scene Context: 3D Pixar render environment tracking digital fasting narrative scripts.\n- Identified Target Character: Man in a white polo shirt with a child wearing a yellow t-shirt.\n- Frame Asset Shading: High depth-of-field volumetric bokeh rays overlay, clean custom geometry tokens.`;
-        }
-
-        function runHfInference() {
-            const query = document.getElementById('hf-api-field').value;
-            document.getElementById('hf-api-canvas').innerText = `⚡ HUGGING FACE INFERENCE NODE RESPONSE STACK\n=======================================================\n[QUERYED]: ${query}\n\n"Variable dopaminergic reinforcement triggers within short-form scrolling video tracks trick human neural loop systems, dropping active prefrontal self-control limits to absolute 0% baseline values within 45 seconds of runtime exposure."`;
-        }
-
-        function runEngine1() {
-            const day = document.getElementById('f1-input').value;
-            document.getElementById('f1-canvas').innerText = `📅 POV GLOBAL PACK: DAY ENTRY REGISTRY ${day}\n==================================================\n- Target Day ${day} registry successfully active.\n- Guidelines: Sync layout velocity vectors curves inside Filmora tracking channels profiles.`;
-        }
-
-        function runEngine2() {
-            const topic = document.getElementById('f2-input').value;
-            document.getElementById('f2-canvas').innerText = `📝 TEXT TO SCRIPT SAASTOOL COMPILER: ${topic}\n=======================================================\n- 0:00 - 0:05 Sec: "POV: Jab aap strictly start karte ho ${topic} ka rule... aur do minute baad notifications bajte hi dimaag blank!"\n- 0:05 - 0:20 Sec: Apply velocity fluid smooth slow-mo drop curve (0.25x) matching portrait reaction vectors.\n- 0:20 - 0:30 Sec: "Bypass the endless scroll loop trap right now by SAVING this tutorial layout!"`;
-        }
-
-        function runEngine3() {
-            const desc = document.getElementById('f3-input').value;
-            document.getElementById('f3-canvas').innerText = `🖼️ CINEMATIC 3D PIXAR GENERATOR RENDERING PARAMETERS\n=======================================================\n"Highly detailed 3D animated movie style scene of ${desc}, hyper-expressive design profiles, warm subsurface skin scattering layer nodes, cinematic background bokeh focus, global volumetric illumination rays, octane emulation --motion 6"`;
-        }
-
-        function runEngine4() {
-            const val = document.getElementById('f4-input').value;
-            if(val === 'neon') {
-                document.getElementById('f4-canvas').innerText = `🌌 AUTOMATED BACKGROUND SHADING MATRIX PROMPT\n=======================================================\n"Cyberpunk ambient workspace layout setup, deep neon purple and blue glow shading filters, monitor grids displaying scrolling binary arrays, photorealistic lens blur parameters --ar 9:16"`;
-            } else {
-                document.getElementById('f4-canvas').innerText = `🌌 AUTOMATED BACKGROUND SHADING MATRIX PROMPT\n=======================================================\n"Cozy hyper-detailed warm bedroom asset, golden volumetric light beams coming through glass windows framing, high depth camera clear focus --ar 9:16"`;
-            }
-        }
-
-        function runEngine5() {
-            document.getElementById('f5-canvas').innerText = `🎙️ ELEVENLABS AUDIO CADENCE MATRIX Blueprint\n======================================================\n- Parameter: Force audio generation speed acceleration scaling to 1.12x velocity multiplier tracking loops.\n- Profile: Conversational lifestyle hook delivery to secure retention metrics.`;
-        }
-
-        function runEngine6() {
-            document.getElementById('f6-canvas').innerText = `🎬 MASTER VELOCITY EDITING TIMELINE TRACK SCHEDULER\n===================================================\n- Segment A [0:00 - 0:04 Sec]: 1.0x baseline regular timeline frame play pace.\n- Segment B [0:04 - 0:14 Sec]: VELOCITY DROP CURVE -> Apply 0.25x fluid slow-motion ramping tracking expressions. Drop audio peaks by -12dB.\n- Caption Subtitles: Word-by-word uppercase bold bouncing letters tracking speech audio frequency.`;
-        }
-
-        function runEngine7() {
-            document.getElementById('f7-canvas').innerText = `🤪 MEME AUDIO TRACK SCHEDULING LOGS TIMESTAMPS\n===================================================\n- ⏱️ [0:04 Sec]: Trigger sound matrix cue item 'Paisa Hi Paisa'.\n- ⏱️ [0:12 Sec]: Merge velocity split frame with looping background element 'Arre Vedya'.`;
-        }
-
-        function runEngine8() {
-            document.getElementById('f8-canvas').innerText = `🎨 CANVA MASTER COMPOSITING DESIGN LAYER GEOMETRY\n==========================================================\n- Layer 1: Solid dark cosmic gradient radial background grid frames (#020306 to #0b0d19).\n- Layer 2: High exposure capital typeface layout featuring intensive drop shadow offsets text elements.\n- Layer 3: Main portrait model wrapped inside a 15px outer neon cyan perimeter highlight edge filter.`;
-        }
-
-        function runEngine9() {
-            document.getElementById('f9-canvas').innerText = `💡 AUTOMATED ALGORITHMIC HIGH RETENTION CONTENT IDEAS\n=======================================================\n- Short Concept 1: Breaking the infinite 4 AM mobile display notification scrolling trap.\n- Short Concept 2: Inside a 3D animation video asset when a character breaks from an AI pipeline prompt matrix.`;
-        }
-
-        function runEngine10() {
-            document.getElementById('f10-canvas').innerText = `#️⃣ SEARCH ENGINE OPTIMIZED INDEX HASHTAGS EXTRACTION\n============================================================\n#Shorts #DigitalFasting #ContentAutomationSaaS #CapCutVelocity #PixarAnimationAI #AjitProductionHouse`;
-        }
-
-        function runEngine12() {
-            document.getElementById('f12-canvas').innerText = `🖼️ FLUX RENDERING ASSETS PARAMETERS MAP\n=======================================================\n"Hyper photorealistic 8k visual graphic mapping an exploding electronic device framework, dynamic high-exposure volumetric light flares, crisp textures details --ar 9:16"`;
-        }
-
-        function copyCanvas(id) {
-            navigator.clipboard.writeText(document.getElementById(id).innerText);
-            alert('Code text data stack copied safely!');
-        }
-    </script>
-</body>
-</html>
+function copyAgentTerminal() {
+    const text = document.getElementById('agentTerminal').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Agent Prompt Copied Successfully!");
+    });
+}
+</script>
