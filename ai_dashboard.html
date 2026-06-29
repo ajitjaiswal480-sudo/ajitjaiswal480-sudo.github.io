@@ -441,5 +441,158 @@
             alert('Code text data stack copied safely!');
         }
     </script>
+    <!-- [File 06] Master Video & Audio Assembly Lab (Premium Clean Subtitles) Start -->
+<div class="matrix-card" style="margin-top: 25px; padding: 20px; background: rgba(16, 22, 36, 0.85); border: 2px solid #00c6ff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); color: #fff; font-family: 'Segoe UI', sans-serif;">
+    <h3 style="margin-top:0; color: #00c6ff; display: flex; align-items: center; gap: 8px;">🎬 [File 06] Master Video & Audio Assembly Lab</h3>
+    <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 15px;">Bhai, tumhaari choice ke mutabik chhotey aur premium Netflix-style subtitles lock kar diye hain taaki character ke expressions na chhupien!</p>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- Left Control Panel -->
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+                <label style="display:block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; font-weight: bold;">1. SELECT RUNWAY VIDEO (.mp4)</label>
+                <input type="file" id="videoInput" accept="video/mp4" style="width:100%; background: #1e293b; padding: 8px; border-radius: 6px; border: 1px solid #334155; color: #fff; cursor: pointer;">
+            </div>
+            <div>
+                <label style="display:block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; font-weight: bold;">2. SELECT ENGLISH VOICE-OVER (.mp3)</label>
+                <input type="file" id="audioInput" accept="audio/mp3, audio/mpeg" style="width:100%; background: #1e293b; padding: 8px; border-radius: 6px; border: 1px solid #334155; color: #fff; cursor: pointer;">
+            </div>
+            <div>
+                <label style="display:block; font-size: 0.75rem; color: #94a3b8; margin-bottom: 4px; font-weight: bold;">3. EDIT ENGLISH SUBTITLES</label>
+                <textarea id="subtitleInput" style="width:100%; height: 70px; background: #1e293b; padding: 8px; border-radius: 6px; border: 1px solid #334155; color: #fff; resize: none; font-size: 0.85rem;">POV: When you strictly start your Digital Fasting routine... but two minutes later, a single notification pops up and your mind goes completely blank!</textarea>
+            </div>
+            <button onclick="startMergingProcess()" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); border:none; color:white; padding: 12px; border-radius: 6px; font-weight: bold; cursor:pointer; font-size: 0.9rem; letter-spacing: 0.05em; transition: 0.2s;">
+                🔥 MERGE AUDIO, VIDEO & SUBTITLES
+            </button>
+            <a id="downloadBtn" style="display:none; text-align:center; background: #4ade80; color: #000; padding: 12px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 0.9rem; box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);">
+                📥 DOWNLOAD FINAL VIRAL SHORT (.MP4)
+            </a>
+        </div>
+        
+        <!-- Right Preview Panel -->
+        <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+            <span id="statusLabel" style="position: absolute; top: 10px; left: 10px; font-size: 0.75rem; color: #e2e8f0; background: rgba(0,0,0,0.6); padding: 2px 6px; border-radius: 4px;">Studio Preview (9:16 Vertical)</span>
+            <canvas id="mergeCanvas" width="480" height="854" style="width: 100%; max-width: 220px; height: auto; background: #000; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.5); display: block;"></canvas>
+            <div id="progressText" style="margin-top: 10px; font-size: 0.8rem; color: #38bdf8; font-weight: bold; text-align: center;">System Standby. Upload files to begin.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+let videoEl = document.createElement('video');
+let audioEl = document.createElement('audio');
+videoEl.muted = true;
+videoEl.playsInline = true;
+
+document.getElementById('videoInput').addEventListener('change', function(e) {
+    if(e.target.files[0]) {
+        videoEl.src = URL.createObjectURL(e.target.files[0]);
+        videoEl.load();
+        document.getElementById('progressText').innerText = "Video Loaded! Ready for sync.";
+    }
+});
+
+document.getElementById('audioInput').addEventListener('change', function(e) {
+    if(e.target.files[0]) {
+        audioEl.src = URL.createObjectURL(e.target.files[0]);
+        audioEl.load();
+        document.getElementById('progressText').innerText = "English Voice-over Loaded!";
+    }
+});
+
+function startMergingProcess() {
+    if(!videoEl.src || !audioEl.src) {
+        alert("Bhai, pehle Video aur Audio dono files select karo!");
+        return;
+    }
+    
+    const canvas = document.getElementById('mergeCanvas');
+    const ctx = canvas.getContext('2d');
+    const subtitleText = document.getElementById('subtitleInput').value;
+    const progressText = document.getElementById('progressText');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    downloadBtn.style.display = "none";
+    progressText.innerText = "⚡ Syncing Layers & Burning Premium Subtitles...";
+    
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const dest = audioCtx.createMediaStreamDestination();
+    const audioSrc = audioCtx.createMediaElementSource(audioEl);
+    audioSrc.connect(dest);
+    audioSrc.connect(audioCtx.destination);
+    
+    const videoStream = canvas.captureStream(30);
+    const combinedStream = new MediaStream();
+    combinedStream.addTrack(videoStream.getVideoTracks()[0]);
+    combinedStream.addTrack(dest.stream.getAudioTracks()[0]);
+    
+    let mediaRecorder;
+    try {
+        mediaRecorder = new MediaRecorder(combinedStream, { mimeType: 'video/webm;codecs=vp9' });
+    } catch(e) {
+        mediaRecorder = new MediaRecorder(combinedStream);
+    }
+    
+    let chunks = [];
+    mediaRecorder.ondataavailable = (e) => { if(e.data.size > 0) chunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+        const blob = new Blob(chunks, { type: 'video/mp4' });
+        downloadBtn.href = URL.createObjectURL(blob);
+        downloadBtn.download = "POV_Nation_English_Short.mp4";
+        downloadBtn.style.display = "block";
+        progressText.innerText = "✅ Video Compiled Inside Dashboard! Click Download Button Below.";
+        progressText.style.color = "#4ade80";
+    };
+    
+    videoEl.currentTime = 0;
+    audioEl.currentTime = 0;
+    
+    videoEl.play();
+    audioEl.play();
+    mediaRecorder.start();
+    
+    function drawFrame() {
+        if (!videoEl.paused && !videoEl.ended) {
+            ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+            
+            ctx.font = "bold 22px 'Segoe UI', Arial, sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillStyle = "#FFFFFF"; 
+            ctx.strokeStyle = "rgba(0, 0, 0, 0.8)"; 
+            ctx.lineWidth = 5;
+            
+            const words = subtitleText.split(' ');
+            let line = '';
+            let y = canvas.height - 100; 
+            
+            for(let n = 0; n < words.length; n++) {
+                let testLine = line + words[n] + ' ';
+                let metrics = ctx.measureText(testLine);
+                if (metrics.width > canvas.width - 80 && n > 0) {
+                    ctx.strokeText(line, canvas.width / 2, y);
+                    ctx.fillText(line, canvas.width / 2, y);
+                    line = words[n] + ' ';
+                    y += 32;
+                } else {
+                    line = testLine;
+                }
+            }
+            ctx.strokeText(line, canvas.width / 2, y);
+            ctx.fillText(line, canvas.width / 2, y);
+            
+            requestAnimationFrame(drawFrame);
+        }
+    }
+    
+    videoEl.addEventListener('play', drawFrame);
+    setTimeout(drawFrame, 100);
+    
+    videoEl.onended = () => {
+        mediaRecorder.stop();
+        audioEl.pause();
+    };
+}
+</script>
+<!-- [File 06] Master Video & Audio Assembly Lab (Premium Clean Subtitles) End -->
 </body>
 </html>
