@@ -1,7 +1,7 @@
-<!-- [File 06] Master Video & Audio Assembly Lab (With Subtitles) Start -->
+<!-- [File 06] Master Video & Audio Assembly Lab (Premium Clean Subtitles) Start -->
 <div class="matrix-card" style="margin-top: 25px; padding: 20px; background: rgba(16, 22, 36, 0.85); border: 2px solid #00c6ff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); color: #fff; font-family: 'Segoe UI', sans-serif;">
     <h3 style="margin-top:0; color: #00c6ff; display: flex; align-items: center; gap: 8px;">🎬 [File 06] Master Video & Audio Assembly Lab</h3>
-    <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 15px;">Bhai, ab kisi bahar ke app ki zarurat nahi! Apni downloaded Video aur Voice-over ko yahan upload karo, subtitles text daalo, aur direct final video download karo.</p>
+    <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 15px;">Bhai, tumhaari choice ke mutabik chhotey aur premium Netflix-style subtitles lock kar diye hain taaki character ke expressions na chhupien!</p>
     
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
         <!-- Left Control Panel -->
@@ -70,8 +70,7 @@ function startMergingProcess() {
     const downloadBtn = document.getElementById('downloadBtn');
     
     downloadBtn.style.display = "none";
-    progressText.innerText = "⚡ Syncing Layers & Burning Subtitles... Please Wait.";
-    progressText.style.color = "#38bdf8";
+    progressText.innerText = "⚡ Syncing Layers & Burning Premium Subtitles...";
     
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const dest = audioCtx.createMediaStreamDestination();
@@ -96,7 +95,7 @@ function startMergingProcess() {
     mediaRecorder.onstop = () => {
         const blob = new Blob(chunks, { type: 'video/mp4' });
         downloadBtn.href = URL.createObjectURL(blob);
-        downloadBtn.download = "POV_Nation_Viral_Short.mp4";
+        downloadBtn.download = "POV_Nation_English_Short.mp4";
         downloadBtn.style.display = "block";
         progressText.innerText = "✅ Video Compiled Inside Dashboard! Click Download Button Below.";
         progressText.style.color = "#4ade80";
@@ -113,25 +112,25 @@ function startMergingProcess() {
         if (!videoEl.paused && !videoEl.ended) {
             ctx.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
             
-            // High-Retention Bold Yellow Subtitle Font Style
-            ctx.font = "bold 32px 'Segoe UI', Arial, sans-serif";
+            // Clean, Elegant Cinematic Subtitles (Small & Non-Obtrusive)
+            ctx.font = "bold 22px 'Segoe UI', Arial, sans-serif";
             ctx.textAlign = "center";
-            ctx.fillStyle = "#FFEA00"; 
-            ctx.strokeStyle = "#000000"; 
-            ctx.lineWidth = 7;
+            ctx.fillStyle = "#FFFFFF"; 
+            ctx.strokeStyle = "rgba(0, 0, 0, 0.8)"; 
+            ctx.lineWidth = 5;
             
             const words = subtitleText.split(' ');
             let line = '';
-            let y = canvas.height - 220; 
+            let y = canvas.height - 100; // Pushed to the absolute bottom to protect face views
             
             for(let n = 0; n < words.length; n++) {
                 let testLine = line + words[n] + ' ';
                 let metrics = ctx.measureText(testLine);
-                if (metrics.width > canvas.width - 60 && n > 0) {
+                if (metrics.width > canvas.width - 80 && n > 0) {
                     ctx.strokeText(line, canvas.width / 2, y);
                     ctx.fillText(line, canvas.width / 2, y);
                     line = words[n] + ' ';
-                    y += 42;
+                    y += 32;
                 } else {
                     line = testLine;
                 }
@@ -152,4 +151,4 @@ function startMergingProcess() {
     };
 }
 </script>
-<!-- [File 06] Master Video & Audio Assembly Lab (With Subtitles) End -->
+<!-- [File 06] Master Video & Audio Assembly Lab (Premium Clean Subtitles) End -->
