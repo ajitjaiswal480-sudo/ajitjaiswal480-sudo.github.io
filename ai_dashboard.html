@@ -442,64 +442,88 @@
         }
     </script>
     <!-- [File 06] Ultimate CapCut-Style Studio & Production Timeline Start -->
-<div class="matrix-card" style="margin-top: 25px; padding: 25px; background: linear-gradient(145deg, #0b0f19 0%, #111827 100%); border: 2px solid #00c6ff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6); color: #fff; font-family: 'Segoe UI', sans-serif;">
+<div class="matrix-card" style="margin-top: 25px; padding: 30px; background: linear-gradient(145deg, #060913 0%, #0f1423 100%); border: 2px solid #00f2fe; border-radius: 20px; box-shadow: 0 0 35px rgba(0, 242, 254, 0.25); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">
     
-    <!-- Header -->
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 15px; margin-bottom: 20px;">
-        <h3 style="margin:0; color: #00c6ff; display: flex; align-items: center; gap: 10px; font-size: 1.4rem;">🎬 POV NATION - Ultimate CapCut Studio Pro</h3>
-        <span style="background: #00c6ff; color: #000; font-size: 0.75rem; font-weight: bold; padding: 4px 10px; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 198, 255, 0.4);">PREMIUM AUTOMATION MODE ON</span>
+    <!-- Premium Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(0, 242, 254, 0.2); padding-bottom: 18px; margin-bottom: 25px;">
+        <div>
+            <h3 style="margin:0; color: #00f2fe; font-size: 1.6rem; font-weight: 800; text-shadow: 0 0 12px rgba(0, 242, 254, 0.6); letter-spacing: 0.03em;">🎬 POV NATION - v200,000.0 Multi-Scene AI Studio</h3>
+            <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #94a3b8;">International 3D Animation Assembly Line & Multi-Clip Extender Platform</p>
+        </div>
+        <span style="background: linear-gradient(90deg, #ff007f, #7f00ff); color: #fff; font-size: 0.75rem; font-weight: 800; padding: 6px 14px; border-radius: 30px; box-shadow: 0 0 15px rgba(255, 0, 127, 0.4); letter-spacing: 0.05em;">GOD MODE ACTIVATED</span>
     </div>
 
-    <!-- Workspace Grid -->
-    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px;">
+    <!-- Main Grid Workspace -->
+    <div style="display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 30px;">
         
-        <!-- Left Side: Production Control Panel -->
-        <div style="display: flex; flex-direction: column; gap: 18px;">
+        <!-- Left Column: Production Controls -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
             
-            <!-- Video Stitcher Section -->
-            <div style="background: rgba(30, 41, 59, 0.5); padding: 15px; border-radius: 10px; border: 1px solid #334155;">
-                <label style="display:block; font-size: 0.8rem; color: #38bdf8; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">⚙️ STEP 1: MULTI-CLIP VIDEO TIMELINE (EXTENDER)</label>
-                <input type="file" id="videoInputPro" accept="video/mp4" style="width:100%; background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid #475569; color: #fff; cursor: pointer;">
-                <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 6px; margin-bottom: 0;">💡 Runway Gen-3 ya Pika ke clips sequential loop mein yahan extend ho jayenge.</p>
+            <!-- STEP 1: MULTI-CLIP TIMELINE TRACKS -->
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);">
+                <label style="display:block; font-size: 0.85rem; color: #00f2fe; margin-bottom: 12px; font-weight: 800; letter-spacing: 0.05em;">🎞️ STEP 1: MULTI-CLIP TIMELINE EXTENDER (UP TO 40 SECONDS)</label>
+                
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                    <!-- Clip 1 -->
+                    <div style="background: #090d16; border: 1px dashed #334155; padding: 10px; border-radius: 8px; text-align: center;">
+                        <span style="font-size: 0.7rem; color: #ff007f; font-weight: bold; display: block; margin-bottom: 6px;">SCENE 1 (INTRO)</span>
+                        <input type="file" id="clip1" accept="video/mp4" style="font-size: 0.65rem; width: 100%; color: #94a3b8;">
+                    </div>
+                    <!-- Clip 2 -->
+                    <div style="background: #090d16; border: 1px dashed #334155; padding: 10px; border-radius: 8px; text-align: center;">
+                        <span style="font-size: 0.7rem; color: #7f00ff; font-weight: bold; display: block; margin-bottom: 6px;">SCENE 2 (BUILD-UP)</span>
+                        <input type="file" id="clip2" accept="video/mp4" style="font-size: 0.65rem; width: 100%; color: #94a3b8;">
+                    </div>
+                    <!-- Clip 3 -->
+                    <div style="background: #090d16; border: 1px dashed #334155; padding: 10px; border-radius: 8px; text-align: center;">
+                        <span style="font-size: 0.7rem; color: #00f2fe; font-weight: bold; display: block; margin-bottom: 6px;">SCENE 3 (TWIST)</span>
+                        <input type="file" id="clip3" accept="video/mp4" style="font-size: 0.65rem; width: 100%; color: #94a3b8;">
+                    </div>
+                    <!-- Clip 4 -->
+                    <div style="background: #090d16; border: 1px dashed #334155; padding: 10px; border-radius: 8px; text-align: center;">
+                        <span style="font-size: 0.7rem; color: #3ae374; font-weight: bold; display: block; margin-bottom: 6px;">SCENE 4 (OUTRO)</span>
+                        <input type="file" id="clip4" accept="video/mp4" style="font-size: 0.65rem; width: 100%; color: #94a3b8;">
+                    </div>
+                </div>
             </div>
 
-            <!-- Audio Input Section -->
-            <div style="background: rgba(30, 41, 59, 0.5); padding: 15px; border-radius: 10px; border: 1px solid #334155;">
-                <label style="display:block; font-size: 0.8rem; color: #38bdf8; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">🎙️ STEP 2: ELEVENLABS ENGLISH VOICE-OVER</label>
-                <input type="file" id="audioInputPro" accept="audio/mp3, audio/mpeg" style="width:100%; background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid #475569; color: #fff; cursor: pointer;">
+            <!-- STEP 2: AUDIO TRACK -->
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                <label style="display:block; font-size: 0.85rem; color: #7f00ff; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">🎙️ STEP 2: ELEVENLABS ENGLISH VOICE-OVER LAYER</label>
+                <input type="file" id="audioInputPro" accept="audio/mp3, audio/mpeg" style="width:100%; background: #090d16; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; color: #fff; cursor: pointer;">
             </div>
 
-            <!-- CapCut Auto-Caption Configurator -->
-            <div style="background: rgba(30, 41, 59, 0.5); padding: 15px; border-radius: 10px; border: 1px solid #334155;">
-                <label style="display:block; font-size: 0.8rem; color: #38bdf8; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.05em;">💬 STEP 3: CAPCUT SMART AUTO-CAPTIONS ENGINE</label>
-                <textarea id="subtitleInputPro" style="width:100%; height: 80px; background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid #475569; color: #fff; resize: none; font-size: 0.85rem; line-height: 1.4;">POV: You decided to do a digital detox for 1 Hour... but two minutes later, a single notification pops up and your mind goes completely blank!</textarea>
+            <!-- STEP 3: CAPCUT ENGINE SUBTITLES -->
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08);">
+                <label style="display:block; font-size: 0.85rem; color: #ff007f; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">💬 STEP 3: SMART CAPCUT CAPTIONS DATA STACK</label>
+                <textarea id="subtitleInputPro" style="width:100%; height: 85px; background: #090d16; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; color: #fff; resize: none; font-size: 0.9rem; line-height: 1.5; font-family: inherit;">POV: You decided to do a digital detox for 1 Hour... but two minutes later, a single notification pops up and your mind goes completely blank!</textarea>
             </div>
 
-            <!-- Action Buttons -->
-            <div style="display: grid; grid-template-columns: 1fr; gap: 10px;">
-                <button onclick="runUltimateCapCutEngine()" style="background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); border:none; color:white; padding: 14px; border-radius: 8px; font-weight: bold; cursor:pointer; font-size: 1rem; letter-spacing: 0.05em; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 114, 255, 0.3);">
-                    🔥 GENERATE PREMIUM VIDEO WITH AUTO-HIGHLIGHT CAPTIONS
+            <!-- Action Command Station -->
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button onclick="runMultiClipCapCutEngine()" style="background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%); border:none; color:#000; padding: 16px; border-radius: 10px; font-weight: 800; cursor:pointer; font-size: 1.05rem; letter-spacing: 0.05em; transition: 0.3s; box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);">
+                    🔥 STITCH TIMELINE & RENDER VIRAL SHORT
                 </button>
-                <a id="downloadBtnPro" style="display:none; text-align:center; background: #4ade80; color: #000; padding: 14px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 1rem; box-shadow: 0 0 20px rgba(74, 222, 128, 0.5); transition: 0.2s;">
-                    📥 DOWNLOAD VIRAL 4K SHORT (.MP4)
+                <a id="downloadBtnPro" style="display:none; text-align:center; background: linear-gradient(90deg, #3ae374, #4ade80); color: #000; padding: 16px; border-radius: 10px; font-weight: 800; text-decoration: none; font-size: 1.05rem; box-shadow: 0 0 25px rgba(58, 227, 116, 0.5);">
+                    📥 DOWNLOAD FINAL MULTI-CLIP VIRAL SHORT (.MP4)
                 </a>
             </div>
 
-            <!-- Metadata & Thumbnail System -->
-            <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; padding: 15px; border-radius: 10px; margin-top: 10px;">
-                <h4 style="margin: 0 0 10px 0; color: #4ade80; font-size: 0.9rem; display: flex; align-items: center; gap: 6px;">🧠 YOUTUBE VIRAL METADATA GENERATOR (AUTOMATED)</h4>
-                <button onclick="generateViralMetadata()" style="background: #10b981; color:#000; border:none; font-weight:bold; font-size:0.75rem; padding: 6px 12px; border-radius: 4px; cursor:pointer; margin-bottom: 10px;">⚡ AUTO-CREATE TITLE & DESCRIPTION</button>
-                <div id="metadataOutput" style="background: #090d16; padding: 10px; border-radius: 6px; font-size: 0.8rem; color: #cbd5e1; display: none; max-height: 120px; overflow-y: auto; font-family: monospace; border: 1px solid #1e293b;"></div>
+            <!-- Auto SEO System -->
+            <div style="background: rgba(58, 227, 116, 0.06); border: 1px solid rgba(58, 227, 116, 0.3); padding: 18px; border-radius: 14px;">
+                <h4 style="margin: 0 0 10px 0; color: #3ae374; font-size: 0.95rem; font-weight: 800; display: flex; align-items: center; gap: 8px;">🧠 AUTOMATED METADATA SEARCH ENGINE OPTIMIZER</h4>
+                <button onclick="generateViralMetadata()" style="background: rgba(58, 227, 116, 0.2); color:#3ae374; border: 1px solid #3ae374; font-weight:bold; font-size:0.75rem; padding: 8px 16px; border-radius: 6px; cursor:pointer; transition: 0.2s;">⚡ EXTRACT VIRAL TAGS & DESCRIPTIONS</button>
+                <div id="metadataOutput" style="background: #040711; padding: 12px; border-radius: 8px; font-size: 0.85rem; color: #cbd5e1; display: none; max-height: 130px; overflow-y: auto; font-family: monospace; border: 1px solid #1e293b; line-height: 1.5;"></div>
             </div>
 
         </div>
 
-        <!-- Right Side: Real-Time Studio Monitor Display -->
-        <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-            <div style="background: #090d16; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; position: relative;">
-                <span style="position: absolute; top: 12px; left: 15px; font-size: 0.7rem; color: #64748b; font-weight: bold; letter-spacing: 0.1em;">🔴 STUDIO MONITOR (9:16)</span>
-                <canvas id="capcutCanvas" width="480" height="854" style="width: 100%; max-width: 250px; height: auto; background: #000; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.7); display: block; margin-top: 20px; border: 1px solid #334155;"></canvas>
-                <div id="statusLabelPro" style="margin-top: 15px; font-size: 0.85rem; color: #38bdf8; font-weight: bold; text-align: center;">System Status: Standby Engine.</div>
+        <!-- Right Column: Live Monitor Preview -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+            <div style="background: #040711; border: 2px solid #1e293b; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; position: relative; box-shadow: inset 0 4px 20px rgba(0,0,0,0.8);">
+                <span style="position: absolute; top: 15px; left: 20px; font-size: 0.75rem; color: #64748b; font-weight: 800; letter-spacing: 0.15em;">🎥 MONITOR LIVE DISP (9:16)</span>
+                <canvas id="capcutCanvas" width="480" height="854" style="width: 100%; max-width: 250px; height: auto; background: #000; border-radius: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.8); display: block; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05);"></canvas>
+                <div id="statusLabelPro" style="margin-top: 20px; font-size: 0.9rem; color: #00f2fe; font-weight: bold; text-align: center; text-shadow: 0 0 8px rgba(0,242,254,0.3);">Timeline Engine Standby.</div>
             </div>
         </div>
 
@@ -507,37 +531,42 @@
 </div>
 
 <script>
-let masterVideo = document.createElement('video');
+let videoClips = [document.createElement('video'), document.createElement('video'), document.createElement('video'), document.createElement('video')];
+videoClips.forEach(v => { v.muted = true; v.playsInline = true; });
 let masterAudio = document.createElement('audio');
-masterVideo.muted = true;
-masterVideo.playsInline = true;
+let activeClipIndex = 0;
 
-document.getElementById('videoInputPro').addEventListener('change', function(e) {
-    if(e.target.files[0]) {
-        masterVideo.src = URL.createObjectURL(e.target.files[0]);
-        masterVideo.load();
-        document.getElementById('statusLabelPro').innerText = "⚡ Video File Mounted & Configured!";
-        document.getElementById('statusLabelPro').style.color = "#38bdf8";
-    }
-});
+function setupClipListener(inputId, index) {
+    document.getElementById(inputId).addEventListener('change', function(e) {
+        if(e.target.files[0]) {
+            videoClips[index].src = URL.createObjectURL(e.target.files[0]);
+            videoClips[index].load();
+            document.getElementById('statusLabelPro').innerText = `⚡ Scene ${index + 1} Mounted Successfully!`;
+        }
+    });
+}
+setupClipListener('clip1', 0);
+setupClipListener('clip2', 1);
+setupClipListener('clip3', 2);
+setupClipListener('clip4', 3);
 
 document.getElementById('audioInputPro').addEventListener('change', function(e) {
     if(e.target.files[0]) {
         masterAudio.src = URL.createObjectURL(e.target.files[0]);
         masterAudio.load();
-        document.getElementById('statusLabelPro').innerText = "⚡ Voice-over Layer Linked Perfectly!";
+        document.getElementById('statusLabelPro').innerText = "⚡ Audio Master Layer Linked!";
     }
 });
 
 function generateViralMetadata() {
     const out = document.getElementById('metadataOutput');
     out.style.display = "block";
-    out.innerHTML = `<b>[VIRAL TITLE SUGGESTION]:</b><br>POV: Digital Fasting Ruined In 2 Mins! 😂 #shorts #trending<br><br><b>[YOUTUBE SEO DESCRIPTION]:</b><br>Bhai, strictly decided to do a digital detox but wait for the single notification that ruins everything! Watch till the end for the relatable twist. Like, Share and Subscribe to POV Nation for daily comedy animations! #digitaldetox #animation #pixarstyle`;
+    out.innerHTML = `<b>[VIRAL TITLE]:</b><br>POV: Digital Fasting Ruined In 2 Mins! 😂 #shorts #trending<br><br><b>[SEO DESCRIPTION]:</b><br>Bhai, strictly decided to do a digital detox but wait for the single notification that ruins everything! Watch till the end for the relatable twist. Like, Share and Subscribe to POV Nation for daily comedy animations! #digitaldetox #animation #pixarstyle`;
 }
 
-function runUltimateCapCutEngine() {
-    if(!masterVideo.src || !masterAudio.src) {
-        alert("Bhai, pehle Step 1 aur Step 2 ki files upload karo!");
+function runMultiClipCapCutEngine() {
+    if(!videoClips[0].src || !masterAudio.src) {
+        alert("Bhai, kam se kam Scene 1 aur Voice-over Audio zaroor upload karo!");
         return;
     }
 
@@ -548,8 +577,8 @@ function runUltimateCapCutEngine() {
     const downloadBtn = document.getElementById('downloadBtnPro');
 
     downloadBtn.style.display = "none";
-    statusText.innerText = "🚀 CapCut Engine Processing: Generating Auto-Highlight Subtitles...";
-    statusText.style.color = "#eab308";
+    statusText.innerText = "🚀 Sequential Stitching Active: Processing Tracks...";
+    statusText.style.color = "#ff007f";
 
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const dest = audioCtx.createMediaStreamDestination();
@@ -574,32 +603,36 @@ function runUltimateCapCutEngine() {
     mediaRecorder.onstop = () => {
         const blob = new Blob(chunks, { type: 'video/mp4' });
         downloadBtn.href = URL.createObjectURL(blob);
-        downloadBtn.download = "POVNation_CapCutStyle_Short.mp4";
+        downloadBtn.download = "POVNation_Extended_Short_v200k.mp4";
         downloadBtn.style.display = "block";
-        statusText.innerText = "🏆 Production Complete! Viral Short Ready for YouTube.";
-        statusText.style.color = "#4ade80";
+        statusText.innerText = "🏆 Production Complete! 40-Sec Short Ready.";
+        statusText.style.color = "#3ae374";
     };
 
-    masterVideo.currentTime = 0;
+    activeClipIndex = 0;
+    videoClips.forEach(v => { if(v.src) v.currentTime = 0; });
     masterAudio.currentTime = 0;
-    masterVideo.play();
+    
+    videoClips[activeClipIndex].play();
     masterAudio.play();
     mediaRecorder.start();
 
     const words = fullText.split(' ');
     
-    function drawStudioFrame() {
-        if (!masterVideo.paused && !masterVideo.ended) {
-            ctx.drawImage(masterVideo, 0, 0, canvas.width, canvas.height);
+    function drawTimelineFrame() {
+        let currentVideo = videoClips[activeClipIndex];
+        
+        if (currentVideo && !currentVideo.paused && !currentVideo.ended) {
+            ctx.drawImage(currentVideo, 0, 0, canvas.width, canvas.height);
 
             ctx.textAlign = "center";
-            ctx.font = "bold 24px 'Segoe UI', Arial, sans-serif";
+            ctx.font = "bold 25px 'Plus Jakarta Sans', Arial, sans-serif";
             
             let progressRatio = masterAudio.currentTime / (masterAudio.duration || 1);
             let activeWordIndex = Math.floor(words.length * progressRatio);
             
             let line = '';
-            let currentLineY = canvas.height - 150;
+            let currentLineY = canvas.height - 160;
             let currentLineWords = [];
 
             for (let i = 0; i < words.length; i++) {
@@ -608,12 +641,9 @@ function runUltimateCapCutEngine() {
                 let metrics = ctx.measureText(testLine);
                 
                 if (metrics.width > canvas.width - 60 || i === words.length - 1) {
-                    let textBlockWidth = ctx.measureText(testLine).width;
-                    let startX = (canvas.width / 2) - (textBlockWidth / 4); 
-                    
                     ctx.fillStyle = "#ffffff";
-                    ctx.strokeStyle = "rgba(0,0,0,0.9)";
-                    ctx.lineWidth = 5;
+                    ctx.strokeStyle = "rgba(0,0,0,0.95)";
+                    ctx.lineWidth = 6;
                     
                     let renderedText = currentLineWords.map(w => w.text).join(' ');
                     
@@ -630,23 +660,30 @@ function runUltimateCapCutEngine() {
 
                     line = '';
                     currentLineWords = [];
-                    currentLineY += 35;
+                    currentLineY += 38;
                 } else {
                     line = testLine;
                 }
             }
+        }
 
-            requestAnimationFrame(drawStudioFrame);
+        if (currentVideo && currentVideo.ended) {
+            if (activeClipIndex < videoClips.length - 1 && videoClips[activeClipIndex + 1].src) {
+                activeClipIndex++;
+                videoClips[activeClipIndex].play();
+            }
+        }
+
+        if (!masterAudio.ended) {
+            requestAnimationFrame(drawTimelineFrame);
+        } else {
+            mediaRecorder.stop();
+            videoClips.forEach(v => v.pause());
         }
     }
 
-    masterVideo.addEventListener('play', drawStudioFrame);
-    setTimeout(drawStudioFrame, 100);
-
-    masterAudio.onended = () => {
-        mediaRecorder.stop();
-        masterVideo.pause();
-    };
+    videoClips[activeClipIndex].addEventListener('play', drawTimelineFrame);
+    setTimeout(drawTimelineFrame, 100);
 }
 </script>
 </body>
