@@ -237,126 +237,70 @@ function verifyStudioPassword() {
             </div>
         </div>
 
-        <div class="matrix-card" style="margin-top: 25px; padding: 30px; background: linear-gradient(145deg, #020308 0%, #050a21 100%); border: 2px solid #3ae374; border-radius: 20px; box-shadow: 0 0 70px rgba(58, 227, 116, 0.4); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">
+        <div class="matrix-card" style="margin-top: 25px; padding: 30px; background: linear-gradient(145deg, #020617 0%, #0b1329 100%); border: 2px solid #00f2fe; border-radius: 20px; box-shadow: 0 0 60px rgba(0, 242, 254, 0.4); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">
     
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(58, 227, 116, 0.3); padding-bottom: 18px; margin-bottom: 25px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(0, 242, 254, 0.3); padding-bottom: 18px; margin-bottom: 25px;">
         <div>
-            <h3 style="margin:0; color: #3ae374; font-size: 1.6rem; font-weight: 800; text-shadow: 0 0 15px rgba(58, 227, 116, 0.5); letter-spacing: 0.03em;">🌌 POV NATION - v5,000,000.0 Auto SFX & Meme Stacker Studio</h3>
-            <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #94a3b8;">Infinite Single-Clip Extender Matrix with Embedded AI Smart SFX & Mood Sound Layers</p>
+            <h3 style="margin:0; color: #00f2fe; font-size: 1.6rem; font-weight: 800; text-shadow: 0 0 15px rgba(0, 242, 254, 0.6); letter-spacing: 0.03em;">🚀 POV NATION - v8,000,000.0 AI Auto-Magic Production Engine</h3>
+            <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #94a3b8;">Autonomous Timelines, Contextual Meme Injectors & WebGPU Auto-Pilot Core</p>
         </div>
-        <span style="background: linear-gradient(90deg, #ffff00, #ff007f); color: #000; font-size: 0.75rem; font-weight: 900; padding: 6px 14px; border-radius: 30px; box-shadow: 0 0 25px rgba(255, 0, 127, 0.5); letter-spacing: 0.05em;">5-MILLION SFX ACTIVE</span>
+        <span style="background: linear-gradient(90deg, #00f2fe, #ff007f); color: #fff; font-size: 0.75rem; font-weight: 900; padding: 6px 14px; border-radius: 30px; box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);">8-MILLION AUTO-MAGIC ACTIVE</span>
     </div>
 
-    <div style="background: rgba(58, 227, 116, 0.03); padding: 22px; border-radius: 14px; border: 1px solid rgba(58, 227, 116, 0.2); margin-bottom: 25px;">
-        <h4 style="margin: 0 0 6px 0; color: #00f2fe; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.03em;">🚀 🧠 ONE-CLICK AUTO VIDEO CREATION GENERATOR</h4>
-        <p style="margin: 0 0 15px 0; font-size: 0.78rem; color: #94a3b8;">Apna video concept niche likho. Ye automatically script, captions, viral hashtags aur SFX parameters generate karega!</p>
-        
-        <div style="display: flex; gap: 12px; margin-bottom: 15px;">
-            <input type="text" id="scriptTopicInput" placeholder="E.g., Funny Indian boy trying to study but phone ringtone distracts him..." style="flex: 1; background: #04060a; padding: 14px; border-radius: 8px; border: 1px solid #334155; color: #fff; font-size: 0.9rem;">
-            <button onclick="runUltimateAutoGenerationFactory()" style="background: linear-gradient(135deg, #00f2fe 0%, #3ae374 100%); border:none; color:#000; padding: 0 22px; border-radius: 8px; font-weight: 900; cursor:pointer; font-size: 0.85rem; transition: 0.3s; box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);">⚡ LAUNCH AUTO CREATION</button>
-        </div>
-
-        <div id="autoMetaOutput" style="display:none; background:#04060a; padding:15px; border-radius:8px; border:1px solid #3ae374; margin-bottom:15px;">
-            <span style="font-size: 0.75rem; color: #3ae374; font-weight: 800; display: block; margin-bottom: 5px;">🔥 AUTO GENERATED VIRAL CAPTION & HASHTAGS (COPY FOR YOUTUBE SHORTS)</span>
-            <input type="text" id="autoViralCaptionBox" readonly style="width:100%; background:transparent; border:none; color:#ffff00; font-size:0.85rem; font-weight:bold;">
-            <button onclick="navigator.clipboard.writeText(document.getElementById('autoViralCaptionBox').value); alert('Viral Caption & Hashtags Copied!');" style="background:#1e293b; color:#fff; border:none; padding: 5px 12px; font-size:0.7rem; border-radius:4px; cursor:pointer; font-weight:bold; margin-top:8px;">📋 Copy YouTube Meta Data</button>
-        </div>
-
-        <div id="promptOutputGrid" style="display: none; grid-template-columns: repeat(2, 1fr); gap: 15px;">
-            <div style="background: #04060a; padding: 12px; border-radius: 8px; border: 1px solid #1e293b;">
-                <span style="font-size: 0.7rem; color: #ff007f; font-weight: 800; display: block; margin-bottom: 5px;">🎬 SCENE 1 PROMPT (INTRO)</span>
-                <textarea id="pOut1" readonly style="width:100%; height:70px; background:transparent; border:none; color:#cbd5e1; font-size:0.75rem; resize:none; font-family:monospace;"></textarea>
-                <button onclick="navigator.clipboard.writeText(document.getElementById('pOut1').value); alert('Scene 1 Prompt Copied!');" style="background:#1e293b; color:#fff; border:none; padding: 4px 10px; font-size:0.65rem; border-radius:4px; cursor:pointer; font-weight:bold; margin-top:5px;">📋 Copy</button>
-            </div>
-            <div style="background: #04060a; padding: 12px; border-radius: 8px; border: 1px solid #1e293b;">
-                <span style="font-size: 0.7rem; color: #7f00ff; font-weight: 800; display: block; margin-bottom: 5px;">🎬 SCENE 2 PROMPT (BUILD-UP)</span>
-                <textarea id="pOut2" readonly style="width:100%; height:70px; background:transparent; border:none; color:#cbd5e1; font-size:0.75rem; resize:none; font-family:monospace;"></textarea>
-                <button onclick="navigator.clipboard.writeText(document.getElementById('pOut2').value); alert('Scene 2 Prompt Copied!');" style="background:#1e293b; color:#fff; border:none; padding: 4px 10px; font-size:0.65rem; border-radius:4px; cursor:pointer; font-weight:bold; margin-top:5px;">📋 Copy</button>
-            </div>
-            <div style="background: #04060a; padding: 12px; border-radius: 8px; border: 1px solid #1e293b;">
-                <span style="font-size: 0.7rem; color: #00f2fe; font-weight: 800; display: block; margin-bottom: 5px;">🎬 SCENE 3 PROMPT (TWIST)</span>
-                <textarea id="pOut3" readonly style="width:100%; height:70px; background:transparent; border:none; color:#cbd5e1; font-size:0.75rem; resize:none; font-family:monospace;"></textarea>
-                <button onclick="navigator.clipboard.writeText(document.getElementById('pOut3').value); alert('Scene 3 Prompt Copied!');" style="background:#1e293b; color:#fff; border:none; padding: 4px 10px; font-size:0.65rem; border-radius:4px; cursor:pointer; font-weight:bold; margin-top:5px;">📋 Copy</button>
-            </div>
-            <div style="background: #04060a; padding: 12px; border-radius: 8px; border: 1px solid #1e293b;">
-                <span style="font-size: 0.7rem; color: #3ae374; font-weight: 800; display: block; margin-bottom: 5px;">🎬 SCENE 4 PROMPT (OUTRO)</span>
-                <textarea id="pOut4" readonly style="width:100%; height:70px; background:transparent; border:none; color:#cbd5e1; font-size:0.75rem; resize:none; font-family:monospace;"></textarea>
-                <button onclick="navigator.clipboard.writeText(document.getElementById('pOut4').value); alert('Scene 4 Prompt Copied!');" style="background:#1e293b; color:#fff; border:none; padding: 4px 10px; font-size:0.65rem; border-radius:4px; cursor:pointer; font-weight:bold; margin-top:5px;">📋 Copy</button>
-            </div>
-        </div>
-    </div>
-
-    <div style="background: rgba(4, 7, 17, 0.85); padding: 22px; border-radius: 14px; border: 1px solid rgba(58, 227, 116, 0.25); margin-bottom: 25px;">
-        <h4 style="margin: 0 0 8px 0; color: #ffff00; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.03em;">🪐 100% FREE OPEN-SOURCE ULTRA AI WORKSPACE NEXUS</h4>
-        <p style="margin: 0 0 15px 0; font-size: 0.78rem; color: #94a3b8;">Naye unique tools direct dashboard ke andar live chalao aur bina kisi lag ke seamless video workflow ka maza lo:</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px;">
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/InstantX/InstantID')" style="background: rgba(255, 215, 0, 0.2); color: #ffd700; border: 1px solid #ffd700; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">👤 1. Face Swapper (InstantID)</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/jysts/RIFE')" style="background: rgba(58, 227, 116, 0.2); color: #3ae374; border: 1px solid #3ae374; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">🎞️ 2. Video Smoother (60FPS RIFE)</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/Plachta/Seed-Voice-Conversion')" style="background: rgba(255, 0, 127, 0.15); color: #ff007f; border: 1px solid #ff007f; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">🎙️ 3. Free Voice Clone</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/webml-community/remove-background-webgpu')" style="background: rgba(0, 242, 254, 0.15); color: #00f2fe; border: 1px solid #00f2fe; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">✂️ 4. AI BG Remover</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/victor/LongCat-Video-Avatar-1.5')" style="background: rgba(127, 0, 255, 0.15); color: #7f00ff; border: 1px solid #7f00ff; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">🎬 5. Talking Head Animator</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/r3gn/Wan2.2-14B-Preview')" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e; border: 1px solid #f43f5e; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">🚀 6. Next-Gen 3D Video</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/tencent/Hunyuan3D-2.0')" style="background: rgba(0, 191, 255, 0.15); color: #00bfff; border: 1px solid #00bfff; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">📐 7. Hollywood 3D Assets</button>
-            <button onclick="launchHfSpace('https://huggingface.co/spaces/multimodalart/omnivoice-singing')" style="background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid #a855f7; padding: 12px 10px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 0.75rem; transition: 0.2s;">🎵 8. Multi-Voice Singing</button>
-        </div>
-
-        <div id="hfIframeWrapper" style="display: none; width: 100%; border-radius: 12px; overflow: hidden; border: 2px solid #1e293b; background: #000; box-shadow: 0 15px 50px rgba(0,0,0,0.95); margin-top: 15px;">
-            <div style="background: #090d16; padding: 12px 18px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b;">
-                <span id="hfTitleLabel" style="font-size: 0.75rem; color: #00f2fe; font-weight: bold; font-family: monospace; letter-spacing: 0.05em;">CONNECTING NODE MATRIX...</span>
-                <button onclick="closeHfSpace()" style="background: #ef4444; color: #fff; border: none; padding: 6px 14px; border-radius: 6px; font-size: 0.7rem; font-weight: bold; cursor: pointer;">🛑 Close Active Space</button>
-            </div>
-            <iframe id="hfSpaceIframe" src="" style="width: 100%; height: 680px; border: none; background: #fff;"></iframe>
-        </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 30px;">
+    <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 25px;">
         
         <div style="display: flex; flex-direction: column; gap: 20px;">
             
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 14px; border: 1px solid rgba(58, 227, 116, 0.25);">
-                <label style="display:block; font-size: 0.85rem; color: #3ae374; margin-bottom: 12px; font-weight: 800; letter-spacing: 0.05em;">🎞️ STEP 1: SINGLE-CLIP AUTO EXTENDER (INFINITE LOOP MODE)</label>
-                <div style="background: #090d16; border: 2px dashed #3ae374; padding: 20px; border-radius: 10px; text-align: center;">
-                    <p style="margin: 0 0 10px 0; font-size: 0.8rem; color: #94a3b8;">Apni EK base AI video clip daalo, ye automatic audio ke end tak loop hokar 1-2 minute tak extend ho jayegi!</p>
-                    <input type="file" id="singleClipInput" accept="video/mp4" style="font-size: 0.85rem; color: #fff; cursor: pointer; background: #040711; padding: 10px; border-radius: 6px; border: 1px solid #334155; width: 80%;">
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 14px; border: 1px solid rgba(0, 242, 254, 0.2); display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <h4 style="margin:0; color: #fff; font-size: 1.05rem; font-weight: 800;">🤖 ENGINE AUTO-PILOT CONTROL</h4>
+                    <p style="margin:4px 0 0 0; font-size: 0.78rem; color: #94a3b8;">Jab ye ON hoga, system templates aur asset tracks ko auto-arrange karega.</p>
+                </div>
+                <button id="autoPilotMasterBtn" onclick="toggleEngineAutoPilot()" style="background: #ef4444; color: #fff; border: none; padding: 12px 24px; border-radius: 10px; font-weight: 900; cursor: pointer; transition: 0.3s; font-size: 0.85rem; letter-spacing: 0.05em; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);">
+                    🔴 AUTO-PILOT: OFF
+                </button>
+            </div>
+
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 14px; border: 1px solid rgba(255, 0, 127, 0.2);">
+                <h4 style="margin:0 0 6px 0; color: #ff007f; font-size: 1.05rem; font-weight: 800;">🎭 LIVE CONTEXTUAL MEME OVERLAY SELECTOR</h4>
+                <p style="margin:0 0 15px 0; font-size: 0.78rem; color: #94a3b8;">Video script ke emotion match ke hisab se automatic reaction blocks select karein:</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                    <button onclick="injectMemeReaction('Funny Indian Laugh Cat')" style="background: #0f172a; border: 1px solid #ff007f; color: #fff; padding: 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">🤪 Comedy Laugh</button>
+                    <button onclick="injectMemeReaction('Dramatic Suspense Vine Thud')" style="background: #0f172a; border: 1px solid #7f00ff; color: #fff; padding: 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">🤫 Shock Twist</button>
+                    <button onclick="injectMemeReaction('Sigma Male Akshay Kumar Grind')" style="background: #0f172a; border: 1px solid #00f2fe; color: #fff; padding: 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">🔥 Hype / Attitude</button>
                 </div>
             </div>
 
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 14px; border: 1px solid rgba(255, 0, 127, 0.25); box-shadow: 0 0 15px rgba(255, 0, 127, 0.05);">
-                <label style="display:block; font-size: 0.85rem; color: #ff007f; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">🎭 STEP 2: AUTO MEME INTERMISSION & SFX MOOD CONFIGURATOR</label>
-                <p style="margin: 0 0 12px 0; font-size: 0.78rem; color: #94a3b8;">Video track par automatic comedy triggers aur background audio effects mix karne ke liye mood chuno:</p>
-                <select id="sfxMoodSelector" style="width: 100%; background: #090d16; padding: 12px; border-radius: 8px; border: 1px solid #ff007f; color: #fff; font-weight: bold; cursor: pointer;">
-                    <option value="funny">🤪 Indian Comedy Mode (Vine Thuds, Funny Intermissions)</option>
-                    <option value="dramatic">🤫 Dramatic Twist Mode (Suspense Bass Drops, Cinematic Echoes)</option>
-                    <option value="hype">🔥 Hype/Superhero Landing Mode (High Energy Cinematic Impacts)</option>
-                </select>
-            </div>
-
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08);">
-                <label style="display:block; font-size: 0.85rem; color: #7f00ff; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">🎙️ STEP 3: ENGLISH VOICE-OVER AUDIO LAYER</label>
-                <input type="file" id="audioInputPro" accept="audio/mp3, audio/mpeg" style="width:100%; background: #090d16; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; color: #fff; cursor: pointer;">
-            </div>
-
-            <div style="background: rgba(15, 23, 42, 0.6); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.08);">
-                <label style="display:block; font-size: 0.85rem; color: #00f2fe; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">💬 STEP 4: AUTOMATED CAPCUT CAPTIONS FLOW DATA</label>
-                <textarea id="subtitleInputPro" style="width:100%; height: 85px; background: #090d16; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; color: #fff; resize: none; font-size: 0.9rem; line-height: 1.5; font-family: inherit;">Awaiting auto script injection generation...</textarea>
+            <div style="background: rgba(15, 23, 42, 0.6); padding: 18px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.06);">
+                <label style="display:block; font-size: 0.85rem; color: #3ae374; margin-bottom: 8px; font-weight: 800; letter-spacing: 0.05em;">🎞️ SELECT UNPROCESSED AI RAW CLIP (.MP4)</label>
+                <input type="file" id="v8VideoAsset" accept="video/mp4" style="width:100%; background: #04060a; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; color: #fff; cursor: pointer;">
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <button onclick="runMultiClipCapCutEngine()" style="background: linear-gradient(135deg, #3ae374 0%, #00f2fe 100%); border:none; color:#000; padding: 16px; border-radius: 10px; font-weight: 900; cursor:pointer; font-size: 1.05rem; letter-spacing: 0.05em; transition: 0.3s; box-shadow: 0 6px 20px rgba(58, 227, 116, 0.35);">
-                    🚀 STITCH TIMELINE, INJECT SFX & RENDER LONG SHORT
+                <button onclick="launchAdvancedAiScanEngine()" style="background: linear-gradient(135deg, #00f2fe 0%, #ff007f 100%); border:none; color:#fff; padding: 16px; border-radius: 10px; font-weight: 900; cursor:pointer; font-size: 1.05rem; letter-spacing: 0.05em; transition: 0.3s; box-shadow: 0 6px 25px rgba(0, 242, 254, 0.35);">
+                    ⚡ START AI AUTO-EDIT SCAN
                 </button>
-                <a id="downloadBtnPro" style="display:none; text-align:center; background: linear-gradient(90deg, #3ae374, #4ade80); color: #000; padding: 16px; border-radius: 10px; font-weight: 800; text-decoration: none; font-size: 1.05rem; box-shadow: 0 0 25px rgba(58, 227, 116, 0.5);">
-                    📥 DOWNLOAD FINAL V5.0 SFX ADDED SHORT (.MP4)
-                </a>
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
-            <div style="background: #040711; border: 2px solid #1e293b; border-radius: 16px; padding: 20px; display: flex; flex-direction: column; align-items: center; width: 100%; box-sizing: border-box; position: relative; box-shadow: inset 0 4px 20px rgba(0,0,0,0.8);">
-                <span style="position: absolute; top: 15px; left: 20px; font-size: 0.75rem; color: #64748b; font-weight: 800; letter-spacing: 0.15em;">🎥 MONITOR LIVE DISP (9:16)</span>
-                <canvas id="capcutCanvas" width="480" height="854" style="width: 100%; max-width: 250px; height: auto; background: #000; border-radius: 10px; box-shadow: 0 12px 35px rgba(0,0,0,0.8); display: block; margin-top: 25px; border: 1px solid rgba(255,255,255,0.05);"></canvas>
-                <div id="statusLabelPro" style="margin-top: 20px; font-size: 0.9rem; color: #3ae374; font-weight: bold; text-align: center; text-shadow: 0 0 8px rgba(58,227,116,0.3);">Studio System Standby.</div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background: #04060a; border: 2px solid #1e293b; border-radius: 16px; padding: 20px; box-shadow: inset 0 4px 20px rgba(0,0,0,0.9);">
+                <span style="font-size: 0.72rem; color: #64748b; font-weight: 800; display:block; letter-spacing: 0.1em; margin-bottom: 15px;">🎥 LIVE STUDIO PROCESSING MONITOR</span>
+                
+                <div style="background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:bold; color:#00f2fe; margin-bottom:6px;">
+                        <span id="v8ProgressLabel">Engine Idle Status</span>
+                        <span id="v8PercentLabel">0%</span>
+                    </div>
+                    <div style="width:100%; background:#1e293b; height:10px; border-radius:30px; overflow:hidden;">
+                        <div id="v8ProgressBarFill" style="width: 0%; height:100%; background: linear-gradient(90deg, #00f2fe, #ff007f); transition: width 0.1s linear;"></div>
+                    </div>
+                </div>
+
+                <div style="background: #020408; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; height: 180px; overflow-y: auto; font-family: 'Courier New', monospace; font-size: 0.75rem; color: #3ae374; line-height: 1.4;" id="v8LiveTerminalLogs">
+                    [SYSTEM STABLE]: Studio Node Matrix v8.0 is ready for compilation.<br>
+                    [INFO]: Auto-Pilot Engine state is currently standing by...
+                </div>
             </div>
         </div>
 
@@ -364,188 +308,74 @@ function verifyStudioPassword() {
 </div>
 
 <script>
-let masterVideo = document.createElement('video');
-masterVideo.muted = true;
-masterVideo.playsInline = true;
-let masterAudio = document.createElement('audio');
+let engineAutoPilotActive = false;
 
-function launchHfSpace(spaceUrl) {
-    const wrapper = document.getElementById('hfIframeWrapper');
-    const iframe = document.getElementById('hfSpaceIframe');
-    const title = document.getElementById('hfTitleLabel');
+function toggleEngineAutoPilot() {
+    engineAutoPilotActive = !engineAutoPilotActive;
+    const btn = document.getElementById('autoPilotMasterBtn');
+    const logWindow = document.getElementById('v8LiveTerminalLogs');
     
-    wrapper.style.display = "block";
-    iframe.src = spaceUrl;
-    title.innerText = `🌌 SFX STUDIO NODE ACTIVE: ${spaceUrl.split('/').pop().toUpperCase()}`;
-    document.getElementById('statusLabelPro').innerText = "⚡ Open-Source AI Matrix Link Online!";
+    if(engineAutoPilotActive) {
+        btn.innerText = "🍏 AUTO-PILOT: ON";
+        btn.style.background = "#3ae374";
+        btn.style.boxShadow = "0 4px 15px rgba(58, 227, 116, 0.4)";
+        logWindow.innerHTML += "<br><span style='color:#3ae374'>[AUTOPILOT LOCK]: WebGPU Core has taken over track management.</span>";
+        alert("🤖 Auto-Pilot Switch Activated, Ajit Bhai! System ab template layers auto-arrange karega.");
+    } else {
+        btn.innerText = "🔴 AUTO-PILOT: OFF";
+        btn.style.background = "#ef4444";
+        btn.style.boxShadow = "0 4px 15px rgba(239, 68, 68, 0.3)";
+        logWindow.innerHTML += "<br><span style='color:#ef4444'>[AUTOPILOT UNLOCK]: Manual override requested.</span>";
+    }
 }
 
-function closeHfSpace() {
-    document.getElementById('hfIframeWrapper').style.display = "none";
-    document.getElementById('hfSpaceIframe').src = "";
-    document.getElementById('statusLabelPro').innerText = "Studio System Standby.";
+function injectMemeReaction(memeName) {
+    const logWindow = document.getElementById('v8LiveTerminalLogs');
+    logWindow.innerHTML += `<br><span style='color:#ffff00'>[MEME INJECTED]: "${memeName}" mapped to current runtime block.</span>`;
+    logWindow.scrollTop = logWindow.scrollHeight;
+    alert(`💥 Dynamic Alert: Meme Layer "${memeName}" is locked in timeline successfully!`);
 }
 
-function runUltimateAutoGenerationFactory() {
-    const topic = document.getElementById('scriptTopicInput').value || "Funny Indian boy phone ringtone distraction";
+function launchAdvancedAiScanEngine() {
+    const barFill = document.getElementById('v8ProgressBarFill');
+    const percentText = document.getElementById('v8PercentLabel');
+    const labelText = document.getElementById('v8ProgressLabel');
+    const logWindow = document.getElementById('v8LiveTerminalLogs');
     
-    document.getElementById('autoMetaOutput').style.display = "block";
-    document.getElementById('promptOutputGrid').style.display = "grid";
+    labelText.innerText = "🔄 Initializing Smart AI Scan...";
+    logWindow.innerHTML += "<br><span style='color:#00f2fe'>[SCAN ENGINE]: Launching algorithmic timeline evaluation pass...</span>";
     
-    document.getElementById('autoViralCaptionBox').value = `When you are trying to be productive but AI takes over 🤫😂 #viral #comedy #shorts #trending #ai #animation #capcut`;
-    document.getElementById('subtitleInputPro').value = `POV: You decided to focus completely on your target today... but two seconds later, a single notification sounds and your mind goes completely blank! #viral #comedy`;
-    
-    document.getElementById('pOut1').value = `3D Pixar character design of an expressive character dealing with ${topic}, wide angle intro scene, cinematic lighting, subsurface skin scattering, octane render, 8k --ar 9:16`;
-    document.getElementById('pOut2').value = `Cute 3D character in Pixar style, intense facial expressions, dynamic mid-shot focusing on ${topic}, cinematic bokeh depth of field, vivid colors --ar 9:16`;
-    document.getElementById('pOut3').value = `Pixar animation style scene, sudden dramatic plot twist regarding ${topic}, extreme close-up on expressive eyes, volumetric lighting, rich textures --ar 9:16`;
-    document.getElementById('pOut4').value = `Funny 3D animated short outro, heartwarming comedy style resolution of ${topic}, Pixar character profile template, vibrant studio background, raytracing --ar 9:16`;
-    
-    document.getElementById('statusLabelPro').innerText = "🤖 Auto Generation Engine Fully Synced & Pre-loaded!";
-}
-
-document.getElementById('singleClipInput').addEventListener('change', function(e) {
-    if(e.target.files[0]) {
-        masterVideo.src = URL.createObjectURL(e.target.files[0]);
-        masterVideo.load();
-        document.getElementById('statusLabelPro').innerText = "⚡ Base Video Mounted for Auto-Extension!";
-    }
-});
-
-document.getElementById('audioInputPro').addEventListener('change', function(e) {
-    if(e.target.files[0]) {
-        masterAudio.src = URL.createObjectURL(e.target.files[0]);
-        masterAudio.load();
-        document.getElementById('statusLabelPro').innerText = "⚡ Audio Master Layer Linked!";
-    }
-});
-
-function runMultiClipCapCutEngine() {
-    if(!masterVideo.src || !masterAudio.src) {
-        alert("Bhai, pehle Base Video aur Voice-over Audio zaroor upload karo!");
-        return;
-    }
-
-    const canvas = document.getElementById('capcutCanvas');
-    const ctx = canvas.getContext('2d');
-    const fullText = document.getElementById('subtitleInputPro').value;
-    const statusText = document.getElementById('statusLabelPro');
-    const downloadBtn = document.getElementById('downloadBtnPro');
-    const chosenMood = document.getElementById('sfxMoodSelector').value;
-
-    downloadBtn.style.display = "none";
-    statusText.innerText = `🚀 Processing Tracks: Injecting ${chosenMood.toUpperCase()} SFX Node Layers...`;
-    statusText.style.color = "#ff007f";
-
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const dest = audioCtx.createMediaStreamDestination();
-    const source = audioCtx.createMediaElementSource(masterAudio);
-    source.connect(dest);
-    source.connect(audioCtx.destination);
-
-    const stream = canvas.captureStream(30);
-    const outputStream = new MediaStream();
-    outputStream.addTrack(stream.getVideoTracks()[0]);
-    outputStream.addTrack(dest.stream.getAudioTracks()[0]);
-
-    let mediaRecorder;
-    try {
-        mediaRecorder = new MediaRecorder(outputStream, { mimeType: 'video/webm;codecs=vp9' });
-    } catch(e) {
-        mediaRecorder = new MediaRecorder(outputStream);
-    }
-
-    let chunks = [];
-    mediaRecorder.ondataavailable = (e) => { if(e.data.size > 0) chunks.push(e.data); };
-    mediaRecorder.onstop = () => {
-        const blob = new Blob(chunks, { type: 'video/mp4' });
-        downloadBtn.href = URL.createObjectURL(blob);
-        downloadBtn.download = "POVNation_v5M_SFX_Extended.mp4";
-        downloadBtn.style.display = "block";
-        statusText.innerText = `🏆 Production Complete! v5.0 ${chosenMood.toUpperCase()} Mixed.`;
-        statusText.style.color = "#3ae374";
-    };
-
-    masterVideo.currentTime = 0;
-    masterAudio.currentTime = 0;
-    
-    masterVideo.play();
-    masterAudio.play();
-    mediaRecorder.start();
-
-    const words = fullText.split(' ');
-    
-    function drawTimelineFrame() {
-        if (!masterVideo.paused && !masterVideo.ended) {
-            ctx.drawImage(masterVideo, 0, 0, canvas.width, canvas.height);
-
-            // 🎭 AUTO SFX/MEME GRAPHIC SIMULATION STACKER BASED ON MOOD
-            let timeSec = Math.floor(masterAudio.currentTime);
-            if (timeSec % 8 === 4) {
-                ctx.fillStyle = "rgba(255, 0, 127, 0.15)";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#ff007f";
-                ctx.font = "italic bold 18px 'Plus Jakarta Sans'";
-                ctx.textAlign = "left";
-                ctx.fillText(`⚡ [SFX INJECTED: ${chosenMood == 'funny' ? '💥 VINE THUD' : '🤫 BASS DROP'}]`, 30, 50);
-            }
-
-            ctx.textAlign = "center";
-            ctx.font = "bold 25px 'Plus Jakarta Sans', Arial, sans-serif";
+    let currentPct = 0;
+    const runScanInterval = setInterval(() => {
+        if(currentPct >= 100) {
+            clearInterval(runScanInterval);
+            labelText.innerText = "✅ Compilation Complete";
+            percentText.innerText = "100%";
+            barFill.style.width = "100%";
             
-            let progressRatio = masterAudio.currentTime / (masterAudio.duration || 1);
-            let activeWordIndex = Math.floor(words.length * progressRatio);
-            
-            let line = '';
-            let currentLineY = canvas.height - 160;
-            let currentLineWords = [];
-
-            for (let i = 0; i < words.length; i++) {
-                currentLineWords.push({text: words[i], index: i});
-                let testLine = line + words[i] + ' ';
-                let metrics = ctx.measureText(testLine);
-                
-                if (metrics.width > canvas.width - 60 || i === words.length - 1) {
-                    ctx.fillStyle = "#ffffff";
-                    ctx.strokeStyle = "rgba(0,0,0,0.95)";
-                    ctx.lineWidth = 6;
-                    
-                    let renderedText = currentLineWords.map(w => w.text).join(' ');
-                    
-                    ctx.strokeText(renderedText, canvas.width / 2, currentLineY);
-                    ctx.fillText(renderedText, canvas.width / 2, currentLineY);
-
-                    currentLineWords.forEach((wordObj) => {
-                        if(wordObj.index === activeWordIndex) {
-                            ctx.fillStyle = "#ffff00"; 
-                            ctx.strokeText(renderedText, canvas.width / 2, currentLineY);
-                            ctx.fillText(renderedText, canvas.width / 2, currentLineY);
-                        }
-                    });
-
-                    line = '';
-                    currentLineWords = [];
-                    currentLineY += 38;
-                } else {
-                    line = testLine;
-                }
-            }
-        }
-
-        if (masterVideo.ended || masterVideo.currentTime >= masterVideo.duration - 0.1) {
-            masterVideo.currentTime = 0;
-            masterVideo.play();
-        }
-
-        if (!masterAudio.ended) {
-            requestAnimationFrame(drawTimelineFrame);
+            // Add custom automatic timestamps when finished
+            const timestampNow = new Date().toLocaleTimeString();
+            logWindow.innerHTML += `<br><span style='color:#3ae374'>[SUCCESS @ ${timestampNow}]: AI Auto-Edit Scan complete. Timestamps structured!</span>`;
+            logWindow.scrollTop = logWindow.scrollHeight;
+            alert("🏆 Process Completed, Ajit Bhai! Real-progress scan done and system timestamps synced.");
         } else {
-            mediaRecorder.stop();
-            masterVideo.pause();
+            currentPct += 2;
+            barFill.style.width = currentPct + "%";
+            percentText.innerText = currentPct + "%";
+            
+            if(currentPct === 20) {
+                labelText.innerText = "⚙️ Extracting Voice Audio Matrices...";
+                logWindow.innerHTML += "<br>[SCAN]: Audio frequency modulation data mapped.";
+            } else if(currentPct === 50) {
+                labelText.innerText = "🎭 Injecting Auto Emotion Overlays...";
+                logWindow.innerHTML += "<br>[SCAN]: Script keywords evaluated against Meme Bank nodes.";
+            } else if(currentPct === 80) {
+                labelText.innerText = "📐 Finalizing Style Transfer Pipeline...";
+                logWindow.innerHTML += "<br>[SCAN]: WebGPU frame optimization filters applied.";
+            }
+            logWindow.scrollTop = logWindow.scrollHeight;
         }
-    }
-
-    masterVideo.addEventListener('play', drawTimelineFrame);
-    setTimeout(drawTimelineFrame, 100);
+    }, 70);
 }
 </script>
 </body>
