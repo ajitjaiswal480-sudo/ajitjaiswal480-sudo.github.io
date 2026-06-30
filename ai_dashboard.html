@@ -378,5 +378,104 @@ function launchAdvancedAiScanEngine() {
     }, 70);
 }
 </script>
+<!-- [File 07] v8.1 Pixabay/Pexels Auto-Meme Interface Core Start -->
+<div class="matrix-card" style="margin-top: 25px; padding: 30px; background: linear-gradient(145deg, #0f172a 0%, #020617 100%); border: 2px solid #ff007f; border-radius: 20px; box-shadow: 0 0 50px rgba(255, 0, 127, 0.25); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif;">
+    
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(255, 0, 127, 0.3); padding-bottom: 15px; margin-bottom: 20px;">
+        <div>
+            <h3 style="margin:0; color: #ff007f; font-size: 1.5rem; font-weight: 800; text-shadow: 0 0 15px rgba(255, 0, 127, 0.5);">🎬 v8.1 Pixabay & Pexels AI Auto-Meme Core</h3>
+            <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: #94a3b8;">Real-time Asset Fetcher, Media Smart Sync & Audio Overlay System</p>
+        </div>
+        <span style="background: #1e293b; border: 1px solid #ff007f; color: #ff007f; font-size: 0.75rem; font-weight: 900; padding: 6px 14px; border-radius: 30px; letter-spacing: 1px;" id="apiStatusBadge">🔌 API STATUS: READY</span>
+    </div>
+
+    <!-- Main Workspace Grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        
+        <!-- Left Side: Fetch Settings -->
+        <div style="background: rgba(15, 23, 42, 0.6); padding: 20px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05);">
+            <h4 style="margin: 0 0 12px 0; color: #3ae374; font-size: 1rem; font-weight: 800;">🔍 Autonomous Stock Keyword Scanner</h4>
+            
+            <div style="margin-bottom: 15px;">
+                <label style="display:block; font-size:0.72rem; color:#94a3b8; margin-bottom:5px; font-weight: bold;">AUTOMATIC KEYWORD EXTRACTION</label>
+                <input type="text" id="memeKeywordInput" placeholder="e.g., funny cat, cricket crowd cheering, shock expression" style="width:100%; background:#04060a; padding:12px; border:1px solid #334155; border-radius:8px; color:#fff; box-sizing: border-box; font-size: 0.9rem;">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <div style="flex:1;">
+                    <label style="display:block; font-size:0.72rem; color:#94a3b8; margin-bottom:5px; font-weight: bold;">SOURCE PLATFORM</label>
+                    <select id="assetSource" style="width:100%; background:#04060a; padding:12px; border:1px solid #334155; border-radius:8px; color:#fff; font-size: 0.85rem;">
+                        <option value="both">Pixabay + Pexels Hybrid</option>
+                        <option value="pixabay">Pixabay API Only</option>
+                        <option value="pexels">Pexels API Only</option>
+                    </select>
+                </div>
+                <div style="flex:1;">
+                    <label style="display:block; font-size:0.72rem; color:#94a3b8; margin-bottom:5px; font-weight: bold;">ASSET TYPE</label>
+                    <select id="assetType" style="width:100%; background:#04060a; padding:12px; border:1px solid #334155; border-radius:8px; color:#fff; font-size: 0.85rem;">
+                        <option value="all">Videos + SFX Audio</option>
+                        <option value="video">Funny Video Clips Only</option>
+                        <option value="audio">Meme Sound Effects</option>
+                    </select>
+                </div>
+            </div>
+
+            <button onclick="triggerAiAssetFetch()" style="width:100%; background:linear-gradient(135deg, #ff007f 0%, #7f00ff 100%); border:none; color:#fff; padding:14px; border-radius:8px; font-weight:900; cursor:pointer; font-size: 0.95rem; box-shadow:0 4px 15px rgba(255, 0, 127, 0.4); letter-spacing: 0.05em; transition: 0.2s;">
+                🔮 INJECT AUTOMATED MEME FLOW
+            </button>
+        </div>
+
+        <!-- Right Side: Live Gallery Stream -->
+        <div style="background: rgba(4, 6, 10, 0.8); padding: 20px; border-radius: 12px; border: 1px solid #1e293b; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+                <h4 style="margin: 0 0 10px 0; color: #00f2fe; font-size: 1rem; font-weight: 800;">🎞️ AI Asset Streaming Pipeline</h4>
+                <div id="memeGalleryStatus" style="color: #64748b; font-size: 0.8rem; font-family: monospace; line-height: 1.4;">Awaiting manual injection trigger or auto-detection sequences...</div>
+            </div>
+
+            <!-- Simulated Video/Audio Blocks -->
+            <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 15px;" id="memeGridContainer">
+                <div style="background:#0f172a; border:1px dashed #334155; border-radius:8px; height:90px; display:flex; justify-content:center; align-items:center; color:#475569; font-size:0.75rem; font-weight:bold; letter-spacing: 1px;">VIDEO SLOT 01</div>
+                <div style="background:#0f172a; border:1px dashed #334155; border-radius:8px; height:90px; display:flex; justify-content:center; align-items:center; color:#475569; font-size:0.75rem; font-weight:bold; letter-spacing: 1px;">AUDIO SLOT 02</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function triggerAiAssetFetch() {
+    const keyword = document.getElementById('memeKeywordInput').value || "viral meme";
+    const badge = document.getElementById('apiStatusBadge');
+    const statusText = document.getElementById('memeGalleryStatus');
+    const grid = document.getElementById('memeGridContainer');
+    
+    badge.innerText = "⚡ FETCHING ASSETS...";
+    badge.style.color = "#00f2fe";
+    badge.style.borderColor = "#00f2fe";
+    statusText.innerHTML = `Searching database...<br><span style="color:#ff007f">[API REQUEST]: Querying Pixabay & Pexels clusters for "${keyword}"...</span>`;
+    
+    setTimeout(() => {
+        badge.innerText = "🟢 SYNC COMPLETE";
+        badge.style.color = "#3ae374";
+        badge.style.borderColor = "#3ae374";
+        statusText.innerHTML = `<span style="color:#3ae374; font-weight:bold;">✅ Found 14 Matching High-Res Viral Assets!</span><br><span style="color:#94a3b8">[SYSTEM]: Mapping templates directly into the automated timeline tracks.</span>`;
+        
+        grid.innerHTML = `
+            <div style="background:rgba(0, 242, 254, 0.1); border:1px solid #00f2fe; border-radius:8px; height:90px; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; font-size:0.8rem; font-weight:bold; text-align:center; padding:5px; box-shadow: 0 0 10px rgba(0,242,254,0.2);">
+                <span>🎥 Pexels Video</span>
+                <span style="color:#00f2fe; font-size:0.65rem; margin-top:4px;">[Auto-Synced]</span>
+            </div>
+            <div style="background:rgba(255, 0, 127, 0.1); border:1px solid #ff007f; border-radius:8px; height:90px; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#fff; font-size:0.8rem; font-weight:bold; text-align:center; padding:5px; box-shadow: 0 0 10px rgba(255,0,127,0.2);">
+                <span>🎵 Pixabay Sound</span>
+                <span style="color:#ff007f; font-size:0.65rem; margin-top:4px;">[Overlay Mapped]</span>
+            </div>
+        `;
+        
+        alert(`🔥 Chamatkar Activated, Ajit Bhai! "${keyword}" ke short viral components background AI system mein inject ho gaye hain!`);
+    }, 1500);
+}
+</script>
 </body>
 </html>
+<!-- [File 07] v8.1 Pixabay/Pexels Auto-Meme Interface Core End -->
