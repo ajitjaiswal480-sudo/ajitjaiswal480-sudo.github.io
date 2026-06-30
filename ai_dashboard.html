@@ -648,7 +648,125 @@ function verifyStudioPassword() {
         <div id="englishMemeGrid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;"></div>
     </div>
 </div>
-<script>
+<!-- ==================================================================== -->
+<!-- 🚀 [FILE 09] v8.3 POV NATION AI CONTENT FACTORY MASTER CORE (1 TO 10) -->
+<!-- ==================================================================== -->
+<div class="independent-file-card f-hf" style="margin-top: 30px; border: 2px dashed #ff007f; background: rgba(255, 0, 127, 0.02); box-shadow: 0 0 25px rgba(255, 0, 127, 0.15);">
+    <div class="app-title-block" style="text-align: center;">
+        <div class="hf-badge" style="color: #ffff00; border-color: #ffff00; font-size: 0.9rem; padding: 5px 15px;">👑 DREAMS TO REALITY NODE</div>
+        <h2 style="font-size: 1.8rem; color: #fff; text-shadow: 0 0 10px #ff007f;">🏭 POV NATION AI CONTENT FACTORY</h2>
+        <p style="color: #94a3b8;">Turning your personal AI dashboard into a fully automated, high-retention global media empire.</p>
+    </div>
+
+    <!-- 🔥 ULTIMATE SUPER BUTTON: ONE-CLICK POV NATION MODE -->
+    <div style="background: rgba(0, 242, 254, 0.1); border: 2px solid #00f2fe; padding: 20px; border-radius: 12px; margin-bottom: 25px; text-align: center; box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);">
+        <h3 style="color: #00f2fe; margin-top: 0; font-size: 1.3rem;">⚡ ONE-CLICK POV NATION MODE ⚡</h3>
+        <p style="color: #e2e8f0; font-size: 0.85rem; margin-bottom: 15px;">Dabate hi sab kuch auto-generate hoga: Idea ➔ Script ➔ Image Prompts ➔ Video Prompts ➔ Voice ➔ Thumbnail ➔ SEO ➔ Checklist!</p>
+        <button class="action-btn-trigger" style="width: 100%; max-width: 500px; font-size: 1.1rem; padding: 12px; background: linear-gradient(135deg, #00f2fe, #ff007f); box-shadow: 0 5px 20px rgba(255, 0, 127, 0.4);" onclick="runOneClickPovNationMode()">
+            👑 LAUNCH FULL AUTOMATION STREAM
+        </button>
+        <div style="width: 100%; background: rgba(255,255,255,0.1); height: 8px; border-radius: 4px; margin-top: 15px; display: none;" id="factoryProgressBg">
+            <div id="factoryProgressBar" style="width: 0%; background: #3ae374; height: 100%; border-radius: 4px; transition: width 0.3s;"></div>
+        </div>
+        <div id="factoryMasterLog" style="color: #3ae374; font-family: monospace; font-size: 0.85rem; margin-top: 10px; font-weight: bold;"></div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+
+    <!-- 1 TO 10 LINE-WISE FACTORY SLOTS -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+        
+        <!-- 1. Project Save System -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #00f2fe; margin: 0 0 8px 0;">📁 1. Project Save System</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Har video ka alag project: Idea, Script, Prompts, Voice, Thumbnail sab ek jagah automatic backup hoga.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factorySaveProject()">Secure Current Project Data</button>
+            <span id="saveSystemStatus" style="color: #3ae374; font-size: 0.8rem; margin-left: 10px;"></span>
+        </div>
+
+        <!-- 2. POV Nation Brand Preset -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #ff007f; margin: 0 0 8px 0;">🎨 2. POV Nation Brand Preset</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Fixed Style Configuration: 3D Cinematic, Neon glows, Emotional Twist, English US Voice, Short Format layout.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: linear-gradient(135deg, #ff007f, #7f00ff);" onclick="factoryApplyBrandPreset()">Apply Premium Brand Styling</button>
+            <span id="brandPresetStatus" style="color: #00f2fe; font-size: 0.8rem; margin-left: 10px;"></span>
+        </div>
+
+        <!-- 3. Duplicate/Copyright Safety Checker -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #ffff00; margin: 0 0 8px 0;">🛡️ 3. Duplicate/Copyright Safety Checker</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Script ko algorithm compliance ke liye scan karega taaki reused content ka lafda na aaye.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryCheckCopyright()">Run Algorithmic Originality Scan</button>
+            <div id="copyrightStatus" style="color: #3ae374; font-size: 0.8rem; margin-top: 8px; font-family: monospace;"></div>
+        </div>
+
+        <!-- 4. Hook Score System -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #3ae374; margin: 0 0 8px 0;">📊 4. Hook Score System</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Pehle 3 seconds ka hook video ki retention pakad payega ya nahi? Live percentage rating check karo.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryCalculateHookScore()">Analyze First 3-Sec Retention Pull</button>
+            <span id="hookScoreDisplay" style="font-weight: bold; margin-left: 10px;"></span>
+        </div>
+
+        <!-- 5. Shorts Timeline Builder -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #00f2fe; margin: 0 0 8px 0;">⏳ 5. Shorts Timeline Builder</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Pura segment structures lock karo: 0-3s Hook, 3-10s Setup, 10-25s Twist, 25-40s Ending sequence timeline mapping.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryBuildTimeline()">Generate Automated Timeline Blocks</button>
+            <div id="timelineOutput" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 10px;"></div>
+        </div>
+
+        <!-- 6. SEO Pack Generator -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #ff007f; margin: 0 0 8px 0;">📈 6. SEO Pack Generator</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">1-Click mein global viral Title, Description, Tags, Hashtags aur interactive Pinned Comment cluster generator.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryGenerateSeoPack()">Compile Global Viral SEO Assets</button>
+            <div id="seoPackOutput" style="color: #e2e8f0; font-size: 0.8rem; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 6px; margin-top: 10px; font-family: monospace; display: none; white-space: pre-line;"></div>
+        </div>
+
+        <!-- 7. Thumbnail Generator/Prompt -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #ffff00; margin: 0 0 8px 0;">🖼️ 7. Thumbnail Generator/Prompt</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Har video ke concept se matching hyper-detailed thumbnail text, idea, aur image generation prompt generator.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryGenerateThumbnailPrompt()">Craft Cinematic Thumbnail Metadata</button>
+            <div id="thumbnailPromptOutput" style="color: #ffff00; font-size: 0.8rem; margin-top: 8px; font-style: italic;"></div>
+        </div>
+
+        <!-- 8. Voiceover Export Format -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #3ae374; margin: 0 0 8px 0;">🎙️ 8. Voiceover Export Format</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Script ko voice-ready format mein break-down karega automatic tags ke saath (Pauses, Emotion levels, Speed tuners).</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryFormatVoiceover()">Convert to Voice-Ready Acoustic Lines</button>
+            <div id="voiceoverFormatOutput" style="color: #e2e8f0; font-size: 0.8rem; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 6px; margin-top: 8px; font-family: monospace; display: none;"></div>
+        </div>
+
+        <!-- 9. Consistency Tracker -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #00f2fe; margin: 0 0 8px 0;">📅 9. Consistency Tracker</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 10px 0;">Upload check status, real-time 30-Day active streak logger, aur creative idea tracking system parameters.</p>
+            <button class="action-btn-trigger" style="padding: 6px 15px; font-size: 0.8rem; background: #1e293b;" onclick="factoryToggleStreak()">Log Today's Production Upload</button>
+            <div style="margin-top: 10px; font-size: 0.8rem; color: #3ae374; font-weight: bold;">
+                🔥 Current Active Streak: <span id="streakCount">1</span> Day Track | Status: <span id="streakStatus" style="color:#ffff00;">Pending Update</span>
+            </div>
+        </div>
+
+        <!-- 10. Final Upload Checklist -->
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 15px; border-radius: 10px;">
+            <h4 style="color: #ff007f; margin: 0 0 8px 0;">✅ 10. Final Upload Checklist</h4>
+            <p style="color: #94a3b8; font-size: 0.8rem; margin: 0 0 12px 0;">Before-upload final checklist verification protocols: English Subtitles, Licensed Music check, Watermark Logo, High-CTR tags alignment, Public visibility mode.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.8rem; color: #fff;">
+                <label><input type="checkbox" id="check1"> 🔤 English Global Subtitles Included</label>
+                <label><input type="checkbox" id="check2"> 🎵 Licensed Western Background Audio</label>
+                <label><input type="checkbox" id="check3"> 👑 POV Nation Brand Watermark</label>
+                <label><input type="checkbox" id="check4"> 📈 High-CTR Title & Description Loaded</label>
+                <label><input type="checkbox" id="check5"> 🏷️ Viral Metadata Tags Locked</label>
+                <label><input type="checkbox" id="check6"> 🌍 Public Scheduling Verification</label>
+            </div>
+        </div>
+
+    </div>
+</div>
+        <script>
 // ====================================================================
 // 📜 [FILE 02] UNIVERSAL SCRIPT GENERATOR (DUNIYA KA KOI BHI TOPIC YAHA SCRIPT BANAYEGA)
 // ====================================================================
