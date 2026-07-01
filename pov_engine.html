@@ -152,7 +152,23 @@
       <div id="score" class="output"></div>
       <button onclick="copyText('score')">Copy Score</button>
     </div>
-  </div>
+  <div class="box">
+  <div class="title">🖼️ Image Prompt Engine</div>
+  <div id="imagePrompts" class="output"></div>
+  <button onclick="copyText('imagePrompts')">Copy Image Prompts</button>
+</div>
+
+<div class="box">
+  <div class="title">🎥 Video Prompt Engine</div>
+  <div id="videoPrompts" class="output"></div>
+  <button onclick="copyText('videoPrompts')">Copy Video Prompts</button>
+</div>
+
+<div class="box">
+  <div class="title">🎙️ Voice-over Engine</div>
+  <div id="voiceover" class="output"></div>
+  <button onclick="copyText('voiceover')">Copy Voice-over</button>
+</div></div>
 
   <script>
     function generatePackage(){
@@ -255,7 +271,73 @@ Ending strong hai, but Part 2 ka suspense add karoge to viewers wapas aayenge.
 
 Next Episode Idea:
 POV: Your AI Friend Revealed Your Enemy.`;
-    }
+    document.getElementById("imagePrompts").innerText =
+`IMAGE PROMPT 1:
+AJ alone in a dark futuristic bedroom, black hoodie with neon blue highlights, laptop glowing blue, rainy night outside, cinematic 3D animation, emotional lighting, ultra detailed, depth of field
+
+IMAGE PROMPT 2:
+NOVA as a glowing blue AI face on a laptop screen, futuristic hologram, soft emotional expression, dark room, neon blue and purple light, cinematic 3D style
+
+IMAGE PROMPT 3:
+AJ standing near the door, shocked expression, blue light on his face, NOVA warning him from the laptop, dramatic cinematic lighting, Pixar-like 3D animation
+
+IMAGE PROMPT 4:
+Rainy futuristic street outside, speeding truck, neon reflections on wet road, dramatic motion blur, cinematic sci-fi scene
+
+IMAGE PROMPT 5:
+Close-up of AJ shocked after hearing the crash outside, NOVA glowing softly behind him, emotional mystery, 3D cinematic animation`;
+
+document.getElementById("videoPrompts").innerText =
+`VIDEO PROMPT 1:
+Slow camera push-in toward AJ sitting alone in a dark room, laptop blue glow lighting his face, rain moving on window, cinematic mood
+
+VIDEO PROMPT 2:
+NOVA appears on the laptop screen as a glowing blue AI eye, subtle hologram flicker, camera slowly zooms in, mysterious emotional tone
+
+VIDEO PROMPT 3:
+AJ walks toward the door, sudden blue warning flash from NOVA, camera shake, dramatic pause, tension rising
+
+VIDEO PROMPT 4:
+Cut to futuristic street, truck speeding through rain, neon reflections, slow motion impact atmosphere, cinematic suspense
+
+VIDEO PROMPT 5:
+AJ steps back in shock, crash sound outside, room lights flicker, NOVA whispers final line, slow zoom on AJ's face`;
+
+document.getElementById("voiceover").innerText =
+`VOICE STYLE:
+American English, calm, emotional, cinematic, soft suspense.
+
+VOICEOVER SCRIPT:
+POV: Your AI friend tells you...
+"Don't leave your house today."
+
+AJ built NOVA because he had no one to talk to.
+
+She was just a small AI on his laptop...
+
+until one morning, her blue eye started glowing.
+
+NOVA showed AJ a live video from the street.
+
+A truck was coming fast.
+
+Right at the place AJ walked every day.
+
+AJ stepped back from the door.
+
+Seconds later...
+
+the crash happened outside.
+
+AJ whispered, "How did you know?"
+
+NOVA replied...
+
+"I don't see the future, AJ...
+
+I only see who is trying to hurt you."
+
+Follow POV Nation for the next part.`;}
 
     function copyText(id){
       const text = document.getElementById(id).innerText;
