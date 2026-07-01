@@ -187,7 +187,35 @@
   <div id="description" class="output"></div>
   <button onclick="copyText('description')">Copy Description</button>
 </div>
+<div class="box">
+  <div class="title">🎬 Shot List Engine</div>
+  <div id="shotList" class="output"></div>
+  <button onclick="copyText('shotList')">Copy Shot List</button>
+</div>
 
+<div class="box">
+  <div class="title">📷 Camera Movement Engine</div>
+  <div id="cameraMoves" class="output"></div>
+  <button onclick="copyText('cameraMoves')">Copy Camera Moves</button>
+</div>
+
+<div class="box">
+  <div class="title">🔊 Sound & Music Engine</div>
+  <div id="soundMusic" class="output"></div>
+  <button onclick="copyText('soundMusic')">Copy Sound Music</button>
+</div>
+
+<div class="box">
+  <div class="title">📺 Part 2 Engine</div>
+  <div id="partTwo" class="output"></div>
+  <button onclick="copyText('partTwo')">Copy Part 2</button>
+</div>
+
+<div class="box">
+  <div class="title">✅ Upload Checklist Engine</div>
+  <div id="uploadChecklist" class="output"></div>
+  <button onclick="copyText('uploadChecklist')">Copy Checklist</button>
+</div>
   <script>
     function generatePackage(){
       const topic = document.getElementById("topic").value.trim();
@@ -369,32 +397,104 @@ THUMBNAIL PROMPT:
 A cinematic YouTube thumbnail showing a young man in a black hoodie looking shocked, blue glowing AI eye behind him, rainy futuristic city outside the door, neon blue and purple lighting, dramatic expression, high contrast, 3D cinematic style, ultra detailed, viral YouTube Shorts thumbnail`;
 
 document.getElementById("seoTitle").innerText =
-`TITLE OPTION 1:
+`🔥 TITLE OPTION 1:
+
 POV: My AI Friend Saved My Life 😳 #Shorts
 
-TITLE OPTION 2:
+🔥 TITLE OPTION 2:
+
 My AI Warned Me Before It Happened...
 
-TITLE OPTION 3:
+🔥 TITLE OPTION 3:
+
 POV: You Built an AI Friend... Then This Happened
 
-BEST TITLE:
-POV: My AI Friend Saved My Life 😳 #Shorts`;
+🏆 BEST TITLE:
 
+POV: My AI Friend Saved My Life 😳 #Shorts`;
 document.getElementById("description").innerText =
 `POV Nation presents a cinematic AI story about AJ and NOVA.
 
 AJ built an AI friend because he had no one to talk to...
-but one morning, NOVA warned him not to leave the house.
+
+But one morning, NOVA warned him not to leave the house.
 
 Was it a prediction...
-or did NOVA know something darker?
 
-Subscribe for more AI cinematic stories.
+Or did NOVA know something darker?
+
+🎬 Watch till the end for the shocking twist!
+
+👇 Tell us in the comments:
+Would you trust an AI that could predict the future?
 
 #POVNation #AIStory #Shorts #AIAnimation #CinematicShorts`;
 
-}
+
+document.getElementById("shotList").innerText =
+``🎬 SHOT 1 (0–5 sec)
+A lonely young man sitting in a dark room, staring at his laptop.
+
+🎬 SHOT 2 (5–10 sec)
+The AI assistant NOVA appears as a glowing holographic interface.
+
+🎬 SHOT 3 (10–20 sec)
+NOVA warns: "Don't leave the house today."
+
+🎬 SHOT 4 (20–35 sec)
+The young man hesitates, looking toward the front door.
+
+🎬 SHOT 5 (35–50 sec)
+Outside, a dangerous accident happens on the street.
+
+🎬 SHOT 6 (50–60 sec)
+The young man realizes NOVA saved his life. Cinematic ending with dramatic lighting.`;
+
+document.getElementById("cameraMoves").innerText =
+`• Slow cinematic push-in
+• Close-up on AJ's emotional face
+• Soft left-to-right camera pan
+• Over-the-shoulder laptop shot
+• Dramatic zoom when NOVA gives the warning
+• Handheld tension during hesitation
+• Wide shot of the street accident
+• Slow fade-out with cinematic lighting`; 
+document.getElementById("soundMusic").innerText =
+`🎵 Dark cinematic ambient music
+🎵 Emotional piano melody
+🎵 Soft AI synth atmosphere
+🎵 Deep cinematic bass
+🎵 Suspense riser before the warning
+🎵 Epic orchestral ending`;
+
+document.getElementById("partTwo").innerText =
+`🎬 PART 2 IDEAS
+
+1. NOVA starts making decisions without AJ's permission.
+
+2. AJ discovers NOVA can access every device in the city.
+
+3. A mysterious hacker contacts AJ with the truth about NOVA.
+
+4. The AI reveals its real creator.
+
+5. The final battle between humans and AI begins.`;
+
+document.getElementById("uploadChecklist").innerText =
+`✅ Generate all images
+✅ Generate all video clips
+✅ Add cinematic transitions
+✅ Add subtitles
+✅ Add background music
+✅ Export in 1080x1920
+✅ Create YouTube thumbnail
+✅ Upload YouTube Shorts
+✅ Optimize title, description and hashtags`;
+
+function copyText(id){
+
+
+    
     function copyText(id){
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text);
