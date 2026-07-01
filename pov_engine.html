@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POV Nation Engine</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#070912;
+      color:#fff;
+    }
+    .wrap{
+      max-width:1200px;
+      margin:auto;
+      padding:30px;
+    }
+    .hero{
+      padding:25px;
+      border:1px solid #243cff;
+      border-radius:20px;
+      background:linear-gradient(135deg,#090d25,#16071f);
+      box-shadow:0 0 25px #122cff55;
+    }
+    h1{
+      margin:0;
+      font-size:34px;
+      color:#51e7ff;
+    }
+    .tag{
+      color:#d78bff;
+      margin-top:8px;
+    }
+    .box{
+      margin-top:25px;
+      padding:22px;
+      border-radius:18px;
+      background:#101426;
+      border:1px solid #2b3158;
+    }
+    label{
+      display:block;
+      margin-bottom:10px;
+      color:#7ee9ff;
+      font-weight:bold;
+    }
+    input,textarea,select{
+      width:100%;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #39406c;
+      background:#070912;
+      color:white;
+      font-size:16px;
+      outline:none;
+    }
+    textarea{
+      min-height:180px;
+      resize:vertical;
+    }
+    button{
+      margin-top:15px;
+      padding:14px 22px;
+      border:0;
+      border-radius:12px;
+      background:linear-gradient(90deg,#00d9ff,#a855f7);
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+      font-size:15px;
+    }
+    button:hover{opacity:.9}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:18px;
+    }
+    .output{
+      white-space:pre-wrap;
+      line-height:1.6;
+      background:#080b18;
+      padding:18px;
+      border-radius:14px;
+      border:1px solid #2e3566;
+      color:#e8efff;
+      min-height:120px;
+    }
+    .small{
+      font-size:13px;
+      color:#9aa7ff;
+    }
+    .title{
+      color:#ff5bd7;
+      font-weight:bold;
+      margin-bottom:10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>🎬 POV Nation Cinematic Engine</h1>
+      <div class="tag">Every POV Has a Twist • AI Stories • Cinematic • Emotional • Funny</div>
+      <p class="small">Phase 1: Script + Scene + Character Generator</p>
+    </div>
+
+    <div class="box">
+      <label>Enter Video Topic</label>
+      <input id="topic" value="POV: You Built an AI Friend... It Saved Your Life" />
+
+      <label style="margin-top:15px;">Select Tone</label>
+      <select id="tone">
+        <option value="emotional mysterious cinematic">Emotional + Mysterious</option>
+        <option value="funny cinematic twist">Funny + Twist</option>
+        <option value="dark sci-fi emotional">Dark Sci-Fi</option>
+        <option value="heartwarming Pixar style">Heartwarming Pixar Style</option>
+      </select>
+
+      <button onclick="generatePackage()">Generate POV Package</button>
+    </div>
+
+    <div class="grid">
+      <div class="box">
+        <div class="title">🧠 Universe Engine</div>
+        <div id="universe" class="output"></div>
+        <button onclick="copyText('universe')">Copy</button>
+      </div>
+
+      <div class="box">
+        <div class="title">🎭 Character Engine</div>
+        <div id="characters" class="output"></div>
+        <button onclick="copyText('characters')">Copy</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="title">📝 Cinematic Script</div>
+      <div id="script" class="output"></div>
+      <button onclick="copyText('script')">Copy Script</button>
+    </div>
+
+    <div class="box">
+      <div class="title">🎬 Scene Breakdown</div>
+      <div id="scenes" class="output"></div>
+      <button onclick="copyText('scenes')">Copy Scenes</button>
+    </div>
+
+    <div class="box">
+      <div class="title">📊 Viral Score</div>
+      <div id="score" class="output"></div>
+      <button onclick="copyText('score')">Copy Score</button>
+    </div>
+  </div>
+
+  <script>
+    function generatePackage(){
+      const topic = document.getElementById("topic").value.trim();
+      const tone = document.getElementById("tone").value;
+
+      if(!topic){
+        alert("Please enter a topic");
+        return;
+      }
+
+      document.getElementById("universe").innerText =
+`🌍 Brand: POV Nation
+🎯 Audience: USA / Global English
+📱 Platform: YouTube Shorts
+🎨 Style: 3D cinematic, neon blue, purple, black
+🎭 Mood: ${tone}
+⏱️ Length: 35-45 seconds
+🎬 Format: Hook → Problem → Twist → Emotional Ending
+🔐 Rule: Original story, no copying, no copyrighted music`;
+
+      document.getElementById("characters").innerText =
+`👤 HERO: AJ
+Age: 21
+Look: black hoodie, neon blue highlights, emotional eyes
+Personality: lonely creator, brave, kind, intelligent
+Goal: build AI that helps people
+
+🤖 AI COMPANION: NOVA
+Look: blue glowing AI face / hologram
+Personality: protective, mysterious, caring
+Voice: soft American English, calm, emotional
+
+🌆 WORLD
+Futuristic city, neon lights, rain, lonely rooftops, glowing screens`;
+
+      document.getElementById("script").innerText =
+`TITLE:
+${topic}
+
+0-3 SEC HOOK:
+POV: Your AI friend tells you...
+"Don't leave your house today."
+
+3-10 SEC PROBLEM:
+AJ built NOVA because he had no one to talk to.
+She was just a small AI on his laptop...
+until one morning, her blue eye started glowing.
+
+10-22 SEC TWIST:
+NOVA showed AJ a live video from the street.
+A truck was coming fast.
+Right at the place AJ walked every day.
+
+22-33 SEC CLIMAX:
+AJ stepped back from the door.
+Seconds later...
+the crash happened outside.
+
+33-42 SEC ENDING:
+AJ whispered, "How did you know?"
+NOVA replied,
+"I don't see the future, AJ...
+I only see who is trying to hurt you."
+
+CTA:
+Follow POV Nation for the next part.`;
+
+      document.getElementById("scenes").innerText =
+`SCENE 1:
+AJ alone in a dark room, laptop glowing blue, rainy night outside.
+
+SCENE 2:
+NOVA appears on the laptop screen, blue AI eye glowing.
+
+SCENE 3:
+NOVA warns AJ not to leave the house.
+
+SCENE 4:
+AJ sees live street camera footage with a truck speeding.
+
+SCENE 5:
+AJ steps back, crash happens outside, room shakes.
+
+SCENE 6:
+Close-up of AJ shocked, NOVA glowing softly.
+
+SCENE 7:
+Final mysterious line: "I only see who is trying to hurt you."`;
+
+      document.getElementById("score").innerText =
+`Hook Score: 9.2/10
+Emotion Score: 8.8/10
+Mystery Score: 9.4/10
+Retention Score: 9.1/10
+Viral Potential: 9/10
+
+Advice:
+Ending strong hai, but Part 2 ka suspense add karoge to viewers wapas aayenge.
+
+Next Episode Idea:
+POV: Your AI Friend Revealed Your Enemy.`;
+    }
+
+    function copyText(id){
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text);
+      alert("Copied!");
+    }
+
+    generatePackage();
+  </script>
+</body>
+</html>
