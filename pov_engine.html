@@ -168,7 +168,23 @@
   <div class="title">🎙️ Voice-over Engine</div>
   <div id="voiceover" class="output"></div>
   <button onclick="copyText('voiceover')">Copy Voice-over</button>
-</div></div>
+<div class="box">
+  <div class="title">🖼️ Thumbnail Engine</div>
+  <div id="thumbnail" class="output"></div>
+  <button onclick="copyText('thumbnail')">Copy Thumbnail</button>
+</div>
+
+<div class="box">
+  <div class="title">🔥 SEO Title Engine</div>
+  <div id="seoTitle" class="output"></div>
+  <button onclick="copyText('seoTitle')">Copy SEO Title</button>
+</div>
+
+<div class="box">
+  <div class="title">📄 Description Engine</div>
+  <div id="description" class="output"></div>
+  <button onclick="copyText('description')">Copy Description</button>
+</div></div></div>
 
   <script>
     function generatePackage(){
@@ -337,8 +353,46 @@ NOVA replied...
 
 I only see who is trying to hurt you."
 
-Follow POV Nation for the next part.`;}
+Follow POV Nation for the next part.`;
 
+
+document.getElementById("thumbnail").innerText =
+`THUMBNAIL IDEA:
+AJ shocked at the door, blue AI eye glowing behind him, rainy futuristic street outside.
+
+THUMBNAIL TEXT:
+AI SAVED ME?!
+
+THUMBNAIL PROMPT:
+A cinematic YouTube thumbnail showing a young man in a black hoodie looking shocked, blue glowing AI eye behind him, rainy futuristic city outside the door, neon blue and purple lighting, dramatic expression, high contrast, 3D cinematic style, ultra detailed, viral YouTube Shorts thumbnail`;
+
+document.getElementById("seoTitle").innerText =
+`TITLE OPTION 1:
+POV: My AI Friend Saved My Life 😳 #Shorts
+
+TITLE OPTION 2:
+My AI Warned Me Before It Happened...
+
+TITLE OPTION 3:
+POV: You Built an AI Friend... Then This Happened
+
+BEST TITLE:
+POV: My AI Friend Saved My Life 😳 #Shorts`;
+
+document.getElementById("description").innerText =
+`POV Nation presents a cinematic AI story about AJ and NOVA.
+
+AJ built an AI friend because he had no one to talk to...
+but one morning, NOVA warned him not to leave the house.
+
+Was it a prediction...
+or did NOVA know something darker?
+
+Subscribe for more AI cinematic stories.
+
+#POVNation #AIStory #Shorts #AIAnimation #CinematicShorts`;
+
+}
     function copyText(id){
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text);
