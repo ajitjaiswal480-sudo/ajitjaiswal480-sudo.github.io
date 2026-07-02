@@ -218,6 +218,7 @@
 </div>
   <script>
     function generatePackage(){
+      
       const topic = document.getElementById("topic").value.trim();
       const tone = document.getElementById("tone").value;
 
@@ -499,7 +500,28 @@ function copyText(id){
   navigator.clipboard.writeText(text);
   alert("Copied!");
 }
+function savePOVProject(){
+  const ids = [
+    "universe","characters","script","scenes","score",
+    "imagePrompts","videoPrompts","voiceover","thumbnail",
+    "seoTitle","description","shotList","cameraMoves",
+    "soundMusic","partTwo","uploadChecklist"
+  ];
 
+  const project = {};
+
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    project[id] = el ? el.innerText : "";
+  });
+
+  project.savedAt = new Date().toLocaleString();
+  localStorage.setItem("POV_NATION_LATEST_PROJECT", JSON.stringify(project));
+
+  console.log("✅ POV Project saved for Dashboard");
+savePOVProject();  
+}
+    
 generatePackage();
 </script>
 </body>
