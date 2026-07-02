@@ -435,19 +435,19 @@ document.getElementById("shotList").innerText =
 `🎬 SHOT 1
 A lonely young man sitting in a dark room, staring at his laptop.
 
-🎬 SHOT 2 (5–10 sec)
+🎬 SHOT 2 (5-10 sec)
 The AI assistant NOVA appears as a glowing holographic interface.
 
-🎬 SHOT 3 (10–20 sec)
+🎬 SHOT 3 (10-20 sec)
 NOVA warns: "Don't leave the house today."
 
-🎬 SHOT 4 (20–35 sec)
+🎬 SHOT 4 (20-35 sec)
 The young man hesitates, looking toward the front door.
 
-🎬 SHOT 5 (35–50 sec)
+🎬 SHOT 5 (35-50 sec)
 Outside, a dangerous accident happens on the street.
 
-🎬 SHOT 6 (50–60 sec)
+🎬 SHOT 6 (50-60 sec)
 The young man realizes NOVA saved his life. Cinematic ending with dramatic lighting.`;
 
 document.getElementById("cameraMoves").innerText =
@@ -458,7 +458,8 @@ document.getElementById("cameraMoves").innerText =
 • Dramatic zoom when NOVA gives the warning
 • Handheld tension during hesitation
 • Wide shot of the street accident
-• Slow fade-out with cinematic lighting`; 
+• Slow fade-out with cinematic lighting`;
+
 document.getElementById("soundMusic").innerText =
 `🎵 Dark cinematic ambient music
 🎵 Emotional piano melody
@@ -491,16 +492,15 @@ document.getElementById("uploadChecklist").innerText =
 ✅ Upload YouTube Shorts
 ✅ Optimize title, description and hashtags`;
 
+}
 
+function copyText(id){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text);
+  alert("Copied!");
+}
 
-    
-    function copyText(id){
-      const text = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(text);
-      alert("Copied!");
-    }
-
-    generatePackage();
-  </script>
+generatePackage();
+</script>
 </body>
 </html>
