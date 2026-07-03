@@ -107,6 +107,14 @@
         Waiting for Project...
     </div>
 
+    <div id="povAutoImportPreview" style="margin-top:18px; padding:16px; border:1px solid rgba(0,242,254,.35); border-radius:14px; background:#080b18; color:#e8efff; white-space:pre-wrap; line-height:1.55;">
+        Auto Import Preview will appear here after POV Engine save.
+    </div>
+
+    <button id="clearPOVProject" style="margin-top:12px;">
+        🧹 Clear Imported Project
+    </button>
+
 </div>
     <!-- 🔒 LIVE LOCK FRAME (Ghar Ka Tala) v5.0 Master Password Active -->
 <div id="studio-gatekeeper-lock" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #090d16; z-index: 999999; display: flex; justify-content: center; align-items: center; font-family: 'Plus Jakarta Sans', sans-serif;">
@@ -944,5 +952,140 @@ function launchAdvancedAiScanEngine() {
     alert("🏆 Process Completed, Ajit Bhai! Progress scan and timestamps synced.");
 }
 </script>
+
+<script>
+/* ================================
+   POV Nation Phase 2 Auto Import
+   Engine → LocalStorage → Dashboard
+================================ */
+
+function getPOVProjectFromStorage(){
+    const raw = localStorage.getItem("POV_NATION_LATEST_PROJECT") || localStorage.getItem("povLatestProject");
+    if(!raw) return null;
+    try {
+        return JSON.parse(raw);
+    } catch(e) {
+        return { legacyText: raw, savedAt: "Legacy import" };
+    }
+}
+
+function formatPOVProject(project){
+    if(!project) return "No saved POV Engine project found yet.";
+
+    if(project.legacyText){
+        return project.legacyText;
+    }
+
+    const s = project.sections || {};
+    return `🎬 POV NATION AUTO IMPORTED PROJECT
+
+📌 Topic:
+${project.topic || "Untitled"}
+
+🎭 Tone:
+${project.tone || "Not selected"}
+
+🕒 Saved:
+${project.savedAt || "Unknown"}
+
+==============================
+📝 SCRIPT
+==============================
+${s.script || ""}
+
+==============================
+🎥 VIDEO PROMPTS
+==============================
+${s.videoPrompts || ""}
+
+==============================
+🖼️ IMAGE PROMPTS
+==============================
+${s.imagePrompts || ""}
+
+==============================
+🎙️ VOICEOVER
+==============================
+${s.voiceover || ""}
+
+==============================
+📄 DESCRIPTION
+==============================
+${s.description || ""}
+
+==============================
+✅ UPLOAD CHECKLIST
+==============================
+${s.uploadChecklist || ""}`;
+}
+
+function loadPOVDashboardProject(){
+    const preview = document.getElementById("povAutoImportPreview");
+    const textarea = document.getElementById("povImportData");
+    const status = document.getElementById("importStatus");
+    const project = getPOVProjectFromStorage();
+
+    if(!project){
+        if(status) status.innerText = "Waiting for Project...";
+        if(preview) preview.innerText = "No saved POV Engine project found yet. First open POV Engine → Generate → Save Project.";
+        return;
+    }
+
+    const formatted = formatPOVProject(project);
+    if(textarea) textarea.value = formatted;
+    if(preview) preview.innerText = formatted;
+    if(status) status.innerText = "✅ Latest POV Engine project auto-imported successfully.";
+}
+
+function manualImportPOVProject(){
+    const textarea = document.getElementById("povImportData");
+    const status = document.getElementById("importStatus");
+    const preview = document.getElementById("povAutoImportPreview");
+
+    const text = textarea ? textarea.value.trim() : "";
+    if(!text){
+        alert("Paste project data first or save from POV Engine.");
+        return;
+    }
+
+    const project = {
+        app: "POV Nation",
+        version: "Manual Dashboard Import",
+        topic: "Manual Imported Project",
+        tone: "Manual",
+        savedAt: new Date().toLocaleString(),
+        legacyText: text
+    };
+
+    localStorage.setItem("POV_NATION_LATEST_PROJECT", JSON.stringify(project));
+    localStorage.setItem("povLatestProject", JSON.stringify(project));
+
+    if(preview) preview.innerText = text;
+    if(status) status.innerText = "✅ Manual project imported and saved.";
+    alert("✅ POV Project imported into Dashboard!");
+}
+
+function clearPOVProject(){
+    localStorage.removeItem("POV_NATION_LATEST_PROJECT");
+    localStorage.removeItem("povLatestProject");
+    const textarea = document.getElementById("povImportData");
+    const preview = document.getElementById("povAutoImportPreview");
+    const status = document.getElementById("importStatus");
+    if(textarea) textarea.value = "";
+    if(preview) preview.innerText = "Project cleared. Save again from POV Engine.";
+    if(status) status.innerText = "Waiting for Project...";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    loadPOVDashboardProject();
+
+    const importBtn = document.getElementById("importPOVProject");
+    if(importBtn) importBtn.addEventListener("click", manualImportPOVProject);
+
+    const clearBtn = document.getElementById("clearPOVProject");
+    if(clearBtn) clearBtn.addEventListener("click", clearPOVProject);
+});
+</script>
+
 </body>
 </html>
