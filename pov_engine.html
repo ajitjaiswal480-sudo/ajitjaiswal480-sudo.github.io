@@ -96,6 +96,28 @@
       font-weight:bold;
       margin-bottom:10px;
     }
+
+    .pov-action-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top:15px;
+    }
+    .pov-action-row button{margin-top:0}
+    .save-status{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:12px;
+      background:#080b18;
+      border:1px solid #2e3566;
+      color:#7ee9ff;
+      font-size:14px;
+    }
+    .secondary-btn{
+      background:linear-gradient(90deg,#ff5bd7,#ffd700);
+      color:#070912;
+    }
   </style>
 </head>
 <body>
@@ -118,7 +140,12 @@
         <option value="heartwarming Pixar style">Heartwarming Pixar Style</option>
       </select>
 
-      <button onclick="generatePackage()">Generate POV Package</button>
+      <div class="pov-action-row">
+        <button onclick="generatePackage()">Generate POV Package</button>
+        <button onclick="savePOVProject()">💾 Save Project for Dashboard</button>
+        <button class="secondary-btn" onclick="openDashboard()">📊 Open Dashboard</button>
+      </div>
+      <div id="saveStatus" class="save-status">Status: Generate package, then click “Save Project for Dashboard”.</div>
     </div>
 
     <div class="grid">
@@ -501,6 +528,14 @@ function copyText(id){
   alert("Copied!");
 }
 function savePOVProject(){
+  const topicEl = document.getElementById("topic");
+  const toneEl = document.getElementById("tone");
+  const statusEl = document.getElementById("saveStatus");
+
+  if (!document.getElementById("script").innerText.trim()) {
+    generatePackage();
+  }
+
   const ids = [
     "universe","characters","script","scenes","score",
     "imagePrompts","videoPrompts","voiceover","thumbnail",
@@ -508,19 +543,34 @@ function savePOVProject(){
     "soundMusic","partTwo","uploadChecklist"
   ];
 
-  const project = {};
+  const project = {
+    app: "POV Nation",
+    version: "Phase 2 Mission 1",
+    topic: topicEl ? topicEl.value.trim() : "",
+    tone: toneEl ? toneEl.value : "",
+    savedAt: new Date().toLocaleString(),
+    sections: {}
+  };
 
   ids.forEach(id => {
     const el = document.getElementById(id);
-    project[id] = el ? el.innerText : "";
+    project.sections[id] = el ? el.innerText : "";
   });
 
-  project.savedAt = new Date().toLocaleString();
   localStorage.setItem("POV_NATION_LATEST_PROJECT", JSON.stringify(project));
+  localStorage.setItem("povLatestProject", JSON.stringify(project));
 
-  console.log("✅ POV Project saved for Dashboard");
-savePOVProject();  
+  if (statusEl) {
+    statusEl.innerText = "✅ Project saved successfully. Now open ai_dashboard.html and it will auto-import.";
+  }
+
+  alert("✅ POV Project saved for Dashboard!");
 }
+
+function openDashboard(){
+  window.location.href = "ai_dashboard.html";
+}
+
     
 generatePackage();
 </script>
