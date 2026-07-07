@@ -1,174 +1,196 @@
+const OWNER_MODE = true;
+
 const toolData = {
   script: {
     title: "✍️ AI Script Writer",
-    desc: "YouTube Shorts और reels के लिए viral script बनाओ.",
+    desc: "YouTube Shorts aur Reels ke liye viral Hinglish script banao.",
     output: (x) => `🔥 VIRAL SHORT SCRIPT
 
-Hook: Bhai, kya tumne kabhi socha hai ${x}?
+Topic: ${x}
 
-Scene 1: Normal situation दिखाओ.
-Scene 2: अचानक funny twist डालो.
-Scene 3: Fast reaction + zoom effect.
+Hook:
+Bhai, kya tumne kabhi notice kiya hai ki ${x}?
 
-Payoff: End में punchline दो.
-CTA: Follow for more AI-powered comedy ideas.`
+Scene 1:
+Normal situation dikhao. Character simple daily-life problem face kar raha hai.
+
+Scene 2:
+Suddenly ek funny ya emotional twist aata hai.
+
+Scene 3:
+Fast zoom, reaction shot, dramatic music, aur punchline.
+
+Payoff:
+End mein audience ko relatable shock ya laugh mile.
+
+CTA:
+Follow karo Boss, daily AI-powered creator ideas ke liye.`
   },
+
   video: {
     title: "🎬 AI Video Prompt Generator",
-    desc: "AI video tools के लिए cinematic prompt बनाओ.",
-    output: (x) => `🎬 VIDEO PROMPT
+    desc: "AI video tools ke liye cinematic prompt banao.",
+    output: (x) => `🎬 CINEMATIC VIDEO PROMPT
 
 Create a cinematic 9:16 vertical video about: ${x}
-Style: futuristic, realistic, neon lighting
-Camera: slow push-in, dramatic close-up
-Duration: 15 seconds`
+
+Style:
+Ultra realistic, emotional cinematic lighting, smooth camera movement.
+
+Camera:
+Slow push-in, close-up emotion shot, dramatic reveal.
+
+Mood:
+Inspiring, futuristic, powerful.
+
+Duration:
+15 seconds.
+
+No text, no watermark.`
   },
+
   thumb: {
     title: "🖼️ AI Thumbnail Text Generator",
-    desc: "YouTube thumbnail के लिए high-click text ideas.",
+    desc: "YouTube thumbnail ke liye high-click text ideas.",
     output: (x) => `🖼️ THUMBNAIL TEXT IDEAS
 
-1. I Tried This AI Trick!
-2. ₹0 से AI Website!
-3. Before vs After AI
-4. Secret AI Tool
-5. This Changed Everything
+Topic: ${x}
 
-Topic: ${x}`
+1. I Tried This!
+2. ₹0 से Start
+3. Before vs After
+4. Secret AI Trick
+5. This Changed Everything
+6. Beginner To Boss
+7. No Money, Only Skill`
   },
+
   caption: {
     title: "#️⃣ Caption + Hashtags",
-    desc: "Instagram/YouTube Shorts caption और hashtags.",
+    desc: "Instagram/YouTube Shorts caption aur hashtags.",
     output: (x) => `📲 CAPTION
 
 ${x}
-AI ka future ab beginners ke haath mein hai. 🚀
+
+Sapna tab tak sapna hai jab tak tum action nahi lete.  
+Aaj se start. Kal se result. 🚀
 
 HASHTAGS:
-#AI #AITools #HindiAI #YouTubeShorts #CreatorTools #AjitAI`
+#AI #CreatorTools #HindiAI #YouTubeShorts #ReelsIndia #AjitAI #POVNation`
   },
+
   pdf: {
     title: "📄 PDF Summarizer UI",
-    desc: "PDF summary feature का frontend demo.",
+    desc: "PDF summary feature ka frontend demo.",
     output: (x) => `📄 PDF SUMMARY DEMO
 
-Main Topic: ${x}
-Key Points:
-1. Important concepts निकालो
-2. Simple Hindi explanation बनाओ
-3. Action steps दो
+Main Topic:
+${x}
 
-Note: Real PDF upload Phase 2 backend में आएगा.`
+Key Points:
+1. Important concepts nikalo
+2. Simple Hindi explanation banao
+3. Action steps do
+
+Note:
+Real PDF upload backend phase mein connect hoga.`
   },
+
   voice: {
     title: "🎤 Voice AI Command",
-    desc: "Voice assistant का frontend demo.",
+    desc: "Voice assistant ka frontend demo.",
     output: (x) => `🎤 VOICE COMMAND DEMO
 
-Command Received: ${x}
+Command Received:
+${x}
 
 Future Feature:
-- बोलकर AI से script लिखवाना
+- Bolkar AI se script likhvana
 - Text-to-speech voice output
 - Hindi/English voice mode`
   }
 };
 
 let currentTool = "script";
-let freeUsage = 5;
 
 function openTool(name) {
   currentTool = name;
-  document.getElementById("toolTitle").innerText = toolData[name].title;
-  document.getElementById("toolDesc").innerText = toolData[name].desc;
-  document.getElementById("toolOutput").innerText = "Output yahan dikhega...";
+
+  const title = document.getElementById("toolTitle");
+  const desc = document.getElementById("toolDesc");
+  const output = document.getElementById("toolOutput");
+
+  if (title) title.innerText = toolData[name].title;
+  if (desc) desc.innerText = toolData[name].desc;
+  if (output) output.innerText = "Output yahan dikhega...";
 }
 
 function generateTool() {
-  const input = document.getElementById("toolInput").value.trim();
+  const inputBox = document.getElementById("toolInput");
+  const outputBox = document.getElementById("toolOutput");
+
+  if (!inputBox || !outputBox) return;
+
+  const input = inputBox.value.trim();
 
   if (!input) {
-    alert("Pehle topic/prompt likho bhai.");
+    alert("Pehle topic/prompt likho Boss.");
     return;
   }
 
-  if (!useOneGeneration()) return;
-
-  document.getElementById("toolOutput").innerText =
-    toolData[currentTool].output(input);
+  outputBox.innerText = toolData[currentTool].output(input);
 }
 
 function clearTool() {
-  document.getElementById("toolInput").value = "";
-  document.getElementById("toolOutput").innerText = "Output yahan dikhega...";
+  const inputBox = document.getElementById("toolInput");
+  const outputBox = document.getElementById("toolOutput");
+
+  if (inputBox) inputBox.value = "";
+  if (outputBox) outputBox.innerText = "Output yahan dikhega...";
 }
 
 function sendChat() {
   const input = document.getElementById("chatInput");
   const box = document.getElementById("chatBox");
-  const text = input.value.trim();
 
+  if (!input || !box) return;
+
+  const text = input.value.trim();
   if (!text) return;
 
   box.innerHTML += `<p class="user">${text}</p>`;
 
-  let reply = "Bhai, isko hum SaaS feature mein convert kar sakte hain.";
   const q = text.toLowerCase();
+  let reply = "Boss, AIRA ready hai. Is idea ko hum creator feature mein convert kar sakte hain.";
 
-  if (q.includes("video")) reply = "🎬 Video Studio open karo — prompt generator ready hai.";
-  if (q.includes("thumbnail") || q.includes("image")) reply = "🖼️ Thumbnail Text Generator se high-click ideas milenge.";
-  if (q.includes("caption")) reply = "#️⃣ Caption + Hashtags tool use karo.";
-  if (q.includes("owner")) reply = "👑 Owner mode active करने के लिए ?mode=owner लगाओ.";
+  if (q.includes("video")) reply = "🎬 Video Prompt Generator open karo Boss — cinematic prompt ready hoga.";
+  if (q.includes("thumbnail") || q.includes("image")) reply = "🖼️ Thumbnail/Image tool se high-click idea niklega.";
+  if (q.includes("caption")) reply = "#️⃣ Caption + Hashtags tool use karo Boss.";
+  if (q.includes("script")) reply = "✍️ AI Script Writer se viral short script generate karo.";
+  if (q.includes("owner")) reply = "👑 Owner Mode already active hai Boss. Unlimited access on.";
 
   setTimeout(() => {
     box.innerHTML += `<p class="bot">${reply}</p>`;
     box.scrollTop = box.scrollHeight;
-  }, 400);
+  }, 300);
 
   input.value = "";
-}
-
-function useOneGeneration() {
-  if (freeUsage <= 0) {
-    alert("Free limit खत्म हो गई भाई. Pro plan upgrade करो.");
-    return false;
-  }
-
-  freeUsage--;
-  updateUsageUI();
-  return true;
 }
 
 function updateUsageUI() {
   const usageText = document.getElementById("usageText");
   const usageFill = document.getElementById("usageFill");
 
-  if (usageText) usageText.innerText = freeUsage + "/5 Free Generations Left";
-  if (usageFill) usageFill.style.width = (freeUsage * 20) + "%";
+  if (usageText) usageText.innerText = "👑 Owner Mode: Unlimited Generations";
+  if (usageFill) usageFill.style.width = "100%";
 }
 
 function upgrade(plan) {
-  openPayment(plan);
+  alert("Payment system abhi OFF hai Boss. Owner Mode unlimited active hai.");
 }
 
 function openPayment(plan) {
-  const price = plan === "Pro" ? "₹349" : "₹99";
-
-  const old = document.getElementById("paymentModal");
-  if (old) old.remove();
-
-  document.body.insertAdjacentHTML("beforeend", `
-    <div id="paymentModal" class="payBox">
-      <div class="payCard">
-        <h2>💳 Razorpay Demo Checkout</h2>
-        <p>${plan} Plan</p>
-        <h3>${price}</h3>
-        <p>This is demo payment UI. Real Razorpay बाद में connect होगा.</p>
-        <button onclick="confirmPayment('${plan}')">Pay Securely</button>
-        <button onclick="closePayment()" style="background:#334155;color:white">Cancel</button>
-      </div>
-    </div>
-  `);
+  alert("Payment system abhi OFF hai Boss. Owner Mode unlimited active hai.");
 }
 
 function closePayment() {
@@ -177,33 +199,33 @@ function closePayment() {
 }
 
 function confirmPayment(plan) {
-  document.getElementById("planName").innerText = plan;
-  freeUsage = plan === "Pro" ? 999 : 100;
-  updateUsageUI();
-  closePayment();
-  alert("✅ " + plan + " Plan Activated Demo!");
+  alert("Owner Mode active hai Boss. Payment ki zarurat nahi.");
 }
 
 function openLogin() {
-  document.getElementById("loginModal").classList.remove("hidden");
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.remove("hidden");
 }
 
 function closeLogin() {
-  document.getElementById("loginModal").classList.add("hidden");
+  const modal = document.getElementById("loginModal");
+  if (modal) modal.classList.add("hidden");
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
+  const ownerStatus = document.getElementById("ownerStatus");
+  const planName = document.getElementById("planName");
+  const normalPricing = document.getElementById("normalPricing");
+  const ownerBanner = document.getElementById("ownerBanner");
+  const adminLocked = document.getElementById("adminLocked");
+  const adminUnlocked = document.getElementById("adminUnlocked");
 
-  if (params.get("mode") === "owner") {
-    document.getElementById("ownerStatus").innerText = "On";
-    document.getElementById("planName").innerText = "Owner";
-    document.getElementById("normalPricing").classList.add("hidden");
-    document.getElementById("ownerBanner").classList.remove("hidden");
-    document.getElementById("adminLocked").classList.add("hidden");
-    document.getElementById("adminUnlocked").classList.remove("hidden");
-    freeUsage = 999;
-  }
+  if (ownerStatus) ownerStatus.innerText = "On";
+  if (planName) planName.innerText = "Owner";
+  if (normalPricing) normalPricing.classList.add("hidden");
+  if (ownerBanner) ownerBanner.classList.remove("hidden");
+  if (adminLocked) adminLocked.classList.add("hidden");
+  if (adminUnlocked) adminUnlocked.classList.remove("hidden");
 
   updateUsageUI();
 });
